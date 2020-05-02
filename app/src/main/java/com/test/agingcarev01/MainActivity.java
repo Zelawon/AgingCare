@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.test.agingcarev01.AdminFonction.CreeCompteDirecteur;
+import com.test.agingcarev01.AdminFonction.testApresLogin;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button creeBT;
-    Button loginBT;
-    Button quitterBT;
+
+    Button loginBT,creeBT,quitterBT,logoutBT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginBT.setOnClickListener(this);
         quitterBT=findViewById(R.id.quit);
         quitterBT.setOnClickListener(this);
+        logoutBT=findViewById(R.id.logoutTest);
+        logoutBT.setOnClickListener(this);
+
 
     }
 
@@ -37,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             finish();
         }
         if(view.getId()==R.id.quit){
+            finish();
+        }
+        if(view.getId()==R.id.logoutTest){
+            startActivity(new Intent(MainActivity.this, testApresLogin.class));
             finish();
         }
     }

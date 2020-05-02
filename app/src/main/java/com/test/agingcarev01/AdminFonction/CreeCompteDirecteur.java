@@ -34,7 +34,7 @@ public class CreeCompteDirecteur extends AppCompatActivity implements View.OnCli
         email=findViewById(R.id.email1);
 
         FirebaseApp.initializeApp(CreeCompteDirecteur.this);
-        registerBT=findViewById(R.id.register);
+        registerBT=findViewById(R.id.creeDirec);
         registerBT.setOnClickListener(this);
     }
     @Override
@@ -70,7 +70,7 @@ public class CreeCompteDirecteur extends AppCompatActivity implements View.OnCli
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Toast.makeText(CreeCompteDirecteur.this, "Compte Cree.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreeCompteDirecteur.this, "Compte Creer.", Toast.LENGTH_SHORT).show();
                                 //FirebaseUser user = mAuth.getCurrentUser();
                                 startActivity(new Intent(CreeCompteDirecteur.this, MainActivity.class));
                             } else {

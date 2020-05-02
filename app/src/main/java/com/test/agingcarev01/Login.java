@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.test.agingcarev01.AdminFonction.CreeCompteDirecteur;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     Button logInBT, retourBT;
@@ -40,7 +41,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    showToast("Connection Réussite");
+                    Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                     updateUI();
                 }
                 else{
@@ -51,14 +52,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         Toast toast = Toast.makeText(getApplicationContext(), "Mot de Passe vide", Toast.LENGTH_SHORT);
                         toast.show();
                     }else{
-                        showToast(task.getException().getMessage());
+                        Toast.makeText(Login.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
-    }
-    private void showToast(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
     private void updateUI() {
         //if email existe dans database affiche le home correspendent.

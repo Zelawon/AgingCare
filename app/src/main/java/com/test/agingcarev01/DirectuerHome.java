@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.AdminFonction.testApresLogin;
+import com.test.agingcarev01.DirectuerFonctions.CreerCompteSurveillant;
 
 public class DirectuerHome extends AppCompatActivity implements View.OnClickListener {
     Button creeInfBT;
@@ -45,7 +46,7 @@ public class DirectuerHome extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
 
         if(view.getId()==R.id.creerCompteSurveillant){
-            startActivity(new Intent(DirectuerHome.this, testApresLogin.class));
+            startActivity(new Intent(DirectuerHome.this, CreerCompteSurveillant.class));
             finish();
         }
         if(view.getId()==R.id.deconnecterDierecteur){
