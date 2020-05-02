@@ -5,18 +5,25 @@ public class SurveillantClasse {
     private String nomSurv;
     private String prenomSurv;
     private String role="Surviellant";
-    private String id_Surv;
+    //private String id_Surv;
 
     public SurveillantClasse() {
     }
 
-    public SurveillantClasse(String emailSurv, String nomSurv, String prenomSurv, String role, String id_Surv) {
+    public SurveillantClasse(String emailSurv, String nomSurv, String prenomSurv, String role) {
+        this.emailSurv = emailSurv;
+        this.nomSurv = nomSurv;
+        this.prenomSurv = prenomSurv;
+        this.role = role;
+    }
+
+    /*public SurveillantClasse(String emailSurv, String nomSurv, String prenomSurv, String role, String id_Surv) {
         this.emailSurv = emailSurv;
         this.nomSurv = nomSurv;
         this.prenomSurv = prenomSurv;
         this.role = role;
         this.id_Surv = id_Surv;
-    }
+    }*/
 
     public String getEmailSurv() {
         return emailSurv;
@@ -50,11 +57,11 @@ public class SurveillantClasse {
         this.role = role;
     }
 
-    public String getId_Surv() {
+    /*public String getId_Surv() {
         return id_Surv;
     }
 
     public void setId_Surv(String id_Surv) {
         this.id_Surv = id_Surv;
-    }
+    }*/
 }
