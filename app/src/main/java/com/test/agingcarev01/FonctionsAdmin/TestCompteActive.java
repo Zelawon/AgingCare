@@ -1,4 +1,4 @@
-package com.test.agingcarev01.AdminFonction;
+package com.test.agingcarev01.FonctionsAdmin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +9,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.test.agingcarev01.R;
 
-public class testApresLogin extends AppCompatActivity {
+public class TestCompteActive extends AppCompatActivity {
     TextView txt1,txt2,txt3,txt4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_apres_login);
+        setContentView(R.layout.activity_test_compte_active);
 
         txt1=findViewById(R.id.d1);
         txt2=findViewById(R.id.d2);

@@ -1,4 +1,4 @@
-package com.test.agingcarev01.DirectuerFonctions;
+package com.test.agingcarev01.FonctionsAdmin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,22 +19,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.test.agingcarev01.AdminFonction.testApresLogin;
-import com.test.agingcarev01.Classe.SurveillantClasse;
-import com.test.agingcarev01.DirectuerHome;
+import com.test.agingcarev01.Classe.DirecteurClasse;
+import com.test.agingcarev01.HomePages.AdminHome;
 import com.test.agingcarev01.R;
 
-public class CreerCompteSurveillant extends AppCompatActivity implements View.OnClickListener {
+public class CreerCompteDirecteur extends AppCompatActivity implements View.OnClickListener{
     private FirebaseAuth mAuth1,mAuth2;
-    private Button creeSurvBT, retourBT;
-    private EditText password,email,confirmPass,nomSurv,prenomSurv;
+    private Button registerBT,retourBT;
+    private EditText password,email,confirmPass,nomDirec,prenomDirec;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creer_compte_surveillant);
+        setContentView(R.layout.activity_cree_compte_directeur);
 
         mAuth1 = FirebaseAuth.getInstance();
         //auth 2 poun ne pas deconnecter le auth 1
@@ -49,61 +48,53 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
             mAuth2 = FirebaseAuth.getInstance(FirebaseApp.getInstance("AnyAppName"));
         }
 
-        password=findViewById(R.id.passSurv);
-        confirmPass=findViewById(R.id.confPassSurv);
-        email=findViewById(R.id.emailSurv);
-        nomSurv=findViewById(R.id.nomSurv);
-        prenomSurv=findViewById(R.id.prenomSurv);
+        password=findViewById(R.id.passDirec);
+        confirmPass=findViewById(R.id.confPassDirec);
+        email=findViewById(R.id.emailDirec);
+        nomDirec=findViewById(R.id.nomDirec);
+        prenomDirec=findViewById(R.id.prenomDirec);
 
-        creeSurvBT=findViewById(R.id.creeSurv);
-        creeSurvBT.setOnClickListener(this);
-        retourBT=findViewById(R.id.retourMenuDirec);
+        FirebaseApp.initializeApp(CreerCompteDirecteur.this);
+        registerBT=findViewById(R.id.creeDirec);
+        registerBT.setOnClickListener(this);
+        retourBT=findViewById(R.id.retourFormDirecBT);
         retourBT.setOnClickListener(this);
 
-        FirebaseApp.initializeApp(CreerCompteSurveillant.this);
+        FirebaseApp.initializeApp(CreerCompteDirecteur.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
     }
-
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.creeSurv){
-
+        if(view.getId()==R.id.creeDirec){
             final String pass = password.getText().toString();
             final String confPass = confirmPass.getText().toString();
             final String e_mail = email.getText().toString();
-            final String nom = nomSurv.getText().toString();
-            final String prenom = prenomSurv.getText().toString();
+            final String nom = nomDirec.getText().toString();
+            final String prenom = prenomDirec.getText().toString();
 
             if (nom.isEmpty()){
-                Toast toast = Toast.makeText(getApplicationContext(), "Nom vide", Toast.LENGTH_SHORT);
-                toast.show();
-                nomSurv.requestFocus();
+                Toast.makeText(getApplicationContext(), "Nom vide", Toast.LENGTH_SHORT).show();
+                nomDirec.requestFocus();
             }else if (prenom.isEmpty()){
-                Toast toast = Toast.makeText(getApplicationContext(), "Prenom vide", Toast.LENGTH_SHORT);
-                toast.show();
-                prenomSurv.requestFocus();
+                Toast.makeText(getApplicationContext(), "Prenom vide", Toast.LENGTH_SHORT).show();
+                prenomDirec.requestFocus();
             }else if (e_mail.isEmpty()){
-                Toast toast = Toast.makeText(getApplicationContext(), "Email vide", Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(getApplicationContext(), "Email vide", Toast.LENGTH_SHORT).show();
                 email.requestFocus();
             }else if (pass.isEmpty()){
-                Toast toast = Toast.makeText(getApplicationContext(), "Mot de Passe vide", Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(getApplicationContext(), "Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
             }else if (pass.length()<6){
-                Toast toast = Toast.makeText(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
             }else if ((confPass.isEmpty())){
-                Toast toast = Toast.makeText(getApplicationContext(), "Confirmer Mot de Passe vide", Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(getApplicationContext(), "Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
             }else if (!(pass.equals(confPass))){
-                Toast toast = Toast.makeText(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
-            }else {
+            }else{
                 mAuth2.createUserWithEmailAndPassword(e_mail, pass)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -112,34 +103,33 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
                                     //Compte Creer cbn
                                     //Sign in success
                                     //Logout nv compte
-                                    Toast.makeText(CreerCompteSurveillant.this, "Compte Creer.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(CreerCompteDirecteur.this, "Compte Creer.", Toast.LENGTH_SHORT).show();
                                     mAuth2.signOut();
 
-                                    //ajouter a la database surveillant.
-                                    SurveillantClasse nvSuruv = new SurveillantClasse(e_mail,nom,prenom);
+                                    //ajouter a la database
+                                    DirecteurClasse nvDirec = new DirecteurClasse(e_mail,nom,prenom);
 
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference myRef = database.getReference("Employee/Surveillant").push();
+                                    DatabaseReference myRef = database.getReference("Employee").push();
 
-                                    myRef.setValue(nvSuruv).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    myRef.setValue(nvDirec).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            Toast.makeText(CreerCompteSurveillant.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(CreerCompteSurveillant.this, testApresLogin.class));
+                                            Toast.makeText(CreerCompteDirecteur.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(CreerCompteDirecteur.this, AdminHome.class));
                                             finish();
                                         }
                                     });
 
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(CreerCompteSurveillant.this, "Erreur Creation, Veuillez Reessayer.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CreerCompteDirecteur.this, "Erreur Creation, Veuillez Reessayer.", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
             }
         }
-        if(view.getId()==R.id.retourMenuDirec){
-            startActivity(new Intent(CreerCompteSurveillant.this, DirectuerHome.class));
+        if(view.getId()==R.id.retourFormDirecBT){
             finish();
         }
     }

@@ -9,11 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DirectuerFonctions.CreerCompteInfirmier"></activity>
-        <activity android:name=".DirectuerFonctions.CreerCompteSurveillant" />
-        <activity android:name=".DirectuerHome" />
-        <activity android:name=".AdminFonction.testApresLogin" />
-        <activity android:name=".AdminFonction.CreerCompteDirecteur" />
+        <activity android:name=".FonctionsAdmin.CreeCompteAdmin"></activity>
+        <activity android:name=".HomePages.AdminHome" />
+        <activity android:name=".FonctionsDirectuer.CreerCompteInfirmier" />
+        <activity android:name=".FonctionsDirectuer.CreerCompteSurveillant" />
+        <activity android:name=".HomePages.DirectuerHome" />
+        <activity android:name=".FonctionsAdmin.TestCompteActive" />
+        <activity android:name=".FonctionsAdmin.CreerCompteDirecteur" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>

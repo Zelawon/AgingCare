@@ -1,52 +1,43 @@
 package com.test.agingcarev01.Classe;
 
 public class SurveillantClasse {
-    private String emailSurv;
-    private String nomSurv;
-    private String prenomSurv;
+    private String email;
+    private String nom;
+    private String prenom;
     private String role;
-    //private String id_Surv;
 
     public SurveillantClasse() {
     }
 
-    public SurveillantClasse(String emailSurv, String nomSurv, String prenomSurv) {
-        this.emailSurv = emailSurv;
-        this.nomSurv = nomSurv;
-        this.prenomSurv = prenomSurv;
-        this.role = "Surviellant";
+    public SurveillantClasse(String email, String nom, String prenom) {
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.role = "Surveillant";
     }
 
-    /*public SurveillantClasse(String emailSurv, String nomSurv, String prenomSurv, String role, String id_Surv) {
-        this.emailSurv = emailSurv;
-        this.nomSurv = nomSurv;
-        this.prenomSurv = prenomSurv;
-        this.role = role;
-        this.id_Surv = id_Surv;
-    }*/
-
-    public String getEmailSurv() {
-        return emailSurv;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailSurv(String emailSurv) {
-        this.emailSurv = emailSurv;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getNomSurv() {
-        return nomSurv;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomSurv(String nomSurv) {
-        this.nomSurv = nomSurv;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getPrenomSurv() {
-        return prenomSurv;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setPrenomSurv(String prenomSurv) {
-        this.prenomSurv = prenomSurv;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public String getRole() {
@@ -56,12 +47,4 @@ public class SurveillantClasse {
     public void setRole(String role) {
         this.role = role;
     }
-
-    /*public String getId_Surv() {
-        return id_Surv;
-    }
-
-    public void setId_Surv(String id_Surv) {
-        this.id_Surv = id_Surv;
-    }*/
 }

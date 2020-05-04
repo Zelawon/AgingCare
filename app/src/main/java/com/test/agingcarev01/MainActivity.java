@@ -8,12 +8,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.AdminFonction.CreerCompteDirecteur;
-import com.test.agingcarev01.AdminFonction.testApresLogin;
+import com.test.agingcarev01.FonctionsAdmin.TestCompteActive;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button loginBT,creeBT,quitterBT,logoutBT;
+    Button loginBT,quitterBT,logoutBT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,15 +20,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         FirebaseAuth.getInstance().signOut();
 
-        creeBT=findViewById(R.id.creeAd);
-        creeBT.setOnClickListener(this);
         loginBT=findViewById(R.id.login);
         loginBT.setOnClickListener(this);
         quitterBT=findViewById(R.id.quit);
         quitterBT.setOnClickListener(this);
-        logoutBT=findViewById(R.id.logoutTest);
+        logoutBT=findViewById(R.id.testCompActive);
         logoutBT.setOnClickListener(this);
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        FirebaseAuth.getInstance().signOut();
 
     }
 
@@ -37,18 +39,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view.getId()==R.id.login){
             startActivity(new Intent(MainActivity.this, Login.class));
-            finish();
-        }
-        if(view.getId()==R.id.creeAd){
-            startActivity(new Intent(MainActivity.this, CreerCompteDirecteur.class));
-            finish();
         }
         if(view.getId()==R.id.quit){
             finish();
         }
-        if(view.getId()==R.id.logoutTest){
-            startActivity(new Intent(MainActivity.this, testApresLogin.class));
-            finish();
+        if(view.getId()==R.id.testCompActive){
+            startActivity(new Intent(MainActivity.this, TestCompteActive.class));
         }
     }
 }

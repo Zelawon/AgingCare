@@ -1,4 +1,4 @@
-package com.test.agingcarev01;
+package com.test.agingcarev01.HomePages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,15 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.AdminFonction.testApresLogin;
-import com.test.agingcarev01.DirectuerFonctions.CreerCompteSurveillant;
+import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
+import com.test.agingcarev01.MainActivity;
+import com.test.agingcarev01.R;
 
 public class DirectuerHome extends AppCompatActivity implements View.OnClickListener {
-    Button creeInfBT;
-    Button creeSurBT;
-    Button consultInfBT;
-    Button consultSurBT;
-    Button logoutDirecBT;
+    private Button creeInfBT,creeSurBT,consultInfBT,consultSurBT,logoutDirecBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -47,7 +44,6 @@ public class DirectuerHome extends AppCompatActivity implements View.OnClickList
 
         if(view.getId()==R.id.creerCompteSurveillant){
             startActivity(new Intent(DirectuerHome.this, CreerCompteSurveillant.class));
-            finish();
         }
         if(view.getId()==R.id.deconnecterDierecteur){
             mAuth.signOut();

@@ -1,43 +1,43 @@
 package com.test.agingcarev01.Classe;
 
 public class DirecteurClasse {
-    private String emailDirec;
-    private String nomDirec;
-    private String prenomDirec;
+    private String email;
+    private String nom;
+    private String prenom;
     private String role;
 
     public DirecteurClasse() {
     }
 
-    public DirecteurClasse(String emailDirec, String nomDirec, String prenomDirec) {
-        this.emailDirec = emailDirec;
-        this.nomDirec = nomDirec;
-        this.prenomDirec = prenomDirec;
+    public DirecteurClasse(String email, String nom, String prenom) {
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
         this.role = "Directeur";
     }
 
-    public String getEmailDirec() {
-        return emailDirec;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailDirec(String emailDirec) {
-        this.emailDirec = emailDirec;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getNomDirec() {
-        return nomDirec;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomDirec(String nomDirec) {
-        this.nomDirec = nomDirec;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getPrenomDirec() {
-        return prenomDirec;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setPrenomDirec(String prenomDirec) {
-        this.prenomDirec = prenomDirec;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public String getRole() {

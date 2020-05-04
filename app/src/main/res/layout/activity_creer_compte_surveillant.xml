@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DirectuerFonctions.CreerCompteSurveillant">
+    tools:context=".FonctionsDirectuer.CreerCompteSurveillant">
 
     <TextView
         android:id="@+id/textView"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/confPassSurv" />
 
     <Button
-        android:id="@+id/retourMenuDirec"
+        android:id="@+id/retourFormSurvBT"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
