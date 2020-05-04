@@ -13,7 +13,7 @@
         <activity android:name=".DirectuerFonctions.CreerCompteSurveillant" />
         <activity android:name=".DirectuerHome" />
         <activity android:name=".AdminFonction.testApresLogin" />
-        <activity android:name=".AdminFonction.CreeCompteDirecteur" />
+        <activity android:name=".AdminFonction.CreerCompteDirecteur" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>

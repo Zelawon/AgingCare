@@ -14,7 +14,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.AdminFonction.CreeCompteDirecteur;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     Button logInBT, retourBT;
@@ -29,7 +28,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         logInBT=findViewById(R.id.SignIn);
         retourBT =findViewById(R.id.retourLogin);
         email=findViewById(R.id.emaillog);
-        mdp=findViewById(R.id.passlog);
+        mdp=findViewById(R.id.passDirec);
 
         mAuth = FirebaseAuth.getInstance();
 

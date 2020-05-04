@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.test.agingcarev01.AdminFonction.CreeCompteDirecteur;
+import com.google.firebase.auth.FirebaseAuth;
+import com.test.agingcarev01.AdminFonction.CreerCompteDirecteur;
 import com.test.agingcarev01.AdminFonction.testApresLogin;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -17,6 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseAuth.getInstance().signOut();
+
         creeBT=findViewById(R.id.creeAd);
         creeBT.setOnClickListener(this);
         loginBT=findViewById(R.id.login);
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             finish();
         }
         if(view.getId()==R.id.creeAd){
-            startActivity(new Intent(MainActivity.this, CreeCompteDirecteur.class));
+            startActivity(new Intent(MainActivity.this, CreerCompteDirecteur.class));
             finish();
         }
         if(view.getId()==R.id.quit){

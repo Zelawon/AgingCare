@@ -4,17 +4,17 @@ public class SurveillantClasse {
     private String emailSurv;
     private String nomSurv;
     private String prenomSurv;
-    private String role="Surviellant";
+    private String role;
     //private String id_Surv;
 
     public SurveillantClasse() {
     }
 
-    public SurveillantClasse(String emailSurv, String nomSurv, String prenomSurv, String role) {
+    public SurveillantClasse(String emailSurv, String nomSurv, String prenomSurv) {
         this.emailSurv = emailSurv;
         this.nomSurv = nomSurv;
         this.prenomSurv = prenomSurv;
-        this.role = role;
+        this.role = "Surviellant";
     }
 
     /*public SurveillantClasse(String emailSurv, String nomSurv, String prenomSurv, String role, String id_Surv) {
