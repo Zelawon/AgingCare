@@ -70,16 +70,16 @@ public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickLi
             final String e_mail = email.getText().toString().toLowerCase();
 
             if (e_mail.isEmpty()){
-                Toast.makeText(getApplicationContext(), "Email vide", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Champ Email vide", Toast.LENGTH_SHORT).show();
                 email.requestFocus();
             }else if (pass.isEmpty()){
-                Toast.makeText(getApplicationContext(), "Mot de Passe vide", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Champ Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
             }else if (pass.length()<6){
                 Toast.makeText(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
             }else if ((confPass.isEmpty())){
-                Toast.makeText(getApplicationContext(), "Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Champ Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
             }else if (!(pass.equals(confPass))){
                 Toast.makeText(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();

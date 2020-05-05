@@ -43,8 +43,4 @@ public class DirecteurClasse {
     public String getRole() {
         return role;
     }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }

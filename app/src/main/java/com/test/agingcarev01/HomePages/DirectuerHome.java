@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
@@ -44,6 +45,9 @@ public class DirectuerHome extends AppCompatActivity implements View.OnClickList
 
         if(view.getId()==R.id.creerCompteSurveillant){
             startActivity(new Intent(DirectuerHome.this, CreerCompteSurveillant.class));
+        }
+        if(view.getId()==R.id.creerCompteInfirmier){
+            startActivity(new Intent(DirectuerHome.this, CreerCompteInfirmier.class));
         }
         if(view.getId()==R.id.deconnecterDierecteur){
             mAuth.signOut();
