@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FonctionsAdmin.CreeCompteAdmin"></activity>
+        <activity android:name=".HomePages.InfirmierHome"></activity>
+        <activity android:name=".HomePages.SurveillantHome" />
+        <activity android:name=".FonctionsAdmin.CreeCompteAdmin" />
         <activity android:name=".HomePages.AdminHome" />
         <activity android:name=".FonctionsDirectuer.CreerCompteInfirmier" />
         <activity android:name=".FonctionsDirectuer.CreerCompteSurveillant" />

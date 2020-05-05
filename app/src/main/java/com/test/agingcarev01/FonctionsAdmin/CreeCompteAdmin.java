@@ -67,7 +67,7 @@ public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickLi
         if(view.getId()==R.id.creeAdmin){
             final String pass = password.getText().toString();
             final String confPass = confirmPass.getText().toString();
-            final String e_mail = email.getText().toString();
+            final String e_mail = email.getText().toString().toLowerCase();
 
             if (e_mail.isEmpty()){
                 Toast.makeText(getApplicationContext(), "Email vide", Toast.LENGTH_SHORT).show();

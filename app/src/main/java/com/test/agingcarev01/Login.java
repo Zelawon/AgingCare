@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.HomePages.AdminHome;
 import com.test.agingcarev01.HomePages.DirectuerHome;
+import com.test.agingcarev01.HomePages.InfirmierHome;
+import com.test.agingcarev01.HomePages.SurveillantHome;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button logInBT, retourBT;
@@ -66,55 +69,52 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         });
     }
     private void updateUI() {
-        //if email existe dans database affiche le home correspendent.
-        startActivity(new Intent(Login.this, AdminHome.class));
-        finish();
+//        //if email existe dans database affiche le home correspendent au role du user.
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserEmail = user.getEmail();
+        //Toast.makeText(getApplicationContext(), currentUserEmail, Toast.LENGTH_LONG).show();
 
+        DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
+        Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
+        emailQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot roleSnapshot : dataSnapshot.getChildren()) {
+                        //Log.i("TAG", roleSnapshot.child("role").getValue(String.class));
+                        //Toast.makeText(getApplicationContext(), roleSnapshot.child("role").getValue(String.class), Toast.LENGTH_LONG).show();
+                        String currentRole = roleSnapshot.child("role").getValue(String.class);
+                        if (currentRole.equals("Admin")) {
+                            Toast.makeText(getApplicationContext(), "Role: Admin", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(Login.this, AdminHome.class));
+                            finish();
+                        } else if (currentRole.equals("Directeur")) {
+                            Toast.makeText(getApplicationContext(), "Role: Directeur", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(Login.this, DirectuerHome.class));
+                            finish();
+                        }else if (currentRole.equals("Surveillant")) {
+                            Toast.makeText(getApplicationContext(), "Role: Surveillant", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(Login.this, SurveillantHome.class));
+                            finish();
+                        }else if (currentRole.equals("Infirmier")) {
+                            Toast.makeText(getApplicationContext(), "Role: Infirmier", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(Login.this, InfirmierHome.class));
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "No Role Assigned", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(), "Account Not Found", Toast.LENGTH_LONG).show();
+                }
+            }
 
-//        //final Firebase ref = new Firebase("https://test.firebaseio.com/users");
-//        //Query query = ref.orderByChild("username").equalTo("toto");
-//
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-//
-//        DatabaseReference RootReference = firebaseDatabase.getReference("Employee");
-//        String currentUserMail = user.getEmail();
-//        Query query =RootReference.orderByChild("email").equalTo(currentUserMail);
-//        //Toast.makeText(getApplicationContext(),currentUserMail,Toast.LENGTH_SHORT).show();
-//        query.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                //Toast.makeText(getApplicationContext(),"inside DataSnapshot",Toast.LENGTH_SHORT).show();
-//                if (dataSnapshot.exists()) {
-//                    // dataSnapshot is the node with all children with email= useremail
-//                    Toast.makeText(getApplicationContext(),"inside DataSnapshot Exist",Toast.LENGTH_SHORT).show();
-//                    for (DataSnapshot emailList : dataSnapshot.getChildren()) {
-//                        // do something with the individual nodes?
-//
-//                        String roleUser = emailList.child("role").getValue(String.class);
-//                        Toast.makeText(getApplicationContext(),roleUser,Toast.LENGTH_SHORT).show();
-//                        Toast.makeText(getApplicationContext(),"www",Toast.LENGTH_SHORT).show();
-//
-//                        //Case????
-////                        if (Role = "Directeur"){
-////                            startActivity(??);
-////                        }else if( = "surveillant"){
-////                             startActivity(??);
-////                        }else if ( = "infirmier"){
-////
-////                        }else {
-////                             7kaya
-////                        }
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "onCancelled", databaseError.toException());
+            }
+        });
     }
 
     @Override

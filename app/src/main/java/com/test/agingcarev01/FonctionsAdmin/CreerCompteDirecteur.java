@@ -69,9 +69,9 @@ public class CreerCompteDirecteur extends AppCompatActivity implements View.OnCl
         if(view.getId()==R.id.creeDirec){
             final String pass = password.getText().toString();
             final String confPass = confirmPass.getText().toString();
-            final String e_mail = email.getText().toString();
-            final String nom = nomDirec.getText().toString();
-            final String prenom = prenomDirec.getText().toString();
+            final String e_mail = email.getText().toString().toLowerCase();
+            final String nom = nomDirec.getText().toString().toLowerCase();
+            final String prenom = prenomDirec.getText().toString().toLowerCase();
 
             if (nom.isEmpty()){
                 Toast.makeText(getApplicationContext(), "Nom vide", Toast.LENGTH_SHORT).show();

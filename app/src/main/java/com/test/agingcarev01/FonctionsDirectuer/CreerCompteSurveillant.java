@@ -71,9 +71,9 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
 
             final String pass = password.getText().toString();
             final String confPass = confirmPass.getText().toString();
-            final String e_mail = email.getText().toString();
-            final String nom = nomSurv.getText().toString();
-            final String prenom = prenomSurv.getText().toString();
+            final String e_mail = email.getText().toString().toLowerCase();
+            final String nom = nomSurv.getText().toString().toLowerCase();
+            final String prenom = prenomSurv.getText().toString().toLowerCase();
 
             if (nom.isEmpty()){
                 Toast.makeText(getApplicationContext(), "Nom vide", Toast.LENGTH_SHORT).show();
