@@ -3,7 +3,6 @@ package com.test.agingcarev01.FonctionsDirectuer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.test.agingcarev01.FonctionsAdmin.TestCompteActive;
 import com.test.agingcarev01.Classe.SurveillantClasse;
-import com.test.agingcarev01.HomePages.DirectuerHome;
 import com.test.agingcarev01.R;
 
 public class CreerCompteSurveillant extends AppCompatActivity implements View.OnClickListener {

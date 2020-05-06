@@ -59,7 +59,7 @@ public class DirectuerHome extends AppCompatActivity implements View.OnClickList
         if(view.getId()==R.id.deconnecterDierecteur){
             mAuth.signOut();
             startActivity(new Intent(DirectuerHome.this, MainActivity.class));
-            finish();
+            finishAffinity ();
         }
 
     }

@@ -10,7 +10,6 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.FonctionsAdmin.CreeCompteAdmin;
 import com.test.agingcarev01.FonctionsAdmin.CreerCompteDirecteur;
-import com.test.agingcarev01.FonctionsAdmin.TestCompteActive;
 import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
@@ -67,7 +66,7 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
         if(view.getId()==R.id.deconnecterAdmin){
             mAuth.signOut();
             startActivity(new Intent(AdminHome.this, MainActivity.class));
-            finish();
+            finishAffinity ();
         }
 
     }

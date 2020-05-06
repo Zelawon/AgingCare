@@ -38,7 +38,7 @@ public class SurveillantHome extends AppCompatActivity implements View.OnClickLi
         if(view.getId()==R.id.deconnecterSurveillant){
             mAuth.signOut();
             startActivity(new Intent(SurveillantHome.this, MainActivity.class));
-            finish();
+            finishAffinity ();
         }
     }
 }

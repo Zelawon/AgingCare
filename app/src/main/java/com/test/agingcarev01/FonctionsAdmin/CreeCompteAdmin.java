@@ -28,7 +28,6 @@ public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickLi
     private Button registerBT,retourBT;
     private EditText password,email,confirmPass;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -107,8 +107,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             Toast.makeText(getApplicationContext(), "No Role Assigned", Toast.LENGTH_LONG).show();
                         }
                     }
-                }else{
-                    Toast.makeText(getApplicationContext(), "Account Not Found", Toast.LENGTH_LONG).show();
                 }
             }
 

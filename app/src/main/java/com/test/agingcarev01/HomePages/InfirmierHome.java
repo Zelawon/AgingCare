@@ -8,10 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.Classe.InfirmierClasse;
 import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
-import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
-import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
@@ -41,7 +38,7 @@ public class InfirmierHome extends AppCompatActivity implements View.OnClickList
         if(view.getId()==R.id.deconnecterInfirmier){
             mAuth.signOut();
             startActivity(new Intent(InfirmierHome.this, MainActivity.class));
-            finish();
+            finishAffinity ();
         }
     }
 }

@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,20 +18,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.FonctionsAdmin.CreeCompteAdmin;
-import com.test.agingcarev01.FonctionsAdmin.CreerCompteDirecteur;
-import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
-import com.test.agingcarev01.HomePages.AdminHome;
-import com.test.agingcarev01.HomePages.DirectuerHome;
-import com.test.agingcarev01.HomePages.InfirmierHome;
-import com.test.agingcarev01.HomePages.SurveillantHome;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfil extends AppCompatActivity implements View.OnClickListener {
-    private Button modifierProfBT, retourFrProfBT;
-    private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,roleTXT,emailTXT,sexeTXT;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    private Button modifierProfBT, retourFrProfBT,modifierProfPassBT;
+    private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +32,6 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
         //Text View nom champ
         nomTXT=findViewById(R.id.nomTextView);
         prenomTXT=findViewById(R.id.prenomTextView);
-        roleTXT=findViewById(R.id.roleTextView);
-        emailTXT=findViewById(R.id.emailTextView);
         sexeTXT=findViewById(R.id.sexeTextView);
 
         //Text View a modifier
@@ -57,6 +45,8 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
         modifierProfBT.setOnClickListener(this);
         retourFrProfBT=findViewById(R.id.retourFrProf);
         retourFrProfBT.setOnClickListener(this);
+        modifierProfPassBT=findViewById(R.id.modifierProfPass);
+        modifierProfPassBT.setOnClickListener(this);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -111,14 +101,8 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                             prenom.setText(currentPrenom);
                             sexe.setText(currentSexe);
 
-                        } else {
-                            Toast.makeText(getApplicationContext(), "!!!ERREUR!!!", Toast.LENGTH_LONG).show();
-                            finish();
                         }
                     }
-                }else{
-                    Toast.makeText(getApplicationContext(), "Account Not Found", Toast.LENGTH_LONG).show();
-                    finish();
                 }
             }
 
@@ -130,13 +114,15 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
 
     }
 
-
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.modifierProf){
             startActivity(new Intent(ConsulterProfil.this, ModifierProfil.class));
         }
         if(view.getId()==R.id.retourFrProf){
+            finish();
+        }
+        if(view.getId()==R.id.modifierProfPass){
             finish();
         }
 

@@ -102,12 +102,9 @@
         android:id="@+id/modifierProf"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="450dp"
-        android:layout_marginEnd="80dp"
-        android:text="Modifier"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text="Modifier Profil"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -147,7 +144,7 @@
         android:text="Retour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modifierProf" />
+        app:layout_constraintTop_toBottomOf="@+id/modifierProfPass" />
 
     <TextView
         android:id="@+id/sexeTextView"
@@ -174,5 +171,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sexeTextView" />
+
+    <Button
+        android:id="@+id/modifierProfPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="20dp"
+        android:text="Modifier Mot de passe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
