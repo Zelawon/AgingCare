@@ -14,7 +14,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:text="Admin Home Page (temporary)"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,56 +24,43 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:text="Creer Compte Directeur"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/creeCompteAdmin"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/consulterProfAdmin" />
 
     <Button
         android:id="@+id/deconnecterAdmin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="70dp"
         android:text="Se Déconnecter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testCompAdmin" />
-
-    <Button
-        android:id="@+id/testCompAdmin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="60dp"
-        android:text="Test Compte Activé"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creeCompteSurv" />
+        app:layout_constraintTop_toBottomOf="@+id/consulterListeDirecteurAD" />
 
     <Button
         android:id="@+id/creeCompteAdmin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="10dp"
         android:text="Creer Compte Admin"
         app:layout_constraintEnd_toStartOf="@+id/creeCompteDirec"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/consulterProfAdmin" />
 
     <Button
         android:id="@+id/creeCompteSurv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:text="Creer Compte Surveillant"
         app:layout_constraintEnd_toStartOf="@+id/creeCompteInf"
@@ -85,10 +72,70 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:text="Creer Compte Infirminer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/creeCompteSurv"
         app:layout_constraintTop_toBottomOf="@+id/creeCompteDirec" />
+
+    <Button
+        android:id="@+id/consulterListeSurveillantAD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:text="Consulter Liste Surveillant"
+        app:layout_constraintEnd_toStartOf="@+id/consulterListeInfirmierAD"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creeCompteSurv" />
+
+    <Button
+        android:id="@+id/consulterListeInfirmierAD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:text="Consulter Liste Infirmier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/consulterListeSurveillantAD"
+        app:layout_constraintTop_toBottomOf="@+id/creeCompteInf" />
+
+    <Button
+        android:id="@+id/consulterListeAdminAD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:text="Consulter Liste Admin"
+        app:layout_constraintEnd_toStartOf="@+id/consulterListeDirecteurAD"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consulterListeSurveillantAD" />
+
+    <Button
+        android:id="@+id/consulterListeDirecteurAD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:text="Consulter Liste Directeur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/consulterListeAdminAD"
+        app:layout_constraintTop_toBottomOf="@+id/consulterListeInfirmierAD" />
+
+    <Button
+        android:id="@+id/consulterProfAdmin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="60dp"
+        android:text="Consulter Profil Admin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

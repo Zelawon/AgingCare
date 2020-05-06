@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class DirectuerHome extends AppCompatActivity implements View.OnClickListener {
-    private Button creeInfBT,creeSurBT,consultInfBT,consultSurBT,logoutDirecBT;
+    private Button creeInfBT,creeSurBT,consultInfBT,consultSurBT,logoutDirecBT,consulterProfDirecBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -36,6 +37,9 @@ public class DirectuerHome extends AppCompatActivity implements View.OnClickList
         consultSurBT=findViewById(R.id.consulterListeSurveillant);
         consultSurBT.setOnClickListener(this);
 
+        consulterProfDirecBT=findViewById(R.id.consulterProfDirec);
+        consulterProfDirecBT.setOnClickListener(this);
+
         logoutDirecBT=findViewById(R.id.deconnecterDierecteur);
         logoutDirecBT.setOnClickListener(this);
     }
@@ -48,6 +52,9 @@ public class DirectuerHome extends AppCompatActivity implements View.OnClickList
         }
         if(view.getId()==R.id.creerCompteInfirmier){
             startActivity(new Intent(DirectuerHome.this, CreerCompteInfirmier.class));
+        }
+        if(view.getId()==R.id.consulterProfDirec){
+            startActivity(new Intent(DirectuerHome.this, ConsulterProfil.class));
         }
         if(view.getId()==R.id.deconnecterDierecteur){
             mAuth.signOut();

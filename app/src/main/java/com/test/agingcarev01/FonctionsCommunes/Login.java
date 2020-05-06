@@ -1,4 +1,4 @@
-package com.test.agingcarev01;
+package com.test.agingcarev01.FonctionsCommunes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +26,8 @@ import com.test.agingcarev01.HomePages.AdminHome;
 import com.test.agingcarev01.HomePages.DirectuerHome;
 import com.test.agingcarev01.HomePages.InfirmierHome;
 import com.test.agingcarev01.HomePages.SurveillantHome;
+import com.test.agingcarev01.MainActivity;
+import com.test.agingcarev01.R;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button logInBT, retourBT;
@@ -86,19 +88,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         //Toast.makeText(getApplicationContext(), roleSnapshot.child("role").getValue(String.class), Toast.LENGTH_LONG).show();
                         String currentRole = roleSnapshot.child("role").getValue(String.class);
                         if (currentRole.equals("Admin")) {
-                            Toast.makeText(getApplicationContext(), "Role: Admin", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Role: Admin", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(Login.this, AdminHome.class));
                             finish();
                         } else if (currentRole.equals("Directeur")) {
-                            Toast.makeText(getApplicationContext(), "Role: Directeur", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Role: Directeur", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(Login.this, DirectuerHome.class));
                             finish();
                         }else if (currentRole.equals("Surveillant")) {
-                            Toast.makeText(getApplicationContext(), "Role: Surveillant", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Role: Surveillant", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(Login.this, SurveillantHome.class));
                             finish();
                         }else if (currentRole.equals("Infirmier")) {
-                            Toast.makeText(getApplicationContext(), "Role: Infirmier", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Role: Infirmier", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(Login.this, InfirmierHome.class));
                             finish();
                         } else {
@@ -133,6 +135,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         }
         if (view.getId()==R.id.retourLogin){
+            startActivity(new Intent(Login.this, MainActivity.class));
             finish();
         }
     }

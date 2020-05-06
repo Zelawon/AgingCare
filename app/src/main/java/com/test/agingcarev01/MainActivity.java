@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.FonctionsAdmin.TestCompteActive;
+import com.test.agingcarev01.FonctionsCommunes.Login;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view.getId()==R.id.login){
             startActivity(new Intent(MainActivity.this, Login.class));
+            finish();
         }
         if(view.getId()==R.id.quit){
             finish();

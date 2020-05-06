@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomePages.InfirmierHome"></activity>
+        <activity android:name=".FonctionsCommunes.ModifierProfil"></activity>
+        <activity android:name=".FonctionsCommunes.ConsulterProfil" />
+        <activity android:name=".HomePages.InfirmierHome" />
         <activity android:name=".HomePages.SurveillantHome" />
         <activity android:name=".FonctionsAdmin.CreeCompteAdmin" />
         <activity android:name=".HomePages.AdminHome" />
@@ -18,7 +20,7 @@
         <activity android:name=".HomePages.DirectuerHome" />
         <activity android:name=".FonctionsAdmin.TestCompteActive" />
         <activity android:name=".FonctionsAdmin.CreerCompteDirecteur" />
-        <activity android:name=".Login" />
+        <activity android:name=".FonctionsCommunes.Login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
