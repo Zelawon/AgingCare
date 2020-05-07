@@ -105,7 +105,6 @@ public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickLi
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Toast.makeText(CreeCompteAdmin.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(CreeCompteAdmin.this, AdminHome.class));
                                             finish();
                                         }
                                     });

@@ -40,6 +40,8 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifier_profil);
 
+        Log.e("TAG Erreur : ", "Hello! Modifier profil");
+
         //EditTexts
         modifEmail=findViewById(R.id.modifEmail);
         modifNom=findViewById(R.id.modifNom);
@@ -78,7 +80,6 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
                         String currentEmail = roleSnapshot.child("email").getValue(String.class);
                         //pour Chaque role
                         if (currentRole.equals("Admin")) {
-
                             //Invisble from View selon Donnee Role
                             modifNomTextView.setVisibility(View.INVISIBLE);
                             modifNom.setVisibility(View.INVISIBLE);
@@ -86,7 +87,6 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
                             modifPrenom.setVisibility(View.INVISIBLE);
                             modifSexeTextView.setVisibility(View.INVISIBLE);
                             modifsexeGroup.setVisibility(View.INVISIBLE);
-
                             //Set les Champ avec les donnes du profil
                             modifEmail.setText(currentEmail);
 
@@ -95,11 +95,9 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
                             //Invisble from View selon Donnee Role
                             modifSexeTextView.setVisibility(View.INVISIBLE);
                             modifsexeGroup.setVisibility(View.INVISIBLE);
-
                             //Get Data de la BD
                             String currentNom = roleSnapshot.child("nom").getValue(String.class);
                             String currentPrenom = roleSnapshot.child("prenom").getValue(String.class);
-
                             //Set les Champ avec les donnes du profil
                             modifEmail.setText(currentEmail);
                             modifNom.setText(currentNom);
@@ -109,23 +107,19 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
                             //Invisble from View selon Donnee Role
                             modifSexeTextView.setVisibility(View.INVISIBLE);
                             modifsexeGroup.setVisibility(View.INVISIBLE);
-
                             //Get Data de la BD
                             String currentNom = roleSnapshot.child("nom").getValue(String.class);
                             String currentPrenom = roleSnapshot.child("prenom").getValue(String.class);
-
                             //Set les Champ avec les donnes du profil
                             modifEmail.setText(currentEmail);
                             modifNom.setText(currentNom);
                             modifPrenom.setText(currentPrenom);
 
                         }else if (currentRole.equals("Infirmier")) {
-
                             //Get Data de la BD
                             String currentNom = roleSnapshot.child("nom").getValue(String.class);
                             String currentPrenom = roleSnapshot.child("prenom").getValue(String.class);
                             String currentSexe = roleSnapshot.child("sexe").getValue(String.class);
-
                             //Set les Champ avec les donnes du profil
                             modifEmail.setText(currentEmail);
                             modifNom.setText(currentNom);
@@ -140,6 +134,9 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
                             }
                         }
                     }
+                }else {
+                    Toast.makeText(getApplicationContext(), "Erreur Modifier Profil", Toast.LENGTH_SHORT).show();
+                    Log.e("TAG Erreur : ", "Erreur Modifier Profil");
                 }
             }
 
@@ -181,32 +178,18 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
             }else if (modifRadioFemmeInf.isChecked()){
                 employeeModifRef.child(userkey).child("sexe").setValue("femme");
             }
-
         }
     }
-//    public void startHome(){
-//        if (roleGeneral.equals("Admin")){
-//            startActivity(new Intent(ModifierProfil.this, AdminHome.class));
-//        }else if (roleGeneral.equals("Directeur")){
-//            startActivity(new Intent(ModifierProfil.this, DirectuerHome.class));
-//        }else if (roleGeneral.equals("Surveillant")){
-//            startActivity(new Intent(ModifierProfil.this, SurveillantHome.class));
-//        }else if (roleGeneral.equals("Infirmier")){
-//            startActivity(new Intent(ModifierProfil.this, InfirmierHome.class));
-//        }
-//    }
 
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.confModif){
             modifierProfile();
-            Toast.makeText(getApplicationContext(), "Profil Mis a Jour", Toast.LENGTH_LONG).show();
-            //startHome();
+            //Toast.makeText(getApplicationContext(), "Profil Mis a Jour", Toast.LENGTH_SHORT).show();
             finish();
         }
 
         if(view.getId()==R.id.retourFormModif){
-            startActivity(new Intent(ModifierProfil.this, ConsulterProfil.class));
             finish();
         }
 

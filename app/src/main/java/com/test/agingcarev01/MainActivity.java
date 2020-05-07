@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view.getId()==R.id.login){
             startActivity(new Intent(MainActivity.this, Login.class));
-            finish();
         }
         if(view.getId()==R.id.quit){
             finish();

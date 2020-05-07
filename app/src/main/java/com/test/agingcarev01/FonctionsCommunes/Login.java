@@ -55,27 +55,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    //Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                     updateUI();
                 }
                 else{
-                    if (mail.isEmpty()){
-                        Toast.makeText(getApplicationContext(), "Email vide", Toast.LENGTH_SHORT).show();
-                    }else if (password.isEmpty()){
-                        Toast.makeText(getApplicationContext(), "Mot de Passe vide", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(Login.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(Login.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
     private void updateUI() {
-//        //if email existe dans database affiche le home correspendent au role du user.
-
+        //if email existe dans database affiche le home correspendent au role du user.
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserEmail = user.getEmail();
-        //Toast.makeText(getApplicationContext(), currentUserEmail, Toast.LENGTH_LONG).show();
 
         DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
         Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
@@ -84,29 +76,29 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot roleSnapshot : dataSnapshot.getChildren()) {
-                        //Log.i("TAG", roleSnapshot.child("role").getValue(String.class));
-                        //Toast.makeText(getApplicationContext(), roleSnapshot.child("role").getValue(String.class), Toast.LENGTH_LONG).show();
                         String currentRole = roleSnapshot.child("role").getValue(String.class);
                         if (currentRole.equals("Admin")) {
-                            //Toast.makeText(getApplicationContext(), "Role: Admin", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(Login.this, AdminHome.class));
-                            finish();
+                            finishAffinity();
                         } else if (currentRole.equals("Directeur")) {
-                            //Toast.makeText(getApplicationContext(), "Role: Directeur", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(Login.this, DirectuerHome.class));
-                            finish();
+                            finishAffinity();
                         }else if (currentRole.equals("Surveillant")) {
-                            //Toast.makeText(getApplicationContext(), "Role: Surveillant", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(Login.this, SurveillantHome.class));
-                            finish();
+                            finishAffinity();
                         }else if (currentRole.equals("Infirmier")) {
-                            //Toast.makeText(getApplicationContext(), "Role: Infirmier", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(Login.this, InfirmierHome.class));
-                            finish();
+                            finishAffinity();
                         } else {
                             Toast.makeText(getApplicationContext(), "No Role Assigned", Toast.LENGTH_LONG).show();
+                            Log.e("TAG Erreur : ", "Login No Role Assigned");
+                            finish();
                         }
                     }
+                }else {
+                    Toast.makeText(getApplicationContext(), "Erreur Login", Toast.LENGTH_LONG).show();
+                    Log.e("TAG Erreur : ", "Login No Email");
+                    finish();
                 }
             }
 
@@ -133,7 +125,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         }
         if (view.getId()==R.id.retourLogin){
-            startActivity(new Intent(Login.this, MainActivity.class));
             finish();
         }
     }

@@ -28,6 +28,21 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_profil);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("TAG Erreur : ", "Hello! resume consuter profil");
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String currentUserEmail = user.getEmail();
+        DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
+        Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
+        loadInterface(emailQuery);
+    }
+
+    public void loadInterface(Query emailQuery){
 
         //Text View nom champ
         nomTXT=findViewById(R.id.nomTextView);
@@ -40,7 +55,7 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
         role=findViewById(R.id.txtRole);
         email=findViewById(R.id.txtEmail);
         sexe=findViewById(R.id.txtSex);
-
+        //Buttons
         modifierProfBT=findViewById(R.id.modifierProf);
         modifierProfBT.setOnClickListener(this);
         retourFrProfBT=findViewById(R.id.retourFrProf);
@@ -48,12 +63,7 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
         modifierProfPassBT=findViewById(R.id.modifierProfPass);
         modifierProfPassBT.setOnClickListener(this);
 
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUserEmail = user.getEmail();
-
-        DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
-        Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
+        //Load interface avec les champs de chaque role
         emailQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -81,7 +91,7 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                             nom.setText(currentNom);
                             prenom.setText(currentPrenom);
 
-                        }else if (currentRole.equals("Surveillant")) {
+                        } else if (currentRole.equals("Surveillant")) {
                             sexeTXT.setVisibility(View.INVISIBLE);
                             sexe.setVisibility(View.INVISIBLE);
                             String currentNom = roleSnapshot.child("nom").getValue(String.class);
@@ -91,7 +101,7 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                             nom.setText(currentNom);
                             prenom.setText(currentPrenom);
 
-                        }else if (currentRole.equals("Infirmier")) {
+                        } else if (currentRole.equals("Infirmier")) {
                             String currentNom = roleSnapshot.child("nom").getValue(String.class);
                             String currentPrenom = roleSnapshot.child("prenom").getValue(String.class);
                             String currentSexe = roleSnapshot.child("sexe").getValue(String.class);
@@ -101,8 +111,14 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                             prenom.setText(currentPrenom);
                             sexe.setText(currentSexe);
 
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Erreur Role", Toast.LENGTH_SHORT).show();
+                            Log.e("TAG Erreur : ", "Erreur Role");
                         }
                     }
+                }else {
+                    Toast.makeText(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
+                    Log.e("TAG Erreur : ", "ErreurConsulter Profil");
                 }
             }
 
@@ -111,9 +127,7 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                 Log.w("TAG", "onCancelled", databaseError.toException());
             }
         });
-
     }
-
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.modifierProf){

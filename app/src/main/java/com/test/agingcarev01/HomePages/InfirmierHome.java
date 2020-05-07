@@ -8,12 +8,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.test.agingcarev01.FonctionsAdmin.TestCompteActive;
 import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class InfirmierHome extends AppCompatActivity implements View.OnClickListener {
-    private Button consulterProfInfBT,deconnecterInfirmierBT;
+    private Button consulterProfInfBT,deconnecterInfirmierBT,buttontest;
     private FirebaseAuth mAuth;
 
     @Override
@@ -28,6 +29,9 @@ public class InfirmierHome extends AppCompatActivity implements View.OnClickList
 
         deconnecterInfirmierBT=findViewById(R.id.deconnecterInfirmier);
         deconnecterInfirmierBT.setOnClickListener(this);
+
+        buttontest=findViewById(R.id.buttontest);
+        buttontest.setOnClickListener(this);
     }
 
     @Override
@@ -39,6 +43,9 @@ public class InfirmierHome extends AppCompatActivity implements View.OnClickList
             mAuth.signOut();
             startActivity(new Intent(InfirmierHome.this, MainActivity.class));
             finishAffinity ();
+        }
+        if(view.getId()==R.id.buttontest){
+            startActivity(new Intent(InfirmierHome.this, TestCompteActive.class));
         }
     }
 }

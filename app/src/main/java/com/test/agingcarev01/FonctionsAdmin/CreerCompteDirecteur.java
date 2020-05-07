@@ -116,7 +116,6 @@ public class CreerCompteDirecteur extends AppCompatActivity implements View.OnCl
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Toast.makeText(CreerCompteDirecteur.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(CreerCompteDirecteur.this, AdminHome.class));
                                             finish();
                                         }
                                     });
