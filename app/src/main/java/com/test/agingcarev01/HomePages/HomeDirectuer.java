@@ -9,24 +9,28 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
+import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
-public class DirectuerHome extends AppCompatActivity implements View.OnClickListener {
-    private Button creeInfBT,creeSurBT,consultInfBT,consultSurBT,logoutDirecBT,consulterProfDirecBT;
+public class HomeDirectuer extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
+    private Button creeInfBT,creeSurBT,consultInfBT,consultSurBT,logoutDirecBT,consulterProfDirecBT,modifierMdpDirecBT;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_directuer_home);
+        setContentView(R.layout.activity_home_directuer);
 
         mAuth = FirebaseAuth.getInstance();
 
         creeInfBT=findViewById(R.id.creerCompteInfirmier);
         creeInfBT.setOnClickListener(this);
+
+        modifierMdpDirecBT=findViewById(R.id.modifierMdpDirec);
+        modifierMdpDirecBT.setOnClickListener(this);
 
         creeSurBT=findViewById(R.id.creerCompteSurveillant);
         creeSurBT.setOnClickListener(this);
@@ -44,21 +48,34 @@ public class DirectuerHome extends AppCompatActivity implements View.OnClickList
         logoutDirecBT.setOnClickListener(this);
     }
 
+    private void openModifPass() {
+        ModifierMotDePasseDialog modifierMotDePasseDialog =new ModifierMotDePasseDialog();
+        modifierMotDePasseDialog.show(getSupportFragmentManager(),"Modifier Mot De Passe");
+    }
+
+    @Override
+    public void applyNvPass(String nvMotDePasse) {
+        FirebaseAuth.getInstance().getCurrentUser().updatePassword(nvMotDePasse);
+    }
+
     @Override
     public void onClick(View view) {
 
         if(view.getId()==R.id.creerCompteSurveillant){
-            startActivity(new Intent(DirectuerHome.this, CreerCompteSurveillant.class));
+            startActivity(new Intent(HomeDirectuer.this, CreerCompteSurveillant.class));
         }
         if(view.getId()==R.id.creerCompteInfirmier){
-            startActivity(new Intent(DirectuerHome.this, CreerCompteInfirmier.class));
+            startActivity(new Intent(HomeDirectuer.this, CreerCompteInfirmier.class));
         }
         if(view.getId()==R.id.consulterProfDirec){
-            startActivity(new Intent(DirectuerHome.this, ConsulterProfil.class));
+            startActivity(new Intent(HomeDirectuer.this, ConsulterProfil.class));
+        }
+        if(view.getId()==R.id.modifierMdpDirec){
+            openModifPass();
         }
         if(view.getId()==R.id.deconnecterDierecteur){
             mAuth.signOut();
-            startActivity(new Intent(DirectuerHome.this, MainActivity.class));
+            startActivity(new Intent(HomeDirectuer.this, MainActivity.class));
             finishAffinity ();
         }
 

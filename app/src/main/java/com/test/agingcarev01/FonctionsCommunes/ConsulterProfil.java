@@ -2,7 +2,6 @@ package com.test.agingcarev01.FonctionsCommunes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,35 +10,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifEmailDialog;
+import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifNomDialog;
+import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifPrenomDialog;
+import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifSexeDialog;
 import com.test.agingcarev01.R;
 
-public class ConsulterProfil extends AppCompatActivity implements View.OnClickListener {
-    private Button retourFrProfBT;
-    private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT;
+public class ConsulterProfil extends AppCompatActivity implements View.OnClickListener,
+        ModifEmailDialog.ModifEmailDialogListner,
+        ModifNomDialog.ModifNomDialogListner,
+        ModifPrenomDialog.ModifPrenomDialogListner,
+        ModifSexeDialog.ModifSexeDialogListner {
+    private Button retourFrProfBT,updateEmailBT,updateSexeBT,updateNomBT,updatePrenomBT;
+    private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT,textView11;
+    private String userkey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_profil);
         Log.e("TAG Erreur : ", "Hello! consuter profil");
-
-        //Buttons
-        retourFrProfBT=findViewById(R.id.retourFrProf);
-        retourFrProfBT.setOnClickListener(this);
-
-        //Database
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUserEmail = user.getEmail();
-        DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
-        Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
-        Log.e("TAG Erreur : ", "1");
 
         //Text View nom champ
         nomTXT=findViewById(R.id.nomTextView);
@@ -51,19 +47,36 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
         role=findViewById(R.id.txtRole);
         email=findViewById(R.id.txtEmail);
         sexe=findViewById(R.id.txtSex);
+        textView11=findViewById(R.id.textView11);
+        //Buttons
+        retourFrProfBT=findViewById(R.id.retourFrProf);
+        retourFrProfBT.setOnClickListener(this);
+        updateEmailBT=findViewById(R.id.updateEmail);
+        updateEmailBT.setOnClickListener(this);
+        updateNomBT=findViewById(R.id.updateNom);
+        updateNomBT.setOnClickListener(this);
+        updatePrenomBT=findViewById(R.id.updatePrenom);
+        updatePrenomBT.setOnClickListener(this);
+        updateSexeBT=findViewById(R.id.updateSexe);
+        updateSexeBT.setOnClickListener(this);
 
-        Log.e("TAG Erreur : ", "1.1");
+        String currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        afficherProfil(currentUserEmail);
+    }
+
+    private void afficherProfil(String currentUserEmail) {
+
+        DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
+        Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
+
         //Load interface avec les champs de chaque role
-        emailQuery.addValueEventListener(new ValueEventListener() {
+        emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshott) {
-                Log.e("TAG Erreur : ", "1.2");
-                Log.e("TAG Erreur : ", dataSnapshott.getKey());
                 if (dataSnapshott.exists()) {
-                    Log.e("TAG Erreur : ", "1.3");
                     for (DataSnapshot roleSnapshott : dataSnapshott.getChildren()) {
-                        Log.e("TAG Erreur : ", "1.4");
-                        Log.e("TAG Erreur : ", roleSnapshott.child("role").getValue(String.class));
+                        userkey=roleSnapshott.getKey();
                         String currentRole = roleSnapshott.child("role").getValue(String.class);
                         String currentEmail = roleSnapshott.child("email").getValue(String.class);
                         if (currentRole.equals("Admin")) {
@@ -73,12 +86,16 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                             nom.setVisibility(View.INVISIBLE);
                             prenom.setVisibility(View.INVISIBLE);
                             sexe.setVisibility(View.INVISIBLE);
+                            updateNomBT.setVisibility(View.INVISIBLE);
+                            updatePrenomBT.setVisibility(View.INVISIBLE);
+                            updateSexeBT.setVisibility(View.INVISIBLE);
                             role.setText(currentRole);
                             email.setText(currentEmail);
 
                         } else if (currentRole.equals("Directeur")) {
                             sexeTXT.setVisibility(View.INVISIBLE);
                             sexe.setVisibility(View.INVISIBLE);
+                            updateSexeBT.setVisibility(View.INVISIBLE);
                             String currentNom = roleSnapshott.child("nom").getValue(String.class);
                             String currentPrenom = roleSnapshott.child("prenom").getValue(String.class);
                             role.setText(currentRole);
@@ -89,6 +106,7 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                         } else if (currentRole.equals("Surveillant")) {
                             sexeTXT.setVisibility(View.INVISIBLE);
                             sexe.setVisibility(View.INVISIBLE);
+                            updateSexeBT.setVisibility(View.INVISIBLE);
                             String currentNom = roleSnapshott.child("nom").getValue(String.class);
                             String currentPrenom = roleSnapshott.child("prenom").getValue(String.class);
                             role.setText(currentRole);
@@ -124,10 +142,71 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
         });
     }
 
+
+
+    private void openModifEmail() {
+        ModifEmailDialog modifEmailDialog = new ModifEmailDialog();
+        modifEmailDialog.show(getSupportFragmentManager(),"Modifier Email");
+    }
+
+    private void openModifNom() {
+        ModifNomDialog modifNomDialog = new ModifNomDialog();
+        modifNomDialog.show(getSupportFragmentManager(),"Modifer Nom");
+    }
+
+    private void openModifPrenom() {
+        ModifPrenomDialog modifPrenomDialog = new ModifPrenomDialog();
+        modifPrenomDialog.show(getSupportFragmentManager(),"Modifer Prenom");
+    }
+
+    private void openModifSexe() {
+        ModifSexeDialog modifSexeDialog = new ModifSexeDialog();
+        modifSexeDialog.show(getSupportFragmentManager(),"Modifier Sexe");
+    }
+
+    @Override
+    public void applyNvEmail(String email) {
+        FirebaseAuth.getInstance().getCurrentUser().updateEmail(email);
+        FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("email").setValue(email);
+        afficherProfil(email);
+    }
+
+    @Override
+    public void applyNvNom(String nom) {
+        FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("nom").setValue(nom);
+        afficherProfil(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+    }
+
+    @Override
+    public void applyNvPrenom(String prenom) {
+        FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("prenom").setValue(prenom);
+        afficherProfil(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+    }
+
+    @Override
+    public void applyNvSexe(String sexe) {
+        FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("sexe").setValue(sexe);
+        afficherProfil(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+    }
+
+
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.retourFrProf){
             finish();
         }
+        if(view.getId()==R.id.updateEmail){
+            openModifEmail();
+        }
+        if(view.getId()==R.id.updateNom){
+            openModifNom();
+        }
+        if(view.getId()==R.id.updatePrenom){
+            openModifPrenom();
+        }
+        if(view.getId()==R.id.updateSexe){
+            openModifSexe();
+        }
     }
+
 }

@@ -22,11 +22,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.HomePages.AdminHome;
-import com.test.agingcarev01.HomePages.DirectuerHome;
-import com.test.agingcarev01.HomePages.InfirmierHome;
-import com.test.agingcarev01.HomePages.SurveillantHome;
-import com.test.agingcarev01.MainActivity;
+import com.test.agingcarev01.HomePages.HomeAdmin;
+import com.test.agingcarev01.HomePages.HomeDirectuer;
+import com.test.agingcarev01.HomePages.HomeInfirmier;
+import com.test.agingcarev01.HomePages.HomeSurveillant;
 import com.test.agingcarev01.R;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
@@ -71,23 +70,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
         Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
-        emailQuery.addValueEventListener(new ValueEventListener() {
+        emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot roleSnapshot : dataSnapshot.getChildren()) {
                         String currentRole = roleSnapshot.child("role").getValue(String.class);
                         if (currentRole.equals("Admin")) {
-                            startActivity(new Intent(Login.this, AdminHome.class));
+                            startActivity(new Intent(Login.this, HomeAdmin.class));
                             finishAffinity();
                         } else if (currentRole.equals("Directeur")) {
-                            startActivity(new Intent(Login.this, DirectuerHome.class));
+                            startActivity(new Intent(Login.this, HomeDirectuer.class));
                             finishAffinity();
                         }else if (currentRole.equals("Surveillant")) {
-                            startActivity(new Intent(Login.this, SurveillantHome.class));
+                            startActivity(new Intent(Login.this, HomeSurveillant.class));
                             finishAffinity();
                         }else if (currentRole.equals("Infirmier")) {
-                            startActivity(new Intent(Login.this, InfirmierHome.class));
+                            startActivity(new Intent(Login.this, HomeInfirmier.class));
                             finishAffinity();
                         } else {
                             Toast.makeText(getApplicationContext(), "No Role Assigned", Toast.LENGTH_LONG).show();

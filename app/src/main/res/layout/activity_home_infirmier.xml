@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePages.InfirmierHome">
+    tools:context=".HomePages.HomeInfirmier">
 
     <TextView
         android:id="@+id/textView7"
@@ -27,23 +27,10 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="60dp"
-        android:text="Consulter Profil Infirmier"
+        android:text="Consulter Profil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <Button
-        android:id="@+id/modifierProfInf"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:text="Modifier Profil Infirmier"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/consulterProfInf" />
 
     <Button
         android:id="@+id/modifierMdpInf"
@@ -52,11 +39,11 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
-        android:text="Modifier Mot de Passe Infirmier"
+        android:text="Modifier Mot de Passe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modifierProfInf" />
+        app:layout_constraintTop_toBottomOf="@+id/consulterProfInf" />
 
     <Button
         android:id="@+id/deconnecterInfirmier"
