@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FonctionsCommunes.ModifierProfil"></activity>
+        <activity android:name=".FonctionsCommunes.MiseAJourMotDePasse"></activity>
+        <activity android:name=".FonctionsCommunes.MiseAJourProfil" />
         <activity android:name=".FonctionsCommunes.ConsulterProfil" />
         <activity android:name=".HomePages.InfirmierHome" />
         <activity android:name=".HomePages.SurveillantHome" />

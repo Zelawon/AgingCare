@@ -2,7 +2,6 @@ package com.test.agingcarev01.FonctionsCommunes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,13 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.HomePages.AdminHome;
-import com.test.agingcarev01.HomePages.DirectuerHome;
-import com.test.agingcarev01.HomePages.InfirmierHome;
-import com.test.agingcarev01.HomePages.SurveillantHome;
 import com.test.agingcarev01.R;
 
-public class ModifierProfil extends AppCompatActivity implements View.OnClickListener {
+public class MiseAJourProfil extends AppCompatActivity implements View.OnClickListener {
     private Button confModifBT, retourFormModifBT;
     private String  roleGeneral,userkey;
     private EditText modifEmail,modifNom,modifPrenom;
@@ -38,7 +33,7 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modifier_profil);
+        setContentView(R.layout.activity_mise_a_jour_profil);
 
         Log.e("TAG Erreur : ", "Hello! Modifier profil");
 
@@ -63,11 +58,16 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
         retourFormModifBT=findViewById(R.id.retourFormModif);
         retourFormModifBT.setOnClickListener(this);
 
-        //Remplir l'interface avec les donnees du profil
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserEmail = user.getEmail();
         DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
         Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
+
+        loadChamp(emailQuery);
+    }
+
+    public void loadChamp(Query emailQuery){
+        Log.e("TAG Erreur : ", "Load Info Profil(MiseAJour)");
         emailQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -132,11 +132,12 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
                                 modifRadioHommeInf.setChecked(false);
                                 modifRadioFemmeInf.setChecked(true);
                             }
+                        }else {
+                            Log.e("TAG Erreur : ", "Erreur Load Role Profil (MiseAJour)");
                         }
                     }
                 }else {
-                    Toast.makeText(getApplicationContext(), "Erreur Modifier Profil", Toast.LENGTH_SHORT).show();
-                    Log.e("TAG Erreur : ", "Erreur Modifier Profil");
+                    Log.e("TAG Erreur : ", "Erreur Query Profil (MiseAJour)");
                 }
             }
 
@@ -145,6 +146,7 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
                 Log.w("TAG", "onCancelled", databaseError.toException());
             }
         });
+
     }
 
     public void updateEmail(){
@@ -152,14 +154,15 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
         FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("email").setValue(modifEmail.getText().toString());
     }
 
-    public void modifierProfile(){
+    private boolean modifierInfoProfile() {
         final DatabaseReference employeeModifRef = FirebaseDatabase.getInstance().getReference("Employee");
+        Log.e("TAG Erreur : ", "Modifier Info Profil (MiseAJour)");
 
         if (roleGeneral.equals("Admin")){
             updateEmail();
+
         }else if (roleGeneral.equals("Directeur")){
             updateEmail();
-            //employeeModifRef.child(userkey).child("email").setValue(modifEmail.getText().toString());
             employeeModifRef.child(userkey).child("nom").setValue(modifNom.getText().toString());
             employeeModifRef.child(userkey).child("prenom").setValue(modifPrenom.getText().toString());
 
@@ -178,20 +181,25 @@ public class ModifierProfil extends AppCompatActivity implements View.OnClickLis
             }else if (modifRadioFemmeInf.isChecked()){
                 employeeModifRef.child(userkey).child("sexe").setValue("femme");
             }
+        }else {
+            Log.e("TAG Erreur : ", "Erreur Role Modifier Info Profil (MiseAJour)");
+            return false;
         }
+        return true;
     }
 
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.confModif){
-            modifierProfile();
-            //Toast.makeText(getApplicationContext(), "Profil Mis a Jour", Toast.LENGTH_SHORT).show();
-            finish();
+            if (modifierInfoProfile()){
+                Toast.makeText(getApplicationContext(), "Profil Mis a Jour", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
         }
 
         if(view.getId()==R.id.retourFormModif){
             finish();
         }
-
     }
 }

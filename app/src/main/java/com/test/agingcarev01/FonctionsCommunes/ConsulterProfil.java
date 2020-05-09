@@ -21,56 +21,51 @@ import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfil extends AppCompatActivity implements View.OnClickListener {
-    private Button modifierProfBT, retourFrProfBT,modifierProfPassBT;
+    private Button retourFrProfBT;
     private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_profil);
-    }
+        Log.e("TAG Erreur : ", "Hello! consuter profil");
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e("TAG Erreur : ", "Hello! resume consuter profil");
+        //Buttons
+        retourFrProfBT=findViewById(R.id.retourFrProf);
+        retourFrProfBT.setOnClickListener(this);
 
+        //Database
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserEmail = user.getEmail();
         DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
         Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
-        loadInterface(emailQuery);
-    }
-
-    public void loadInterface(Query emailQuery){
+        Log.e("TAG Erreur : ", "1");
 
         //Text View nom champ
         nomTXT=findViewById(R.id.nomTextView);
         prenomTXT=findViewById(R.id.prenomTextView);
         sexeTXT=findViewById(R.id.sexeTextView);
-
         //Text View a modifier
         nom=findViewById(R.id.txtNom);
         prenom=findViewById(R.id.txtPrenom);
         role=findViewById(R.id.txtRole);
         email=findViewById(R.id.txtEmail);
         sexe=findViewById(R.id.txtSex);
-        //Buttons
-        modifierProfBT=findViewById(R.id.modifierProf);
-        modifierProfBT.setOnClickListener(this);
-        retourFrProfBT=findViewById(R.id.retourFrProf);
-        retourFrProfBT.setOnClickListener(this);
-        modifierProfPassBT=findViewById(R.id.modifierProfPass);
-        modifierProfPassBT.setOnClickListener(this);
 
+        Log.e("TAG Erreur : ", "1.1");
         //Load interface avec les champs de chaque role
         emailQuery.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot roleSnapshot : dataSnapshot.getChildren()) {
-                        String currentRole = roleSnapshot.child("role").getValue(String.class);
-                        String currentEmail = roleSnapshot.child("email").getValue(String.class);
+            public void onDataChange(DataSnapshot dataSnapshott) {
+                Log.e("TAG Erreur : ", "1.2");
+                Log.e("TAG Erreur : ", dataSnapshott.getKey());
+                if (dataSnapshott.exists()) {
+                    Log.e("TAG Erreur : ", "1.3");
+                    for (DataSnapshot roleSnapshott : dataSnapshott.getChildren()) {
+                        Log.e("TAG Erreur : ", "1.4");
+                        Log.e("TAG Erreur : ", roleSnapshott.child("role").getValue(String.class));
+                        String currentRole = roleSnapshott.child("role").getValue(String.class);
+                        String currentEmail = roleSnapshott.child("email").getValue(String.class);
                         if (currentRole.equals("Admin")) {
                             prenomTXT.setVisibility(View.INVISIBLE);
                             nomTXT.setVisibility(View.INVISIBLE);
@@ -84,8 +79,8 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                         } else if (currentRole.equals("Directeur")) {
                             sexeTXT.setVisibility(View.INVISIBLE);
                             sexe.setVisibility(View.INVISIBLE);
-                            String currentNom = roleSnapshot.child("nom").getValue(String.class);
-                            String currentPrenom = roleSnapshot.child("prenom").getValue(String.class);
+                            String currentNom = roleSnapshott.child("nom").getValue(String.class);
+                            String currentPrenom = roleSnapshott.child("prenom").getValue(String.class);
                             role.setText(currentRole);
                             email.setText(currentEmail);
                             nom.setText(currentNom);
@@ -94,17 +89,17 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                         } else if (currentRole.equals("Surveillant")) {
                             sexeTXT.setVisibility(View.INVISIBLE);
                             sexe.setVisibility(View.INVISIBLE);
-                            String currentNom = roleSnapshot.child("nom").getValue(String.class);
-                            String currentPrenom = roleSnapshot.child("prenom").getValue(String.class);
+                            String currentNom = roleSnapshott.child("nom").getValue(String.class);
+                            String currentPrenom = roleSnapshott.child("prenom").getValue(String.class);
                             role.setText(currentRole);
                             email.setText(currentEmail);
                             nom.setText(currentNom);
                             prenom.setText(currentPrenom);
 
                         } else if (currentRole.equals("Infirmier")) {
-                            String currentNom = roleSnapshot.child("nom").getValue(String.class);
-                            String currentPrenom = roleSnapshot.child("prenom").getValue(String.class);
-                            String currentSexe = roleSnapshot.child("sexe").getValue(String.class);
+                            String currentNom = roleSnapshott.child("nom").getValue(String.class);
+                            String currentPrenom = roleSnapshott.child("prenom").getValue(String.class);
+                            String currentSexe = roleSnapshott.child("sexe").getValue(String.class);
                             role.setText(currentRole);
                             email.setText(currentEmail);
                             nom.setText(currentNom);
@@ -118,7 +113,7 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
-                    Log.e("TAG Erreur : ", "ErreurConsulter Profil");
+                    Log.e("TAG Erreur : ", "Erreur Consulter Profil");
                 }
             }
 
@@ -128,17 +123,11 @@ public class ConsulterProfil extends AppCompatActivity implements View.OnClickLi
             }
         });
     }
+
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.modifierProf){
-            startActivity(new Intent(ConsulterProfil.this, ModifierProfil.class));
-        }
         if(view.getId()==R.id.retourFrProf){
             finish();
         }
-        if(view.getId()==R.id.modifierProfPass){
-            finish();
-        }
-
     }
 }
