@@ -10,6 +10,8 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.FonctionsAdmin.CreeCompteAdmin;
 import com.test.agingcarev01.FonctionsAdmin.CreerCompteDirecteur;
+import com.test.agingcarev01.FonctionsCommunes.ConsulterListeX.ConsulterListeInfirmier;
+import com.test.agingcarev01.FonctionsCommunes.ConsulterListeX.ConsulterListeSurveillant;
 import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
 import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
@@ -18,7 +20,11 @@ import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeAdmin extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button creeCompteDirecBT,creeCompteAdminBT,logoutAdminBT,creeCompteInfBT,creeCompteSurvBT,consulterProfAdminBT,modifierMdpAdminBT;
+
+    private Button creeCompteDirecBT,creeCompteAdminBT,logoutAdminBT,
+            creeCompteInfBT,creeCompteSurvBT,consulterProfAdminBT,
+            modifierMdpAdminBT,consulterListeSurveillantBT,consulterListeInfirmierBT;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -48,6 +54,12 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
 
         modifierMdpAdminBT=findViewById(R.id.modifierMdpAdmin);
         modifierMdpAdminBT.setOnClickListener(this);
+
+        consulterListeSurveillantBT=findViewById(R.id.consulterListeSurveillant);
+        consulterListeSurveillantBT.setOnClickListener(this);
+
+        consulterListeInfirmierBT=findViewById(R.id.consulterListeInfirmier);
+        consulterListeInfirmierBT.setOnClickListener(this);
     }
 
     private void openModifPass() {
@@ -79,6 +91,12 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
         }
         if(view.getId()==R.id.modifierMdpAdmin){
             openModifPass();
+        }
+        if(view.getId()==R.id.consulterListeSurveillant){
+            startActivity(new Intent(HomeAdmin.this, ConsulterListeSurveillant.class));
+        }
+        if(view.getId()==R.id.consulterListeInfirmier){
+            startActivity(new Intent(HomeAdmin.this, ConsulterListeInfirmier.class));
         }
         if(view.getId()==R.id.deconnecterAdmin){
             mAuth.signOut();

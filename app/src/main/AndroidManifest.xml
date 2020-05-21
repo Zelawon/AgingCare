@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FonctionsCommunes.ConsulterListeX.ConsulterListeResident"></activity>
+        <activity android:name=".FonctionsCommunes.ConsulterListeX.ConsulterListeInfirmier" />
+        <activity android:name=".FonctionsCommunes.ConsulterListeX.ConsulterListeSurveillant" />
         <activity android:name=".FonctionsCommunes.ConsulterProfil" />
         <activity android:name=".HomePages.HomeInfirmier" />
         <activity android:name=".HomePages.HomeSurveillant" />
@@ -17,7 +20,7 @@
         <activity android:name=".FonctionsDirectuer.CreerCompteInfirmier" />
         <activity android:name=".FonctionsDirectuer.CreerCompteSurveillant" />
         <activity android:name=".HomePages.HomeDirectuer" />
-        <activity android:name=".FonctionsAdmin.TestCompteActive" />
+        <activity android:name=".FonctionsCommunes.TestCompteActive" />
         <activity android:name=".FonctionsAdmin.CreerCompteDirecteur" />
         <activity android:name=".FonctionsCommunes.Login" />
         <activity android:name=".MainActivity">
