@@ -1,13 +1,13 @@
 package com.test.agingcarev01.FonctionsProfil;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +22,7 @@ import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifPrenomDia
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifSexeDialog;
 import com.test.agingcarev01.R;
 
-public class ConsulterProfil extends AppCompatActivity implements View.OnClickListener,
+public class ConsulterProfilEmployee extends AppCompatActivity implements View.OnClickListener,
         ModifEmailDialog.ModifEmailDialogListner,
         ModifNomDialog.ModifNomDialogListner,
         ModifPrenomDialog.ModifPrenomDialogListner,

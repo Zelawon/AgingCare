@@ -12,7 +12,7 @@ import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeInfirmier;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeSurveillant;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
-import com.test.agingcarev01.FonctionsProfil.ConsulterProfil;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
@@ -71,7 +71,7 @@ public class HomeDirectuer extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(HomeDirectuer.this, CreerCompteInfirmier.class));
         }
         if(view.getId()==R.id.consulterProfDirec){
-            startActivity(new Intent(HomeDirectuer.this, ConsulterProfil.class));
+            startActivity(new Intent(HomeDirectuer.this, ConsulterProfilEmployee.class));
         }
         if(view.getId()==R.id.modifierMdpDirec){
             openModifPass();

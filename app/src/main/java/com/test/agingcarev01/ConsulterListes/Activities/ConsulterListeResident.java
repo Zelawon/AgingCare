@@ -35,7 +35,6 @@ public class ConsulterListeResident extends AppCompatActivity implements View.On
 
         retourFrConsulResBT=findViewById(R.id.retourFrConsulResident);
         retourFrConsulResBT.setOnClickListener(this);
-
         mRecycler = findViewById(R.id.recyclerViewListeResident);
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
         mRecycler.setHasFixedSize(true);
@@ -48,8 +47,8 @@ public class ConsulterListeResident extends AppCompatActivity implements View.On
 
                 resList =new ArrayList<ResidentClasse>();
                 for (DataSnapshot resListSnap: dataSnapshot.getChildren()) {
-                        ResidentClasse post = resListSnap.getValue(ResidentClasse.class);
-                        resList.add(post) ;
+                    ResidentClasse post = resListSnap.getValue(ResidentClasse.class);
+                    resList.add(post) ;
                 }
                 ResidentListAdapter adapter = new ResidentListAdapter(ConsulterListeResident.this, resList);
                 mRecycler.setAdapter(adapter);

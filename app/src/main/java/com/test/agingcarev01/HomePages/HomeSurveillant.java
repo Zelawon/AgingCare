@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsProfil.ConsulterProfil;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.FonctionsSurveillant.CreerProfilResident;
 import com.test.agingcarev01.MainActivity;
@@ -51,7 +51,7 @@ public class HomeSurveillant extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.consulterProfSurv){
-            startActivity(new Intent(HomeSurveillant.this, ConsulterProfil.class));
+            startActivity(new Intent(HomeSurveillant.this, ConsulterProfilEmployee.class));
         }
         if(view.getId()==R.id.modifierMdpSurv){
             openModifPass();

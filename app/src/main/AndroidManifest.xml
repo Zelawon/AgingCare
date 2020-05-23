@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConsulterListes.Activities.ConsulterListeDirecteur"></activity>
+        <activity android:name=".FonctionsProfil.ConsulterProfilResident"></activity>
+        <activity android:name=".ConsulterListes.Activities.ConsulterListeDirecteur" />
         <activity android:name=".FonctionsSurveillant.CreerProfilResident" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeResident" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeInfirmier" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeSurveillant" />
-        <activity android:name=".FonctionsProfil.ConsulterProfil" />
+        <activity android:name=".FonctionsProfil.ConsulterProfilEmployee" />
         <activity android:name=".HomePages.HomeInfirmier" />
         <activity android:name=".HomePages.HomeSurveillant" />
         <activity android:name=".FonctionsAdmin.CreeCompteAdmin" />

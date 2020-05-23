@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsProfil.ConsulterProfil;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
@@ -48,7 +48,7 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.consulterProfInf){
-            startActivity(new Intent(HomeInfirmier.this, ConsulterProfil.class));
+            startActivity(new Intent(HomeInfirmier.this, ConsulterProfilEmployee.class));
         }
 
         if(view.getId()==R.id.modifierMdpInf){

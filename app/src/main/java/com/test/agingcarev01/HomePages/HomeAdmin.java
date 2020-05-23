@@ -15,7 +15,7 @@ import com.test.agingcarev01.FonctionsAdmin.CreeCompteAdmin;
 import com.test.agingcarev01.FonctionsAdmin.CreerCompteDirecteur;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
-import com.test.agingcarev01.FonctionsProfil.ConsulterProfil;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
@@ -100,7 +100,7 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
             startActivity(new Intent(HomeAdmin.this, CreerCompteSurveillant.class));
         }
         if(view.getId()==R.id.consulterProfAdmin){
-            startActivity(new Intent(HomeAdmin.this, ConsulterProfil.class));
+            startActivity(new Intent(HomeAdmin.this, ConsulterProfilEmployee.class));
         }
         if(view.getId()==R.id.modifierMdpAdmin){
             openModifPass();
