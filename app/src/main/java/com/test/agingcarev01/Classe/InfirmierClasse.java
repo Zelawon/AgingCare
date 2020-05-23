@@ -1,6 +1,7 @@
 package com.test.agingcarev01.Classe;
 
 public class InfirmierClasse {
+    private int id;
     private String email;
     private String nom;
     private String prenom;
@@ -10,12 +11,29 @@ public class InfirmierClasse {
     public InfirmierClasse() {
     }
 
+    public InfirmierClasse(int id, String email, String nom, String prenom, String sexe) {
+        this.id = id;
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.role = "Infirmier";
+        this.sexe = sexe;
+    }
+
     public InfirmierClasse(String email, String nom, String prenom, String sexe) {
         this.email = email;
         this.nom = nom;
         this.prenom = prenom;
         this.role = "Infirmier";
         this.sexe = sexe;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {

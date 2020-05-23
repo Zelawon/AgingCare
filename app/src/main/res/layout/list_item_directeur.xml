@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/resItemNom"
+        android:id="@+id/DirecItemNom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -17,12 +17,12 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="#000"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/resItemPrenom"
+        app:layout_constraintEnd_toStartOf="@+id/DirecItemPrenom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/resItemPrenom"
+        android:id="@+id/DirecItemPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -31,7 +31,7 @@
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="#000"
         android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/resItemNom"
+        app:layout_constraintStart_toEndOf="@+id/DirecItemNom"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -40,28 +40,28 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="15dp"
-        android:text="Sexe :"
+        android:text="Email:"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/resItemNom"
+        app:layout_constraintEnd_toEndOf="@+id/survItemNom"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/resItemNom"
-        app:layout_constraintTop_toBottomOf="@+id/resItemNom"
+        app:layout_constraintStart_toStartOf="@+id/DirecItemNom"
+        app:layout_constraintTop_toBottomOf="@+id/DirecItemNom"
         app:layout_constraintVertical_bias="0.49" />
 
     <TextView
-        android:id="@+id/resItemSexe"
+        android:id="@+id/DirecItemEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="15dp"
-        android:text="Sexe"
+        android:text="Email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/resItemNom" />
+        app:layout_constraintTop_toBottomOf="@+id/DirecItemNom" />
 
     <Button
-        android:id="@+id/resItemArchiver"
+        android:id="@+id/DirecItemArchiver"
         android:layout_width="51dp"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
@@ -72,14 +72,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/resItemModifier"
+        android:id="@+id/DirecItemModifier"
         android:layout_width="51dp"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="2dp"
         android:text="modi"
         android:textSize="10sp"
-        app:layout_constraintEnd_toStartOf="@+id/resItemArchiver"
+        app:layout_constraintEnd_toStartOf="@+id/DirecItemArchiver"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

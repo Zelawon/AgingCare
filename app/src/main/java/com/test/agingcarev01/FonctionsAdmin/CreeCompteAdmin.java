@@ -30,7 +30,7 @@ public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cree_compte_admin);
+        setContentView(R.layout.activity_creer_compte_admin);
 
         mAuth1 = FirebaseAuth.getInstance();
         //auth 2 poun ne pas deconnecter le auth 1

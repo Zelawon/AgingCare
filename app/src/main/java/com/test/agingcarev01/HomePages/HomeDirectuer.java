@@ -1,19 +1,19 @@
 package com.test.agingcarev01.HomePages;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsCommunes.ConsulterListeX.ConsulterListeInfirmier;
-import com.test.agingcarev01.FonctionsCommunes.ConsulterListeX.ConsulterListeSurveillant;
-import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
-import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifierMotDePasseDialog;
+import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeInfirmier;
+import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeSurveillant;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
 import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfil;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 

@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
-import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifierMotDePasseDialog;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfil;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
+import com.test.agingcarev01.FonctionsSurveillant.CreerProfilResident;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeSurveillant extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button consulterProfSurvBT,deconnecterSurveillantBT,modifierMdpSurvBT;
+    private Button consulterProfSurvBT,deconnecterSurveillantBT,modifierMdpSurvBT,creerProfilResidentBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -26,6 +27,9 @@ public class HomeSurveillant extends AppCompatActivity implements View.OnClickLi
 
         consulterProfSurvBT=findViewById(R.id.consulterProfSurv);
         consulterProfSurvBT.setOnClickListener(this);
+
+        creerProfilResidentBT=findViewById(R.id.creerProfilResident);
+        creerProfilResidentBT.setOnClickListener(this);
 
         deconnecterSurveillantBT=findViewById(R.id.deconnecterSurveillant);
         deconnecterSurveillantBT.setOnClickListener(this);
@@ -49,9 +53,11 @@ public class HomeSurveillant extends AppCompatActivity implements View.OnClickLi
         if(view.getId()==R.id.consulterProfSurv){
             startActivity(new Intent(HomeSurveillant.this, ConsulterProfil.class));
         }
-
         if(view.getId()==R.id.modifierMdpSurv){
             openModifPass();
+        }
+        if(view.getId()==R.id.creerProfilResident){
+            startActivity(new Intent(HomeSurveillant.this, CreerProfilResident.class));
         }
         if(view.getId()==R.id.deconnecterSurveillant){
             mAuth.signOut();

@@ -8,14 +8,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsCommunes.TestCompteActive;
-import com.test.agingcarev01.FonctionsCommunes.ConsulterProfil;
-import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifierMotDePasseDialog;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfil;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeInfirmier extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button consulterProfInfBT,deconnecterInfirmierBT,buttontest,modifierMdpInfBT;
+    private Button consulterProfInfBT,deconnecterInfirmierBT,modifierMdpInfBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -34,8 +33,6 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
         modifierMdpInfBT=findViewById(R.id.modifierMdpInf);
         modifierMdpInfBT.setOnClickListener(this);
 
-        buttontest=findViewById(R.id.buttontest);
-        buttontest.setOnClickListener(this);
     }
 
     private void openModifPass() {
@@ -61,9 +58,6 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
             mAuth.signOut();
             startActivity(new Intent(HomeInfirmier.this, MainActivity.class));
             finishAffinity ();
-        }
-        if(view.getId()==R.id.buttontest){
-            startActivity(new Intent(HomeInfirmier.this, TestCompteActive.class));
         }
     }
 

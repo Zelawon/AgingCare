@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsCommunes;
+package com.test.agingcarev01.FonctionsProfil;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,10 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifEmailDialog;
-import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifNomDialog;
-import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifPrenomDialog;
-import com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog.ModifSexeDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifEmailDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifNomDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifPrenomDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifSexeDialog;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfil extends AppCompatActivity implements View.OnClickListener,

@@ -31,7 +31,7 @@ public class CreerCompteDirecteur extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cree_compte_directeur);
+        setContentView(R.layout.activity_creer_compte_directeur);
 
         mAuth1 = FirebaseAuth.getInstance();
         //auth 2 poun ne pas deconnecter le auth 1

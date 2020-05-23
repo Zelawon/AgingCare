@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsCommunes;
+package com.test.agingcarev01;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +26,6 @@ import com.test.agingcarev01.HomePages.HomeAdmin;
 import com.test.agingcarev01.HomePages.HomeDirectuer;
 import com.test.agingcarev01.HomePages.HomeInfirmier;
 import com.test.agingcarev01.HomePages.HomeSurveillant;
-import com.test.agingcarev01.R;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button logInBT, retourBT;

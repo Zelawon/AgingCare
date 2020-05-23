@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +18,11 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.InfirmierClasse;
 import com.test.agingcarev01.R;
 
@@ -29,6 +33,7 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
     private RadioButton hommRadio,femmRadio;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    private int idEmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,33 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
         FirebaseApp.initializeApp(CreerCompteInfirmier.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+        getIdEemployee();
 
+    }
+
+    private void getIdEemployee() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("ID").child("IDEmployee");
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                idEmp =dataSnapshot.getValue(Integer.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "Error", databaseError.toException());
+            }
+        });
+    }
+
+    private  void updateIdEmployee(){
+        //get l'id
+        getIdEemployee();
+        //ajout 1 a l'id
+        idEmp++;
+        //update l'id
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference idUpdateRef = database.getReference();
+        idUpdateRef.child("ID").child("IDEmployee").setValue(idEmp);
     }
 
     @Override
@@ -114,7 +145,7 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
 
                                     //ajouter a la database
                                     if (femmRadio.isChecked()){
-                                        InfirmierClasse nvInf = new InfirmierClasse(e_mail,nom,prenom,"femme");
+                                        InfirmierClasse nvInf = new InfirmierClasse(idEmp,e_mail,nom,prenom,"femme");
                                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                                         DatabaseReference myRef = database.getReference("Employee").push();
 
@@ -122,11 +153,12 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Toast.makeText(CreerCompteInfirmier.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
+                                                updateIdEmployee();
                                                 finish();
                                             }
                                         });
                                     }else if (hommRadio.isChecked()){
-                                        InfirmierClasse nvInf = new InfirmierClasse(e_mail,nom,prenom,"homme");
+                                        InfirmierClasse nvInf = new InfirmierClasse(idEmp,e_mail,nom,prenom,"homme");
                                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                                         DatabaseReference myRef = database.getReference("Employee").push();
 
@@ -134,6 +166,7 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Toast.makeText(CreerCompteInfirmier.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
+                                                updateIdEmployee();
                                                 finish();
                                             }
                                         });

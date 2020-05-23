@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FonctionsCommunes.ConsulterListeX.ConsulterListeResident"></activity>
-        <activity android:name=".FonctionsCommunes.ConsulterListeX.ConsulterListeInfirmier" />
-        <activity android:name=".FonctionsCommunes.ConsulterListeX.ConsulterListeSurveillant" />
-        <activity android:name=".FonctionsCommunes.ConsulterProfil" />
+        <activity android:name=".ConsulterListes.Activities.ConsulterListeDirecteur"></activity>
+        <activity android:name=".FonctionsSurveillant.CreerProfilResident" />
+        <activity android:name=".ConsulterListes.Activities.ConsulterListeResident" />
+        <activity android:name=".ConsulterListes.Activities.ConsulterListeInfirmier" />
+        <activity android:name=".ConsulterListes.Activities.ConsulterListeSurveillant" />
+        <activity android:name=".FonctionsProfil.ConsulterProfil" />
         <activity android:name=".HomePages.HomeInfirmier" />
         <activity android:name=".HomePages.HomeSurveillant" />
         <activity android:name=".FonctionsAdmin.CreeCompteAdmin" />
@@ -20,9 +22,9 @@
         <activity android:name=".FonctionsDirectuer.CreerCompteInfirmier" />
         <activity android:name=".FonctionsDirectuer.CreerCompteSurveillant" />
         <activity android:name=".HomePages.HomeDirectuer" />
-        <activity android:name=".FonctionsCommunes.TestCompteActive" />
+        <activity android:name=".TestCompteActive" />
         <activity android:name=".FonctionsAdmin.CreerCompteDirecteur" />
-        <activity android:name=".FonctionsCommunes.Login" />
+        <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

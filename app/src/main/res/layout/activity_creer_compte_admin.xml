@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FonctionsAdmin.CreerCompteDirecteur">
+    tools:context=".FonctionsAdmin.CreeCompteAdmin">
+
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:text="Cree Compte Directeur (temporary)"
+        android:text="Creer Compte Admin (temporary)"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,11 +23,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/emailDirec"
+        android:id="@+id/emailAdmin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="Email"
@@ -34,10 +35,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prenomDirec" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
     <EditText
-        android:id="@+id/passDirec"
+        android:id="@+id/passAdmin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -49,10 +49,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailDirec" />
+        app:layout_constraintTop_toBottomOf="@+id/emailAdmin" />
 
     <EditText
-        android:id="@+id/confPassDirec"
+        android:id="@+id/confPassAdmin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -64,51 +64,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passDirec" />
+        app:layout_constraintTop_toBottomOf="@+id/passAdmin" />
 
     <Button
-        android:id="@+id/creeDirec"
+        android:id="@+id/creeAdmin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="60dp"
-        android:text="Cree Compte Directeur"
+        android:text="CreerCompte Admin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confPassDirec" />
+        app:layout_constraintTop_toBottomOf="@+id/confPassAdmin" />
 
-    <EditText
-        android:id="@+id/nomDirec"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="30dp"
-        android:ems="10"
-        android:hint="Nom"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/prenomDirec"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:ems="10"
-        android:hint="Prenom"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomDirec" />
 
     <Button
-        android:id="@+id/retourFormDirecBT"
+        android:id="@+id/retourFormAdminBT"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -117,6 +90,8 @@
         android:text="Retour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creeDirec" />
+        app:layout_constraintTop_toBottomOf="@+id/creeAdmin" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

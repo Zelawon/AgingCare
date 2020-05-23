@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsCommunes.ModifierProfilDialog;
+package com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -16,19 +16,19 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.test.agingcarev01.R;
 
-public class ModifNomDialog extends AppCompatDialogFragment {
-    private EditText nomText;
-    private ModifNomDialogListner listner;
+public class ModifPrenomDialog extends AppCompatDialogFragment {
+    private EditText prenomText;
+    private ModifPrenomDialogListner listner;
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_modif_nom,null);
+        View view = inflater.inflate(R.layout.layout_modif_prenom,null);
 
         builder.setView(view)
-                .setTitle("Modifier Nom")
+                .setTitle("Modifier Prenom")
                 .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -38,14 +38,14 @@ public class ModifNomDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Modifier", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        final String nvNom = nomText.getText().toString().toLowerCase();
+                        final String nvPrenom = prenomText.getText().toString().toLowerCase();
                         //verifier non vide
-                        if ( !(nvNom.isEmpty()) ){
-                            listner.applyNvNom(nvNom);
+                        if ( !(nvPrenom.isEmpty()) ){
+                            listner.applyNvPrenom(nvPrenom);
                         }
                     }
                 });
-        nomText = view.findViewById(R.id.modifNom);
+        prenomText = view.findViewById(R.id.modifPrenom);
         return builder.create();
     }
 
@@ -54,13 +54,14 @@ public class ModifNomDialog extends AppCompatDialogFragment {
         super.onAttach(context);
 
         try {
-            listner = (ModifNomDialogListner) context;
+            listner = (ModifPrenomDialogListner) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()+"ajouter ModifPrenomDialogListner");
         }
     }
 
-    public interface ModifNomDialogListner {
-        void applyNvNom(String nom);
+    public interface ModifPrenomDialogListner {
+        void applyNvPrenom(String prenom);
     }
+
 }
