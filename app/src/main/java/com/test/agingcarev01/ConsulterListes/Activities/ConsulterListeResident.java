@@ -1,7 +1,10 @@
 package com.test.agingcarev01.ConsulterListes.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -9,56 +12,75 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.ResidentClasse;
-import com.test.agingcarev01.ConsulterListes.Adapters.ResidentListAdapter;
+import com.test.agingcarev01.ConsulterListes.Adapters.ResidentListViewHolder;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfilResident;
+import com.test.agingcarev01.Login;
 import com.test.agingcarev01.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConsulterListeResident extends AppCompatActivity implements View.OnClickListener {
 
-    RecyclerView mRecycler;
-    DatabaseReference databaseReference;
-    List<ResidentClasse> resList;
-    Button retourFrConsulResBT;
+    private Button retourFrConsulResBT;
+    DatabaseReference databaseReference ;
+
+    private FirebaseRecyclerOptions<ResidentClasse> options;
+    private FirebaseRecyclerAdapter<ResidentClasse, ResidentListViewHolder> adapter;
+
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_liste_resident);
-
         retourFrConsulResBT=findViewById(R.id.retourFrConsulResident);
         retourFrConsulResBT.setOnClickListener(this);
-        mRecycler = findViewById(R.id.recyclerViewListeResident);
-        mRecycler.setLayoutManager(new LinearLayoutManager(this));
-        mRecycler.setHasFixedSize(true);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Resident");
-        // Read from the database
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident");
+
+        recyclerView=findViewById(R.id.recyclerViewListeResident);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        options=new FirebaseRecyclerOptions.Builder<ResidentClasse>().setQuery(databaseReference,ResidentClasse.class).build();
+        adapter=new FirebaseRecyclerAdapter<ResidentClasse, ResidentListViewHolder>(options) {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                resList =new ArrayList<ResidentClasse>();
-                for (DataSnapshot resListSnap: dataSnapshot.getChildren()) {
-                    ResidentClasse post = resListSnap.getValue(ResidentClasse.class);
-                    resList.add(post) ;
-                }
-                ResidentListAdapter adapter = new ResidentListAdapter(ConsulterListeResident.this, resList);
-                mRecycler.setAdapter(adapter);
+            protected void onBindViewHolder(@NonNull ResidentListViewHolder holder, int position, @NonNull ResidentClasse model) {
+                final String key=getRef(position).getKey();
+                holder.ResItemModifier.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent(ConsulterListeResident.this, ConsulterProfilResident.class);
+                        intent.putExtra("id",key);
+                        startActivity(intent);
+                    }
+                });
+                holder.ResItemArchiver.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent(ConsulterListeResident.this, Login.class);
+                        intent.putExtra("id",key);
+                        startActivity(intent);
+                    }
+                });
+                holder.nomRes.setText(model.getNom());
+                holder.prenomRes.setText(model.getPrenom());
+                holder.sexeRes.setText((model.getSexeRes()));
+                holder.idRes.setText(String.valueOf(model.getId()));
             }
 
+            @NonNull
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
+            public ResidentListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_resident,parent,false);
+                return new ResidentListViewHolder(v);
             }
-        });
+        };
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
