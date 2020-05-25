@@ -60,25 +60,23 @@
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/DirecItemNom" />
 
-    <Button
+    <ImageView
         android:id="@+id/DirecItemArchiver"
-        android:layout_width="51dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
-        android:text="arch"
-        android:textSize="10sp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/DirecItemModifier"
-        android:layout_width="51dp"
-        android:layout_height="35dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_profile"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="2dp"
-        android:text="modi"
-        android:textSize="10sp"
         app:layout_constraintEnd_toStartOf="@+id/DirecItemArchiver"
         app:layout_constraintTop_toTopOf="parent" />
 

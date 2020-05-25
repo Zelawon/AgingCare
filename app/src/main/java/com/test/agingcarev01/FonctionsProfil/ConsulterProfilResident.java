@@ -1,6 +1,9 @@
 package com.test.agingcarev01.FonctionsProfil;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,28 +14,52 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.test.agingcarev01.FonctionsSurveillant.ModifierInfoResident;
 import com.test.agingcarev01.R;
 
-public class ConsulterProfilResident extends AppCompatActivity {
-    TextView testView;
+public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
+    TextView nom,prenom,sexe,dateNaissance,typeSang;
     DatabaseReference databaseReference;
+    Button retourFrProfilResBT,modifierResProfilBT;
+    String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_profil_resident);
 
-        testView=findViewById(R.id.testTextVIEW);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident");
+        nom=findViewById(R.id.nomResProfil);
+        prenom=findViewById(R.id.prenomResProfil);
+        sexe=findViewById(R.id.sexeResProfil);
+        dateNaissance=findViewById(R.id.dateNasiResProfil);
+        typeSang=findViewById(R.id.typeSangResProfil);
 
-        String id=getIntent().getStringExtra("id");
+        retourFrProfilResBT=findViewById(R.id.retourFrProfilRes);
+        retourFrProfilResBT.setOnClickListener(this);
+
+        modifierResProfilBT=findViewById(R.id.modifierResProfil);
+        modifierResProfilBT.setOnClickListener(this);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident");
+        key=getIntent().getStringExtra("id");
+        fillProfileInfo(key);
+    }
+
+    private void fillProfileInfo(String id) {
 
         databaseReference.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Object object=dataSnapshot.child("id").getValue();
-
-                testView.setText(""+object);
+                String nomRes = dataSnapshot.child("nom").getValue().toString();
+                String prenomRes = dataSnapshot.child("prenom").getValue().toString();
+                String sexeRes = dataSnapshot.child("sexeRes").getValue().toString();
+                String dateNaisRes = dataSnapshot.child("dateNaissanceRes").getValue().toString();
+                String typeSangRes = dataSnapshot.child("typeSanguin").getValue().toString();
+                nom.setText(nomRes);
+                prenom.setText(prenomRes);
+                sexe.setText(sexeRes);
+                dateNaissance.setText(dateNaisRes);
+                typeSang.setText(typeSangRes);
             }
 
             @Override
@@ -40,5 +67,21 @@ public class ConsulterProfilResident extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void startModifProfilActivity(String key) {
+        Intent intent=new Intent(ConsulterProfilResident.this, ModifierInfoResident.class);
+        intent.putExtra("key", this.key);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.retourFrProfilRes) {
+            finish();
+        }
+        if (view.getId() == R.id.modifierResProfil) {
+            startModifProfilActivity(key);
+        }
     }
 }

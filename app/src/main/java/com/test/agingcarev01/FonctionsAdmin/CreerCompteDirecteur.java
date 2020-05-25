@@ -1,13 +1,13 @@
 package com.test.agingcarev01.FonctionsAdmin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,8 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.test.agingcarev01.Classe.DirecteurClasse;
 import com.test.agingcarev01.R;
+import com.test.agingcarev01.Classe.DirecteurClasse;
 
 public class CreerCompteDirecteur extends AppCompatActivity implements View.OnClickListener{
     private FirebaseAuth mAuth1,mAuth2;

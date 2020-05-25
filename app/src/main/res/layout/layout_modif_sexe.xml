@@ -8,18 +8,17 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/modifRadioHommeInf"
+            android:id="@+id/modifRadioHomme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Homme"/>
         <RadioButton
-            android:id="@+id/modifRadioFemmeInf"
+            android:id="@+id/modifRadioFemme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Femme" />
-
     </RadioGroup>
 
 

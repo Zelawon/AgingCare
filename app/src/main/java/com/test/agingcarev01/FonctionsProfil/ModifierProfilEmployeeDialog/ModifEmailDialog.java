@@ -1,14 +1,14 @@
-package com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog;
+package com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.RadioButton;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,20 +16,20 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.test.agingcarev01.R;
 
-public class ModifSexeDialog extends AppCompatDialogFragment {
 
-    private RadioButton modifRadioHommeInf,modifRadioFemmeInf;
-    private ModifSexeDialogListner listner;
+public class ModifEmailDialog extends AppCompatDialogFragment {
+    private EditText emailText;
+    private ModifEmailDialogListner listner;
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_modif_sexe,null);
+        View view = inflater.inflate(R.layout.layout_modif_email,null);
 
         builder.setView(view)
-                .setTitle("Modifier Sexe")
+                .setTitle("Modifier Email")
                 .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -39,17 +39,14 @@ public class ModifSexeDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Modifier", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (modifRadioHommeInf.isChecked()){
-                            final String nvSexe = "homme";
-                            listner.applyNvSexe(nvSexe);
-                        }else if (modifRadioFemmeInf.isChecked()){
-                            final String nvSexe = "femme";
-                            listner.applyNvSexe(nvSexe);
+                        final String nvEmail = emailText.getText().toString().toLowerCase();
+                        //verifier non vide et test est format email
+                        if ( (!(nvEmail.isEmpty())) && Patterns.EMAIL_ADDRESS.matcher(nvEmail).matches()){
+                            listner.applyNvEmail(nvEmail);
                         }
                     }
                 });
-        modifRadioHommeInf = view.findViewById(R.id.modifRadioHommeInf);
-        modifRadioFemmeInf = view.findViewById(R.id.modifRadioFemmeInf);
+        emailText = view.findViewById(R.id.modifEmail);
         return builder.create();
     }
 
@@ -58,13 +55,13 @@ public class ModifSexeDialog extends AppCompatDialogFragment {
         super.onAttach(context);
 
         try {
-            listner = (ModifSexeDialogListner) context;
+            listner = (ModifEmailDialogListner) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()+"ajouter ModifSexeDialogListner");
+            throw new ClassCastException(context.toString()+"ajouter ModifPrenomDialogListner");
         }
     }
 
-    public interface ModifSexeDialogListner {
-        void applyNvSexe(String sexe);
+    public interface ModifEmailDialogListner{
+        void applyNvEmail(String email);
     }
 }

@@ -54,31 +54,25 @@
         app:layout_constraintStart_toStartOf="@+id/infItemNom"
         app:layout_constraintTop_toBottomOf="@+id/infItemNom" />
 
-    <Button
+    <ImageView
         android:id="@+id/infItemModifier"
-        android:layout_width="71dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="1dp"
-        android:text="Modifier"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/infItemArchiver"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_profile"
+        app:layout_constraintEnd_toStartOf="@+id/infItemArchiver"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/infItemArchiver"
-        android:layout_width="71dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:text="Archiver"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infItemModifier" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView14"

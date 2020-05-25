@@ -1,7 +1,7 @@
 package com.test.agingcarev01.ConsulterListes.Adapters;
 
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +12,7 @@ import com.test.agingcarev01.R;
 public class InfirmierListViewHolder extends RecyclerView.ViewHolder {
 
     public TextView nomInf,prenomInf,emailInf,sexeInf;
-    public Button InfItemModifier, InfItemArchiver;
+    public ImageView InfItemModifier, InfItemArchiver;
 
     public InfirmierListViewHolder(@NonNull View itemView) {
         super(itemView);

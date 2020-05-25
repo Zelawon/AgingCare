@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog;
+package com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

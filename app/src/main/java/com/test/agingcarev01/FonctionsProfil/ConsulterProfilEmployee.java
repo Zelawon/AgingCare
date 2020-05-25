@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,10 +17,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifEmailDialog;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifNomDialog;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifPrenomDialog;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifSexeDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifEmailDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifNomDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifPrenomDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifSexeDialog;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfilEmployee extends AppCompatActivity implements View.OnClickListener,
@@ -27,14 +28,15 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
         ModifNomDialog.ModifNomDialogListner,
         ModifPrenomDialog.ModifPrenomDialogListner,
         ModifSexeDialog.ModifSexeDialogListner {
-    private Button retourFrProfBT,updateEmailBT,updateSexeBT,updateNomBT,updatePrenomBT;
-    private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT,textView11;
+    private Button retourFrProfBT;
+    private ImageView updateEmailBT,updateSexeBT,updateNomBT,updatePrenomBT;
+    private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT;
     private String userkey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulter_profil);
+        setContentView(R.layout.activity_consulter_profil_employee);
         Log.e("TAG Erreur : ", "Hello! consuter profil");
 
         //Text View nom champ
@@ -47,7 +49,6 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
         role=findViewById(R.id.txtRole);
         email=findViewById(R.id.txtEmail);
         sexe=findViewById(R.id.txtSex);
-        textView11=findViewById(R.id.textView11);
         //Buttons
         retourFrProfBT=findViewById(R.id.retourFrProf);
         retourFrProfBT.setOnClickListener(this);

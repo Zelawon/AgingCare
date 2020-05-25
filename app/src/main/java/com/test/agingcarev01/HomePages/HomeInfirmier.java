@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 

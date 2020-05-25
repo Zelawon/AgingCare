@@ -1,15 +1,15 @@
 package com.test.agingcarev01.HomePages;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilDialog.ModifierMotDePasseDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.FonctionsSurveillant.CreerProfilResident;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;

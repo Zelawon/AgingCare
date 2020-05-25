@@ -18,6 +18,8 @@ public class ResidentClasse {
     private List<RendezVousClasse> rendezVousClasseList;
     private List<TraitementClasse> traitementClasseList;
     private List<InfirmierClasse> infirmierList;
+    //status
+    private int statutArchivage;
 
     public ResidentClasse() {
     }
@@ -29,6 +31,7 @@ public class ResidentClasse {
         this.sexeRes = sexeRes;
         this.typeSanguin = typeSanguin;
         this.dateNaissanceRes = dateNaissanceRes;
+        this.statutArchivage = 0;
     }
 
     public ResidentClasse(int id, String nom, String prenom, String sexeRes,
@@ -49,6 +52,15 @@ public class ResidentClasse {
         this.rendezVousClasseList = rendezVousClasseList;
         this.traitementClasseList = traitementClasseList;
         this.infirmierList = infirmierList;
+        this.statutArchivage = 0;
+    }
+
+    public int getStatutArchivage() {
+        return statutArchivage;
+    }
+
+    public void setStatutArchivage(int statutArchivage) {
+        this.statutArchivage = statutArchivage;
     }
 
     public int getId() {

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FonctionsProfil.ConsulterProfilResident"></activity>
+        <activity android:name=".FonctionsSurveillant.ModifierInfoResident"></activity>
+        <activity android:name=".FonctionsProfil.ConsulterProfilResident" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeDirecteur" />
         <activity android:name=".FonctionsSurveillant.CreerProfilResident" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeResident" />
