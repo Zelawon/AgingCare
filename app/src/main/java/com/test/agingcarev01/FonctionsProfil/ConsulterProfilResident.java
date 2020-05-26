@@ -15,13 +15,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeMaladie;
+import com.test.agingcarev01.FonctionsSurveillant.AffecteeInfirmiereResident;
 import com.test.agingcarev01.FonctionsSurveillant.ModifierInfoResident;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
     TextView nom,prenom,sexe,dateNaissance,typeSang;
     DatabaseReference databaseReference;
-    Button retourFrProfilResBT,modifierResProfilBT,maladieResProfilBT;
+    Button retourFrProfilResBT,modifierResProfilBT,maladieResProfilBT,infirmeirResProfilBT;
     String key;
 
     @Override
@@ -37,6 +38,9 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
 
         retourFrProfilResBT=findViewById(R.id.retourFrProfilRes);
         retourFrProfilResBT.setOnClickListener(this);
+
+        infirmeirResProfilBT=findViewById(R.id.infirmeirResProfil);
+        infirmeirResProfilBT.setOnClickListener(this);
 
         maladieResProfilBT=findViewById(R.id.maladieResProfil);
         maladieResProfilBT.setOnClickListener(this);
@@ -90,6 +94,15 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         if (view.getId() == R.id.maladieResProfil) {
             startMaladieActivity(key);
         }
+        if (view.getId() == R.id.infirmeirResProfil) {
+            startInfirmierActivity(key);
+        }
+    }
+
+    private void startInfirmierActivity(String key) {
+        Intent intent=new Intent(ConsulterProfilResident.this, AffecteeInfirmiereResident.class);
+        intent.putExtra("key", this.key);
+        startActivity(intent);
     }
 
     private void startMaladieActivity(String key) {

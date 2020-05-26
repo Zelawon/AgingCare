@@ -1,5 +1,7 @@
 package com.test.agingcarev01.ConsulterListes.Activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,9 +83,24 @@ public class ConsulterListeMaladie extends AppCompatActivity implements View.OnC
 
     }
 
-    private void DeleteMAladie(String keyMaladieDel) {
-        DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("maladie").child(keyMaladieDel);
-        delRef.removeValue();
+    private void DeleteMAladie(final String keyMaladieDel) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ConsulterListeMaladie.this);
+        builder.setTitle("Supprimer La Maladie");
+        builder.setMessage("Êtes-vous sûr de vouloir supprimer cette maladie de ce resident?");
+        builder.setPositiveButton("oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DatabaseReference delRef = FirebaseDatabase.getInstance().getReference()
+                        .child("Resident").child(keyResident).child("maladie").child(keyMaladieDel);
+                delRef.removeValue();
+            }
+        }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.create().show();
     }
 
     private void AjouterMaladie() {
