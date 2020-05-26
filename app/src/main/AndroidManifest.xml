@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConsulterListes.Activities.ConsulterListeMaladie"></activity>
+        <activity android:name=".FonctionsProfil.ConsulterProfilEmployee"></activity>
+        <activity android:name=".ConsulterListes.Activities.ConsulterListeMaladie" />
         <activity android:name=".FonctionsSurveillant.ModifierInfoResident" />
         <activity android:name=".FonctionsProfil.ConsulterProfilResident" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeDirecteur" />
@@ -17,7 +18,7 @@
         <activity android:name=".ConsulterListes.Activities.ConsulterListeResident" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeInfirmier" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeSurveillant" />
-        <activity android:name=".FonctionsProfil.ConsulterProfilEmployee" />
+        <activity android:name=".FonctionsProfil.ConsulterPropreProfil" />
         <activity android:name=".HomePages.HomeInfirmier" />
         <activity android:name=".HomePages.HomeSurveillant" />
         <activity android:name=".FonctionsAdmin.CreeCompteAdmin" />

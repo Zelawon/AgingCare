@@ -8,14 +8,14 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
+import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeResident;
+import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
-import com.test.agingcarev01.FonctionsSurveillant.CreerProfilResident;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeSurveillant extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button consulterProfSurvBT,deconnecterSurveillantBT,modifierMdpSurvBT,creerProfilResidentBT;
+    private Button consulterProfSurvBT,deconnecterSurveillantBT,modifierMdpSurvBT,consulterListeResidentBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -28,8 +28,8 @@ public class HomeSurveillant extends AppCompatActivity implements View.OnClickLi
         consulterProfSurvBT=findViewById(R.id.consulterProfSurv);
         consulterProfSurvBT.setOnClickListener(this);
 
-        creerProfilResidentBT=findViewById(R.id.creerProfilResident);
-        creerProfilResidentBT.setOnClickListener(this);
+        consulterListeResidentBT=findViewById(R.id.consulterListeResident);
+        consulterListeResidentBT.setOnClickListener(this);
 
         deconnecterSurveillantBT=findViewById(R.id.deconnecterSurveillant);
         deconnecterSurveillantBT.setOnClickListener(this);
@@ -51,13 +51,13 @@ public class HomeSurveillant extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.consulterProfSurv){
-            startActivity(new Intent(HomeSurveillant.this, ConsulterProfilEmployee.class));
+            startActivity(new Intent(HomeSurveillant.this, ConsulterPropreProfil.class));
         }
         if(view.getId()==R.id.modifierMdpSurv){
             openModifPass();
         }
-        if(view.getId()==R.id.creerProfilResident){
-            startActivity(new Intent(HomeSurveillant.this, CreerProfilResident.class));
+        if(view.getId()==R.id.consulterListeResident){
+            startActivity(new Intent(HomeSurveillant.this, ConsulterListeResident.class));
         }
         if(view.getId()==R.id.deconnecterSurveillant){
             mAuth.signOut();

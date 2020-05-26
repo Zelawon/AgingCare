@@ -19,5 +19,7 @@ public class SurveillantListViewHolder extends RecyclerView.ViewHolder {
         nomSurv = itemView.findViewById(R.id.survItemNom);
         prenomSurv = itemView.findViewById(R.id.survItemPrenom);
         emailSurv = itemView.findViewById(R.id.survItemEmail);
+        survItemArchiver = itemView.findViewById(R.id.survItemArchiver);
+        survItemModifier = itemView.findViewById(R.id.survItemModifier);
     }
 }

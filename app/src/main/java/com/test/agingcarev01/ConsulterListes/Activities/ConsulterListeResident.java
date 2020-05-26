@@ -112,7 +112,8 @@ public class ConsulterListeResident extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.creeNvProfilResident){
-            startActivity(new Intent(ConsulterListeResident.this, CreerProfilResident.class));        }
+            startActivity(new Intent(ConsulterListeResident.this, CreerProfilResident.class));
+        }
         if(view.getId()==R.id.retourFrConsulResident){
             finish();
         }

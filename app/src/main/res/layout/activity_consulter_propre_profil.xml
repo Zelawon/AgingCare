@@ -4,88 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FonctionsProfil.ConsulterProfilEmployee">
+    tools:context=".FonctionsProfil.ConsulterPropreProfil">
+
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:text="Profil Employee (temporary)"
+        android:text="Mon Profil (temporary)"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/nomEmpTextView"
+        android:id="@+id/nomTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="Nom :"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
     <TextView
-        android:id="@+id/prenomEmpTextView"
+        android:id="@+id/prenomTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="Prenom :"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomEmpTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNom" />
 
     <TextView
-        android:id="@+id/textView36"
+        android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="E-mail :"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRole" />
 
     <TextView
-        android:id="@+id/txtNomEmp"
+        android:id="@+id/txtNom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:text="TextView"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/updateNom"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomEmpTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/nomTextView" />
 
     <TextView
-        android:id="@+id/txtPrenomEmp"
+        android:id="@+id/txtPrenom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:text="TextView"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/updatePrenom"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prenomEmpTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/prenomTextView" />
 
     <TextView
-        android:id="@+id/txtEmailEmp"
+        android:id="@+id/txtEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:text="TextView"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/updateEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/roleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -93,21 +100,21 @@
         android:text="Role :"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
-        android:id="@+id/txtRoleEmp"
+        android:id="@+id/txtRole"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+        app:layout_constraintTop_toBottomOf="@+id/roleTextView" />
 
     <Button
-        android:id="@+id/retourFrProfEmp"
+        android:id="@+id/retourFrProf"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -116,60 +123,78 @@
         android:text="Retour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
-        android:id="@+id/sexeEmpTextView"
+        android:id="@+id/sexeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="Sexe :"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prenomEmpTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPrenom" />
 
     <TextView
-        android:id="@+id/txtSexEmp"
+        android:id="@+id/txtSex"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:text="TextView"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/updateSexe"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sexeEmpTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/sexeTextView" />
 
     <ImageView
-        android:id="@+id/updateNomEmp"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
         android:src="@drawable/ic_edit"
+        android:id="@+id/updateEmail"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
         android:text="Edit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nomEmpTextView" />
+        app:layout_constraintStart_toEndOf="@+id/txtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
     <ImageView
-        android:id="@+id/updatePrenomEmp"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
         android:src="@drawable/ic_edit"
+        android:id="@+id/updateNom"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
         android:text="Edit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/prenomEmpTextView" />
+        app:layout_constraintStart_toEndOf="@+id/txtNom"
+        app:layout_constraintTop_toBottomOf="@+id/nomTextView" />
 
     <ImageView
-        android:id="@+id/updateSexeEmp"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
         android:src="@drawable/ic_edit"
+        android:id="@+id/updatePrenom"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
         android:text="Edit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sexeEmpTextView" />
+        app:layout_constraintStart_toEndOf="@+id/txtPrenom"
+        app:layout_constraintTop_toBottomOf="@+id/prenomTextView" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_edit"
+        android:id="@+id/updateSexe"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtSex"
+        app:layout_constraintTop_toBottomOf="@+id/sexeTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

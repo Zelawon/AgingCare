@@ -20,5 +20,7 @@ public class InfirmierListViewHolder extends RecyclerView.ViewHolder {
         prenomInf = itemView.findViewById(R.id.infItemPrenom);
         emailInf = itemView.findViewById(R.id.infItemEmail);
         sexeInf = itemView.findViewById(R.id.infItemSexe);
+        InfItemModifier = itemView.findViewById(R.id.infItemModifier);
+        InfItemArchiver = itemView.findViewById(R.id.infItemArchiver);
     }
 }

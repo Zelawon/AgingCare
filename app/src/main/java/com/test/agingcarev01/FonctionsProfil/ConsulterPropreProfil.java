@@ -10,59 +10,67 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifEmailDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifNomDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifPrenomDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifSexeDialog;
 import com.test.agingcarev01.R;
 
-public class ConsulterProfilEmployee extends AppCompatActivity implements View.OnClickListener,
+public class ConsulterPropreProfil extends AppCompatActivity implements View.OnClickListener,
+        ModifEmailDialog.ModifEmailDialogListner,
         ModifNomDialog.ModifNomDialogListner,
         ModifPrenomDialog.ModifPrenomDialogListner,
-        ModifSexeDialog.ModifSexeDialogListner{
-    private String emailEmpRecu;
+        ModifSexeDialog.ModifSexeDialogListner {
     private Button retourFrProfBT;
-    private ImageView updateSexeBT,updateNomBT,updatePrenomBT;
+    private ImageView updateEmailBT,updateSexeBT,updateNomBT,updatePrenomBT;
     private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT;
     private String userkey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulter_profil_employee);
-
-        emailEmpRecu=getIntent().getStringExtra("email");
+        setContentView(R.layout.activity_consulter_propre_profil);
+        Log.e("TAG Erreur : ", "Hello! consuter profil");
 
         //Text View nom champ
-        nomTXT=findViewById(R.id.nomEmpTextView);
-        prenomTXT=findViewById(R.id.prenomEmpTextView);
-        sexeTXT=findViewById(R.id.sexeEmpTextView);
+        nomTXT=findViewById(R.id.nomTextView);
+        prenomTXT=findViewById(R.id.prenomTextView);
+        sexeTXT=findViewById(R.id.sexeTextView);
         //Text View a modifier
-        nom=findViewById(R.id.txtNomEmp);
-        prenom=findViewById(R.id.txtPrenomEmp);
-        role=findViewById(R.id.txtRoleEmp);
-        email=findViewById(R.id.txtEmailEmp);
-        sexe=findViewById(R.id.txtSexEmp);
+        nom=findViewById(R.id.txtNom);
+        prenom=findViewById(R.id.txtPrenom);
+        role=findViewById(R.id.txtRole);
+        email=findViewById(R.id.txtEmail);
+        sexe=findViewById(R.id.txtSex);
         //Buttons
-        retourFrProfBT=findViewById(R.id.retourFrProfEmp);
+        retourFrProfBT=findViewById(R.id.retourFrProf);
         retourFrProfBT.setOnClickListener(this);
-        updateNomBT=findViewById(R.id.updateNomEmp);
+        updateEmailBT=findViewById(R.id.updateEmail);
+        updateEmailBT.setOnClickListener(this);
+        updateNomBT=findViewById(R.id.updateNom);
         updateNomBT.setOnClickListener(this);
-        updatePrenomBT=findViewById(R.id.updatePrenomEmp);
+        updatePrenomBT=findViewById(R.id.updatePrenom);
         updatePrenomBT.setOnClickListener(this);
-        updateSexeBT=findViewById(R.id.updateSexeEmp);
+        updateSexeBT=findViewById(R.id.updateSexe);
         updateSexeBT.setOnClickListener(this);
 
-        afficherProfil(emailEmpRecu);
+        String currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        afficherProfil(currentUserEmail);
     }
 
-    private void afficherProfil(String emailEmpRecu) {
+    private void afficherProfil(String currentUserEmail) {
+
         DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
-        Query emailQuery = employeeRef.orderByChild("email").equalTo(emailEmpRecu);
+        Query emailQuery = employeeRef.orderByChild("email").equalTo(currentUserEmail);
+
         //Load interface avec les champs de chaque role
         emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -119,10 +127,12 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
 
                         }else{
                             Toast.makeText(getApplicationContext(), "Erreur Role", Toast.LENGTH_SHORT).show();
+                            Log.e("TAG Erreur : ", "Erreur Role");
                         }
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
+                    Log.e("TAG Erreur : ", "Erreur Consulter Profil");
                 }
             }
 
@@ -131,6 +141,13 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
                 Log.w("TAG", "onCancelled", databaseError.toException());
             }
         });
+    }
+
+
+
+    private void openModifEmail() {
+        ModifEmailDialog modifEmailDialog = new ModifEmailDialog();
+        modifEmailDialog.show(getSupportFragmentManager(),"Modifier Email");
     }
 
     private void openModifNom() {
@@ -148,39 +165,49 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
         modifSexeDialog.show(getSupportFragmentManager(),"Modifier Sexe");
     }
 
+    @Override
+    public void applyNvEmail(String email) {
+        FirebaseAuth.getInstance().getCurrentUser().updateEmail(email);
+        FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("email").setValue(email);
+        afficherProfil(email);
+    }
 
     @Override
     public void applyNvNom(String nom) {
         FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("nom").setValue(nom);
-        afficherProfil(emailEmpRecu);
+        afficherProfil(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
 
     @Override
     public void applyNvPrenom(String prenom) {
         FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("prenom").setValue(prenom);
-        afficherProfil(emailEmpRecu);
+        afficherProfil(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
 
     @Override
     public void applyNvSexe(String sexe) {
         FirebaseDatabase.getInstance().getReference("Employee").child(userkey).child("sexe").setValue(sexe);
-        afficherProfil(emailEmpRecu);
+        afficherProfil(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
+
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.retourFrProfEmp){
+        if(view.getId()==R.id.retourFrProf){
             finish();
         }
-        if(view.getId()==R.id.updateNomEmp){
+        if(view.getId()==R.id.updateEmail){
+            openModifEmail();
+        }
+        if(view.getId()==R.id.updateNom){
             openModifNom();
         }
-        if(view.getId()==R.id.updatePrenomEmp){
+        if(view.getId()==R.id.updatePrenom){
             openModifPrenom();
         }
-        if(view.getId()==R.id.updateSexeEmp){
+        if(view.getId()==R.id.updateSexe){
             openModifSexe();
         }
-
     }
+
 }

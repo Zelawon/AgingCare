@@ -5,6 +5,7 @@ public class SurveillantClasse {
     private String nom;
     private String prenom;
     private String role;
+    private String statutEtRole;
 
     public SurveillantClasse() {
     }
@@ -14,6 +15,15 @@ public class SurveillantClasse {
         this.nom = nom;
         this.prenom = prenom;
         this.role = "Surveillant";
+        this.statutEtRole = "Surveillant_0";
+    }
+
+    public String getStatutEtRole() {
+        return statutEtRole;
+    }
+
+    public void setStatutEtRole(String statutEtRole) {
+        this.statutEtRole = statutEtRole;
     }
 
     public String getEmail() {

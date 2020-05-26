@@ -5,6 +5,7 @@ public class DirecteurClasse {
     private String nom;
     private String prenom;
     private String role;
+    private String statutEtRole;
 
     public DirecteurClasse() {
     }
@@ -14,6 +15,15 @@ public class DirecteurClasse {
         this.nom = nom;
         this.prenom = prenom;
         this.role = "Directeur";
+        this.statutEtRole = "Directeur_0";
+    }
+
+    public String getStatutEtRole() {
+        return statutEtRole;
+    }
+
+    public void setStatutEtRole(String statutEtRole) {
+        this.statutEtRole = statutEtRole;
     }
 
     public String getEmail() {

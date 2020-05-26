@@ -12,17 +12,13 @@ import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeDirecteur;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeInfirmier;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeSurveillant;
 import com.test.agingcarev01.FonctionsAdmin.CreeCompteAdmin;
-import com.test.agingcarev01.FonctionsAdmin.CreerCompteDirecteur;
-import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
-import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
-import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
+import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeAdmin extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button creeCompteDirecBT,creeCompteAdminBT,logoutAdminBT,creeCompteInfBT,
-            creeCompteSurvBT,consulterProfAdminBT,modifierMdpAdminBT,
+    private Button creeCompteAdminBT,logoutAdminBT,consulterProfAdminBT,modifierMdpAdminBT,
             consulterListeSurveillantADBT,consulterListeInfirmierADBT,consulterListeDirecteurADBT;
     private FirebaseAuth mAuth;
 
@@ -42,8 +38,6 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
         consulterListeSurveillantADBT=findViewById(R.id.consulterListeSurveillantAD);
         consulterListeSurveillantADBT.setOnClickListener(this);
 
-        creeCompteDirecBT=findViewById(R.id.creeCompteDirec);
-        creeCompteDirecBT.setOnClickListener(this);
 
         creeCompteAdminBT=findViewById(R.id.creeCompteAdmin);
         creeCompteAdminBT.setOnClickListener(this);
@@ -51,11 +45,6 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
         consulterProfAdminBT=findViewById(R.id.consulterProfAdmin);
         consulterProfAdminBT.setOnClickListener(this);
 
-        creeCompteInfBT=findViewById(R.id.creeCompteInf);
-        creeCompteInfBT.setOnClickListener(this);
-
-        creeCompteSurvBT=findViewById(R.id.creeCompteSurv);
-        creeCompteSurvBT.setOnClickListener(this);
 
         logoutAdminBT=findViewById(R.id.deconnecterAdmin);
         logoutAdminBT.setOnClickListener(this);
@@ -87,20 +76,11 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
         if(view.getId()==R.id.consulterListeDirecteurAD){
             startActivity(new Intent(HomeAdmin.this, ConsulterListeDirecteur.class));
         }
-        if(view.getId()==R.id.creeCompteDirec){
-            startActivity(new Intent(HomeAdmin.this, CreerCompteDirecteur.class));
-        }
         if(view.getId()==R.id.creeCompteAdmin){
             startActivity(new Intent(HomeAdmin.this, CreeCompteAdmin.class));
         }
-        if(view.getId()==R.id.creeCompteInf){
-            startActivity(new Intent(HomeAdmin.this, CreerCompteInfirmier.class));
-        }
-        if(view.getId()==R.id.creeCompteSurv){
-            startActivity(new Intent(HomeAdmin.this, CreerCompteSurveillant.class));
-        }
         if(view.getId()==R.id.consulterProfAdmin){
-            startActivity(new Intent(HomeAdmin.this, ConsulterProfilEmployee.class));
+            startActivity(new Intent(HomeAdmin.this, ConsulterPropreProfil.class));
         }
         if(view.getId()==R.id.modifierMdpAdmin){
             openModifPass();

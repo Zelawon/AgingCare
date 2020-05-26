@@ -19,5 +19,7 @@ public class DirecteurListViewHolder extends RecyclerView.ViewHolder {
         nomDirec = itemView.findViewById(R.id.DirecItemNom);
         prenomDirec = itemView.findViewById(R.id.DirecItemPrenom);
         emailDirec = itemView.findViewById(R.id.DirecItemEmail);
+        DirecItemModifier = itemView.findViewById(R.id.DirecItemModifier);
+        DirecItemArchiver = itemView.findViewById(R.id.DirecItemArchiver);
     }
 }

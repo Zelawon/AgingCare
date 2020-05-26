@@ -10,16 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeInfirmier;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeSurveillant;
-import com.test.agingcarev01.FonctionsDirectuer.CreerCompteInfirmier;
-import com.test.agingcarev01.FonctionsDirectuer.CreerCompteSurveillant;
-import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
+import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeDirectuer extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button creeInfBT,creeSurBT, logoutDirecBT,consulterProfDirecBT,
-            modifierMdpDirecBT,consulterListeSurveillantBT,consulterListeInfirmierBT;
+    private Button logoutDirecBT,consulterProfDirecBT,modifierMdpDirecBT,
+            consulterListeSurveillantBT,consulterListeInfirmierBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -29,14 +27,10 @@ public class HomeDirectuer extends AppCompatActivity implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
 
-        creeInfBT=findViewById(R.id.creerCompteInfirmier);
-        creeInfBT.setOnClickListener(this);
 
         modifierMdpDirecBT=findViewById(R.id.modifierMdpDirec);
         modifierMdpDirecBT.setOnClickListener(this);
 
-        creeSurBT=findViewById(R.id.creerCompteSurveillant);
-        creeSurBT.setOnClickListener(this);
 
         consulterListeInfirmierBT=findViewById(R.id.consulterListeInfirmier);
         consulterListeInfirmierBT.setOnClickListener(this);
@@ -64,14 +58,8 @@ public class HomeDirectuer extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
 
-        if(view.getId()==R.id.creerCompteSurveillant){
-            startActivity(new Intent(HomeDirectuer.this, CreerCompteSurveillant.class));
-        }
-        if(view.getId()==R.id.creerCompteInfirmier){
-            startActivity(new Intent(HomeDirectuer.this, CreerCompteInfirmier.class));
-        }
         if(view.getId()==R.id.consulterProfDirec){
-            startActivity(new Intent(HomeDirectuer.this, ConsulterProfilEmployee.class));
+            startActivity(new Intent(HomeDirectuer.this, ConsulterPropreProfil.class));
         }
         if(view.getId()==R.id.modifierMdpDirec){
             openModifPass();

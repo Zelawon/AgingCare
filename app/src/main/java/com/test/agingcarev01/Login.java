@@ -1,8 +1,5 @@
 package com.test.agingcarev01;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -53,7 +53,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                     updateUI();
                 }
                 else{
@@ -75,21 +74,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot roleSnapshot : dataSnapshot.getChildren()) {
                         String currentRole = roleSnapshot.child("role").getValue(String.class);
+                        String currentstatutEtRole = roleSnapshot.child("statutEtRole").getValue(String.class);
                         if (currentRole.equals("Admin")) {
+                            Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, HomeAdmin.class));
                             finishAffinity();
-                        } else if (currentRole.equals("Directeur")) {
+                        } else if (currentstatutEtRole.equals("Directeur_0")) {
+                            Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, HomeDirectuer.class));
                             finishAffinity();
-                        }else if (currentRole.equals("Surveillant")) {
+                        }else if (currentstatutEtRole.equals("Surveillant_0")) {
+                            Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, HomeSurveillant.class));
                             finishAffinity();
-                        }else if (currentRole.equals("Infirmier")) {
+                        }else if (currentstatutEtRole.equals("Infirmier_0")) {
+                            Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, HomeInfirmier.class));
                             finishAffinity();
                         } else {
-                            Toast.makeText(getApplicationContext(), "No Role Assigned", Toast.LENGTH_LONG).show();
-                            Log.e("TAG Erreur : ", "Login No Role Assigned");
+                            Toast.makeText(getApplicationContext(), "Connection Impossible, Compte Archivee", Toast.LENGTH_LONG).show();
                             finish();
                         }
                     }

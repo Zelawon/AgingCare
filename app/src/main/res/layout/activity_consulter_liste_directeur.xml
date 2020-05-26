@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ConsulterListes.Activities.ConsulterListeSurveillant">
 
+    <Button
+        android:id="@+id/creeNvCompteDirecteur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:text="Ajouter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewListeDirecteur" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewListeDirecteur"
         android:layout_width="366dp"
@@ -23,10 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
         android:text="Retour"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewListeDirecteur" />
 </androidx.constraintlayout.widget.ConstraintLayout>

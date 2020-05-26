@@ -7,6 +7,7 @@ public class InfirmierClasse {
     private String prenom;
     private String role;
     private String sexe;
+    private String statutEtRole;
 
     public InfirmierClasse() {
     }
@@ -18,14 +19,15 @@ public class InfirmierClasse {
         this.prenom = prenom;
         this.role = "Infirmier";
         this.sexe = sexe;
+        this.statutEtRole = "Infirmier_0";
     }
 
-    public InfirmierClasse(String email, String nom, String prenom, String sexe) {
-        this.email = email;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.role = "Infirmier";
-        this.sexe = sexe;
+    public String getStatutEtRole() {
+        return statutEtRole;
+    }
+
+    public void setStatutEtRole(String statutEtRole) {
+        this.statutEtRole = statutEtRole;
     }
 
     public int getId() {
