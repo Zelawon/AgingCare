@@ -23,7 +23,6 @@ import com.test.agingcarev01.Classe.ResidentClasse;
 import com.test.agingcarev01.ConsulterListes.Adapters.ResidentListViewHolder;
 import com.test.agingcarev01.FonctionsProfil.ConsulterProfilResident;
 import com.test.agingcarev01.FonctionsSurveillant.CreerProfilResident;
-import com.test.agingcarev01.HomePages.HomeSurveillant;
 import com.test.agingcarev01.R;
 
 public class ConsulterListeResident extends AppCompatActivity implements View.OnClickListener {
@@ -79,7 +78,6 @@ public class ConsulterListeResident extends AppCompatActivity implements View.On
                 holder.nomRes.setText(model.getNom());
                 holder.prenomRes.setText(model.getPrenom());
                 holder.sexeRes.setText((model.getSexeRes()));
-                holder.idRes.setText(String.valueOf(model.getId()));
             }
 
             @NonNull

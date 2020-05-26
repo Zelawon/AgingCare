@@ -7,6 +7,10 @@ public class MaladieClasse {
     public MaladieClasse() {
     }
 
+    public MaladieClasse(String nomMaladie) {
+        this.nomMaladie = nomMaladie;
+    }
+
     public MaladieClasse(int idMaladie, String nomMaladie) {
         this.idMaladie = idMaladie;
         this.nomMaladie = nomMaladie;

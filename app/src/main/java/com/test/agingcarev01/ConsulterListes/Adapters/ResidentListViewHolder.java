@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.test.agingcarev01.R;
 
 public  class ResidentListViewHolder extends RecyclerView.ViewHolder {
-    public TextView nomRes,prenomRes,sexeRes,idRes;
+    public TextView nomRes,prenomRes,sexeRes;
     public ImageView ResItemModifier, ResItemArchiver;
 
     public ResidentListViewHolder(@NonNull View itemView) {
@@ -18,7 +18,6 @@ public  class ResidentListViewHolder extends RecyclerView.ViewHolder {
         nomRes = itemView.findViewById(R.id.resItemNom);
         prenomRes = itemView.findViewById(R.id.resItemPrenom);
         sexeRes = itemView.findViewById(R.id.resItemSexe);
-        idRes = itemView.findViewById(R.id.resItemId);
         ResItemModifier = itemView.findViewById(R.id.resItemModifier);
         ResItemArchiver = itemView.findViewById(R.id.resItemArchiver);
     }

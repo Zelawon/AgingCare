@@ -39,34 +39,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:text="Sexe :"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/resItemNom"
         app:layout_constraintTop_toBottomOf="@+id/resItemNom" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="ID :"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
-        android:id="@+id/resItemId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="id"
-        app:layout_constraintStart_toEndOf="@+id/textView20"
-        app:layout_constraintTop_toTopOf="@+id/textView20" />
 
     <TextView
         android:id="@+id/resItemSexe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
         android:text="Sexe"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toTopOf="@+id/textView15" />
 
@@ -74,9 +60,9 @@
         android:id="@+id/resItemArchiver"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_delete"
         android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,7 +72,8 @@
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/ic_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/resItemArchiver"
-        app:layout_constraintTop_toTopOf="@+id/resItemArchiver" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

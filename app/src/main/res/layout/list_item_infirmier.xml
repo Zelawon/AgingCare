@@ -58,9 +58,9 @@
         android:id="@+id/infItemModifier"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/ic_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/infItemArchiver"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,9 +68,9 @@
         android:id="@+id/infItemArchiver"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
         android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="5dp"
         android:text="Sexe:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView13"
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="5dp"
         android:text="Sexe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView14"
