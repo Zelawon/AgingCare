@@ -1,7 +1,5 @@
 package com.test.agingcarev01.Classe;
 
-import java.util.List;
-
 public class ResidentClasse {
     //1st Constructor
     private int id;
@@ -10,14 +8,9 @@ public class ResidentClasse {
     private String sexeRes;
     private String typeSanguin;
     private String dateNaissanceRes;
-    //Constructor ???
-    private Float poid;
-    private Float tauxGlycemique;
-    private Float tensionArterielle;
-    private List<MaladieClasse> maladieClasseList;
-    private List<RendezVousClasse> rendezVousClasseList;
-    private List<TraitementClasse> traitementClasseList;
-    private List<InfirmierClasse> infirmierList;
+    private Float poidsCible;
+    private Float tauxGlycemiqueCible;
+    private Float tensionArterielleCible;
     //status
     private int statutArchivage;
 
@@ -32,27 +25,33 @@ public class ResidentClasse {
         this.typeSanguin = typeSanguin;
         this.dateNaissanceRes = dateNaissanceRes;
         this.statutArchivage = 0;
+        this.poidsCible = 0f;
+        this.tauxGlycemiqueCible=0f;
+        this.tensionArterielleCible=0f;
     }
 
-    public ResidentClasse(int id, String nom, String prenom, String sexeRes,
-                          String typeSanguin, String dateNaissanceRes, Float poid,
-                          Float tauxGlycemique, Float tensionArterielle,
-                          List<MaladieClasse> maladieClasseList, List<RendezVousClasse> rendezVousClasseList,
-                          List<TraitementClasse> traitementClasseList, List<InfirmierClasse> infirmierList) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.sexeRes = sexeRes;
-        this.typeSanguin = typeSanguin;
-        this.dateNaissanceRes = dateNaissanceRes;
-        this.poid = poid;
-        this.tauxGlycemique = tauxGlycemique;
-        this.tensionArterielle = tensionArterielle;
-        this.maladieClasseList = maladieClasseList;
-        this.rendezVousClasseList = rendezVousClasseList;
-        this.traitementClasseList = traitementClasseList;
-        this.infirmierList = infirmierList;
-        this.statutArchivage = 0;
+    public Float getPoidsCible() {
+        return poidsCible;
+    }
+
+    public void setPoidsCible(Float poidsCible) {
+        this.poidsCible = poidsCible;
+    }
+
+    public Float getTauxGlycemiqueCible() {
+        return tauxGlycemiqueCible;
+    }
+
+    public void setTauxGlycemiqueCible(Float tauxGlycemiqueCible) {
+        this.tauxGlycemiqueCible = tauxGlycemiqueCible;
+    }
+
+    public Float getTensionArterielleCible() {
+        return tensionArterielleCible;
+    }
+
+    public void setTensionArterielleCible(Float tensionArterielleCible) {
+        this.tensionArterielleCible = tensionArterielleCible;
     }
 
     public int getStatutArchivage() {
@@ -111,59 +110,4 @@ public class ResidentClasse {
         this.dateNaissanceRes = dateNaissanceRes;
     }
 
-    public Float getPoid() {
-        return poid;
-    }
-
-    public void setPoid(Float poid) {
-        this.poid = poid;
-    }
-
-    public Float getTauxGlycemique() {
-        return tauxGlycemique;
-    }
-
-    public void setTauxGlycemique(Float tauxGlycemique) {
-        this.tauxGlycemique = tauxGlycemique;
-    }
-
-    public Float getTensionArterielle() {
-        return tensionArterielle;
-    }
-
-    public void setTensionArterielle(Float tensionArterielle) {
-        this.tensionArterielle = tensionArterielle;
-    }
-
-    public List<MaladieClasse> getMaladieClasseList() {
-        return maladieClasseList;
-    }
-
-    public void setMaladieClasseList(List<MaladieClasse> maladieClasseList) {
-        this.maladieClasseList = maladieClasseList;
-    }
-
-    public List<RendezVousClasse> getRendezVousClasseList() {
-        return rendezVousClasseList;
-    }
-
-    public void setRendezVousClasseList(List<RendezVousClasse> rendezVousClasseList) {
-        this.rendezVousClasseList = rendezVousClasseList;
-    }
-
-    public List<TraitementClasse> getTraitementClasseList() {
-        return traitementClasseList;
-    }
-
-    public void setTraitementClasseList(List<TraitementClasse> traitementClasseList) {
-        this.traitementClasseList = traitementClasseList;
-    }
-
-    public List<InfirmierClasse> getInfirmierList() {
-        return infirmierList;
-    }
-
-    public void setInfirmierList(List<InfirmierClasse> infirmierList) {
-        this.infirmierList = infirmierList;
-    }
 }

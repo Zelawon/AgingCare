@@ -17,12 +17,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeMaladie;
 import com.test.agingcarev01.FonctionsSurveillant.AffecteeInfirmiereResident;
 import com.test.agingcarev01.FonctionsSurveillant.ModifierInfoResident;
+import com.test.agingcarev01.FonctionsSurveillant.PoidsResidentGraph;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
     TextView nom,prenom,sexe,dateNaissance,typeSang;
     DatabaseReference databaseReference;
-    Button retourFrProfilResBT,modifierResProfilBT,maladieResProfilBT,infirmeirResProfilBT;
+    Button retourFrProfilResBT,modifierResProfilBT,maladieResProfilBT,
+            infirmeirResProfilBT,poidsResProfilBT;
     String key;
 
     @Override
@@ -38,6 +40,9 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
 
         retourFrProfilResBT=findViewById(R.id.retourFrProfilRes);
         retourFrProfilResBT.setOnClickListener(this);
+
+        poidsResProfilBT=findViewById(R.id.poidsResProfil);
+        poidsResProfilBT.setOnClickListener(this);
 
         infirmeirResProfilBT=findViewById(R.id.infirmeirResProfil);
         infirmeirResProfilBT.setOnClickListener(this);
@@ -97,6 +102,9 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         if (view.getId() == R.id.infirmeirResProfil) {
             startInfirmierActivity(key);
         }
+        if (view.getId() == R.id.poidsResProfil) {
+            startPoidsActivity(key);
+        }
     }
 
     private void startInfirmierActivity(String key) {
@@ -107,6 +115,11 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
 
     private void startMaladieActivity(String key) {
         Intent intent=new Intent(ConsulterProfilResident.this, ConsulterListeMaladie.class);
+        intent.putExtra("key", this.key);
+        startActivity(intent);
+    }
+    private void startPoidsActivity(String key) {
+        Intent intent=new Intent(ConsulterProfilResident.this, PoidsResidentGraph.class);
         intent.putExtra("key", this.key);
         startActivity(intent);
     }

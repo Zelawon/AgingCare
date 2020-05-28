@@ -15,36 +15,37 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.test.agingcarev01.R;
 
-public class AjouterMaladieDialog extends AppCompatDialogFragment {
-    private EditText nomMaladie;
-    private AjoutMaladieDialogListner listner;
+public class AjouterPoidsCibleDialog extends AppCompatDialogFragment {
+    private EditText modiPoidsCible;
+    private AjouterVideDialogListner listner;
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_ajout_maladie,null);
+        View view = inflater.inflate(R.layout.layout_ajout_poids_cible,null);
 
         builder.setView(view)
-                .setTitle("Ajouter Maladie")
+                .setTitle("Modifier Poids Ciblé")
                 .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
                 })
-                .setPositiveButton("Ajouter", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Modifier", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        final String nvNom = nomMaladie.getText().toString().toLowerCase();
+                        final String nvPoidsCible = modiPoidsCible.getText().toString().toLowerCase();
                         //verifier non vide
-                        if ( !(nvNom.isEmpty()) ){
-                            listner.applyNvNom(nvNom);
+                        if ( !(nvPoidsCible.isEmpty()) ){
+                            Float value=Float.valueOf(nvPoidsCible);
+                            listner.applyNvPoidsCible(value);
                         }
                     }
                 });
-        nomMaladie = view.findViewById(R.id.modifNom);
+        modiPoidsCible = view.findViewById(R.id.modifVide);
         return builder.create();
     }
 
@@ -53,13 +54,13 @@ public class AjouterMaladieDialog extends AppCompatDialogFragment {
         super.onAttach(context);
 
         try {
-            listner = (AjoutMaladieDialogListner) context;
+            listner = (AjouterVideDialogListner) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()+"ajouter ModifPrenomDialogListner");
+            throw new ClassCastException(context.toString()+"ajouter AjoutVideDialogListner");
         }
     }
 
-    public interface AjoutMaladieDialogListner {
-        void applyNvNom(String nom);
+    public interface AjouterVideDialogListner {
+        void applyNvPoidsCible(Float poidsCible);
     }
 }
