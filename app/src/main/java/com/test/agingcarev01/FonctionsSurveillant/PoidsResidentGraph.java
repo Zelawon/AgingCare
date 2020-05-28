@@ -94,7 +94,7 @@ public class PoidsResidentGraph extends AppCompatActivity implements View.OnClic
         poidsRes.setVisibility(View.INVISIBLE);
         poidsRes.setText("");
         DatePoids.setVisibility(View.INVISIBLE);
-        DatePoids.setText("JJ/MM/AAAA");
+        DatePoids.setText("AAAA/MM/JJ");
         date="";
         poidsChk="";
         textViewPoids.setVisibility(View.INVISIBLE);
@@ -194,8 +194,8 @@ public class PoidsResidentGraph extends AppCompatActivity implements View.OnClic
                         i++;
                         float y_points =poidsClasse.getPoidsRes();
                         dataVals.add(new Entry(x_points,y_points));
-                        String dateString = (poidsClasse.getDatePoidRes()).substring(5);
-                        xAxisLabel.add(dateString);
+//                        String dateString = (poidsClasse.getDatePoidRes()).substring(5);
+                        xAxisLabel.add(poidsClasse.getDatePoidRes());
                     }
 
                     d1 = new LineDataSet(dataVals, null);
@@ -226,8 +226,9 @@ public class PoidsResidentGraph extends AppCompatActivity implements View.OnClic
                     lineChart.getXAxis().setLabelCount(i,false);
                     lineChart.getXAxis().setGranularityEnabled(true);
                     lineChart.getXAxis().setGranularity(1.0f);
+                    lineChart.getXAxis().setTextSize(8);
                     lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-                    //lineChart.getXAxis().setLabelRotationAngle(90f);
+//                    lineChart.getXAxis().setLabelRotationAngle(90f);
                     lineChart.getDescription().setEnabled(false);
                     lineChart.getLegend().setEnabled(false);
                     lineChart.getAxisRight().setDrawLabels(true);
@@ -235,7 +236,7 @@ public class PoidsResidentGraph extends AppCompatActivity implements View.OnClic
                     lineChart.setGridBackgroundColor(R.color.colorGray);
                     lineChart.setBorderColor(Color.BLACK);
                     lineChart.setBorderWidth(10f);
-                    lineChart.getXAxis().setAvoidFirstLastClipping(true);
+//                    lineChart.getXAxis().setAvoidFirstLastClipping(true);
                     lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
 
                     // do not forget to refresh the chart
