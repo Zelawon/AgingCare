@@ -219,13 +219,4 @@
         app:layout_constraintStart_toEndOf="@+id/tauxGlycemiqueResProfil"
         app:layout_constraintTop_toTopOf="@+id/tauxGlycemiqueResProfil" />
 
-    <Button
-        android:id="@+id/bleutoothResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="bleutooth"
-        app:layout_constraintStart_toEndOf="@+id/rendezVousResProfil"
-        app:layout_constraintTop_toTopOf="@+id/rendezVousResProfil" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

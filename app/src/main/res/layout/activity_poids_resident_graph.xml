@@ -118,7 +118,7 @@
         android:layout_toEndOf="@+id/textViewPoids"
         android:ems="10"
         android:hint="Poids Resident (Kg)"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewPoids"
         app:layout_constraintStart_toEndOf="@+id/textViewPoids"

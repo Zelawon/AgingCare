@@ -3,6 +3,7 @@ package com.test.agingcarev01.FonctionsSurveillant;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AffecteeInfirmiereResident extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "AffecteeInfirmiereResid";
     private Button affecterNouveauInfirmierShowBT,retourFrAffecterInfBT,annulerAffectationBT;
     private RecyclerView recyclerViewInfAffecter,recyclerViewNouveauInfAffecter;
     private TextView nvInfAffecteeTextView;
@@ -150,12 +152,15 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String keyIdInf = "";
+                        Integer idInf = null;
                         for (DataSnapshot tierSnapshot: dataSnapshot.getChildren()){
                             if (tierSnapshot.getValue(Integer.class).equals(infID)){
                                 keyIdInf = tierSnapshot.getKey();
+                                idInf = tierSnapshot.getValue(Integer.class);
                             }
                         }
                         supprimerIdFromList(keyIdInf);
+                        supprimerIdFromInfirmier(idInf);
                     }
 
                     @Override
@@ -164,6 +169,65 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                     }
                 });
             }
+
+            private void supprimerIdFromInfirmier(Integer idInf) {
+                //get key de l'infirmier idInf
+                final DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
+                Query emailQuery = employeeRef.orderByChild("id").equalTo(idInf);
+                emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (final DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            final String keyInfDelete = dataSnapshot1.getKey();
+                            Log.e(TAG, "key Infirmier delete: "+keyInfDelete);
+                            //get id Resident
+                            final DatabaseReference myRef4 = FirebaseDatabase.getInstance().getReference()
+                                    .child("Resident").child(keyResident);
+                            myRef4.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    final int idResDelete = dataSnapshot.child("id").getValue(Integer.class);
+                                    Log.e(TAG, "id Res Resident Delete: "+ idResDelete);
+
+                                    final DatabaseReference myRef6 = employeeRef.child(keyInfDelete).child("idResidentAffecte");
+                                    myRef6.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            for (DataSnapshot tierSnapshot: dataSnapshot.getChildren()){
+                                                Integer keyValue = tierSnapshot.getValue(Integer.class);
+                                                Log.e(TAG, "Key values: "+keyValue);
+                                                Log.e(TAG, "idResDelete : "+ idResDelete);
+                                                if (keyValue.equals(idResDelete)){
+                                                    Log.e(TAG, "onDataChange: "+tierSnapshot.getKey() );
+                                                    deleteResFromInf(tierSnapshot.getKey());
+                                                }
+                                            }
+                                        }
+                                        private void deleteResFromInf(String key) {
+                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Employee")
+                                                    .child(keyInfDelete).child("idResidentAffecte").child(key);
+                                            databaseReference.removeValue();
+                                            Log.e(TAG, "delete??: " );
+                                        }
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                }
+                            });
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+            }
+            /////////////////////////4
 
             private void supprimerIdFromList(String keyIdInf) {
                 DatabaseReference delIdRef = FirebaseDatabase.getInstance().getReference()
@@ -227,15 +291,24 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 int idInf = model.getId();
+                String emailInf = model.getEmail();
                 InfirmierClasse nvInfirmierClasse = new InfirmierClasse(idInf,model.getEmail(),model.getNom(),model.getPrenom(),model.getSexe());
 
                 if (!(listeInfirmierAffecter.contains(idInf))){
-                    DatabaseReference myRefID = FirebaseDatabase.getInstance().getReference().child("Resident")
+
+                    //ajout de l'id de l'infirmier a la liste des id
+                    DatabaseReference myRef1 = FirebaseDatabase.getInstance().getReference().child("Resident")
                             .child(keyResident).child("infirmier").child("listID").push();
-                    myRefID.setValue(idInf);
-                    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident")
+                    myRef1.setValue(idInf);
+
+                    //ajout de l'objet infirmier au resident
+                    DatabaseReference myRef2 = FirebaseDatabase.getInstance().getReference().child("Resident")
                             .child(keyResident).child("infirmier").child("listeInfirmier").push();
-                    myRef.setValue(nvInfirmierClasse);
+                    myRef2.setValue(nvInfirmierClasse);
+
+                    //ajout de l'id du resident a l'infirmier
+                    AffecterResidentInfirmier(emailInf);
+
                     HideRecycleView();
                     Toast.makeText(AffecteeInfirmiereResident.this, "Affectation Réussite.", Toast.LENGTH_SHORT).show();
                 }else {
@@ -250,6 +323,35 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
             }
         });
         builder.create().show();
+    }
+
+    private void AffecterResidentInfirmier(String emailInf) {
+        //get key de l'infirmier idInf
+        final DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employee");
+        Query emailQuery = employeeRef.orderByChild("email").equalTo(emailInf);
+        emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (final DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    //get id Resident
+                    final DatabaseReference myRef4 = FirebaseDatabase.getInstance().getReference()
+                            .child("Resident").child(keyResident);
+                    myRef4.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            DatabaseReference myRef5 = employeeRef.child(dataSnapshot1.getKey()).child("idResidentAffecte").push();
+                            myRef5.setValue(dataSnapshot.child("id").getValue(Integer.class));
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     private void DejaAffecterDialog() {
