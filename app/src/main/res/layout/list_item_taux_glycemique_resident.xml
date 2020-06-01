@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/poidsItemDate"
+        android:id="@+id/tauxGlyceItemDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -32,11 +32,11 @@
         app:layout_constraintTop_toTopOf="@+id/textView44" />
 
     <TextView
-        android:id="@+id/poidsItemPoids"
+        android:id="@+id/meureItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="poids"
+        android:text=""
         android:textColor="@color/colorBlack"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView13"
@@ -44,11 +44,22 @@
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
     <TextView
+        android:id="@+id/tauxGlycemiqueItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView45"
+        app:layout_constraintStart_toEndOf="@+id/textView45"
+        app:layout_constraintTop_toTopOf="@+id/textView45" />
+
+    <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Poids:"
+        android:layout_marginTop="30dp"
+        android:text="Mesuré:"
         android:textColor="@color/colorBlack"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/survItemNom"
@@ -56,8 +67,19 @@
         app:layout_constraintStart_toStartOf="@+id/textView44"
         app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Taux Glycemique (mmol/L):"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textView44"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
     <ImageView
-        android:id="@+id/poidsItemArchiver"
+        android:id="@+id/tauxItemArchiver"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="15dp"
@@ -80,10 +102,11 @@
         android:textSize="16dp" />
 
     <TextView
-        android:id="@+id/poidsItemNote"
+        android:id="@+id/tauxItemNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:text="(aucune notes)"
         android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintStart_toEndOf="@+id/textView14"

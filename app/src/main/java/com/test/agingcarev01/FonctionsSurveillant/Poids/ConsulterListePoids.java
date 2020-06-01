@@ -111,6 +111,5 @@ public class ConsulterListePoids extends AppCompatActivity implements View.OnCli
         if (view.getId() == R.id.retourFrConsulPoids){
             finish();
         }
-
     }
 }

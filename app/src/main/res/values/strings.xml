@@ -15,4 +15,16 @@
         <item>Taux Glycémique</item>
         <item>Tension Artérielle</item>
     </string-array>
+    <string-array name="mesureTauxGlycemiqueArray">
+        <item>Avant le petit déjeuner</item>
+        <item>Après le petit déjeuner</item>
+        <item>Avant le déjeuner</item>
+        <item>Après le déjeuner</item>
+        <item>Avant le dîner</item>
+        <item>Après le dîner</item>
+        <item>Avant de dormir</item>
+        <item>Après le sommeil</item>
+        <item>Jeûne</item>
+        <item>Autre</item>
+    </string-array>
 </resources>

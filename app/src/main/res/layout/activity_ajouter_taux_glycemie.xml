@@ -6,4 +6,129 @@
     android:layout_height="match_parent"
     tools:context=".FonctionsSurveillant.TauxGlycemie.AjouterTauxGlycemie">
 
+    <Button
+        android:id="@+id/ajouterTauxGlyce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Ajouter Taux Glycemique"
+        app:layout_constraintBottom_toTopOf="@+id/retourFrTauxGlycemique"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/retourFrTauxGlycemique"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Retour"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Notes"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/spinnerMesureTauxGlyce"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMesureTauxGlyce" />
+
+    <EditText
+        android:id="@+id/noteTauxGlyce"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="Ajouter vos notes ici."
+        android:inputType="textPersonName"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView49"
+        app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+    <TextView
+        android:id="@+id/textViewDatePoids3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="20dp"
+        android:text="Date de prise du taux glycemique :"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tauxGlyceRes"
+        app:layout_constraintTop_toBottomOf="@+id/tauxGlyceRes" />
+
+    <TextView
+        android:id="@+id/dateTauxGlyce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="10dp"
+        android:text="AAAA/MM/JJ"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDatePoids3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDatePoids3" />
+
+    <EditText
+        android:id="@+id/tauxGlyceRes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewPoids"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/textViewPoids"
+        android:ems="10"
+        android:hint="(exemple: 0.72)"
+        android:inputType="numberDecimal"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewPoids3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPoids3" />
+
+    <TextView
+        android:id="@+id/textViewPoids3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Taux Glycemique (mmol/L)"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Taux Glycemique du Résident"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Mesuré"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/dateTauxGlyce"
+        app:layout_constraintTop_toBottomOf="@+id/dateTauxGlyce" />
+
+    <Spinner
+        android:id="@+id/spinnerMesureTauxGlyce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/textView48"
+        app:layout_constraintTop_toBottomOf="@+id/textView48" />
 </androidx.constraintlayout.widget.ConstraintLayout>

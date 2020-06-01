@@ -28,13 +28,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.PoidsClasse;
+import com.test.agingcarev01.Classe.TauxGlycemiqueClasse;
 import com.test.agingcarev01.FonctionsSurveillant.Poids.AjouterPoidsCibleDialog;
+import com.test.agingcarev01.FonctionsSurveillant.TauxGlycemie.AjouterTauxGlycemiqueCibleDialog;
 import com.test.agingcarev01.R;
 
 import java.util.ArrayList;
 
 public class ConsulterStatistiqueResident extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener,
-        AjouterPoidsCibleDialog.AjouterVideDialogListner{
+        AjouterPoidsCibleDialog.AjouterVideDialogListner, AjouterTauxGlycemiqueCibleDialog.AjouterTauxGlycemiqueDialogListner {
     private TextView cibleStatResNbr,cibleStatResNom;
     private ImageView ajouterFrStatRes,modifCibleRes;
     private static final String TAG = "ConsulterStatistiqueResident";
@@ -103,7 +105,15 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                 break;
             case 1:
                 cibleStatResNom.setText("Taux Glycémique");
-//                databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemique");
+                retrieveTauxGlycemiqueAndShowChart();
+                loadTauxGlycemiqueCible();
+                modifCibleRes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AjouterTauxGlycemiqueCibleDialog ajouterTauxGlycemiqueCibleDialog = new AjouterTauxGlycemiqueCibleDialog();
+                        ajouterTauxGlycemiqueCibleDialog.show(getSupportFragmentManager(),"Nouveau Taux Glycemique Ciblé");
+                    }
+                });
                 break;
             case 2:
                 cibleStatResNom.setText("Tension Artérielle");
@@ -179,6 +189,68 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
             }
         });
     }
+    private void retrieveTauxGlycemiqueAndShowChart() {
+        //No Chart Data Text
+        lineChart.setNoDataText("Graphe non disponible, veuillez entrer plus de données de taux glycemique");
+        lineChart.setNoDataTextColor(Color.RED);
+
+        Query query = databaseReference.child("tauxGlycemique").orderByChild("dateTauxGlyceRes");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<Entry> dataVals = new ArrayList<Entry>();
+                ArrayList xAxisLabel = new ArrayList<>();
+                LineDataSet d1;
+                int i=0;
+                if (dataSnapshot.hasChildren()){
+                    for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()){
+                        TauxGlycemiqueClasse tauxGlycemiqueClasse =myDataSnapshot.getValue(TauxGlycemiqueClasse.class);
+                        float x_points = i;
+                        i++;
+                        float y_points = tauxGlycemiqueClasse.getTauxGlyceRes();
+                        dataVals.add(new Entry(x_points,y_points));
+                        //String dateString = (poidsClasse.getDatePoidRes()).substring(5);
+                        xAxisLabel.add(tauxGlycemiqueClasse.getDateTauxGlyceRes());
+                    }
+                    d1 = new LineDataSet(dataVals, null);
+
+                    chartCustomization(d1);
+
+                    LineData lineData = new LineData(d1);
+                    lineChart.setData(lineData);
+                    lineChart.setVisibleXRangeMaximum(5);
+                    lineChart.setDragEnabled(true);
+                    lineChart.setScaleEnabled(false);
+                    lineChart.getXAxis().setLabelCount(i,false);
+                    lineChart.getXAxis().setGranularityEnabled(true);
+                    lineChart.getXAxis().setGranularity(1.0f);
+                    lineChart.getXAxis().setTextSize(8);
+                    lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+                    //lineChart.getXAxis().setLabelRotationAngle(90f);
+                    lineChart.getDescription().setEnabled(false);
+                    lineChart.getLegend().setEnabled(false);
+                    lineChart.getAxisRight().setDrawLabels(true);
+                    lineChart.setBackgroundColor(Color.WHITE);
+                    lineChart.setGridBackgroundColor(R.color.colorGray);
+                    lineChart.setBorderColor(Color.BLACK);
+                    lineChart.setBorderWidth(10f);
+//                    lineChart.getXAxis().setAvoidFirstLastClipping(true);
+                    lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
+
+                    // do not forget to refresh the chart
+                    lineChart.invalidate();
+                    //lineChart.animateX(750);
+                }else {
+                    lineChart.clear();
+                    lineChart.invalidate();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     private void chartCustomization(LineDataSet d1) {
         //Chart Lines Custumization
@@ -202,9 +274,9 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
     }
 
     @Override
-    public void applyNvPoidsCible(Float poidsCible) {
-        FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poidsCible").setValue(poidsCible);
-        loadPoidCible();
+    public void applyNvTauxGlycemiqueCible(Float tauxCible) {
+        FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemiqueCible").setValue(tauxCible);
+        loadTauxGlycemiqueCible();
     }
     private void loadPoidCible() {
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poidsCible");
@@ -238,5 +310,45 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
 
             }
         });
+    }
+
+    private void loadTauxGlycemiqueCible() {
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemiqueCible");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Float tauxCible = dataSnapshot.getValue(Float.class);
+                if (tauxCible>0) {
+                    cibleStatResNbr.setText(String.valueOf(tauxCible));
+                    cibleStatResNbr.setTextColor(Color.BLACK);
+                    //initialize Lower Limit
+                    LimitLine lower_limit = new LimitLine(tauxCible,"Taux Glycemique Ciblé");
+                    lower_limit.setLineWidth(2f);
+                    lower_limit.enableDashedLine(10f,10f,0);
+                    lower_limit.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_TOP);
+                    lower_limit.setTextSize(5f);
+                    lower_limit.setTextColor(Color.RED);
+
+                    //Add Limits
+                    YAxis leftAxs = lineChart.getAxisLeft();
+                    leftAxs.removeAllLimitLines();
+                    leftAxs.addLimitLine(lower_limit);
+                    leftAxs.setDrawLimitLinesBehindData(true);
+                }else {
+                    cibleStatResNbr.setText("pas encore spécifié");
+                    cibleStatResNbr.setTextColor(Color.RED);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
+    public void applyNvPoidsCible(Float poidsCible) {
+        FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poidsCible").setValue(poidsCible);
+        loadPoidCible();
     }
 }
