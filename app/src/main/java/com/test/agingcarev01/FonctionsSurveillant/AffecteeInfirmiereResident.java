@@ -25,8 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.InfirmierClasse;
-import com.test.agingcarev01.ConsulterListes.Adapters.InfirmierAffecteeAjouterAdapter;
-import com.test.agingcarev01.ConsulterListes.Adapters.InfirmierAffecteeSupprimerListViewHolder;
+import com.test.agingcarev01.FonctionsSurveillant.Adapters.InfirmierAffecteeAjouterAdapter;
+import com.test.agingcarev01.FonctionsSurveillant.Adapters.InfirmierAffecteeSupprimerListViewHolder;
 import com.test.agingcarev01.R;
 
 import java.util.ArrayList;

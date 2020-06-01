@@ -14,10 +14,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeMaladie;
+import com.test.agingcarev01.FonctionsSurveillant.ConsulterListeMaladie;
 import com.test.agingcarev01.FonctionsSurveillant.AffecteeInfirmiereResident;
+import com.test.agingcarev01.FonctionsSurveillant.AjouterPoidsResidentGraph;
 import com.test.agingcarev01.FonctionsSurveillant.ModifierInfoResident;
-import com.test.agingcarev01.FonctionsSurveillant.PoidsResidentGraph;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
@@ -119,7 +119,7 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         startActivity(intent);
     }
     private void startPoidsActivity(String key) {
-        Intent intent=new Intent(ConsulterProfilResident.this, PoidsResidentGraph.class);
+        Intent intent=new Intent(ConsulterProfilResident.this, AjouterPoidsResidentGraph.class);
         intent.putExtra("key", this.key);
         startActivity(intent);
     }

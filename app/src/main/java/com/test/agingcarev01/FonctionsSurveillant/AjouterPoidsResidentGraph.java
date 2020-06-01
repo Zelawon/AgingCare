@@ -28,12 +28,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.PoidsClasse;
+import com.test.agingcarev01.FonctionsSurveillant.Dialogs.AjouterPoidsCibleDialog;
 import com.test.agingcarev01.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class PoidsResidentGraph extends AppCompatActivity implements View.OnClickListener,
+public class AjouterPoidsResidentGraph extends AppCompatActivity implements View.OnClickListener,
         AjouterPoidsCibleDialog.AjouterVideDialogListner, DatePickerDialog.OnDateSetListener{
 
     private TextView poidResCible,poidsRes,textViewPoids,textViewDatePoids,DatePoids;
@@ -50,7 +51,7 @@ public class PoidsResidentGraph extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_poids_resident_graph);
+        setContentView(R.layout.activity_ajouter_poids_resident_graph);
 
         poidResCible=findViewById(R.id.poidResCible);
         poidsRes=findViewById(R.id.poidsRes);
@@ -144,7 +145,7 @@ public class PoidsResidentGraph extends AppCompatActivity implements View.OnClic
 
     private void showDatePickerDailog(){
         DatePickerDialog datePickerDialog =new DatePickerDialog(
-                PoidsResidentGraph.this,
+                AjouterPoidsResidentGraph.this,
                 this,
                 Calendar.getInstance().get(Calendar.YEAR),
                 Calendar.getInstance().get(Calendar.MONTH),
@@ -156,13 +157,13 @@ public class PoidsResidentGraph extends AppCompatActivity implements View.OnClic
     private void AjouterPoids() {
         poidsChk = poidsRes.getText().toString();
         if (poidsChk.isEmpty()) {
-            Toast.makeText(PoidsResidentGraph.this, "Champ Poids Vide", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AjouterPoidsResidentGraph.this, "Champ Poids Vide", Toast.LENGTH_SHORT).show();
         }else if (date.isEmpty()) {
-            Toast.makeText(PoidsResidentGraph.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AjouterPoidsResidentGraph.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
         }  else{
             Float poids=Float.valueOf(poidsRes.getText().toString());
             if ( poids<=0) {
-                Toast.makeText(PoidsResidentGraph.this, "Poids doit être supérieur à 0", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AjouterPoidsResidentGraph.this, "Poids doit être supérieur à 0", Toast.LENGTH_SHORT).show();
             }else if ( poids>0 ) {
                 PoidsClasse poidsClasse = new PoidsClasse(poids, date);
                 DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poids").push();

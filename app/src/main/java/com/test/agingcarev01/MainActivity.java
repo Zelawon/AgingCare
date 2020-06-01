@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             finish();
         }
         if(view.getId()==R.id.testCompActive){
-//            startActivity(new Intent(MainActivity.this, PoidsResidentGraph.class));
+//            startActivity(new Intent(MainActivity.this, AjouterPoidsResidentGraph.class));
         }
     }
 }

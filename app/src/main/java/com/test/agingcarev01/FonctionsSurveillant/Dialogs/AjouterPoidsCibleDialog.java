@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsSurveillant;
+package com.test.agingcarev01.FonctionsSurveillant.Dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

@@ -1,4 +1,4 @@
-package com.test.agingcarev01.ConsulterListes.Activities;
+package com.test.agingcarev01.FonctionsSurveillant;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -18,8 +18,8 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.test.agingcarev01.Classe.MaladieClasse;
-import com.test.agingcarev01.ConsulterListes.Adapters.MaladieListViewHolder;
-import com.test.agingcarev01.FonctionsSurveillant.AjouterMaladieDialog;
+import com.test.agingcarev01.FonctionsSurveillant.Adapters.MaladieListViewHolder;
+import com.test.agingcarev01.FonctionsSurveillant.Dialogs.AjouterMaladieDialog;
 import com.test.agingcarev01.R;
 
 public class ConsulterListeMaladie extends AppCompatActivity implements View.OnClickListener, AjouterMaladieDialog.AjoutMaladieDialogListner {

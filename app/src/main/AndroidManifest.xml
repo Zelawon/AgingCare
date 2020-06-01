@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FonctionsSurveillant.PoidsResidentGraph"></activity>
+        <activity android:name=".FonctionsSurveillant.AjouterTauxGlycemie"></activity>
+        <activity android:name=".FonctionsSurveillant.AjouterPoidsResidentGraph" />
         <activity android:name=".FonctionsSurveillant.AffecteeInfirmiereResident" />
         <activity android:name=".FonctionsProfil.ConsulterProfilEmployee" />
-        <activity android:name=".ConsulterListes.Activities.ConsulterListeMaladie" />
+        <activity android:name=".FonctionsSurveillant.ConsulterListeMaladie" />
         <activity android:name=".FonctionsSurveillant.ModifierInfoResident" />
         <activity android:name=".FonctionsProfil.ConsulterProfilResident" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeDirecteur" />
