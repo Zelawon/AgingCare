@@ -14,17 +14,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.FonctionsSurveillant.ConsulterListeMaladie;
-import com.test.agingcarev01.FonctionsSurveillant.AffecteeInfirmiereResident;
-import com.test.agingcarev01.FonctionsSurveillant.AjouterPoidsResidentGraph;
+import com.test.agingcarev01.FonctionsSurveillant.AffecterInfirmier.AffecteeInfirmiereResident;
+import com.test.agingcarev01.FonctionsSurveillant.ConsulterStatistiqueResident;
+import com.test.agingcarev01.FonctionsSurveillant.Maladie.ConsulterListeMaladie;
 import com.test.agingcarev01.FonctionsSurveillant.ModifierInfoResident;
+import com.test.agingcarev01.FonctionsSurveillant.Poids.ConsulterListePoids;
+import com.test.agingcarev01.FonctionsSurveillant.TauxGlycemie.ConsulterListeTauxGlycemique;
+import com.test.agingcarev01.FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
     TextView nom,prenom,sexe,dateNaissance,typeSang;
     DatabaseReference databaseReference;
     Button retourFrProfilResBT,modifierResProfilBT,maladieResProfilBT,
-            infirmeirResProfilBT,poidsResProfilBT;
+            infirmeirResProfilBT,poidsResProfilBT,statestiqueResProfilBT,
+            tauxGlycemiqueResProfil,tensionArterielleResProfil,rendezVousResProfil,
+            traitementResProfil;
     String key;
 
     @Override
@@ -41,6 +46,9 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         retourFrProfilResBT=findViewById(R.id.retourFrProfilRes);
         retourFrProfilResBT.setOnClickListener(this);
 
+        statestiqueResProfilBT=findViewById(R.id.statestiqueResProfil);
+        statestiqueResProfilBT.setOnClickListener(this);
+
         poidsResProfilBT=findViewById(R.id.poidsResProfil);
         poidsResProfilBT.setOnClickListener(this);
 
@@ -52,6 +60,12 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
 
         modifierResProfilBT=findViewById(R.id.modifierResProfil);
         modifierResProfilBT.setOnClickListener(this);
+
+        tauxGlycemiqueResProfil = findViewById(R.id.tauxGlycemiqueResProfil);
+        tauxGlycemiqueResProfil.setOnClickListener(this);
+
+        tensionArterielleResProfil = findViewById(R.id.tensionArterielleResProfil);
+        tensionArterielleResProfil.setOnClickListener(this);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident");
         key=getIntent().getStringExtra("id");
@@ -93,8 +107,17 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         if (view.getId() == R.id.retourFrProfilRes) {
             finish();
         }
+        if (view.getId() == R.id.tensionArterielleResProfil) {
+            startTensionArterielleProfilActivity(key);
+        }
+        if (view.getId() == R.id.tauxGlycemiqueResProfil) {
+            startTauxGlycemiqueActivity(key);
+        }
         if (view.getId() == R.id.modifierResProfil) {
             startModifProfilActivity(key);
+        }
+        if (view.getId() == R.id.statestiqueResProfil) {
+            startStatistiqueActivity(key);
         }
         if (view.getId() == R.id.maladieResProfil) {
             startMaladieActivity(key);
@@ -105,6 +128,24 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         if (view.getId() == R.id.poidsResProfil) {
             startPoidsActivity(key);
         }
+    }
+
+    private void startTensionArterielleProfilActivity(String key) {
+        Intent intent=new Intent(ConsulterProfilResident.this, ConsulterListeTensionArterielle.class);
+        intent.putExtra("key", this.key);
+        startActivity(intent);
+    }
+
+    private void startTauxGlycemiqueActivity(String key) {
+        Intent intent=new Intent(ConsulterProfilResident.this, ConsulterListeTauxGlycemique.class);
+        intent.putExtra("key", this.key);
+        startActivity(intent);
+    }
+
+    private void startStatistiqueActivity(String key) {
+        Intent intent=new Intent(ConsulterProfilResident.this, ConsulterStatistiqueResident.class);
+        intent.putExtra("key", this.key);
+        startActivity(intent);
     }
 
     private void startInfirmierActivity(String key) {
@@ -119,7 +160,7 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         startActivity(intent);
     }
     private void startPoidsActivity(String key) {
-        Intent intent=new Intent(ConsulterProfilResident.this, AjouterPoidsResidentGraph.class);
+        Intent intent=new Intent(ConsulterProfilResident.this, ConsulterListePoids.class);
         intent.putExtra("key", this.key);
         startActivity(intent);
     }

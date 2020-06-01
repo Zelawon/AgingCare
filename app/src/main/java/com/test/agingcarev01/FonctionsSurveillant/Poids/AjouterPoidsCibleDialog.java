@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsSurveillant.Dialogs;
+package com.test.agingcarev01.FonctionsSurveillant.Poids;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

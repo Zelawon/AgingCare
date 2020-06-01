@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsSurveillant;
+package com.test.agingcarev01.FonctionsSurveillant.AffecterInfirmier;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -25,8 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.InfirmierClasse;
-import com.test.agingcarev01.FonctionsSurveillant.Adapters.InfirmierAffecteeAjouterAdapter;
-import com.test.agingcarev01.FonctionsSurveillant.Adapters.InfirmierAffecteeSupprimerListViewHolder;
 import com.test.agingcarev01.R;
 
 import java.util.ArrayList;

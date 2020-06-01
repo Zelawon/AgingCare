@@ -10,4 +10,9 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+    <string-array name="typeGraphe">
+        <item>Poids</item>
+        <item>Taux Glycémique</item>
+        <item>Tension Artérielle</item>
+    </string-array>
 </resources>

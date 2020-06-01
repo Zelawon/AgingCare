@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsSurveillant.Adapters;
+package com.test.agingcarev01.FonctionsSurveillant.Maladie;
 
 import android.view.View;
 import android.widget.ImageView;

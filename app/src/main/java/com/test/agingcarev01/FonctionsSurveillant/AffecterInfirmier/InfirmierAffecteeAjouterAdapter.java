@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsSurveillant.Adapters;
+package com.test.agingcarev01.FonctionsSurveillant.AffecterInfirmier;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
