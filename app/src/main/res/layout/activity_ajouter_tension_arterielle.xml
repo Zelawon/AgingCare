@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FonctionsSurveillant.TensionArterielle.AjouterTensionArterielle">
+
+    <Button
+        android:id="@+id/ajouterTensionArterielle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Ajouter Tension Arterielle"
+        app:layout_constraintBottom_toTopOf="@+id/retourFrTensionArterielle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/retourFrTensionArterielle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Retour"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView54"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Notes"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/spinnerBrasMesure"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBrasMesure" />
+
+    <EditText
+        android:id="@+id/noteTensionArterielle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="Ajouter vos notes ici."
+        android:inputType="textPersonName"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView54"
+        app:layout_constraintTop_toBottomOf="@+id/textView54" />
+
+    <TextView
+        android:id="@+id/textViewDatePoids2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="20dp"
+        android:text="Date"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/pressDiastolique"
+        app:layout_constraintTop_toBottomOf="@+id/pressDiastolique" />
+
+    <TextView
+        android:id="@+id/dateTensionArterielle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="10dp"
+        android:text="AAAA/MM/JJ"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDatePoids2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDatePoids2" />
+
+    <TextView
+        android:id="@+id/textView53"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Bras Mesuré"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/dateTensionArterielle"
+        app:layout_constraintTop_toBottomOf="@+id/dateTensionArterielle" />
+
+    <Spinner
+        android:id="@+id/spinnerBrasMesure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/textView53"
+        app:layout_constraintTop_toBottomOf="@+id/textView53" />
+
+    <EditText
+        android:id="@+id/pressDiastolique"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewPoids"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/textViewPoids"
+        android:ems="10"
+        android:hint="(exemple: 90)"
+        android:inputType="numberDecimal"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewPoids4"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPoids4" />
+
+    <TextView
+        android:id="@+id/textViewPoids4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="Pression Diastolique (mmHg)"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/pressSystolique"
+        app:layout_constraintTop_toBottomOf="@+id/pressSystolique" />
+
+    <TextView
+        android:id="@+id/textViewPoids2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Pression Systolique (mmHg)"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView46" />
+
+    <EditText
+        android:id="@+id/pressSystolique"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewPoids"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/textViewPoids"
+        android:ems="10"
+        android:hint="(exemple: 140)"
+        android:inputType="numberDecimal"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewPoids2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPoids2" />
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Tension Arterielle du Résident"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

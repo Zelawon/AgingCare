@@ -27,4 +27,8 @@
         <item>Jeûne</item>
         <item>Autre</item>
     </string-array>
+    <string-array name="BrasMesure">
+        <item>Droite</item>
+        <item>Gauche</item>
+    </string-array>
 </resources>

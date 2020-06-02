@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle"></activity>
+        <activity android:name=".FonctionsSurveillant.TensionArterielle.AjouterTensionArterielle"></activity>
+        <activity android:name=".FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle" />
         <activity android:name=".FonctionsSurveillant.TauxGlycemie.ConsulterListeTauxGlycemique" />
         <activity android:name=".FonctionsSurveillant.Poids.ConsulterListePoids" />
         <activity android:name=".FonctionsSurveillant.ConsulterStatistiqueResident" />

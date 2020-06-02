@@ -10,7 +10,8 @@ public class ResidentClasse {
     private String dateNaissanceRes;
     private Float poidsCible;
     private Float tauxGlycemiqueCible;
-    private Float tensionArterielleCible;
+    private Float pressionDiastoliqueCible;
+    private Float pressionSystoliqueCible;
     //status
     private int statutArchivage;
 
@@ -27,7 +28,24 @@ public class ResidentClasse {
         this.statutArchivage = 0;
         this.poidsCible = 0f;
         this.tauxGlycemiqueCible=0f;
-        this.tensionArterielleCible=0f;
+        this.pressionDiastoliqueCible=0f;
+        this.pressionSystoliqueCible=0f;
+    }
+
+    public Float getPressionDiastoliqueCible() {
+        return pressionDiastoliqueCible;
+    }
+
+    public void setPressionDiastoliqueCible(Float pressionDiastoliqueCible) {
+        this.pressionDiastoliqueCible = pressionDiastoliqueCible;
+    }
+
+    public Float getPressionSystoliqueCible() {
+        return pressionSystoliqueCible;
+    }
+
+    public void setPressionSystoliqueCible(Float pressionSystoliqueCible) {
+        this.pressionSystoliqueCible = pressionSystoliqueCible;
     }
 
     public Float getPoidsCible() {
@@ -46,13 +64,6 @@ public class ResidentClasse {
         this.tauxGlycemiqueCible = tauxGlycemiqueCible;
     }
 
-    public Float getTensionArterielleCible() {
-        return tensionArterielleCible;
-    }
-
-    public void setTensionArterielleCible(Float tensionArterielleCible) {
-        this.tensionArterielleCible = tensionArterielleCible;
-    }
 
     public int getStatutArchivage() {
         return statutArchivage;

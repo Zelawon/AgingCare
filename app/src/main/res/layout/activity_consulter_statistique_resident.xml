@@ -6,6 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".FonctionsSurveillant.ConsulterStatistiqueResident">
 
+    <TextView
+        android:id="@+id/cibleStatResNom2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nomCible"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cibleText"
+        app:layout_constraintStart_toEndOf="@+id/cibleText"
+        app:layout_constraintTop_toTopOf="@+id/cibleText" />
+
+    <TextView
+        android:id="@+id/cibleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Cible "
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/lineChartStatistique"
+        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChartStatistique"
         android:layout_width="0dp"
@@ -62,7 +82,7 @@
         android:id="@+id/retourFrStatRes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:text="Retour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,6 +118,17 @@
         app:layout_constraintTop_toTopOf="@+id/cibleStatResNbr"
         app:srcCompat="@drawable/ic_edit" />
 
+    <ImageView
+        android:id="@+id/modifCibleRes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cibleStatResNbr2"
+        app:layout_constraintStart_toEndOf="@+id/cibleStatResNbr2"
+        app:layout_constraintTop_toTopOf="@+id/cibleStatResNbr2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_edit" />
+
     <TextView
         android:id="@+id/textView43"
         android:layout_width="wrap_content"
@@ -109,6 +140,16 @@
         app:layout_constraintTop_toTopOf="@+id/cibleStatResNom" />
 
     <TextView
+        android:id="@+id/cibleText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" : "
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cibleStatResNom2"
+        app:layout_constraintStart_toEndOf="@+id/cibleStatResNom2"
+        app:layout_constraintTop_toTopOf="@+id/cibleStatResNom2" />
+
+    <TextView
         android:id="@+id/cibleStatResNbr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,6 +157,16 @@
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/textView43"
         app:layout_constraintTop_toTopOf="@+id/textView43" />
+
+    <TextView
+        android:id="@+id/cibleStatResNbr2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cibleNbr"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cibleText2"
+        app:layout_constraintStart_toEndOf="@+id/cibleText2"
+        app:layout_constraintTop_toTopOf="@+id/cibleStatResNom2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

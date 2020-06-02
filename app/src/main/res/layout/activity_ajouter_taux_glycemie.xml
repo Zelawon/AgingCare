@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/poidsRes"
         android:layout_marginTop="20dp"
-        android:text="Date de prise du taux glycemique :"
+        android:text="Date"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tauxGlyceRes"
         app:layout_constraintTop_toBottomOf="@+id/tauxGlyceRes" />
