@@ -181,51 +181,32 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                         for (final DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             final String keyInfDelete = dataSnapshot1.getKey();
                             Log.e(TAG, "key Infirmier delete: "+keyInfDelete);
-                            //get id Resident
-                            final DatabaseReference myRef4 = FirebaseDatabase.getInstance().getReference()
-                                    .child("Resident").child(keyResident);
-                            myRef4.addListenerForSingleValueEvent(new ValueEventListener() {
+                            Log.e(TAG, "key Resident delete:: "+ keyResident);
+                            final DatabaseReference myRef6 = employeeRef.child(keyInfDelete).child("idResidentAffecte");
+                            myRef6.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    final int idResDelete = dataSnapshot.child("id").getValue(Integer.class);
-                                    Log.e(TAG, "id Res Resident Delete: "+ idResDelete);
-
-                                    final DatabaseReference myRef6 = employeeRef.child(keyInfDelete).child("idResidentAffecte");
-                                    myRef6.addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            for (DataSnapshot tierSnapshot: dataSnapshot.getChildren()){
-                                                Integer keyValue = tierSnapshot.getValue(Integer.class);
-                                                Log.e(TAG, "Key values: "+keyValue);
-                                                Log.e(TAG, "idResDelete : "+ idResDelete);
-                                                if (keyValue.equals(idResDelete)){
-                                                    Log.e(TAG, "onDataChange: "+tierSnapshot.getKey() );
-                                                    deleteResFromInf(tierSnapshot.getKey());
-                                                }
-                                            }
+                                    for (DataSnapshot tierSnapshot: dataSnapshot.getChildren()){
+                                        String CurrentValue = tierSnapshot.getValue(String.class);
+                                        Log.e(TAG, "onDataChange: "+CurrentValue );
+                                        if (CurrentValue.equals(keyResident)){
+                                            deleteResFromInf(tierSnapshot.getKey());
                                         }
-                                        private void deleteResFromInf(String key) {
-                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Employee")
-                                                    .child(keyInfDelete).child("idResidentAffecte").child(key);
-                                            databaseReference.removeValue();
-                                            Log.e(TAG, "delete??: " );
-                                        }
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                        }
-                                    });
-
+                                    }
+                                }
+                                private void deleteResFromInf(String key) {
+                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Employee")
+                                            .child(keyInfDelete).child("idResidentAffecte").child(key);
+                                    databaseReference.removeValue();
+                                    Log.e(TAG, "Deleted !" );
                                 }
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                }
+                                public void onCancelled(@NonNull DatabaseError databaseError) {}
                             });
                         }
                     }
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
+                    public void onCancelled(@NonNull DatabaseError databaseError) {}
                 });
             }
 
@@ -242,7 +223,6 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
             }
         });
         builder.create().show();
-
     }
 
 
@@ -334,7 +314,8 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             DatabaseReference myRef5 = employeeRef.child(dataSnapshot1.getKey()).child("idResidentAffecte").push();
-                            myRef5.setValue(dataSnapshot.child("id").getValue(Integer.class));
+//                            myRef5.setValue(dataSnapshot.child("id").getValue(Integer.class));// set value id du resident
+                            myRef5.setValue(dataSnapshot.getKey());//set value key du resident (mieux)
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
