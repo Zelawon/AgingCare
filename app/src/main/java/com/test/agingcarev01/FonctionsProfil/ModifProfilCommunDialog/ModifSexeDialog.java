@@ -26,7 +26,7 @@ public class ModifSexeDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_modif_sexe,null);
+        View view = inflater.inflate(R.layout.layout_modif_sexe, null);
 
         builder.setView(view)
                 .setTitle("Modifier Sexe")
@@ -39,10 +39,10 @@ public class ModifSexeDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Modifier", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (modifRadioHomme.isChecked()){
+                        if (modifRadioHomme.isChecked()) {
                             final String nvSexe = "homme";
                             listner.applyNvSexe(nvSexe);
-                        }else if (modifRadioFemme.isChecked()){
+                        } else if (modifRadioFemme.isChecked()) {
                             final String nvSexe = "femme";
                             listner.applyNvSexe(nvSexe);
                         }
@@ -60,7 +60,7 @@ public class ModifSexeDialog extends AppCompatDialogFragment {
         try {
             listner = (ModifSexeDialogListner) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()+"ajouter ModifSexeDialogListner");
+            throw new ClassCastException(context.toString() + "ajouter ModifSexeDialogListner");
         }
     }
 

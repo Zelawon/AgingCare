@@ -27,8 +27,8 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeInfirmier extends AppCompatActivity implements View.OnClickListener {
 
-    private Button retourFrConsulInfBT,creeNvCompteInfirmierBT;
-    private DatabaseReference databaseReference ;
+    private Button retourFrConsulInfBT, creeNvCompteInfirmierBT;
+    private DatabaseReference databaseReference;
 
     private FirebaseRecyclerOptions<InfirmierClasse> options;
     private FirebaseRecyclerAdapter<InfirmierClasse, InfirmierListViewHolder> adapter;
@@ -40,9 +40,9 @@ public class ConsulterListeInfirmier extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_liste_infirmier);
 
-        retourFrConsulInfBT=findViewById(R.id.retourFrConsulInf);
+        retourFrConsulInfBT = findViewById(R.id.retourFrConsulInf);
         retourFrConsulInfBT.setOnClickListener(this);
-        creeNvCompteInfirmierBT=findViewById(R.id.creeNvCompteInfirmier);
+        creeNvCompteInfirmierBT = findViewById(R.id.creeNvCompteInfirmier);
         creeNvCompteInfirmierBT.setOnClickListener(this);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Employee");
@@ -52,8 +52,8 @@ public class ConsulterListeInfirmier extends AppCompatActivity implements View.O
         recyclerView = findViewById(R.id.recyclerViewListeInfirmier);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        options=new FirebaseRecyclerOptions.Builder<InfirmierClasse>().setQuery(roleEtStatutQuery,InfirmierClasse.class).build();
-        adapter=new FirebaseRecyclerAdapter<InfirmierClasse, InfirmierListViewHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<InfirmierClasse>().setQuery(roleEtStatutQuery, InfirmierClasse.class).build();
+        adapter = new FirebaseRecyclerAdapter<InfirmierClasse, InfirmierListViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull InfirmierListViewHolder holder, int position, @NonNull InfirmierClasse model) {
                 final String emailKey = model.getEmail();
@@ -61,15 +61,15 @@ public class ConsulterListeInfirmier extends AppCompatActivity implements View.O
                 holder.InfItemModifier.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent=new Intent(ConsulterListeInfirmier.this, ConsulterProfilEmployee.class);
-                        intent.putExtra("email",emailKey);
+                        Intent intent = new Intent(ConsulterListeInfirmier.this, ConsulterProfilEmployee.class);
+                        intent.putExtra("email", emailKey);
                         startActivity(intent);
                     }
                 });
                 holder.InfItemArchiver.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String keyDel=key;
+                        String keyDel = key;
                         ArchivageDialog(keyDel);
                     }
                 });
@@ -82,7 +82,7 @@ public class ConsulterListeInfirmier extends AppCompatActivity implements View.O
             @NonNull
             @Override
             public InfirmierListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_infirmier,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_infirmier, parent, false);
                 return new InfirmierListViewHolder(v);
             }
         };
@@ -111,10 +111,10 @@ public class ConsulterListeInfirmier extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.retourFrConsulInf){
+        if (view.getId() == R.id.retourFrConsulInf) {
             finish();
         }
-        if(view.getId()==R.id.creeNvCompteInfirmier){
+        if (view.getId() == R.id.creeNvCompteInfirmier) {
             startActivity(new Intent(ConsulterListeInfirmier.this, CreerCompteInfirmier.class));
         }
     }

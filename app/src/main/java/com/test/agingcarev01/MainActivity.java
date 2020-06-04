@@ -12,7 +12,8 @@ import com.test.agingcarev01.FonctionsSurveillant.ConsulterStatistiqueResident;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button loginBT,quitterBT,logoutBT;
+    Button loginBT, quitterBT, logoutBT;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,16 +21,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         FirebaseAuth.getInstance().signOut();
 
-        loginBT=findViewById(R.id.login);
+        loginBT = findViewById(R.id.login);
         loginBT.setOnClickListener(this);
-        quitterBT=findViewById(R.id.quit);
+        quitterBT = findViewById(R.id.quit);
         quitterBT.setOnClickListener(this);
-        logoutBT=findViewById(R.id.testCompActive);
+        logoutBT = findViewById(R.id.testCompActive);
         logoutBT.setOnClickListener(this);
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         FirebaseAuth.getInstance().signOut();
 
@@ -37,13 +38,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.login){
+        if (view.getId() == R.id.login) {
             startActivity(new Intent(MainActivity.this, Login.class));
         }
-        if(view.getId()==R.id.quit){
+        if (view.getId() == R.id.quit) {
             finish();
         }
-        if(view.getId()==R.id.testCompActive){
+        if (view.getId() == R.id.testCompActive) {
             startActivity(new Intent(MainActivity.this, ConsulterStatistiqueResident.class));
         }
     }

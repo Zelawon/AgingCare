@@ -24,7 +24,7 @@ public class AjouterPressionDiastoliqueCibleDialog extends AppCompatDialogFragme
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_ajout_poids_cible,null);
+        View view = inflater.inflate(R.layout.layout_ajout_poids_cible, null);
 
         builder.setView(view)
                 .setTitle("Modifier Pression Diastolique Ciblé")
@@ -39,8 +39,8 @@ public class AjouterPressionDiastoliqueCibleDialog extends AppCompatDialogFragme
                     public void onClick(DialogInterface dialogInterface, int i) {
                         final String nvPoidsCible = modiPoidsCible.getText().toString().toLowerCase();
                         //verifier non vide
-                        if ( !(nvPoidsCible.isEmpty()) ){
-                            Float value=Float.valueOf(nvPoidsCible);
+                        if (!(nvPoidsCible.isEmpty())) {
+                            Float value = Float.valueOf(nvPoidsCible);
                             listner.applyNvPressionDiastoliqueCible(value);
                         }
                     }
@@ -56,7 +56,7 @@ public class AjouterPressionDiastoliqueCibleDialog extends AppCompatDialogFragme
         try {
             listner = (AjouterPressionDiastoliqueCibleDialogListner) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()+"ajouter AjoutVideDialogListner");
+            throw new ClassCastException(context.toString() + "ajouter AjoutVideDialogListner");
         }
     }
 

@@ -8,13 +8,14 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.test.agingcarev01.FonctionsInfirmier.ConsulterListeResidentAffecter;
 import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeInfirmier extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button consulterProfInfBT,deconnecterInfirmierBT,modifierMdpInfBT;
+    private Button consulterProfInfBT, deconnecterInfirmierBT, modifierMdpInfBT, consulterListeResident;
     private FirebaseAuth mAuth;
 
     @Override
@@ -24,20 +25,23 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
 
-        consulterProfInfBT=findViewById(R.id.consulterProfInf);
+        consulterListeResident = findViewById(R.id.consulterListeResident);
+        consulterListeResident.setOnClickListener(this);
+
+        consulterProfInfBT = findViewById(R.id.consulterProfInf);
         consulterProfInfBT.setOnClickListener(this);
 
-        deconnecterInfirmierBT=findViewById(R.id.deconnecterInfirmier);
+        deconnecterInfirmierBT = findViewById(R.id.deconnecterInfirmier);
         deconnecterInfirmierBT.setOnClickListener(this);
 
-        modifierMdpInfBT=findViewById(R.id.modifierMdpInf);
+        modifierMdpInfBT = findViewById(R.id.modifierMdpInf);
         modifierMdpInfBT.setOnClickListener(this);
 
     }
 
     private void openModifPass() {
-        ModifierMotDePasseDialog modifierMotDePasseDialog =new ModifierMotDePasseDialog();
-        modifierMotDePasseDialog.show(getSupportFragmentManager(),"Modifier Mot De Passe");
+        ModifierMotDePasseDialog modifierMotDePasseDialog = new ModifierMotDePasseDialog();
+        modifierMotDePasseDialog.show(getSupportFragmentManager(), "Modifier Mot De Passe");
     }
 
     @Override
@@ -47,17 +51,20 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.consulterProfInf){
+        if (view.getId() == R.id.consulterProfInf) {
             startActivity(new Intent(HomeInfirmier.this, ConsulterPropreProfil.class));
         }
 
-        if(view.getId()==R.id.modifierMdpInf){
+        if (view.getId() == R.id.modifierMdpInf) {
             openModifPass();
         }
-        if(view.getId()==R.id.deconnecterInfirmier){
+        if (view.getId() == R.id.deconnecterInfirmier) {
             mAuth.signOut();
             startActivity(new Intent(HomeInfirmier.this, MainActivity.class));
-            finishAffinity ();
+            finishAffinity();
+        }
+        if (view.getId() == R.id.consulterListeResident) {
+            startActivity(new Intent(HomeInfirmier.this, ConsulterListeResidentAffecter.class));
         }
     }
 

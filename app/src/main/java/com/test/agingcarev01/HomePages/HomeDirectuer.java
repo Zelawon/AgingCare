@@ -16,8 +16,8 @@ import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeDirectuer extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button logoutDirecBT,consulterProfDirecBT,modifierMdpDirecBT,
-            consulterListeSurveillantBT,consulterListeInfirmierBT;
+    private Button logoutDirecBT, consulterProfDirecBT, modifierMdpDirecBT,
+            consulterListeSurveillantBT, consulterListeInfirmierBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -28,26 +28,26 @@ public class HomeDirectuer extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
 
 
-        modifierMdpDirecBT=findViewById(R.id.modifierMdpDirec);
+        modifierMdpDirecBT = findViewById(R.id.modifierMdpDirec);
         modifierMdpDirecBT.setOnClickListener(this);
 
 
-        consulterListeInfirmierBT=findViewById(R.id.consulterListeInfirmier);
+        consulterListeInfirmierBT = findViewById(R.id.consulterListeInfirmier);
         consulterListeInfirmierBT.setOnClickListener(this);
 
-        consulterProfDirecBT=findViewById(R.id.consulterProfDirec);
+        consulterProfDirecBT = findViewById(R.id.consulterProfDirec);
         consulterProfDirecBT.setOnClickListener(this);
 
-        consulterListeSurveillantBT=findViewById(R.id.consulterListeSurveillant);
+        consulterListeSurveillantBT = findViewById(R.id.consulterListeSurveillant);
         consulterListeSurveillantBT.setOnClickListener(this);
 
-        logoutDirecBT=findViewById(R.id.deconnecterDierecteur);
+        logoutDirecBT = findViewById(R.id.deconnecterDierecteur);
         logoutDirecBT.setOnClickListener(this);
     }
 
     private void openModifPass() {
-        ModifierMotDePasseDialog modifierMotDePasseDialog =new ModifierMotDePasseDialog();
-        modifierMotDePasseDialog.show(getSupportFragmentManager(),"Modifier Mot De Passe");
+        ModifierMotDePasseDialog modifierMotDePasseDialog = new ModifierMotDePasseDialog();
+        modifierMotDePasseDialog.show(getSupportFragmentManager(), "Modifier Mot De Passe");
     }
 
     @Override
@@ -58,22 +58,22 @@ public class HomeDirectuer extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
 
-        if(view.getId()==R.id.consulterProfDirec){
+        if (view.getId() == R.id.consulterProfDirec) {
             startActivity(new Intent(HomeDirectuer.this, ConsulterPropreProfil.class));
         }
-        if(view.getId()==R.id.modifierMdpDirec){
+        if (view.getId() == R.id.modifierMdpDirec) {
             openModifPass();
         }
-        if(view.getId()==R.id.consulterListeSurveillant){
+        if (view.getId() == R.id.consulterListeSurveillant) {
             startActivity(new Intent(HomeDirectuer.this, ConsulterListeSurveillant.class));
         }
-        if(view.getId()==R.id.consulterListeInfirmier){
+        if (view.getId() == R.id.consulterListeInfirmier) {
             startActivity(new Intent(HomeDirectuer.this, ConsulterListeInfirmier.class));
         }
-        if(view.getId()==R.id.deconnecterDierecteur){
+        if (view.getId() == R.id.deconnecterDierecteur) {
             mAuth.signOut();
             startActivity(new Intent(HomeDirectuer.this, MainActivity.class));
-            finishAffinity ();
+            finishAffinity();
         }
 
     }

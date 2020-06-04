@@ -27,7 +27,7 @@ public class ModiftypeSanguinDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_modif_type_sanguin,null);
+        View view = inflater.inflate(R.layout.layout_modif_type_sanguin, null);
 
         builder.setView(view)
                 .setTitle("Modifier Type Sanguin")
@@ -40,28 +40,28 @@ public class ModiftypeSanguinDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Modifier", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (modifTypeSangApos.isChecked()){
+                        if (modifTypeSangApos.isChecked()) {
                             final String nvType = "A+";
                             listner.applyNvType(nvType);
-                        }else if (modifTypeSangAneg.isChecked()){
+                        } else if (modifTypeSangAneg.isChecked()) {
                             final String nvType = "A-";
                             listner.applyNvType(nvType);
-                        }else if (modifTypeSangBpos.isChecked()){
+                        } else if (modifTypeSangBpos.isChecked()) {
                             final String nvType = "B+";
                             listner.applyNvType(nvType);
-                        }else if (modifTypeSangBneg.isChecked()){
+                        } else if (modifTypeSangBneg.isChecked()) {
                             final String nvType = "B-";
                             listner.applyNvType(nvType);
-                        }else if (modifTypeSangABpos.isChecked()){
+                        } else if (modifTypeSangABpos.isChecked()) {
                             final String nvType = "AB+";
                             listner.applyNvType(nvType);
-                        }else if (modifTypeSangABneg.isChecked()){
+                        } else if (modifTypeSangABneg.isChecked()) {
                             final String nvType = "AB-";
                             listner.applyNvType(nvType);
-                        }else if (modifTypeSangOpos.isChecked()){
+                        } else if (modifTypeSangOpos.isChecked()) {
                             final String nvType = "O+";
                             listner.applyNvType(nvType);
-                        }else if (modifTypeSangOneg.isChecked()){
+                        } else if (modifTypeSangOneg.isChecked()) {
                             final String nvType = "O-";
                             listner.applyNvType(nvType);
                         }
@@ -85,7 +85,7 @@ public class ModiftypeSanguinDialog extends AppCompatDialogFragment {
         try {
             listner = (ModiftypeSanguinDialog.ModiftypeSanguinDialogListner) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()+"ajouter ModiftypeSanguinDialogListner");
+            throw new ClassCastException(context.toString() + "ajouter ModiftypeSanguinDialogListner");
         }
     }
 

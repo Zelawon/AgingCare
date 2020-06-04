@@ -25,7 +25,7 @@ public class ModifNomDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_modif_nom,null);
+        View view = inflater.inflate(R.layout.layout_modif_nom, null);
 
         builder.setView(view)
                 .setTitle("Modifier Nom")
@@ -40,7 +40,7 @@ public class ModifNomDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         final String nvNom = nomText.getText().toString().toLowerCase();
                         //verifier non vide
-                        if ( !(nvNom.isEmpty()) ){
+                        if (!(nvNom.isEmpty())) {
                             listner.applyNvNom(nvNom);
                         }
                     }
@@ -56,7 +56,7 @@ public class ModifNomDialog extends AppCompatDialogFragment {
         try {
             listner = (ModifNomDialogListner) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()+"ajouter ModifPrenomDialogListner");
+            throw new ClassCastException(context.toString() + "ajouter ModifPrenomDialogListner");
         }
     }
 

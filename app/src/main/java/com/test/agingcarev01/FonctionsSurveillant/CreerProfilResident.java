@@ -31,9 +31,9 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
 
     private TextView dateNaisTV;
     private Button creeResBT, retourBT;
-    private EditText nomRes,prenomRes;
-    private RadioButton hommRadio,femmRadio;
-    private String typeSang,date="vide";
+    private EditText nomRes, prenomRes;
+    private RadioButton hommRadio, femmRadio;
+    private String typeSang, date = "vide";
     private int idRes;
 
     @Override
@@ -55,16 +55,16 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
         staticSpinner.setAdapter(staticAdapter);
         staticSpinner.setOnItemSelectedListener(this);
 
-        nomRes=findViewById(R.id.nomRes);
-        prenomRes=findViewById(R.id.prenomRes);
-        femmRadio=findViewById(R.id.radioFemmeRes);
-        hommRadio=findViewById(R.id.radioHommeRes);
+        nomRes = findViewById(R.id.nomRes);
+        prenomRes = findViewById(R.id.prenomRes);
+        femmRadio = findViewById(R.id.radioFemmeRes);
+        hommRadio = findViewById(R.id.radioHommeRes);
 
-        dateNaisTV=findViewById(R.id.TxtDateNais);
+        dateNaisTV = findViewById(R.id.TxtDateNais);
         dateNaisTV.setOnClickListener(this);
-        creeResBT=findViewById(R.id.creerRes);
+        creeResBT = findViewById(R.id.creerRes);
         creeResBT.setOnClickListener(this);
-        retourBT=findViewById(R.id.retourFrCreerRes);
+        retourBT = findViewById(R.id.retourFrCreerRes);
         retourBT.setOnClickListener(this);
 
         getIdResident();
@@ -74,26 +74,35 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         switch (position) {
             case 0:
-                typeSang="A+";break;
+                typeSang = "A+";
+                break;
             case 1:
-                typeSang="A-";break;
+                typeSang = "A-";
+                break;
             case 2:
-                typeSang="B+";break;
+                typeSang = "B+";
+                break;
             case 3:
-                typeSang="B-";break;
+                typeSang = "B-";
+                break;
             case 4:
-                typeSang="AB+";break;
+                typeSang = "AB+";
+                break;
             case 5:
-                typeSang="AB-";break;
+                typeSang = "AB-";
+                break;
             case 6:
-                typeSang="O+";break;
+                typeSang = "O+";
+                break;
             case 7:
-                typeSang="O-";break;
+                typeSang = "O-";
+                break;
         }
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {}
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -103,8 +112,8 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
         dateNaisTV.setText(date);
     }
 
-    private void showDatePickerDailog(){
-        DatePickerDialog datePickerDialog =new DatePickerDialog(
+    private void showDatePickerDailog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
                 CreerProfilResident.this,
                 this,
                 Calendar.getInstance().get(Calendar.YEAR),
@@ -118,28 +127,28 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
     private void creeProfilResident() {
         final String nom = nomRes.getText().toString().toLowerCase();
         final String prenom = prenomRes.getText().toString().toLowerCase();
-        String sexeSelect="";
+        String sexeSelect = "";
 
-        if (nom.isEmpty()){
+        if (nom.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
             nomRes.requestFocus();
-        }else if (prenom.isEmpty()){
+        } else if (prenom.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
             prenomRes.requestFocus();
-        }else if ((!(femmRadio.isChecked()))&&(!(hommRadio.isChecked()))){
+        } else if ((!(femmRadio.isChecked())) && (!(hommRadio.isChecked()))) {
             Toast.makeText(getApplicationContext(), "Champ sexe vide", Toast.LENGTH_SHORT).show();
-        }else if (date.equals("vide")){
+        } else if (date.equals("vide")) {
             Toast.makeText(getApplicationContext(), "Champ date de naissance vide", Toast.LENGTH_SHORT).show();
-        }else{
-            if (femmRadio.isChecked()){
-                sexeSelect="femme";
-            }else if (hommRadio.isChecked()){
-                sexeSelect="homme";
+        } else {
+            if (femmRadio.isChecked()) {
+                sexeSelect = "femme";
+            } else if (hommRadio.isChecked()) {
+                sexeSelect = "homme";
             }
-            ResidentClasse nvInf = new ResidentClasse(idRes,nom,prenom,sexeSelect,typeSang,date);
+            ResidentClasse nvInf = new ResidentClasse(idRes, nom, prenom, sexeSelect, typeSang, date);
 
-             FirebaseDatabase database = FirebaseDatabase.getInstance();
-             DatabaseReference myRef = database.getReference("Resident").push();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("Resident").push();
 
             myRef.setValue(nvInf).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
@@ -157,8 +166,9 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                idRes=dataSnapshot.getValue(Integer.class);
+                idRes = dataSnapshot.getValue(Integer.class);
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w("TAG", "Error", databaseError.toException());
@@ -166,7 +176,7 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
         });
     }
 
-    private  void updateIdResident(){
+    private void updateIdResident() {
         //get l'id
         getIdResident();
         //ajout 1 a l'id
@@ -179,13 +189,13 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.TxtDateNais){
+        if (view.getId() == R.id.TxtDateNais) {
             showDatePickerDailog();
         }
-        if(view.getId()==R.id.creerRes){
+        if (view.getId() == R.id.creerRes) {
             creeProfilResident();
         }
-        if(view.getId()==R.id.retourFrCreerRes){
+        if (view.getId() == R.id.retourFrCreerRes) {
             finish();
         }
     }

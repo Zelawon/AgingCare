@@ -32,11 +32,11 @@ import java.util.List;
 
 public class AffecteeInfirmiereResident extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "AffecteeInfirmiereResid";
-    private Button affecterNouveauInfirmierShowBT,retourFrAffecterInfBT,annulerAffectationBT;
-    private RecyclerView recyclerViewInfAffecter,recyclerViewNouveauInfAffecter;
+    private Button affecterNouveauInfirmierShowBT, retourFrAffecterInfBT, annulerAffectationBT;
+    private RecyclerView recyclerViewInfAffecter, recyclerViewNouveauInfAffecter;
     private TextView nvInfAffecteeTextView;
-    private String keyResident,keyInfirmierSupprimer;
-    private DatabaseReference databaseReferenceRemplir,databaseReferenceAffecter;
+    private String keyResident, keyInfirmierSupprimer;
+    private DatabaseReference databaseReferenceRemplir, databaseReferenceAffecter;
     private FirebaseRecyclerOptions<InfirmierClasse> options;
     private FirebaseRecyclerAdapter<InfirmierClasse, InfirmierAffecteeSupprimerListViewHolder> adapterSupprimer;
     private List<Integer> listeInfirmierAffecter;
@@ -47,11 +47,11 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affectee_infirmiere_resident);
 
-        affecterNouveauInfirmierShowBT =findViewById(R.id.affecterNouveauInfirmierShow);
+        affecterNouveauInfirmierShowBT = findViewById(R.id.affecterNouveauInfirmierShow);
         affecterNouveauInfirmierShowBT.setOnClickListener(this);
-        retourFrAffecterInfBT =findViewById(R.id.retourFrAffecterInf);
+        retourFrAffecterInfBT = findViewById(R.id.retourFrAffecterInf);
         retourFrAffecterInfBT.setOnClickListener(this);
-        annulerAffectationBT =findViewById(R.id.annulerAffectation);
+        annulerAffectationBT = findViewById(R.id.annulerAffectation);
         annulerAffectationBT.setOnClickListener(this);
 
         recyclerViewInfAffecter = findViewById(R.id.recyclerViewInfirmierAffectee);
@@ -62,7 +62,7 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
         recyclerViewNouveauInfAffecter.setHasFixedSize(true);
         recyclerViewNouveauInfAffecter.setLayoutManager(new LinearLayoutManager(this));
 
-        nvInfAffecteeTextView=findViewById(R.id.nvInfAffecteeTextView);
+        nvInfAffecteeTextView = findViewById(R.id.nvInfAffecteeTextView);
 
         //fetch Resident
         keyResident = getIntent().getStringExtra("key");
@@ -81,10 +81,11 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
         refList.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot tierSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot tierSnapshot : dataSnapshot.getChildren()) {
                     listeInfirmierAffecter.add(tierSnapshot.getValue(Integer.class));
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -102,8 +103,8 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
         recyclerViewInfAffecter.setHasFixedSize(true);
         recyclerViewInfAffecter.setLayoutManager(new LinearLayoutManager(this));
 
-        options=new FirebaseRecyclerOptions.Builder<InfirmierClasse>().setQuery(databaseReferenceAffecter,InfirmierClasse.class).build();
-        adapterSupprimer=new FirebaseRecyclerAdapter<InfirmierClasse, InfirmierAffecteeSupprimerListViewHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<InfirmierClasse>().setQuery(databaseReferenceAffecter, InfirmierClasse.class).build();
+        adapterSupprimer = new FirebaseRecyclerAdapter<InfirmierClasse, InfirmierAffecteeSupprimerListViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull InfirmierAffecteeSupprimerListViewHolder holder, int position, @NonNull final InfirmierClasse model) {
                 holder.nomInf.setText(model.getNom());
@@ -114,8 +115,8 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                 holder.infAffecterSupprimerItemCheck.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        keyInfirmierSupprimer=keyInfirmier;
-                        DeleteInfirmierDuResident(keyInfirmierSupprimer,model);
+                        keyInfirmierSupprimer = keyInfirmier;
+                        DeleteInfirmierDuResident(keyInfirmierSupprimer, model);
                     }
                 });
             }
@@ -123,7 +124,7 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
             @NonNull
             @Override
             public InfirmierAffecteeSupprimerListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_infirmier_affectee_supprimer,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_infirmier_affectee_supprimer, parent, false);
                 return new InfirmierAffecteeSupprimerListViewHolder(v);
             }
         };
@@ -138,7 +139,7 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
         builder.setPositiveButton("oui", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                final int infID=model.getId();
+                final int infID = model.getId();
 
                 replirListeIdDesInfirmierAffecterAuResident();
 
@@ -153,8 +154,8 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String keyIdInf = "";
                         Integer idInf = null;
-                        for (DataSnapshot tierSnapshot: dataSnapshot.getChildren()){
-                            if (tierSnapshot.getValue(Integer.class).equals(infID)){
+                        for (DataSnapshot tierSnapshot : dataSnapshot.getChildren()) {
+                            if (tierSnapshot.getValue(Integer.class).equals(infID)) {
                                 keyIdInf = tierSnapshot.getKey();
                                 idInf = tierSnapshot.getValue(Integer.class);
                             }
@@ -180,33 +181,38 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (final DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             final String keyInfDelete = dataSnapshot1.getKey();
-                            Log.e(TAG, "key Infirmier delete: "+keyInfDelete);
-                            Log.e(TAG, "key Resident delete:: "+ keyResident);
+                            Log.e(TAG, "key Infirmier delete: " + keyInfDelete);
+                            Log.e(TAG, "key Resident delete:: " + keyResident);
                             final DatabaseReference myRef6 = employeeRef.child(keyInfDelete).child("idResidentAffecte");
                             myRef6.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    for (DataSnapshot tierSnapshot: dataSnapshot.getChildren()){
+                                    for (DataSnapshot tierSnapshot : dataSnapshot.getChildren()) {
                                         String CurrentValue = tierSnapshot.getValue(String.class);
-                                        Log.e(TAG, "onDataChange: "+CurrentValue );
-                                        if (CurrentValue.equals(keyResident)){
+                                        Log.e(TAG, "onDataChange: " + CurrentValue);
+                                        if (CurrentValue.equals(keyResident)) {
                                             deleteResFromInf(tierSnapshot.getKey());
                                         }
                                     }
                                 }
+
                                 private void deleteResFromInf(String key) {
                                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Employee")
                                             .child(keyInfDelete).child("idResidentAffecte").child(key);
                                     databaseReference.removeValue();
-                                    Log.e(TAG, "Deleted !" );
+                                    Log.e(TAG, "Deleted !");
                                 }
+
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {}
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                }
                             });
                         }
                     }
+
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {}
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
                 });
             }
 
@@ -240,15 +246,15 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
         roleEtStatutQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                infirmierClasseList =new ArrayList<InfirmierClasse>();
-                for (DataSnapshot postsnap: dataSnapshot.getChildren()) {
+                infirmierClasseList = new ArrayList<InfirmierClasse>();
+                for (DataSnapshot postsnap : dataSnapshot.getChildren()) {
                     InfirmierClasse post = postsnap.getValue(InfirmierClasse.class);
                     //check si l'infirmier est deja affecter
-                    if ( !(listeInfirmierAffecter.contains(post.getId())) ){
-                        infirmierClasseList.add(post) ;
+                    if (!(listeInfirmierAffecter.contains(post.getId()))) {
+                        infirmierClasseList.add(post);
                     }
                 }
-                final InfirmierAffecteeAjouterAdapter adapter = new InfirmierAffecteeAjouterAdapter(AffecteeInfirmiereResident.this,infirmierClasseList);
+                final InfirmierAffecteeAjouterAdapter adapter = new InfirmierAffecteeAjouterAdapter(AffecteeInfirmiereResident.this, infirmierClasseList);
                 recyclerViewNouveauInfAffecter.setAdapter(adapter);
                 adapter.setOnItemClickListener(new InfirmierAffecteeAjouterAdapter.OnItemClickListener() {
                     @Override
@@ -257,6 +263,7 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                     }
                 });
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -273,7 +280,7 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
             public void onClick(DialogInterface dialogInterface, int i) {
                 int idInf = model.getId();
                 String emailInf = model.getEmail();
-                InfirmierClasse nvInfirmierClasse = new InfirmierClasse(idInf,model.getEmail(),model.getNom(),model.getPrenom(),model.getSexe());
+                InfirmierClasse nvInfirmierClasse = new InfirmierClasse(idInf, model.getEmail(), model.getNom(), model.getPrenom(), model.getSexe());
                 //ajout de l'id de l'infirmier a la liste des id
                 DatabaseReference myRef1 = FirebaseDatabase.getInstance().getReference().child("Resident")
                         .child(keyResident).child("infirmier").child("listID").push();
@@ -317,12 +324,14 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
 //                            myRef5.setValue(dataSnapshot.child("id").getValue(Integer.class));// set value id du resident
                             myRef5.setValue(dataSnapshot.getKey());//set value key du resident (mieux)
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
@@ -331,13 +340,13 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.retourFrAffecterInf){
+        if (view.getId() == R.id.retourFrAffecterInf) {
             finish();
         }
-        if(view.getId()==R.id.affecterNouveauInfirmierShow){
+        if (view.getId() == R.id.affecterNouveauInfirmierShow) {
             showRecycleView();
         }
-        if(view.getId()==R.id.annulerAffectation){
+        if (view.getId() == R.id.annulerAffectation) {
             HideRecycleView();
         }
     }
@@ -348,6 +357,7 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
         nvInfAffecteeTextView.setVisibility(View.VISIBLE);
         annulerAffectationBT.setVisibility(View.VISIBLE);
     }
+
     private void HideRecycleView() {
         recyclerViewNouveauInfAffecter.setVisibility(View.INVISIBLE);
         nvInfAffecteeTextView.setVisibility(View.INVISIBLE);

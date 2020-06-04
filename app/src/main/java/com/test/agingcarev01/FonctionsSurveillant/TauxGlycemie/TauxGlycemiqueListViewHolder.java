@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.agingcarev01.R;
 
-public class TauxGlycemiqueListViewHolder extends RecyclerView.ViewHolder{
-    public TextView tauxGlyceItemDate,tauxGlycemiqueItem,meureItem,tauxItemNote;
+public class TauxGlycemiqueListViewHolder extends RecyclerView.ViewHolder {
+    public TextView tauxGlyceItemDate, tauxGlycemiqueItem, meureItem, tauxItemNote;
     public ImageView tauxItemArchiver;
 
     public TauxGlycemiqueListViewHolder(@NonNull View itemView) {

@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.agingcarev01.R;
 
-public  class ResidentListViewHolder extends RecyclerView.ViewHolder {
-    public TextView nomRes,prenomRes,sexeRes;
+public class ResidentListViewHolder extends RecyclerView.ViewHolder {
+    public TextView nomRes, prenomRes, sexeRes;
     public ImageView ResItemModifier, ResItemArchiver;
 
     public ResidentListViewHolder(@NonNull View itemView) {

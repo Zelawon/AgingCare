@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.test.agingcarev01.R;
 
 public class ModifierMotDePasseDialog extends AppCompatDialogFragment {
-    private EditText passText,confPassText;
+    private EditText passText, confPassText;
     private ModifMotDePasseDialogListner listner;
 
     @Override
@@ -24,7 +24,7 @@ public class ModifierMotDePasseDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_modif_mot_de_passe,null);
+        View view = inflater.inflate(R.layout.layout_modif_mot_de_passe, null);
 
         builder.setView(view)
                 .setTitle("Modifier Mot De Passe")
@@ -39,7 +39,7 @@ public class ModifierMotDePasseDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         final String nvPass = passText.getText().toString();
                         final String nvConfPass = confPassText.getText().toString();
-                        if ( (!(nvPass.isEmpty())) && (!(nvConfPass.isEmpty())) && (nvPass.equals(nvConfPass)) ){
+                        if ((!(nvPass.isEmpty())) && (!(nvConfPass.isEmpty())) && (nvPass.equals(nvConfPass))) {
                             listner.applyNvPass(nvPass);
                         }
                     }
@@ -56,7 +56,7 @@ public class ModifierMotDePasseDialog extends AppCompatDialogFragment {
         try {
             listner = (ModifMotDePasseDialogListner) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()+"ajouter ModifPrenomDialogListner");
+            throw new ClassCastException(context.toString() + "ajouter ModifPrenomDialogListner");
         }
     }
 

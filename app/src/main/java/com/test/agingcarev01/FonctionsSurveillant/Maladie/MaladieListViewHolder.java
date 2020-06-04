@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.agingcarev01.R;
 
-public class MaladieListViewHolder extends RecyclerView.ViewHolder{
+public class MaladieListViewHolder extends RecyclerView.ViewHolder {
     public TextView nomMaladie;
     public ImageView maladieItemArchiver;
 

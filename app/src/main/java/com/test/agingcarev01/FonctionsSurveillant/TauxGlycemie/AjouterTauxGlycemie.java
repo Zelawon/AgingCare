@@ -22,9 +22,9 @@ import java.util.Calendar;
 
 public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
-    private TextView tauxGlyceRes,noteTauxGlyce,dateTauxGlyce;
-    private Button ajouterTauxGlyce,retourFrTauxGlycemique;
-    private String keyResident,date="", tauxChk ="";
+    private TextView tauxGlyceRes, noteTauxGlyce, dateTauxGlyce;
+    private Button ajouterTauxGlyce, retourFrTauxGlycemique;
+    private String keyResident, date = "", tauxChk = "";
     private String mesure;
 
     @Override
@@ -37,13 +37,13 @@ public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnCli
 
         dateTauxGlyce = findViewById(R.id.dateTauxGlyce);
         dateTauxGlyce.setOnClickListener(this);
-        ajouterTauxGlyce=findViewById(R.id.ajouterTauxGlyce);
+        ajouterTauxGlyce = findViewById(R.id.ajouterTauxGlyce);
         ajouterTauxGlyce.setOnClickListener(this);
-        retourFrTauxGlycemique=findViewById(R.id.retourFrTauxGlycemique);
+        retourFrTauxGlycemique = findViewById(R.id.retourFrTauxGlycemique);
         retourFrTauxGlycemique.setOnClickListener(this);
 
         //fetch
-        keyResident =getIntent().getStringExtra("key");
+        keyResident = getIntent().getStringExtra("key");
 
         Spinner spinnerSelectGrephe = (Spinner) findViewById(R.id.spinnerMesureTauxGlyce);
         // Create an ArrayAdapter using the string array and a default spinner
@@ -61,13 +61,13 @@ public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.ajouterTauxGlyce){
+        if (view.getId() == R.id.ajouterTauxGlyce) {
             AjouterTauxGlycemique();
         }
-        if(view.getId()==R.id.retourFrTauxGlycemique){
+        if (view.getId() == R.id.retourFrTauxGlycemique) {
             finish();
         }
-        if (view.getId()==R.id.dateTauxGlyce){
+        if (view.getId() == R.id.dateTauxGlyce) {
             showDatePickerDailog();
         }
 
@@ -77,22 +77,22 @@ public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnCli
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
         //janvier = month 0
         month++;
-        String monthString = ""+month;
-        String dayString = ""+day;
+        String monthString = "" + month;
+        String dayString = "" + day;
 
-        if (month<10){
-            monthString = "0"+month;
+        if (month < 10) {
+            monthString = "0" + month;
         }
-        if (day<10){
-            dayString = "0"+day;
+        if (day < 10) {
+            dayString = "0" + day;
         }
         date = year + "/" + monthString + "/" + dayString;
         dateTauxGlyce.setText(date);
 
     }
 
-    private void showDatePickerDailog(){
-        DatePickerDialog datePickerDialog =new DatePickerDialog(
+    private void showDatePickerDailog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
                 AjouterTauxGlycemie.this,
                 this,
                 Calendar.getInstance().get(Calendar.YEAR),
@@ -107,20 +107,20 @@ public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnCli
         if (tauxChk.isEmpty()) {
             Toast.makeText(AjouterTauxGlycemie.this, "Champ Taux Glycemique Vide", Toast.LENGTH_SHORT).show();
             tauxGlyceRes.requestFocus();
-        }else if (date.isEmpty()) {
+        } else if (date.isEmpty()) {
             Toast.makeText(AjouterTauxGlycemie.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
-        }  else{
-            Float taux=Float.valueOf(tauxGlyceRes.getText().toString());
-            if ( taux<=0) {
+        } else {
+            Float taux = Float.valueOf(tauxGlyceRes.getText().toString());
+            if (taux <= 0) {
                 Toast.makeText(AjouterTauxGlycemie.this, "Taux Glycemique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
                 tauxGlyceRes.requestFocus();
-            }else if ( taux>0 ) {
-                if (noteTauxGlyce.getText().toString().isEmpty()){
-                    TauxGlycemiqueClasse tauxGlycemiqueClasse = new TauxGlycemiqueClasse(taux, date, "(aucune notes)",mesure);
+            } else if (taux > 0) {
+                if (noteTauxGlyce.getText().toString().isEmpty()) {
+                    TauxGlycemiqueClasse tauxGlycemiqueClasse = new TauxGlycemiqueClasse(taux, date, "(aucune notes)", mesure);
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemique").push();
                     myRef.setValue(tauxGlycemiqueClasse);
-                }else {
-                    TauxGlycemiqueClasse tauxGlycemiqueClasse = new TauxGlycemiqueClasse(taux, date, noteTauxGlyce.getText().toString(),mesure);
+                } else {
+                    TauxGlycemiqueClasse tauxGlycemiqueClasse = new TauxGlycemiqueClasse(taux, date, noteTauxGlyce.getText().toString(), mesure);
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemique").push();
                     myRef.setValue(tauxGlycemiqueClasse);
                 }
@@ -133,25 +133,35 @@ public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnCli
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         switch (position) {
             case 0:
-                mesure="Avant le petit déjeuner";break;
+                mesure = "Avant le petit déjeuner";
+                break;
             case 1:
-                mesure="Après le petit déjeuner";break;
+                mesure = "Après le petit déjeuner";
+                break;
             case 2:
-                mesure="Avant le déjeuner";break;
+                mesure = "Avant le déjeuner";
+                break;
             case 3:
-                mesure="Après le déjeuner";break;
+                mesure = "Après le déjeuner";
+                break;
             case 4:
-                mesure="Avant le dîner";break;
+                mesure = "Avant le dîner";
+                break;
             case 5:
-                mesure="Après le dîner";break;
+                mesure = "Après le dîner";
+                break;
             case 6:
-                mesure="Avant de dormir";break;
+                mesure = "Avant de dormir";
+                break;
             case 7:
-                mesure="Après le sommeil";break;
+                mesure = "Après le sommeil";
+                break;
             case 8:
-                mesure="Jeûne";break;
+                mesure = "Jeûne";
+                break;
             case 9:
-                mesure="Autre";break;
+                mesure = "Autre";
+                break;
         }
     }
 

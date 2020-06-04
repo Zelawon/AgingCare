@@ -20,5 +20,7 @@ public class AdminClasse {
         this.email = email;
     }
 
-    public String getRole() { return role; }
+    public String getRole() {
+        return role;
+    }
 }

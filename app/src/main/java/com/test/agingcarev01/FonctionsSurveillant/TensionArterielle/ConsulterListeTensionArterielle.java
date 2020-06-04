@@ -24,7 +24,7 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeTensionArterielle extends AppCompatActivity implements View.OnClickListener {
 
-    private Button retourFrConsulTensionArterielle,ajouterNvTTensionArterielle;
+    private Button retourFrConsulTensionArterielle, ajouterNvTTensionArterielle;
     private RecyclerView recyclerView;
 
     private FirebaseRecyclerOptions<TensionArterielleClasse> options;
@@ -37,23 +37,23 @@ public class ConsulterListeTensionArterielle extends AppCompatActivity implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_liste_tension_arterielle);
 
-        retourFrConsulTensionArterielle=findViewById(R.id.retourFrConsulTensionArterielle);
+        retourFrConsulTensionArterielle = findViewById(R.id.retourFrConsulTensionArterielle);
         retourFrConsulTensionArterielle.setOnClickListener(this);
-        ajouterNvTTensionArterielle=findViewById(R.id.ajouterNvTTensionArterielle);
+        ajouterNvTTensionArterielle = findViewById(R.id.ajouterNvTTensionArterielle);
         ajouterNvTTensionArterielle.setOnClickListener(this);
 
         //fetch
-        keyResident =getIntent().getStringExtra("key");
+        keyResident = getIntent().getStringExtra("key");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tensionArterielle");
         Query query = databaseReference.orderByChild("dateTensionArterielle");
 
         //recyclerView
-        recyclerView=findViewById(R.id.recyclerViewListeTensionArterielle);
+        recyclerView = findViewById(R.id.recyclerViewListeTensionArterielle);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        options=new FirebaseRecyclerOptions.Builder<TensionArterielleClasse>().setQuery(query, TensionArterielleClasse.class).build();
-        adapter=new FirebaseRecyclerAdapter<TensionArterielleClasse, TensionArterielleListViewHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<TensionArterielleClasse>().setQuery(query, TensionArterielleClasse.class).build();
+        adapter = new FirebaseRecyclerAdapter<TensionArterielleClasse, TensionArterielleListViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull TensionArterielleListViewHolder holder, int position, @NonNull TensionArterielleClasse model) {
                 final String key = getRef(position).getKey();
@@ -61,12 +61,12 @@ public class ConsulterListeTensionArterielle extends AppCompatActivity implement
                 holder.tensionArtArchiver.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        keyTensionArtDel =key;
+                        keyTensionArtDel = key;
                         DeleteTensionArterielle(keyTensionArtDel);
                     }
                 });
                 holder.tensionArtItemDate.setText(model.getDateTensionArterielle());
-                holder.tensionArtItem.setText(String.valueOf(model.getPressionSystolique())+"/"+String.valueOf(model.getPreessionDiatolique()));
+                holder.tensionArtItem.setText(String.valueOf(model.getPressionSystolique()) + "/" + String.valueOf(model.getPreessionDiatolique()));
                 holder.brasMesureItem.setText(model.getBrasMesure());
                 holder.tensionArtItemNote.setText(model.getNoteTensionArterielle());
             }
@@ -74,7 +74,7 @@ public class ConsulterListeTensionArterielle extends AppCompatActivity implement
             @NonNull
             @Override
             public TensionArterielleListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_tension_arterielle_resident,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_tension_arterielle_resident, parent, false);
                 return new TensionArterielleListViewHolder(v);
             }
         };
@@ -104,12 +104,12 @@ public class ConsulterListeTensionArterielle extends AppCompatActivity implement
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.ajouterNvTTensionArterielle){
-            Intent intent=new Intent(ConsulterListeTensionArterielle.this, AjouterTensionArterielle.class);
+        if (view.getId() == R.id.ajouterNvTTensionArterielle) {
+            Intent intent = new Intent(ConsulterListeTensionArterielle.this, AjouterTensionArterielle.class);
             intent.putExtra("key", keyResident);
             startActivity(intent);
         }
-        if (view.getId() == R.id.retourFrConsulTensionArterielle){
+        if (view.getId() == R.id.retourFrConsulTensionArterielle) {
             finish();
         }
     }

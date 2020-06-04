@@ -24,12 +24,12 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListePoids extends AppCompatActivity implements View.OnClickListener {
 
-    private Button retourFrConsulPoids,ajouterNvPoids;
+    private Button retourFrConsulPoids, ajouterNvPoids;
     private RecyclerView recyclerView;
 
     private FirebaseRecyclerOptions<PoidsClasse> options;
     private FirebaseRecyclerAdapter<PoidsClasse, PoidsListViewHolder> adapter;
-    private String keyResident,keyPoidsDel;
+    private String keyResident, keyPoidsDel;
     private DatabaseReference databaseReference;
 
     @Override
@@ -37,23 +37,23 @@ public class ConsulterListePoids extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_liste_poids);
 
-        retourFrConsulPoids=findViewById(R.id.retourFrConsulPoids);
+        retourFrConsulPoids = findViewById(R.id.retourFrConsulPoids);
         retourFrConsulPoids.setOnClickListener(this);
-        ajouterNvPoids=findViewById(R.id.ajouterNvPoids);
+        ajouterNvPoids = findViewById(R.id.ajouterNvPoids);
         ajouterNvPoids.setOnClickListener(this);
 
         //fetch Poids
-        keyResident =getIntent().getStringExtra("key");
+        keyResident = getIntent().getStringExtra("key");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poids");
         Query query = databaseReference.orderByChild("datePoidRes");
 
         //recyclerView
-        recyclerView=findViewById(R.id.recyclerViewListePoids);
+        recyclerView = findViewById(R.id.recyclerViewListePoids);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        options=new FirebaseRecyclerOptions.Builder<PoidsClasse>().setQuery(query, PoidsClasse.class).build();
-        adapter=new FirebaseRecyclerAdapter<PoidsClasse, PoidsListViewHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<PoidsClasse>().setQuery(query, PoidsClasse.class).build();
+        adapter = new FirebaseRecyclerAdapter<PoidsClasse, PoidsListViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull PoidsListViewHolder holder, int position, @NonNull PoidsClasse model) {
                 final String keyPoids = getRef(position).getKey();
@@ -61,7 +61,7 @@ public class ConsulterListePoids extends AppCompatActivity implements View.OnCli
                 holder.poidsItemArchiver.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        keyPoidsDel=keyPoids;
+                        keyPoidsDel = keyPoids;
                         DeletePoids(keyPoidsDel);
                     }
                 });
@@ -73,7 +73,7 @@ public class ConsulterListePoids extends AppCompatActivity implements View.OnCli
             @NonNull
             @Override
             public PoidsListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_poids_resident,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_poids_resident, parent, false);
                 return new PoidsListViewHolder(v);
             }
         };
@@ -103,12 +103,12 @@ public class ConsulterListePoids extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.ajouterNvPoids){
-            Intent intent=new Intent(ConsulterListePoids.this, AjouterPoidsResident.class);
+        if (view.getId() == R.id.ajouterNvPoids) {
+            Intent intent = new Intent(ConsulterListePoids.this, AjouterPoidsResident.class);
             intent.putExtra("key", keyResident);
             startActivity(intent);
         }
-        if (view.getId() == R.id.retourFrConsulPoids){
+        if (view.getId() == R.id.retourFrConsulPoids) {
             finish();
         }
     }

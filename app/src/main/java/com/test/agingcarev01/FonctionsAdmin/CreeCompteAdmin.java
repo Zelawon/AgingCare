@@ -1,13 +1,13 @@
 package com.test.agingcarev01.FonctionsAdmin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,9 +22,9 @@ import com.test.agingcarev01.Classe.AdminClasse;
 import com.test.agingcarev01.R;
 
 public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickListener {
-    private FirebaseAuth mAuth1,mAuth2;
-    private Button registerBT,retourBT;
-    private EditText password,email,confirmPass;
+    private FirebaseAuth mAuth1, mAuth2;
+    private Button registerBT, retourBT;
+    private EditText password, email, confirmPass;
     FirebaseDatabase firebaseDatabase;
 
     @Override
@@ -39,20 +39,21 @@ public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickLi
                 .setApiKey("AIzaSyDed0dGzgms4U1AdwN7qorSluc2A3B1aHQ")
                 .setApplicationId("agingcare-6f82d").build();
 
-        try { FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
+        try {
+            FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
             mAuth2 = FirebaseAuth.getInstance(myApp);
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             mAuth2 = FirebaseAuth.getInstance(FirebaseApp.getInstance("AnyAppName"));
         }
 
-        password=findViewById(R.id.passAdmin);
-        confirmPass=findViewById(R.id.confPassAdmin);
-        email=findViewById(R.id.emailAdmin);
+        password = findViewById(R.id.passAdmin);
+        confirmPass = findViewById(R.id.confPassAdmin);
+        email = findViewById(R.id.emailAdmin);
 
         FirebaseApp.initializeApp(CreeCompteAdmin.this);
-        registerBT=findViewById(R.id.creeAdmin);
+        registerBT = findViewById(R.id.creeAdmin);
         registerBT.setOnClickListener(this);
-        retourBT=findViewById(R.id.retourFormAdminBT);
+        retourBT = findViewById(R.id.retourFormAdminBT);
         retourBT.setOnClickListener(this);
 
         FirebaseApp.initializeApp(CreeCompteAdmin.this);
@@ -61,27 +62,27 @@ public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.creeAdmin){
+        if (view.getId() == R.id.creeAdmin) {
             final String pass = password.getText().toString();
             final String confPass = confirmPass.getText().toString();
             final String e_mail = email.getText().toString().toLowerCase();
 
-            if (e_mail.isEmpty()){
+            if (e_mail.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Email vide", Toast.LENGTH_SHORT).show();
                 email.requestFocus();
-            }else if (pass.isEmpty()){
+            } else if (pass.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
-            }else if (pass.length()<6){
+            } else if (pass.length() < 6) {
                 Toast.makeText(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
-            }else if ((confPass.isEmpty())){
+            } else if ((confPass.isEmpty())) {
                 Toast.makeText(getApplicationContext(), "Champ Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
-            }else if (!(pass.equals(confPass))){
+            } else if (!(pass.equals(confPass))) {
                 Toast.makeText(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
-            }else{
+            } else {
                 mAuth2.createUserWithEmailAndPassword(e_mail, pass)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -115,7 +116,7 @@ public class CreeCompteAdmin extends AppCompatActivity implements View.OnClickLi
                         });
             }
         }
-        if(view.getId()==R.id.retourFormAdminBT){
+        if (view.getId() == R.id.retourFormAdminBT) {
             finish();
         }
     }

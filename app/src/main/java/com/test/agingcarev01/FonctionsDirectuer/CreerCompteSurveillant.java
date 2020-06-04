@@ -1,13 +1,13 @@
 package com.test.agingcarev01.FonctionsDirectuer;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,9 +22,9 @@ import com.test.agingcarev01.Classe.SurveillantClasse;
 import com.test.agingcarev01.R;
 
 public class CreerCompteSurveillant extends AppCompatActivity implements View.OnClickListener {
-    private FirebaseAuth mAuth1,mAuth2;
+    private FirebaseAuth mAuth1, mAuth2;
     private Button creeSurvBT, retourBT;
-    private EditText password,email,confirmPass,nomSurv,prenomSurv;
+    private EditText password, email, confirmPass, nomSurv, prenomSurv;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
@@ -40,21 +40,22 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
                 .setApiKey("AIzaSyDed0dGzgms4U1AdwN7qorSluc2A3B1aHQ")
                 .setApplicationId("agingcare-6f82d").build();
 
-        try { FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
+        try {
+            FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
             mAuth2 = FirebaseAuth.getInstance(myApp);
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             mAuth2 = FirebaseAuth.getInstance(FirebaseApp.getInstance("AnyAppName"));
         }
 
-        password=findViewById(R.id.passSurv);
-        confirmPass=findViewById(R.id.confPassSurv);
-        email=findViewById(R.id.emailSurv);
-        nomSurv=findViewById(R.id.nomSurv);
-        prenomSurv=findViewById(R.id.prenomSurv);
+        password = findViewById(R.id.passSurv);
+        confirmPass = findViewById(R.id.confPassSurv);
+        email = findViewById(R.id.emailSurv);
+        nomSurv = findViewById(R.id.nomSurv);
+        prenomSurv = findViewById(R.id.prenomSurv);
 
-        creeSurvBT=findViewById(R.id.creeSurv);
+        creeSurvBT = findViewById(R.id.creeSurv);
         creeSurvBT.setOnClickListener(this);
-        retourBT=findViewById(R.id.retourFormSurvBT);
+        retourBT = findViewById(R.id.retourFormSurvBT);
         retourBT.setOnClickListener(this);
 
         FirebaseApp.initializeApp(CreerCompteSurveillant.this);
@@ -64,7 +65,7 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.creeSurv){
+        if (view.getId() == R.id.creeSurv) {
 
             final String pass = password.getText().toString();
             final String confPass = confirmPass.getText().toString();
@@ -72,28 +73,28 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
             final String nom = nomSurv.getText().toString().toLowerCase();
             final String prenom = prenomSurv.getText().toString().toLowerCase();
 
-            if (nom.isEmpty()){
+            if (nom.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
                 nomSurv.requestFocus();
-            }else if (prenom.isEmpty()){
+            } else if (prenom.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
                 prenomSurv.requestFocus();
-            }else if (e_mail.isEmpty()){
+            } else if (e_mail.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Email vide", Toast.LENGTH_SHORT).show();
                 email.requestFocus();
-            }else if (pass.isEmpty()){
+            } else if (pass.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
-            }else if (pass.length()<6){
+            } else if (pass.length() < 6) {
                 Toast.makeText(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
-            }else if ((confPass.isEmpty())){
+            } else if ((confPass.isEmpty())) {
                 Toast.makeText(getApplicationContext(), "Champ Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
-            }else if (!(pass.equals(confPass))){
+            } else if (!(pass.equals(confPass))) {
                 Toast.makeText(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
-            }else {
+            } else {
                 mAuth2.createUserWithEmailAndPassword(e_mail, pass)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -106,7 +107,7 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
                                     mAuth2.signOut();
 
                                     //ajouter a la database
-                                    SurveillantClasse nvSuruv = new SurveillantClasse(e_mail,nom,prenom);
+                                    SurveillantClasse nvSuruv = new SurveillantClasse(e_mail, nom, prenom);
 
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference myRef = database.getReference("Employee").push();
@@ -127,7 +128,7 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
                         });
             }
         }
-        if(view.getId()==R.id.retourFormSurvBT){
+        if (view.getId() == R.id.retourFormSurvBT) {
             finish();
         }
     }

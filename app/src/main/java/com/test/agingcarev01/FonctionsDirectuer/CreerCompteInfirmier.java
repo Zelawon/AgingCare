@@ -1,8 +1,5 @@
 package com.test.agingcarev01.FonctionsDirectuer;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,10 +27,10 @@ import com.test.agingcarev01.Classe.InfirmierClasse;
 import com.test.agingcarev01.R;
 
 public class CreerCompteInfirmier extends AppCompatActivity implements View.OnClickListener {
-    private FirebaseAuth mAuth1,mAuth2;
+    private FirebaseAuth mAuth1, mAuth2;
     private Button creeInfBT, retourBT;
-    private EditText password,email,confirmPass,nomInf,prenomInf;
-    private RadioButton hommRadio,femmRadio;
+    private EditText password, email, confirmPass, nomInf, prenomInf;
+    private RadioButton hommRadio, femmRadio;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private int idEmp;
@@ -47,23 +47,24 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                 .setApiKey("AIzaSyDed0dGzgms4U1AdwN7qorSluc2A3B1aHQ")
                 .setApplicationId("agingcare-6f82d").build();
 
-        try { FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
+        try {
+            FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
             mAuth2 = FirebaseAuth.getInstance(myApp);
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             mAuth2 = FirebaseAuth.getInstance(FirebaseApp.getInstance("AnyAppName"));
         }
 
-        password=findViewById(R.id.passInf);
-        confirmPass=findViewById(R.id.confPassInf);
-        email=findViewById(R.id.emailInf);
-        nomInf=findViewById(R.id.nomInf);
-        prenomInf=findViewById(R.id.prenomInf);
-        femmRadio=findViewById(R.id.radioFemmeInf);
-        hommRadio=findViewById(R.id.radioHommeInf);
+        password = findViewById(R.id.passInf);
+        confirmPass = findViewById(R.id.confPassInf);
+        email = findViewById(R.id.emailInf);
+        nomInf = findViewById(R.id.nomInf);
+        prenomInf = findViewById(R.id.prenomInf);
+        femmRadio = findViewById(R.id.radioFemmeInf);
+        hommRadio = findViewById(R.id.radioHommeInf);
 
-        creeInfBT=findViewById(R.id.creeInf);
+        creeInfBT = findViewById(R.id.creeInf);
         creeInfBT.setOnClickListener(this);
-        retourBT=findViewById(R.id.retourFormInfBT);
+        retourBT = findViewById(R.id.retourFormInfBT);
         retourBT.setOnClickListener(this);
 
         FirebaseApp.initializeApp(CreerCompteInfirmier.this);
@@ -78,8 +79,9 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                idEmp =dataSnapshot.getValue(Integer.class);
+                idEmp = dataSnapshot.getValue(Integer.class);
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w("TAG", "Error", databaseError.toException());
@@ -87,7 +89,7 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
         });
     }
 
-    private  void updateIdEmployee(){
+    private void updateIdEmployee() {
         //get l'id
         getIdEemployee();
         //ajout 1 a l'id
@@ -100,7 +102,7 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.creeInf){
+        if (view.getId() == R.id.creeInf) {
 
             final String pass = password.getText().toString();
             final String confPass = confirmPass.getText().toString();
@@ -108,30 +110,30 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
             final String nom = nomInf.getText().toString().toLowerCase();
             final String prenom = prenomInf.getText().toString().toLowerCase();
 
-            if (nom.isEmpty()){
+            if (nom.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
                 nomInf.requestFocus();
-            }else if (prenom.isEmpty()){
+            } else if (prenom.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
                 prenomInf.requestFocus();
-            }else if ((!(femmRadio.isChecked()))&&(!(hommRadio.isChecked()))){
+            } else if ((!(femmRadio.isChecked())) && (!(hommRadio.isChecked()))) {
                 Toast.makeText(getApplicationContext(), "Champ sexe vide", Toast.LENGTH_SHORT).show();
-            }else if (e_mail.isEmpty()){
+            } else if (e_mail.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Email vide", Toast.LENGTH_SHORT).show();
                 email.requestFocus();
-            }else if (pass.isEmpty()){
+            } else if (pass.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Champ Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
-            }else if (pass.length()<6){
+            } else if (pass.length() < 6) {
                 Toast.makeText(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
-            }else if ((confPass.isEmpty())){
+            } else if ((confPass.isEmpty())) {
                 Toast.makeText(getApplicationContext(), "Champ Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
-            }else if (!(pass.equals(confPass))){
+            } else if (!(pass.equals(confPass))) {
                 Toast.makeText(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
-            }else {
+            } else {
                 mAuth2.createUserWithEmailAndPassword(e_mail, pass)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -144,8 +146,8 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                                     mAuth2.signOut();
 
                                     //ajouter a la database
-                                    if (femmRadio.isChecked()){
-                                        InfirmierClasse nvInf = new InfirmierClasse(idEmp,e_mail,nom,prenom,"femme");
+                                    if (femmRadio.isChecked()) {
+                                        InfirmierClasse nvInf = new InfirmierClasse(idEmp, e_mail, nom, prenom, "femme");
                                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                                         DatabaseReference myRef = database.getReference("Employee").push();
 
@@ -157,8 +159,8 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                                                 finish();
                                             }
                                         });
-                                    }else if (hommRadio.isChecked()){
-                                        InfirmierClasse nvInf = new InfirmierClasse(idEmp,e_mail,nom,prenom,"homme");
+                                    } else if (hommRadio.isChecked()) {
+                                        InfirmierClasse nvInf = new InfirmierClasse(idEmp, e_mail, nom, prenom, "homme");
                                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                                         DatabaseReference myRef = database.getReference("Employee").push();
 
@@ -170,7 +172,7 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                                                 finish();
                                             }
                                         });
-                                    }else {
+                                    } else {
                                         Toast.makeText(CreerCompteInfirmier.this, "ERREUR CHAMP SEXE", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
@@ -181,7 +183,7 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                         });
             }
         }
-        if(view.getId()==R.id.retourFormInfBT){
+        if (view.getId() == R.id.retourFormInfBT) {
             finish();
         }
 

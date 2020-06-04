@@ -29,8 +29,8 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
         ModifPrenomDialog.ModifPrenomDialogListner,
         ModifSexeDialog.ModifSexeDialogListner {
     private Button retourFrProfBT;
-    private ImageView updateEmailBT,updateSexeBT,updateNomBT,updatePrenomBT;
-    private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT;
+    private ImageView updateEmailBT, updateSexeBT, updateNomBT, updatePrenomBT;
+    private TextView nom, prenom, role, email, sexe, nomTXT, prenomTXT, sexeTXT;
     private String userkey;
 
     @Override
@@ -40,25 +40,25 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
         Log.e("TAG Erreur : ", "Hello! consuter profil");
 
         //Text View nom champ
-        nomTXT=findViewById(R.id.nomTextView);
-        prenomTXT=findViewById(R.id.prenomTextView);
-        sexeTXT=findViewById(R.id.sexeTextView);
+        nomTXT = findViewById(R.id.nomTextView);
+        prenomTXT = findViewById(R.id.prenomTextView);
+        sexeTXT = findViewById(R.id.sexeTextView);
         //Text View a modifier
-        nom=findViewById(R.id.txtNom);
-        prenom=findViewById(R.id.txtPrenom);
-        role=findViewById(R.id.txtRole);
-        email=findViewById(R.id.txtEmail);
-        sexe=findViewById(R.id.txtSex);
+        nom = findViewById(R.id.txtNom);
+        prenom = findViewById(R.id.txtPrenom);
+        role = findViewById(R.id.txtRole);
+        email = findViewById(R.id.txtEmail);
+        sexe = findViewById(R.id.txtSex);
         //Buttons
-        retourFrProfBT=findViewById(R.id.retourFrProf);
+        retourFrProfBT = findViewById(R.id.retourFrProf);
         retourFrProfBT.setOnClickListener(this);
-        updateEmailBT=findViewById(R.id.updateEmail);
+        updateEmailBT = findViewById(R.id.updateEmail);
         updateEmailBT.setOnClickListener(this);
-        updateNomBT=findViewById(R.id.updateNom);
+        updateNomBT = findViewById(R.id.updateNom);
         updateNomBT.setOnClickListener(this);
-        updatePrenomBT=findViewById(R.id.updatePrenom);
+        updatePrenomBT = findViewById(R.id.updatePrenom);
         updatePrenomBT.setOnClickListener(this);
-        updateSexeBT=findViewById(R.id.updateSexe);
+        updateSexeBT = findViewById(R.id.updateSexe);
         updateSexeBT.setOnClickListener(this);
 
         String currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -77,7 +77,7 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
             public void onDataChange(DataSnapshot dataSnapshott) {
                 if (dataSnapshott.exists()) {
                     for (DataSnapshot roleSnapshott : dataSnapshott.getChildren()) {
-                        userkey=roleSnapshott.getKey();
+                        userkey = roleSnapshott.getKey();
                         String currentRole = roleSnapshott.child("role").getValue(String.class);
                         String currentEmail = roleSnapshott.child("email").getValue(String.class);
                         if (currentRole.equals("Admin")) {
@@ -125,12 +125,12 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
                             prenom.setText(currentPrenom);
                             sexe.setText(currentSexe);
 
-                        }else{
+                        } else {
                             Toast.makeText(getApplicationContext(), "Erreur Role", Toast.LENGTH_SHORT).show();
                             Log.e("TAG Erreur : ", "Erreur Role");
                         }
                     }
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
                     Log.e("TAG Erreur : ", "Erreur Consulter Profil");
                 }
@@ -144,25 +144,24 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
     }
 
 
-
     private void openModifEmail() {
         ModifEmailDialog modifEmailDialog = new ModifEmailDialog();
-        modifEmailDialog.show(getSupportFragmentManager(),"Modifier Email");
+        modifEmailDialog.show(getSupportFragmentManager(), "Modifier Email");
     }
 
     private void openModifNom() {
         ModifNomDialog modifNomDialog = new ModifNomDialog();
-        modifNomDialog.show(getSupportFragmentManager(),"Modifer Nom");
+        modifNomDialog.show(getSupportFragmentManager(), "Modifer Nom");
     }
 
     private void openModifPrenom() {
         ModifPrenomDialog modifPrenomDialog = new ModifPrenomDialog();
-        modifPrenomDialog.show(getSupportFragmentManager(),"Modifer Prenom");
+        modifPrenomDialog.show(getSupportFragmentManager(), "Modifer Prenom");
     }
 
     private void openModifSexe() {
         ModifSexeDialog modifSexeDialog = new ModifSexeDialog();
-        modifSexeDialog.show(getSupportFragmentManager(),"Modifier Sexe");
+        modifSexeDialog.show(getSupportFragmentManager(), "Modifier Sexe");
     }
 
     @Override
@@ -193,19 +192,19 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.retourFrProf){
+        if (view.getId() == R.id.retourFrProf) {
             finish();
         }
-        if(view.getId()==R.id.updateEmail){
+        if (view.getId() == R.id.updateEmail) {
             openModifEmail();
         }
-        if(view.getId()==R.id.updateNom){
+        if (view.getId() == R.id.updateNom) {
             openModifNom();
         }
-        if(view.getId()==R.id.updatePrenom){
+        if (view.getId() == R.id.updatePrenom) {
             openModifPrenom();
         }
-        if(view.getId()==R.id.updateSexe){
+        if (view.getId() == R.id.updateSexe) {
             openModifSexe();
         }
     }

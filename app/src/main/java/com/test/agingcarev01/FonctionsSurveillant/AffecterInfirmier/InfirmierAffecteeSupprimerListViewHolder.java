@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.agingcarev01.R;
 
-public class InfirmierAffecteeSupprimerListViewHolder extends RecyclerView.ViewHolder{
-    public TextView nomInf,prenomInf,sexeInf;
+public class InfirmierAffecteeSupprimerListViewHolder extends RecyclerView.ViewHolder {
+    public TextView nomInf, prenomInf, sexeInf;
     public ImageView infAffecterSupprimerItemCheck;
 
     public InfirmierAffecteeSupprimerListViewHolder(@NonNull View itemView) {

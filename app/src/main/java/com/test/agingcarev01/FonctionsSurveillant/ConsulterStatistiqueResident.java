@@ -44,12 +44,12 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
         AjouterPressionDiastoliqueCibleDialog.AjouterPressionDiastoliqueCibleDialogListner,
         AjouterPressionSystoliqueCibleDialog.AjouterPressionSystoliqueCibleDialogListner {
 
-    private TextView cibleStatResNbr,cibleStatResNom,cibleStatResNom2,cibleStatResNbr2,cibleText,cibleText2;
-    private ImageView ajouterFrStatRes,modifCibleRes,modifCibleRes2;
+    private TextView cibleStatResNbr, cibleStatResNom, cibleStatResNom2, cibleStatResNbr2, cibleText, cibleText2;
+    private ImageView ajouterFrStatRes, modifCibleRes, modifCibleRes2;
     private static final String TAG = "ConsulterStatistiqueResident";
     private Button retourFrStatRes;
 
-    private LineChart lineChart1,lineChart2,lineChart3;
+    private LineChart lineChart1, lineChart2, lineChart3;
     private String keyResident;
     private DatabaseReference databaseReference;
 
@@ -90,14 +90,14 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
 
 
         //fetch Key Resident
-        keyResident =getIntent().getStringExtra("key");
+        keyResident = getIntent().getStringExtra("key");
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident);
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.retourFrStatRes){
+        if (view.getId() == R.id.retourFrStatRes) {
             finish();
         }
     }
@@ -114,7 +114,7 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     @Override
                     public void onClick(View view) {
                         AjouterPoidsCibleDialog ajouterMaladieDialog = new AjouterPoidsCibleDialog();
-                        ajouterMaladieDialog.show(getSupportFragmentManager(),"Nouveau Poids Ciblé");
+                        ajouterMaladieDialog.show(getSupportFragmentManager(), "Nouveau Poids Ciblé");
                     }
                 });
                 break;
@@ -127,7 +127,7 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     @Override
                     public void onClick(View view) {
                         AjouterTauxGlycemiqueCibleDialog ajouterTauxGlycemiqueCibleDialog = new AjouterTauxGlycemiqueCibleDialog();
-                        ajouterTauxGlycemiqueCibleDialog.show(getSupportFragmentManager(),"Nouveau Taux Glycemique Ciblé");
+                        ajouterTauxGlycemiqueCibleDialog.show(getSupportFragmentManager(), "Nouveau Taux Glycemique Ciblé");
                     }
                 });
                 break;
@@ -139,14 +139,14 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     @Override
                     public void onClick(View view) {
                         AjouterPressionDiastoliqueCibleDialog ajouterPressionDiastoliqueCibleDialog = new AjouterPressionDiastoliqueCibleDialog();
-                        ajouterPressionDiastoliqueCibleDialog.show(getSupportFragmentManager(),"Nouveau Pression Diastolique Ciblé");
+                        ajouterPressionDiastoliqueCibleDialog.show(getSupportFragmentManager(), "Nouveau Pression Diastolique Ciblé");
                     }
                 });
                 modifCibleRes2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         AjouterPressionSystoliqueCibleDialog ajouterPressionSystoliqueCibleDialog = new AjouterPressionSystoliqueCibleDialog();
-                        ajouterPressionSystoliqueCibleDialog.show(getSupportFragmentManager(),"Nouveau Pression Systolique Ciblé");
+                        ajouterPressionSystoliqueCibleDialog.show(getSupportFragmentManager(), "Nouveau Pression Systolique Ciblé");
                     }
                 });
                 break;
@@ -160,6 +160,7 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
         cibleText.setVisibility(View.INVISIBLE);
         cibleText2.setVisibility(View.INVISIBLE);
     }
+
     private void showCible2() {
         cibleStatResNom2.setVisibility(View.VISIBLE);
         cibleStatResNbr2.setVisibility(View.VISIBLE);
@@ -170,7 +171,8 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
 
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {}
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
 
     private void chartCustomization(LineDataSet d1) {
         //Chart Lines Custumization
@@ -192,7 +194,8 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
         d1.setFillColor(Color.BLUE);
         d1.setFillAlpha(50);
     }
-    private void invalidateAndClearChart(LineChart lineChart){
+
+    private void invalidateAndClearChart(LineChart lineChart) {
         lineChart.clear();
         lineChart.invalidate();
     }
@@ -211,14 +214,14 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                 ArrayList<Entry> dataVals = new ArrayList<Entry>();
                 ArrayList xAxisLabel = new ArrayList<>();
                 LineDataSet d1;
-                int i=0;
-                if (dataSnapshot.hasChildren()){
-                    for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()){
-                        PoidsClasse poidsClasse =myDataSnapshot.getValue(PoidsClasse.class);
+                int i = 0;
+                if (dataSnapshot.hasChildren()) {
+                    for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
+                        PoidsClasse poidsClasse = myDataSnapshot.getValue(PoidsClasse.class);
                         float x_points = i;
                         i++;
                         float y_points = poidsClasse.getPoidsRes();
-                        dataVals.add(new Entry(x_points,y_points));
+                        dataVals.add(new Entry(x_points, y_points));
                         //String dateString = (poidsClasse.getDatePoidRes()).substring(5);
                         xAxisLabel.add(poidsClasse.getDatePoidRes());
                     }
@@ -231,7 +234,7 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     lineChart1.setVisibleXRangeMaximum(5);
                     lineChart1.setDragEnabled(true);
                     lineChart1.setScaleEnabled(false);
-                    lineChart1.getXAxis().setLabelCount(i,false);
+                    lineChart1.getXAxis().setLabelCount(i, false);
                     lineChart1.getXAxis().setGranularityEnabled(true);
                     lineChart1.getXAxis().setGranularity(1.0f);
                     lineChart1.getXAxis().setTextSize(8);
@@ -250,16 +253,18 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     // do not forget to refresh the chart
                     lineChart1.invalidate();
                     //lineChart1.animateX(750);
-                }else {
+                } else {
                     invalidateAndClearChart(lineChart1);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
+
     private void retrieveTauxGlycemiqueAndShowChart() {
         invalidateAndClearChart(lineChart1);
         invalidateAndClearChart(lineChart3);
@@ -274,14 +279,14 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                 ArrayList<Entry> dataVals = new ArrayList<Entry>();
                 ArrayList xAxisLabel = new ArrayList<>();
                 LineDataSet d1;
-                int i=0;
-                if (dataSnapshot.hasChildren()){
-                    for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()){
-                        TauxGlycemiqueClasse tauxGlycemiqueClasse =myDataSnapshot.getValue(TauxGlycemiqueClasse.class);
+                int i = 0;
+                if (dataSnapshot.hasChildren()) {
+                    for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
+                        TauxGlycemiqueClasse tauxGlycemiqueClasse = myDataSnapshot.getValue(TauxGlycemiqueClasse.class);
                         float x_points = i;
                         i++;
                         float y_points = tauxGlycemiqueClasse.getTauxGlyceRes();
-                        dataVals.add(new Entry(x_points,y_points));
+                        dataVals.add(new Entry(x_points, y_points));
                         //String dateString = (poidsClasse.getDatePoidRes()).substring(5);
                         xAxisLabel.add(tauxGlycemiqueClasse.getDateTauxGlyceRes());
                     }
@@ -294,7 +299,7 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     lineChart2.setVisibleXRangeMaximum(5);
                     lineChart2.setDragEnabled(true);
                     lineChart2.setScaleEnabled(false);
-                    lineChart2.getXAxis().setLabelCount(i,false);
+                    lineChart2.getXAxis().setLabelCount(i, false);
                     lineChart2.getXAxis().setGranularityEnabled(true);
                     lineChart2.getXAxis().setGranularity(1.0f);
                     lineChart2.getXAxis().setTextSize(8);
@@ -313,16 +318,18 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     // do not forget to refresh the chart
                     lineChart2.invalidate();
                     //lineChart2.animateX(750);
-                }else {
+                } else {
                     invalidateAndClearChart(lineChart2);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
+
     private void retrieveTensionArterielleAndShowChart() {
         invalidateAndClearChart(lineChart2);
         invalidateAndClearChart(lineChart1);
@@ -337,17 +344,17 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                 ArrayList<Entry> dataValsPresSystolique = new ArrayList<Entry>();
                 ArrayList<Entry> dataValsPresDiatolique = new ArrayList<Entry>();
                 ArrayList xAxisLabel = new ArrayList<>();
-                LineDataSet d1,d2;
-                int i=0;
-                if (dataSnapshot.hasChildren()){
-                    for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()){
-                        TensionArterielleClasse tensionArterielleClasse =myDataSnapshot.getValue(TensionArterielleClasse.class);
+                LineDataSet d1, d2;
+                int i = 0;
+                if (dataSnapshot.hasChildren()) {
+                    for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
+                        TensionArterielleClasse tensionArterielleClasse = myDataSnapshot.getValue(TensionArterielleClasse.class);
                         float x_points = i;
                         i++;
                         float y_points = tensionArterielleClasse.getPressionSystolique();
                         float z_points = tensionArterielleClasse.getPreessionDiatolique();
-                        dataValsPresSystolique.add(new Entry(x_points,y_points));
-                        dataValsPresDiatolique.add(new Entry(x_points,z_points));
+                        dataValsPresSystolique.add(new Entry(x_points, y_points));
+                        dataValsPresDiatolique.add(new Entry(x_points, z_points));
                         //String dateString = (poidsClasse.getDatePoidRes()).substring(5);
                         xAxisLabel.add(tensionArterielleClasse.getDateTensionArterielle());
                     }
@@ -394,7 +401,7 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     lineChart3.setVisibleXRangeMaximum(5);
                     lineChart3.setDragEnabled(true);
                     lineChart3.setScaleEnabled(false);
-                    lineChart3.getXAxis().setLabelCount(i,false);
+                    lineChart3.getXAxis().setLabelCount(i, false);
                     lineChart3.getXAxis().setGranularityEnabled(true);
                     lineChart3.getXAxis().setGranularity(1.0f);
                     lineChart3.getXAxis().setTextSize(8);
@@ -413,10 +420,11 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     // do not forget to refresh the chart
                     lineChart3.invalidate();
                     //lineChart3.animateX(750);
-                }else {
+                } else {
                     invalidateAndClearChart(lineChart3);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -429,19 +437,20 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
         FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemiqueCible").setValue(tauxCible);
         loadTauxGlycemiqueCible();
     }
+
     private void loadTauxGlycemiqueCible() {
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemiqueCible");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Float tauxCible = dataSnapshot.getValue(Float.class);
-                if (tauxCible>0) {
+                if (tauxCible > 0) {
                     cibleStatResNbr.setText(String.valueOf(tauxCible));
                     cibleStatResNbr.setTextColor(Color.BLACK);
                     //initialize Lower Limit
-                    LimitLine lower_limit = new LimitLine(tauxCible,"Taux Glycemique Ciblé");
+                    LimitLine lower_limit = new LimitLine(tauxCible, "Taux Glycemique Ciblé");
                     lower_limit.setLineWidth(2f);
-                    lower_limit.enableDashedLine(10f,10f,0);
+                    lower_limit.enableDashedLine(10f, 10f, 0);
                     lower_limit.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_TOP);
                     lower_limit.setTextSize(5f);
                     lower_limit.setTextColor(Color.RED);
@@ -451,11 +460,12 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     leftAxs.removeAllLimitLines();
                     leftAxs.addLimitLine(lower_limit);
                     leftAxs.setDrawLimitLinesBehindData(true);
-                }else {
+                } else {
                     cibleStatResNbr.setText("pas encore spécifié");
                     cibleStatResNbr.setTextColor(Color.RED);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -468,19 +478,20 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
         FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poidsCible").setValue(poidsCible);
         loadPoidCible();
     }
+
     private void loadPoidCible() {
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poidsCible");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Float poidsCibleFloat = dataSnapshot.getValue(Float.class);
-                if (poidsCibleFloat>0) {
+                if (poidsCibleFloat > 0) {
                     cibleStatResNbr.setText(String.valueOf(poidsCibleFloat));
                     cibleStatResNbr.setTextColor(Color.BLACK);
                     //initialize Lower Limit
-                    LimitLine lower_limit = new LimitLine(poidsCibleFloat,"Poids Ciblé");
+                    LimitLine lower_limit = new LimitLine(poidsCibleFloat, "Poids Ciblé");
                     lower_limit.setLineWidth(2f);
-                    lower_limit.enableDashedLine(10f,10f,0);
+                    lower_limit.enableDashedLine(10f, 10f, 0);
                     lower_limit.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_TOP);
                     lower_limit.setTextSize(5f);
                     lower_limit.setTextColor(Color.RED);
@@ -490,11 +501,12 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     leftAxs.removeAllLimitLines();
                     leftAxs.addLimitLine(lower_limit);
                     leftAxs.setDrawLimitLinesBehindData(true);
-                }else {
+                } else {
                     cibleStatResNbr.setText("pas encore spécifié");
                     cibleStatResNbr.setTextColor(Color.RED);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -508,11 +520,13 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
         FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("pressionDiastoliqueCible").setValue(tensionCible);
         loadTensionArterielleCible();
     }
+
     @Override
     public void applyNvPressionSystoliqueCible(Float tensionCible) {
         FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("pressionSystoliqueCible").setValue(tensionCible);
         loadTensionArterielleCible();
     }
+
     private void loadTensionArterielleCible() {
         //Add Limits
         final YAxis leftAxs = lineChart3.getAxisLeft();
@@ -526,25 +540,27 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Float tensionCible = dataSnapshot.getValue(Float.class);
-                if (tensionCible>0 ) {
+                if (tensionCible > 0) {
                     cibleStatResNbr.setText(String.valueOf(tensionCible));
                     cibleStatResNbr.setTextColor(Color.BLACK);
                     //initialize Lower Limit
-                    LimitLine lower_limit2 = new LimitLine(tensionCible,"Pression Diastolique Ciblé");
+                    LimitLine lower_limit2 = new LimitLine(tensionCible, "Pression Diastolique Ciblé");
                     lower_limit2.setLineWidth(2f);
-                    lower_limit2.enableDashedLine(10f,10f,0);
+                    lower_limit2.enableDashedLine(10f, 10f, 0);
                     lower_limit2.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_TOP);
                     lower_limit2.setTextSize(5f);
                     lower_limit2.setTextColor(Color.BLUE);
                     lower_limit2.setLineColor(Color.BLUE);
                     leftAxs.addLimitLine(lower_limit2);
-                }else {
+                } else {
                     cibleStatResNbr.setText("pas encore spécifié");
                     cibleStatResNbr.setTextColor(Color.RED);
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         });
         //Pression Systonique
         cibleStatResNom2.setText("Pression Systolique");
@@ -557,21 +573,23 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
                     cibleStatResNbr2.setText(String.valueOf(tesionCible2));
                     cibleStatResNbr2.setTextColor(Color.BLACK);
                     //initialize Lower Limit
-                    LimitLine lower_limit = new LimitLine(tesionCible2,"Pression Systolique Ciblé");
+                    LimitLine lower_limit = new LimitLine(tesionCible2, "Pression Systolique Ciblé");
                     lower_limit.setLineWidth(2f);
-                    lower_limit.enableDashedLine(10f,10f,0);
+                    lower_limit.enableDashedLine(10f, 10f, 0);
                     lower_limit.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_TOP);
                     lower_limit.setTextSize(5f);
                     lower_limit.setLineColor(Color.GREEN);
                     lower_limit.setTextColor(Color.GREEN);
                     leftAxs.addLimitLine(lower_limit);
-                }else {
+                } else {
                     cibleStatResNbr2.setText("pas encore spécifié");
                     cibleStatResNbr2.setTextColor(Color.RED);
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         });
     }
 }

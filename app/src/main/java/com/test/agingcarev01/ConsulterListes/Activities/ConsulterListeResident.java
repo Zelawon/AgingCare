@@ -27,8 +27,8 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeResident extends AppCompatActivity implements View.OnClickListener {
 
-    private Button retourFrConsulResBT,creeNvProfilResidentBT;
-    private DatabaseReference databaseReference ;
+    private Button retourFrConsulResBT, creeNvProfilResidentBT;
+    private DatabaseReference databaseReference;
     private String keyDel;
 
     private FirebaseRecyclerOptions<ResidentClasse> options;
@@ -40,21 +40,21 @@ public class ConsulterListeResident extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_liste_resident);
-        retourFrConsulResBT=findViewById(R.id.retourFrConsulResident);
+        retourFrConsulResBT = findViewById(R.id.retourFrConsulResident);
         retourFrConsulResBT.setOnClickListener(this);
-        creeNvProfilResidentBT=findViewById(R.id.creeNvProfilResident);
+        creeNvProfilResidentBT = findViewById(R.id.creeNvProfilResident);
         creeNvProfilResidentBT.setOnClickListener(this);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident");
         //check if statut d'Archivage est 0 (Profil non Archiver)
         Query archiverQuery = databaseReference.orderByChild("statutArchivage").equalTo(0);
 
-        recyclerView=findViewById(R.id.recyclerViewListeResident);
+        recyclerView = findViewById(R.id.recyclerViewListeResident);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        options=new FirebaseRecyclerOptions.Builder<ResidentClasse>().setQuery(archiverQuery,ResidentClasse.class).build();
-        adapter=new FirebaseRecyclerAdapter<ResidentClasse, ResidentListViewHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<ResidentClasse>().setQuery(archiverQuery, ResidentClasse.class).build();
+        adapter = new FirebaseRecyclerAdapter<ResidentClasse, ResidentListViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ResidentListViewHolder holder, int position, @NonNull ResidentClasse model) {
                 final String key = getRef(position).getKey();
@@ -62,15 +62,15 @@ public class ConsulterListeResident extends AppCompatActivity implements View.On
                 holder.ResItemModifier.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent=new Intent(ConsulterListeResident.this, ConsulterProfilResident.class);
-                        intent.putExtra("id",key);
+                        Intent intent = new Intent(ConsulterListeResident.this, ConsulterProfilResident.class);
+                        intent.putExtra("id", key);
                         startActivity(intent);
                     }
                 });
                 holder.ResItemArchiver.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        keyDel=key;
+                        keyDel = key;
                         ArchivageDialog(keyDel);
                     }
                 });
@@ -83,7 +83,7 @@ public class ConsulterListeResident extends AppCompatActivity implements View.On
             @NonNull
             @Override
             public ResidentListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_resident,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_resident, parent, false);
                 return new ResidentListViewHolder(v);
             }
         };
@@ -111,10 +111,10 @@ public class ConsulterListeResident extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.creeNvProfilResident){
+        if (view.getId() == R.id.creeNvProfilResident) {
             startActivity(new Intent(ConsulterListeResident.this, CreerProfilResident.class));
         }
-        if(view.getId()==R.id.retourFrConsulResident){
+        if (view.getId() == R.id.retourFrConsulResident) {
             finish();
         }
     }

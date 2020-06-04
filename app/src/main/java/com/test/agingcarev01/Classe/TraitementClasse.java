@@ -6,7 +6,7 @@ public class TraitementClasse {
     private int idTraitement;
     private String typeTraitement;
     private Date dateDebutTaitement;
-    private  Date dateFinTaitement;
+    private Date dateFinTaitement;
     private String instructionTaitement;
 
 }

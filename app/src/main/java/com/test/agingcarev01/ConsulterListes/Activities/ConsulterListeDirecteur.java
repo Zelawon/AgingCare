@@ -25,9 +25,9 @@ import com.test.agingcarev01.FonctionsAdmin.CreerCompteDirecteur;
 import com.test.agingcarev01.FonctionsProfil.ConsulterProfilEmployee;
 import com.test.agingcarev01.R;
 
-public class ConsulterListeDirecteur extends AppCompatActivity implements View.OnClickListener{
-    private Button retourFrConsulDirecBT,creeNvCompteDirecteurBT;
-    private DatabaseReference databaseReference ;
+public class ConsulterListeDirecteur extends AppCompatActivity implements View.OnClickListener {
+    private Button retourFrConsulDirecBT, creeNvCompteDirecteurBT;
+    private DatabaseReference databaseReference;
 
     private FirebaseRecyclerOptions<DirecteurClasse> options;
     private FirebaseRecyclerAdapter<DirecteurClasse, DirecteurListViewHolder> adapter;
@@ -39,9 +39,9 @@ public class ConsulterListeDirecteur extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_liste_directeur);
 
-        retourFrConsulDirecBT =findViewById(R.id.retourFrConsulDirec);
+        retourFrConsulDirecBT = findViewById(R.id.retourFrConsulDirec);
         retourFrConsulDirecBT.setOnClickListener(this);
-        creeNvCompteDirecteurBT =findViewById(R.id.creeNvCompteDirecteur);
+        creeNvCompteDirecteurBT = findViewById(R.id.creeNvCompteDirecteur);
         creeNvCompteDirecteurBT.setOnClickListener(this);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Employee");
@@ -52,8 +52,8 @@ public class ConsulterListeDirecteur extends AppCompatActivity implements View.O
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        options=new FirebaseRecyclerOptions.Builder<DirecteurClasse>().setQuery(roleEtStatutQuery,DirecteurClasse.class).build();
-        adapter=new FirebaseRecyclerAdapter<DirecteurClasse, DirecteurListViewHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<DirecteurClasse>().setQuery(roleEtStatutQuery, DirecteurClasse.class).build();
+        adapter = new FirebaseRecyclerAdapter<DirecteurClasse, DirecteurListViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull DirecteurListViewHolder holder, int position, @NonNull DirecteurClasse model) {
                 final String emailKey = model.getEmail();
@@ -61,15 +61,15 @@ public class ConsulterListeDirecteur extends AppCompatActivity implements View.O
                 holder.DirecItemModifier.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent=new Intent(ConsulterListeDirecteur.this, ConsulterProfilEmployee.class);
-                        intent.putExtra("email",emailKey);
+                        Intent intent = new Intent(ConsulterListeDirecteur.this, ConsulterProfilEmployee.class);
+                        intent.putExtra("email", emailKey);
                         startActivity(intent);
                     }
                 });
                 holder.DirecItemArchiver.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String keyDel=key;
+                        String keyDel = key;
                         ArchivageDialog(keyDel);
                     }
                 });
@@ -81,7 +81,7 @@ public class ConsulterListeDirecteur extends AppCompatActivity implements View.O
             @NonNull
             @Override
             public DirecteurListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_directeur,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_directeur, parent, false);
                 return new DirecteurListViewHolder(v);
             }
         };
@@ -110,10 +110,10 @@ public class ConsulterListeDirecteur extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.retourFrConsulDirec){
+        if (view.getId() == R.id.retourFrConsulDirec) {
             finish();
         }
-        if(view.getId()==R.id.creeNvCompteDirecteur){
+        if (view.getId() == R.id.creeNvCompteDirecteur) {
             startActivity(new Intent(ConsulterListeDirecteur.this, CreerCompteDirecteur.class));
         }
     }

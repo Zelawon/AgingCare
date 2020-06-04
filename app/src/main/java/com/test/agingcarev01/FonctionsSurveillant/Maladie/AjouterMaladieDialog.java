@@ -24,7 +24,7 @@ public class AjouterMaladieDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_ajout_maladie,null);
+        View view = inflater.inflate(R.layout.layout_ajout_maladie, null);
 
         builder.setView(view)
                 .setTitle("Ajouter Maladie")
@@ -39,7 +39,7 @@ public class AjouterMaladieDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         final String nvNom = nomMaladie.getText().toString().toLowerCase();
                         //verifier non vide
-                        if ( !(nvNom.isEmpty()) ){
+                        if (!(nvNom.isEmpty())) {
                             listner.applyNvNom(nvNom);
                         }
                     }
@@ -55,7 +55,7 @@ public class AjouterMaladieDialog extends AppCompatDialogFragment {
         try {
             listner = (AjoutMaladieDialogListner) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()+"ajouter ModifPrenomDialogListner");
+            throw new ClassCastException(context.toString() + "ajouter ModifPrenomDialogListner");
         }
     }
 

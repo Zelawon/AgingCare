@@ -24,37 +24,38 @@ import com.test.agingcarev01.R;
 public class ConsulterProfilEmployee extends AppCompatActivity implements View.OnClickListener,
         ModifNomDialog.ModifNomDialogListner,
         ModifPrenomDialog.ModifPrenomDialogListner,
-        ModifSexeDialog.ModifSexeDialogListner{
+        ModifSexeDialog.ModifSexeDialogListner {
     private String emailEmpRecu;
     private Button retourFrProfBT;
-    private ImageView updateSexeBT,updateNomBT,updatePrenomBT;
-    private TextView nom,prenom,role,email,sexe,nomTXT,prenomTXT,sexeTXT;
+    private ImageView updateSexeBT, updateNomBT, updatePrenomBT;
+    private TextView nom, prenom, role, email, sexe, nomTXT, prenomTXT, sexeTXT;
     private String userkey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_profil_employee);
 
-        emailEmpRecu=getIntent().getStringExtra("email");
+        emailEmpRecu = getIntent().getStringExtra("email");
 
         //Text View nom champ
-        nomTXT=findViewById(R.id.nomEmpTextView);
-        prenomTXT=findViewById(R.id.prenomEmpTextView);
-        sexeTXT=findViewById(R.id.sexeEmpTextView);
+        nomTXT = findViewById(R.id.nomEmpTextView);
+        prenomTXT = findViewById(R.id.prenomEmpTextView);
+        sexeTXT = findViewById(R.id.sexeEmpTextView);
         //Text View a modifier
-        nom=findViewById(R.id.txtNomEmp);
-        prenom=findViewById(R.id.txtPrenomEmp);
-        role=findViewById(R.id.txtRoleEmp);
-        email=findViewById(R.id.txtEmailEmp);
-        sexe=findViewById(R.id.txtSexEmp);
+        nom = findViewById(R.id.txtNomEmp);
+        prenom = findViewById(R.id.txtPrenomEmp);
+        role = findViewById(R.id.txtRoleEmp);
+        email = findViewById(R.id.txtEmailEmp);
+        sexe = findViewById(R.id.txtSexEmp);
         //Buttons
-        retourFrProfBT=findViewById(R.id.retourFrProfEmp);
+        retourFrProfBT = findViewById(R.id.retourFrProfEmp);
         retourFrProfBT.setOnClickListener(this);
-        updateNomBT=findViewById(R.id.updateNomEmp);
+        updateNomBT = findViewById(R.id.updateNomEmp);
         updateNomBT.setOnClickListener(this);
-        updatePrenomBT=findViewById(R.id.updatePrenomEmp);
+        updatePrenomBT = findViewById(R.id.updatePrenomEmp);
         updatePrenomBT.setOnClickListener(this);
-        updateSexeBT=findViewById(R.id.updateSexeEmp);
+        updateSexeBT = findViewById(R.id.updateSexeEmp);
         updateSexeBT.setOnClickListener(this);
 
         afficherProfil(emailEmpRecu);
@@ -69,7 +70,7 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
             public void onDataChange(DataSnapshot dataSnapshott) {
                 if (dataSnapshott.exists()) {
                     for (DataSnapshot roleSnapshott : dataSnapshott.getChildren()) {
-                        userkey=roleSnapshott.getKey();
+                        userkey = roleSnapshott.getKey();
                         String currentRole = roleSnapshott.child("role").getValue(String.class);
                         String currentEmail = roleSnapshott.child("email").getValue(String.class);
                         if (currentRole.equals("Admin")) {
@@ -117,11 +118,11 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
                             prenom.setText(currentPrenom);
                             sexe.setText(currentSexe);
 
-                        }else{
+                        } else {
                             Toast.makeText(getApplicationContext(), "Erreur Role", Toast.LENGTH_SHORT).show();
                         }
                     }
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -135,17 +136,17 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
 
     private void openModifNom() {
         ModifNomDialog modifNomDialog = new ModifNomDialog();
-        modifNomDialog.show(getSupportFragmentManager(),"Modifer Nom");
+        modifNomDialog.show(getSupportFragmentManager(), "Modifer Nom");
     }
 
     private void openModifPrenom() {
         ModifPrenomDialog modifPrenomDialog = new ModifPrenomDialog();
-        modifPrenomDialog.show(getSupportFragmentManager(),"Modifer Prenom");
+        modifPrenomDialog.show(getSupportFragmentManager(), "Modifer Prenom");
     }
 
     private void openModifSexe() {
         ModifSexeDialog modifSexeDialog = new ModifSexeDialog();
-        modifSexeDialog.show(getSupportFragmentManager(),"Modifier Sexe");
+        modifSexeDialog.show(getSupportFragmentManager(), "Modifier Sexe");
     }
 
 
@@ -169,16 +170,16 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.retourFrProfEmp){
+        if (view.getId() == R.id.retourFrProfEmp) {
             finish();
         }
-        if(view.getId()==R.id.updateNomEmp){
+        if (view.getId() == R.id.updateNomEmp) {
             openModifNom();
         }
-        if(view.getId()==R.id.updatePrenomEmp){
+        if (view.getId() == R.id.updatePrenomEmp) {
             openModifPrenom();
         }
-        if(view.getId()==R.id.updateSexeEmp){
+        if (view.getId() == R.id.updateSexeEmp) {
             openModifSexe();
         }
 

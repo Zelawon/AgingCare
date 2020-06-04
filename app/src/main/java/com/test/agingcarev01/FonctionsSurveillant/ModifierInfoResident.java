@@ -29,10 +29,10 @@ public class ModifierInfoResident extends AppCompatActivity implements View.OnCl
         ModifPrenomDialog.ModifPrenomDialogListner,
         ModifSexeDialog.ModifSexeDialogListner,
         ModiftypeSanguinDialog.ModiftypeSanguinDialogListner,
-        DatePickerDialog.OnDateSetListener{
-    String key,date="";
-    TextView nom,prenom,sexe,dateNaissance,typeSang;
-    ImageView modifNomResBT,modifPrenomResBT,modifSexeResBT,modifDateNaisResBT,modifTypeSangResBT;
+        DatePickerDialog.OnDateSetListener {
+    String key, date = "";
+    TextView nom, prenom, sexe, dateNaissance, typeSang;
+    ImageView modifNomResBT, modifPrenomResBT, modifSexeResBT, modifDateNaisResBT, modifTypeSangResBT;
     Button retourFrModifProfilResBT;
     DatabaseReference databaseReference;
 
@@ -41,28 +41,28 @@ public class ModifierInfoResident extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifier_info_resident);
 
-        nom=findViewById(R.id.modifNomResProfil);
-        prenom=findViewById(R.id.modifPrenomResProfil);
-        sexe=findViewById(R.id.modifSexeResProfil);
-        dateNaissance=findViewById(R.id.modifDateNasiResProfil);
-        typeSang=findViewById(R.id.modifTypeSangResProfil);
+        nom = findViewById(R.id.modifNomResProfil);
+        prenom = findViewById(R.id.modifPrenomResProfil);
+        sexe = findViewById(R.id.modifSexeResProfil);
+        dateNaissance = findViewById(R.id.modifDateNasiResProfil);
+        typeSang = findViewById(R.id.modifTypeSangResProfil);
 
-        retourFrModifProfilResBT=findViewById(R.id.retourFrModifProfilRes);
+        retourFrModifProfilResBT = findViewById(R.id.retourFrModifProfilRes);
         retourFrModifProfilResBT.setOnClickListener(this);
-        modifNomResBT=findViewById(R.id.modifNomRes);
+        modifNomResBT = findViewById(R.id.modifNomRes);
         modifNomResBT.setOnClickListener(this);
-        modifPrenomResBT=findViewById(R.id.modifPrenomRes);
+        modifPrenomResBT = findViewById(R.id.modifPrenomRes);
         modifPrenomResBT.setOnClickListener(this);
-        modifSexeResBT=findViewById(R.id.modifSexeRes);
+        modifSexeResBT = findViewById(R.id.modifSexeRes);
         modifSexeResBT.setOnClickListener(this);
-        modifDateNaisResBT=findViewById(R.id.modifDateNaisRes);
+        modifDateNaisResBT = findViewById(R.id.modifDateNaisRes);
         modifDateNaisResBT.setOnClickListener(this);
-        modifTypeSangResBT=findViewById(R.id.modifTypeSangRes);
+        modifTypeSangResBT = findViewById(R.id.modifTypeSangRes);
         modifTypeSangResBT.setOnClickListener(this);
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident");
-        key=getIntent().getStringExtra("key");
+        key = getIntent().getStringExtra("key");
 
         fillProfileInfo(key);
     }
@@ -113,7 +113,7 @@ public class ModifierInfoResident extends AppCompatActivity implements View.OnCl
     }
 
     private void openModifDateNaissance() {
-        DatePickerDialog datePickerDialog =new DatePickerDialog(
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
                 ModifierInfoResident.this,
                 this,
                 Calendar.getInstance().get(Calendar.YEAR),
@@ -122,6 +122,7 @@ public class ModifierInfoResident extends AppCompatActivity implements View.OnCl
         );
         datePickerDialog.show();
     }
+
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
         //janvier = month 0
@@ -133,22 +134,22 @@ public class ModifierInfoResident extends AppCompatActivity implements View.OnCl
 
     private void openModifTypeSang() {
         ModiftypeSanguinDialog modiftypeSanguinDialog = new ModiftypeSanguinDialog();
-        modiftypeSanguinDialog.show(getSupportFragmentManager(),"Modifier TypeSanguin");
+        modiftypeSanguinDialog.show(getSupportFragmentManager(), "Modifier TypeSanguin");
     }
 
     private void openModifSexe() {
         ModifSexeDialog modifSexeDialog = new ModifSexeDialog();
-        modifSexeDialog.show(getSupportFragmentManager(),"Modifier Sexe");
+        modifSexeDialog.show(getSupportFragmentManager(), "Modifier Sexe");
     }
 
     private void openModifPrenom() {
         ModifPrenomDialog modifPrenomDialog = new ModifPrenomDialog();
-        modifPrenomDialog.show(getSupportFragmentManager(),"Modifer Prenom");
+        modifPrenomDialog.show(getSupportFragmentManager(), "Modifer Prenom");
     }
 
     private void openModifNom() {
         ModifNomDialog modifNomDialog = new ModifNomDialog();
-        modifNomDialog.show(getSupportFragmentManager(),"Modifer Nom");
+        modifNomDialog.show(getSupportFragmentManager(), "Modifer Nom");
     }
 
     @Override

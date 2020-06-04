@@ -24,12 +24,12 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeTauxGlycemique extends AppCompatActivity implements View.OnClickListener {
 
-    private Button retourFrConsulTauxGlycemique,ajouterNvTauxGlycemique;
+    private Button retourFrConsulTauxGlycemique, ajouterNvTauxGlycemique;
     private RecyclerView recyclerView;
 
     private FirebaseRecyclerOptions<TauxGlycemiqueClasse> options;
     private FirebaseRecyclerAdapter<TauxGlycemiqueClasse, TauxGlycemiqueListViewHolder> adapter;
-    private String keyResident,keyTauxGlyceDel;
+    private String keyResident, keyTauxGlyceDel;
     private DatabaseReference databaseReference;
 
     @Override
@@ -37,23 +37,23 @@ public class ConsulterListeTauxGlycemique extends AppCompatActivity implements V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_liste_taux_glycemique);
 
-        retourFrConsulTauxGlycemique=findViewById(R.id.retourFrConsulTauxGlycemique);
+        retourFrConsulTauxGlycemique = findViewById(R.id.retourFrConsulTauxGlycemique);
         retourFrConsulTauxGlycemique.setOnClickListener(this);
-        ajouterNvTauxGlycemique=findViewById(R.id.ajouterNvTauxGlycemique);
+        ajouterNvTauxGlycemique = findViewById(R.id.ajouterNvTauxGlycemique);
         ajouterNvTauxGlycemique.setOnClickListener(this);
 
         //fetch
-        keyResident =getIntent().getStringExtra("key");
+        keyResident = getIntent().getStringExtra("key");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemique");
         Query query = databaseReference.orderByChild("dateTauxGlyceRes");
 
         //recyclerView
-        recyclerView=findViewById(R.id.recyclerViewListeTauxGlycemique);
+        recyclerView = findViewById(R.id.recyclerViewListeTauxGlycemique);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        options=new FirebaseRecyclerOptions.Builder<TauxGlycemiqueClasse>().setQuery(query, TauxGlycemiqueClasse.class).build();
-        adapter=new FirebaseRecyclerAdapter<TauxGlycemiqueClasse, TauxGlycemiqueListViewHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<TauxGlycemiqueClasse>().setQuery(query, TauxGlycemiqueClasse.class).build();
+        adapter = new FirebaseRecyclerAdapter<TauxGlycemiqueClasse, TauxGlycemiqueListViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull TauxGlycemiqueListViewHolder holder, int position, @NonNull TauxGlycemiqueClasse model) {
                 final String key = getRef(position).getKey();
@@ -61,7 +61,7 @@ public class ConsulterListeTauxGlycemique extends AppCompatActivity implements V
                 holder.tauxItemArchiver.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        keyTauxGlyceDel=key;
+                        keyTauxGlyceDel = key;
                         DeleteTauxGlycemique(keyTauxGlyceDel);
                     }
                 });
@@ -74,7 +74,7 @@ public class ConsulterListeTauxGlycemique extends AppCompatActivity implements V
             @NonNull
             @Override
             public TauxGlycemiqueListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_taux_glycemique_resident,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_taux_glycemique_resident, parent, false);
                 return new TauxGlycemiqueListViewHolder(v);
             }
         };
@@ -104,12 +104,12 @@ public class ConsulterListeTauxGlycemique extends AppCompatActivity implements V
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.ajouterNvTauxGlycemique){
-            Intent intent=new Intent(ConsulterListeTauxGlycemique.this, AjouterTauxGlycemie.class);
+        if (view.getId() == R.id.ajouterNvTauxGlycemique) {
+            Intent intent = new Intent(ConsulterListeTauxGlycemique.this, AjouterTauxGlycemie.class);
             intent.putExtra("key", keyResident);
             startActivity(intent);
         }
-        if (view.getId() == R.id.retourFrConsulTauxGlycemique){
+        if (view.getId() == R.id.retourFrConsulTauxGlycemique) {
             finish();
         }
 

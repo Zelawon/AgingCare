@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.agingcarev01.R;
 
-public class PoidsListViewHolder extends RecyclerView.ViewHolder{
-    public TextView poidsItemDate,poidsItemPoids,poidsItemNote;
+public class PoidsListViewHolder extends RecyclerView.ViewHolder {
+    public TextView poidsItemDate, poidsItemPoids, poidsItemNote;
     public ImageView poidsItemArchiver;
 
     public PoidsListViewHolder(@NonNull View itemView) {

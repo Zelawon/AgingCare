@@ -11,7 +11,7 @@ import com.test.agingcarev01.R;
 
 public class InfirmierListViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView nomInf,prenomInf,emailInf,sexeInf;
+    public TextView nomInf, prenomInf, emailInf, sexeInf;
     public ImageView InfItemModifier, InfItemArchiver;
 
     public InfirmierListViewHolder(@NonNull View itemView) {

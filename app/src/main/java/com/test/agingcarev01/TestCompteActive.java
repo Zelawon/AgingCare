@@ -1,26 +1,25 @@
 package com.test.agingcarev01;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.test.agingcarev01.R;
 
 public class TestCompteActive extends AppCompatActivity {
-    TextView txt1,txt2,txt3,txt4;
+    TextView txt1, txt2, txt3, txt4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_compte_active);
 
-        txt1=findViewById(R.id.d1);
-        txt2=findViewById(R.id.d2);
-        txt3=findViewById(R.id.d3);
-        txt4=findViewById(R.id.d4);
+        txt1 = findViewById(R.id.d1);
+        txt2 = findViewById(R.id.d2);
+        txt3 = findViewById(R.id.d3);
+        txt4 = findViewById(R.id.d4);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

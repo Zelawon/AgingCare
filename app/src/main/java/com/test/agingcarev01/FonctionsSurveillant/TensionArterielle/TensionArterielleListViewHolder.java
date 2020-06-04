@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.agingcarev01.R;
 
-public class TensionArterielleListViewHolder extends RecyclerView.ViewHolder{
-    public TextView tensionArtItemDate,tensionArtItem,brasMesureItem,tensionArtItemNote;
+public class TensionArterielleListViewHolder extends RecyclerView.ViewHolder {
+    public TextView tensionArtItemDate, tensionArtItem, brasMesureItem, tensionArtItemNote;
     public ImageView tensionArtArchiver;
 
     public TensionArterielleListViewHolder(@NonNull View itemView) {

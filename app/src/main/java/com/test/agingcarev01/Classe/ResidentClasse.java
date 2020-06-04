@@ -27,9 +27,9 @@ public class ResidentClasse {
         this.dateNaissanceRes = dateNaissanceRes;
         this.statutArchivage = 0;
         this.poidsCible = 0f;
-        this.tauxGlycemiqueCible=0f;
-        this.pressionDiastoliqueCible=0f;
-        this.pressionSystoliqueCible=0f;
+        this.tauxGlycemiqueCible = 0f;
+        this.pressionDiastoliqueCible = 0f;
+        this.pressionSystoliqueCible = 0f;
     }
 
     public Float getPressionDiastoliqueCible() {

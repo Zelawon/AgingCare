@@ -18,8 +18,8 @@ import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeAdmin extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button creeCompteAdminBT,logoutAdminBT,consulterProfAdminBT,modifierMdpAdminBT,
-            consulterListeSurveillantADBT,consulterListeInfirmierADBT,consulterListeDirecteurADBT;
+    private Button creeCompteAdminBT, logoutAdminBT, consulterProfAdminBT, modifierMdpAdminBT,
+            consulterListeSurveillantADBT, consulterListeInfirmierADBT, consulterListeDirecteurADBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -29,33 +29,33 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
 
         mAuth = FirebaseAuth.getInstance();
 
-        consulterListeDirecteurADBT=findViewById(R.id.consulterListeDirecteurAD);
+        consulterListeDirecteurADBT = findViewById(R.id.consulterListeDirecteurAD);
         consulterListeDirecteurADBT.setOnClickListener(this);
 
-        consulterListeInfirmierADBT=findViewById(R.id.consulterListeInfirmierAD);
+        consulterListeInfirmierADBT = findViewById(R.id.consulterListeInfirmierAD);
         consulterListeInfirmierADBT.setOnClickListener(this);
 
-        consulterListeSurveillantADBT=findViewById(R.id.consulterListeSurveillantAD);
+        consulterListeSurveillantADBT = findViewById(R.id.consulterListeSurveillantAD);
         consulterListeSurveillantADBT.setOnClickListener(this);
 
 
-        creeCompteAdminBT=findViewById(R.id.creeCompteAdmin);
+        creeCompteAdminBT = findViewById(R.id.creeCompteAdmin);
         creeCompteAdminBT.setOnClickListener(this);
 
-        consulterProfAdminBT=findViewById(R.id.consulterProfAdmin);
+        consulterProfAdminBT = findViewById(R.id.consulterProfAdmin);
         consulterProfAdminBT.setOnClickListener(this);
 
 
-        logoutAdminBT=findViewById(R.id.deconnecterAdmin);
+        logoutAdminBT = findViewById(R.id.deconnecterAdmin);
         logoutAdminBT.setOnClickListener(this);
 
-        modifierMdpAdminBT=findViewById(R.id.modifierMdpAdmin);
+        modifierMdpAdminBT = findViewById(R.id.modifierMdpAdmin);
         modifierMdpAdminBT.setOnClickListener(this);
     }
 
     private void openModifPass() {
-        ModifierMotDePasseDialog modifierMotDePasseDialog =new ModifierMotDePasseDialog();
-        modifierMotDePasseDialog.show(getSupportFragmentManager(),"Modifier Mot De Passe");
+        ModifierMotDePasseDialog modifierMotDePasseDialog = new ModifierMotDePasseDialog();
+        modifierMotDePasseDialog.show(getSupportFragmentManager(), "Modifier Mot De Passe");
     }
 
     @Override
@@ -67,28 +67,28 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
     public void onClick(View view) {
 
 
-        if(view.getId()==R.id.consulterListeInfirmierAD){
+        if (view.getId() == R.id.consulterListeInfirmierAD) {
             startActivity(new Intent(HomeAdmin.this, ConsulterListeInfirmier.class));
         }
-        if(view.getId()==R.id.consulterListeSurveillantAD){
+        if (view.getId() == R.id.consulterListeSurveillantAD) {
             startActivity(new Intent(HomeAdmin.this, ConsulterListeSurveillant.class));
         }
-        if(view.getId()==R.id.consulterListeDirecteurAD){
+        if (view.getId() == R.id.consulterListeDirecteurAD) {
             startActivity(new Intent(HomeAdmin.this, ConsulterListeDirecteur.class));
         }
-        if(view.getId()==R.id.creeCompteAdmin){
+        if (view.getId() == R.id.creeCompteAdmin) {
             startActivity(new Intent(HomeAdmin.this, CreeCompteAdmin.class));
         }
-        if(view.getId()==R.id.consulterProfAdmin){
+        if (view.getId() == R.id.consulterProfAdmin) {
             startActivity(new Intent(HomeAdmin.this, ConsulterPropreProfil.class));
         }
-        if(view.getId()==R.id.modifierMdpAdmin){
+        if (view.getId() == R.id.modifierMdpAdmin) {
             openModifPass();
         }
-        if(view.getId()==R.id.deconnecterAdmin){
+        if (view.getId() == R.id.deconnecterAdmin) {
             mAuth.signOut();
             startActivity(new Intent(HomeAdmin.this, MainActivity.class));
-            finishAffinity ();
+            finishAffinity();
         }
 
     }

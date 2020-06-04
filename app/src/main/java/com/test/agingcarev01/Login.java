@@ -29,7 +29,7 @@ import com.test.agingcarev01.HomePages.HomeSurveillant;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button logInBT, retourBT;
-    private EditText email,mdp;
+    private EditText email, mdp;
     private FirebaseAuth mAuth;
 
 
@@ -38,29 +38,30 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        logInBT=findViewById(R.id.SignIn);
-        retourBT =findViewById(R.id.retourLogin);
-        email=findViewById(R.id.emaillog);
-        mdp=findViewById(R.id.passDirec);
+        logInBT = findViewById(R.id.SignIn);
+        retourBT = findViewById(R.id.retourLogin);
+        email = findViewById(R.id.emaillog);
+        mdp = findViewById(R.id.passDirec);
 
         mAuth = FirebaseAuth.getInstance();
 
         logInBT.setOnClickListener(this);
         retourBT.setOnClickListener(this);
     }
+
     private void singIn(final String mail, final String password) {
         mAuth.signInWithEmailAndPassword(mail, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     updateUI();
-                }
-                else{
-                    Toast.makeText(Login.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
     private void updateUI() {
         //if email existe dans database affiche le home correspendent au role du user.
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -83,11 +84,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, HomeDirectuer.class));
                             finishAffinity();
-                        }else if (currentstatutEtRole.equals("Surveillant_0")) {
+                        } else if (currentstatutEtRole.equals("Surveillant_0")) {
                             Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, HomeSurveillant.class));
                             finishAffinity();
-                        }else if (currentstatutEtRole.equals("Infirmier_0")) {
+                        } else if (currentstatutEtRole.equals("Infirmier_0")) {
                             Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, HomeInfirmier.class));
                             finishAffinity();
@@ -96,7 +97,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             finish();
                         }
                     }
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Erreur Login", Toast.LENGTH_LONG).show();
                     Log.e("TAG Erreur : ", "Login No Email");
                     finish();
@@ -114,18 +115,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         String password = mdp.getText().toString();
         String emails = email.getText().toString();
-        if(view.getId()==R.id.SignIn){
-            if (emails.isEmpty()){
+        if (view.getId() == R.id.SignIn) {
+            if (emails.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Email vide", Toast.LENGTH_SHORT).show();
                 email.requestFocus();
-            }else if (password.isEmpty()){
+            } else if (password.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 mdp.requestFocus();
-            }else {
-                singIn(emails,password);
+            } else {
+                singIn(emails, password);
             }
         }
-        if (view.getId()==R.id.retourLogin){
+        if (view.getId() == R.id.retourLogin) {
             finish();
         }
     }

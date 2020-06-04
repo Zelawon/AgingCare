@@ -15,22 +15,22 @@ import com.test.agingcarev01.R;
 
 import java.util.List;
 
-public class InfirmierAffecteeAjouterAdapter extends RecyclerView.Adapter<InfirmierAffecteeAjouterAdapter.InfirmierAffecteeAjouterListViewHolder>{
+public class InfirmierAffecteeAjouterAdapter extends RecyclerView.Adapter<InfirmierAffecteeAjouterAdapter.InfirmierAffecteeAjouterListViewHolder> {
     private Activity context;
     private List<InfirmierClasse> data;
     private OnItemClickListener mListener;
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onIconClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 
     public static class InfirmierAffecteeAjouterListViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView nomInf,prenomInf,sexeInf;
+        public TextView nomInf, prenomInf, sexeInf;
         public ImageView infAffecterAjouterItemCheck;
 
         public InfirmierAffecteeAjouterListViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
@@ -43,9 +43,9 @@ public class InfirmierAffecteeAjouterAdapter extends RecyclerView.Adapter<Infirm
             infAffecterAjouterItemCheck.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(listener!= null){
+                    if (listener != null) {
                         int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION){
+                        if (position != RecyclerView.NO_POSITION) {
                             listener.onIconClick(position);
                         }
                     }
@@ -62,9 +62,9 @@ public class InfirmierAffecteeAjouterAdapter extends RecyclerView.Adapter<Infirm
     @NonNull
     @Override
     public InfirmierAffecteeAjouterListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_infirmier_affectee_ajouter,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_infirmier_affectee_ajouter, parent, false);
 
-        return new InfirmierAffecteeAjouterListViewHolder(view,mListener);
+        return new InfirmierAffecteeAjouterListViewHolder(view, mListener);
     }
 
     @Override

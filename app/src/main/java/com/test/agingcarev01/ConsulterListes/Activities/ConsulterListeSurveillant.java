@@ -27,8 +27,8 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeSurveillant extends AppCompatActivity implements View.OnClickListener {
 
-    private Button retourFrConsulSurvBT,creeNvCompteSurveillantBT;
-    private DatabaseReference databaseReference ;
+    private Button retourFrConsulSurvBT, creeNvCompteSurveillantBT;
+    private DatabaseReference databaseReference;
 
     private FirebaseRecyclerOptions<SurveillantClasse> options;
     private FirebaseRecyclerAdapter<SurveillantClasse, SurveillantListViewHolder> adapter;
@@ -40,10 +40,10 @@ public class ConsulterListeSurveillant extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_liste_surveillant);
 
-        retourFrConsulSurvBT=findViewById(R.id.retourFrConsulSurv);
+        retourFrConsulSurvBT = findViewById(R.id.retourFrConsulSurv);
         retourFrConsulSurvBT.setOnClickListener(this);
 
-        creeNvCompteSurveillantBT =findViewById(R.id.creeNvCompteSurveillant);
+        creeNvCompteSurveillantBT = findViewById(R.id.creeNvCompteSurveillant);
         creeNvCompteSurveillantBT.setOnClickListener(this);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Employee");
@@ -55,8 +55,8 @@ public class ConsulterListeSurveillant extends AppCompatActivity implements View
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        options=new FirebaseRecyclerOptions.Builder<SurveillantClasse>().setQuery(roleEtStatutQuery,SurveillantClasse.class).build();
-        adapter=new FirebaseRecyclerAdapter<SurveillantClasse, SurveillantListViewHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<SurveillantClasse>().setQuery(roleEtStatutQuery, SurveillantClasse.class).build();
+        adapter = new FirebaseRecyclerAdapter<SurveillantClasse, SurveillantListViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull SurveillantListViewHolder holder, int position, @NonNull SurveillantClasse model) {
                 final String emailKey = model.getEmail();
@@ -64,15 +64,15 @@ public class ConsulterListeSurveillant extends AppCompatActivity implements View
                 holder.survItemModifier.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent=new Intent(ConsulterListeSurveillant.this, ConsulterProfilEmployee.class);
-                        intent.putExtra("email",emailKey);
+                        Intent intent = new Intent(ConsulterListeSurveillant.this, ConsulterProfilEmployee.class);
+                        intent.putExtra("email", emailKey);
                         startActivity(intent);
                     }
                 });
                 holder.survItemArchiver.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String keyDel=key;
+                        String keyDel = key;
                         ArchivageDialog(keyDel);
                     }
                 });
@@ -84,7 +84,7 @@ public class ConsulterListeSurveillant extends AppCompatActivity implements View
             @NonNull
             @Override
             public SurveillantListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_surveillant,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_surveillant, parent, false);
                 return new SurveillantListViewHolder(v);
             }
         };
@@ -113,10 +113,10 @@ public class ConsulterListeSurveillant extends AppCompatActivity implements View
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.retourFrConsulSurv){
+        if (view.getId() == R.id.retourFrConsulSurv) {
             finish();
         }
-        if(view.getId()==R.id.creeNvCompteSurveillant){
+        if (view.getId() == R.id.creeNvCompteSurveillant) {
             startActivity(new Intent(ConsulterListeSurveillant.this, CreerCompteSurveillant.class));
         }
     }

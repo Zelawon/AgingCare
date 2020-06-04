@@ -11,8 +11,8 @@ import com.test.agingcarev01.R;
 
 public class SurveillantListViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView nomSurv,prenomSurv,emailSurv;
-    public ImageView survItemModifier,survItemArchiver;
+    public TextView nomSurv, prenomSurv, emailSurv;
+    public ImageView survItemModifier, survItemArchiver;
 
     public SurveillantListViewHolder(@NonNull View itemView) {
         super(itemView);

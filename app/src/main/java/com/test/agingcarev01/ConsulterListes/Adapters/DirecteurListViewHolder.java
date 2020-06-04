@@ -11,7 +11,7 @@ import com.test.agingcarev01.R;
 
 public class DirecteurListViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView nomDirec,prenomDirec,emailDirec;
+    public TextView nomDirec, prenomDirec, emailDirec;
     public ImageView DirecItemModifier, DirecItemArchiver;
 
     public DirecteurListViewHolder(@NonNull View itemView) {

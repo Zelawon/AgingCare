@@ -20,11 +20,11 @@ import com.test.agingcarev01.R;
 
 import java.util.Calendar;
 
-public class AjouterTensionArterielle extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener,AdapterView.OnItemSelectedListener {
+public class AjouterTensionArterielle extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
-    private TextView pressSystolique,pressDiastolique,dateTensionArterielle,noteTensionArterielle;
-    private Button ajouterTensionArterielle,retourFrTensionArterielle;
-    private String keyResident,date="", systoliqueChk ="",diastoliqueChk ="",bras;
+    private TextView pressSystolique, pressDiastolique, dateTensionArterielle, noteTensionArterielle;
+    private Button ajouterTensionArterielle, retourFrTensionArterielle;
+    private String keyResident, date = "", systoliqueChk = "", diastoliqueChk = "", bras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class AjouterTensionArterielle extends AppCompatActivity implements View.
 
         ajouterTensionArterielle = findViewById(R.id.ajouterTensionArterielle);
         ajouterTensionArterielle.setOnClickListener(this);
-        retourFrTensionArterielle=findViewById(R.id.retourFrTensionArterielle);
+        retourFrTensionArterielle = findViewById(R.id.retourFrTensionArterielle);
         retourFrTensionArterielle.setOnClickListener(this);
         dateTensionArterielle = findViewById(R.id.dateTensionArterielle);
         dateTensionArterielle.setOnClickListener(this);
@@ -62,13 +62,13 @@ public class AjouterTensionArterielle extends AppCompatActivity implements View.
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.ajouterTensionArterielle){
+        if (view.getId() == R.id.ajouterTensionArterielle) {
             AjouterTension();
         }
-        if(view.getId()==R.id.retourFrTensionArterielle){
+        if (view.getId() == R.id.retourFrTensionArterielle) {
             finish();
         }
-        if (view.getId()==R.id.dateTensionArterielle){
+        if (view.getId() == R.id.dateTensionArterielle) {
             showDatePickerDailog();
         }
     }
@@ -76,22 +76,22 @@ public class AjouterTensionArterielle extends AppCompatActivity implements View.
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
         //janvier = month 0
         month++;
-        String monthString = ""+month;
-        String dayString = ""+day;
+        String monthString = "" + month;
+        String dayString = "" + day;
 
-        if (month<10){
-            monthString = "0"+month;
+        if (month < 10) {
+            monthString = "0" + month;
         }
-        if (day<10){
-            dayString = "0"+day;
+        if (day < 10) {
+            dayString = "0" + day;
         }
         date = year + "/" + monthString + "/" + dayString;
         dateTensionArterielle.setText(date);
 
     }
 
-    private void showDatePickerDailog(){
-        DatePickerDialog datePickerDialog =new DatePickerDialog(
+    private void showDatePickerDailog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
                 AjouterTensionArterielle.this,
                 this,
                 Calendar.getInstance().get(Calendar.YEAR),
@@ -107,27 +107,27 @@ public class AjouterTensionArterielle extends AppCompatActivity implements View.
         if (systoliqueChk.isEmpty()) {
             Toast.makeText(AjouterTensionArterielle.this, "Champ Pression Systolique Vide", Toast.LENGTH_SHORT).show();
             pressSystolique.requestFocus();
-        }else if (date.isEmpty()) {
+        } else if (date.isEmpty()) {
             Toast.makeText(AjouterTensionArterielle.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
-        }else if (diastoliqueChk.isEmpty()) {
+        } else if (diastoliqueChk.isEmpty()) {
             Toast.makeText(AjouterTensionArterielle.this, "Champ Pression Diastolique Vide", Toast.LENGTH_SHORT).show();
             pressDiastolique.requestFocus();
-        } else{
-            Float pressSysto=Float.valueOf(pressSystolique.getText().toString());
-            Float pressDiasto=Float.valueOf(pressDiastolique.getText().toString());
-            if ( pressSysto<=0) {
+        } else {
+            Float pressSysto = Float.valueOf(pressSystolique.getText().toString());
+            Float pressDiasto = Float.valueOf(pressDiastolique.getText().toString());
+            if (pressSysto <= 0) {
                 Toast.makeText(AjouterTensionArterielle.this, "Taux  Pression Systolique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
                 pressSystolique.requestFocus();
-            }else if ( pressDiasto<=0) {
+            } else if (pressDiasto <= 0) {
                 Toast.makeText(AjouterTensionArterielle.this, "Taux  Pression Diastolique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
                 pressDiastolique.requestFocus();
-            } else if ( (pressSysto>0)&&(pressDiasto>0) ) {
-                if (noteTensionArterielle.getText().toString().isEmpty()){
-                    TensionArterielleClasse tensionArterielleClasse = new TensionArterielleClasse(pressSysto,pressDiasto,bras, date, "(aucune notes)");
+            } else if ((pressSysto > 0) && (pressDiasto > 0)) {
+                if (noteTensionArterielle.getText().toString().isEmpty()) {
+                    TensionArterielleClasse tensionArterielleClasse = new TensionArterielleClasse(pressSysto, pressDiasto, bras, date, "(aucune notes)");
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tensionArterielle").push();
                     myRef.setValue(tensionArterielleClasse);
-                }else {
-                    TensionArterielleClasse tensionArterielleClasse = new TensionArterielleClasse(pressSysto,pressDiasto,bras, date, noteTensionArterielle.getText().toString());
+                } else {
+                    TensionArterielleClasse tensionArterielleClasse = new TensionArterielleClasse(pressSysto, pressDiasto, bras, date, noteTensionArterielle.getText().toString());
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tensionArterielle").push();
                     myRef.setValue(tensionArterielleClasse);
                 }
@@ -140,9 +140,11 @@ public class AjouterTensionArterielle extends AppCompatActivity implements View.
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         switch (position) {
             case 0:
-                bras="Droite";break;
+                bras = "Droite";
+                break;
             case 1:
-                bras="Gauche";break;
+                bras = "Gauche";
+                break;
         }
 
     }
