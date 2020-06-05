@@ -73,12 +73,6 @@ public class InfirmierAffecteeAjouterAdapter extends RecyclerView.Adapter<Infirm
         holder.nomInf.setText(infirmierClasse.getNom());
         holder.prenomInf.setText((infirmierClasse.getPrenom()));
         holder.sexeInf.setText(infirmierClasse.getSexe());
-//        holder.infAffecterAjouterItemCheck.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ConfirmerAffectationDialog(model);
-//            }
-//        });
 
     }
 
