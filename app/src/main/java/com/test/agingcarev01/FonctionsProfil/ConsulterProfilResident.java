@@ -19,6 +19,7 @@ import com.test.agingcarev01.FonctionsSurveillant.ConsulterStatistiqueResident;
 import com.test.agingcarev01.FonctionsSurveillant.Maladie.ConsulterListeMaladie;
 import com.test.agingcarev01.FonctionsSurveillant.ModifierInfoResident;
 import com.test.agingcarev01.FonctionsSurveillant.Poids.ConsulterListePoids;
+import com.test.agingcarev01.FonctionsSurveillant.RendezVous.ConsulterListeRendezVous;
 import com.test.agingcarev01.FonctionsSurveillant.TauxGlycemie.ConsulterListeTauxGlycemique;
 import com.test.agingcarev01.FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle;
 import com.test.agingcarev01.R;
@@ -42,6 +43,9 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         sexe = findViewById(R.id.sexeResProfil);
         dateNaissance = findViewById(R.id.dateNasiResProfil);
         typeSang = findViewById(R.id.typeSangResProfil);
+
+        rendezVousResProfil = findViewById(R.id.rendezVousResProfil);
+        rendezVousResProfil.setOnClickListener(this);
 
         retourFrProfilResBT = findViewById(R.id.retourFrProfilRes);
         retourFrProfilResBT.setOnClickListener(this);
@@ -128,6 +132,15 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         if (view.getId() == R.id.poidsResProfil) {
             startPoidsActivity(key);
         }
+        if (view.getId() == R.id.rendezVousResProfil) {
+            startRDVActivity(key);
+        }
+    }
+
+    private void startRDVActivity(String key) {
+        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterListeRendezVous.class);
+        intent.putExtra("key", this.key);
+        startActivity(intent);
     }
 
     private void startTensionArterielleProfilActivity(String key) {

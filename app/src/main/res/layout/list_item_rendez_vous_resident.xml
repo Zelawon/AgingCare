@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/numeroRDVItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="(vide)"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewNumero"
+        app:layout_constraintEnd_toStartOf="@+id/tauxItemArchiver"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewNumero"
+        app:layout_constraintTop_toTopOf="@+id/textViewNumero" />
+
+    <TextView
+        android:id="@+id/textViewNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="3dp"
+        android:text="Numero Telephone:"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tempRDVItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Temp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView65"
+        app:layout_constraintEnd_toStartOf="@+id/tauxItemArchiver"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView65"
+        app:layout_constraintTop_toTopOf="@+id/textView65"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView65"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Temp:"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/dateRDVItem"
+        app:layout_constraintTop_toTopOf="@+id/dateRDVItem" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Date:"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dateRDVItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Date"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView44"
+        app:layout_constraintStart_toEndOf="@+id/textView44"
+        app:layout_constraintTop_toTopOf="@+id/textView44" />
+
+    <TextView
+        android:id="@+id/lieuRDVItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="(vide)"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLieu"
+        app:layout_constraintEnd_toStartOf="@+id/tauxItemArchiver"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewLieu"
+        app:layout_constraintTop_toTopOf="@+id/textViewLieu" />
+
+    <TextView
+        android:id="@+id/nomRDItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView45"
+        app:layout_constraintEnd_toStartOf="@+id/tauxItemArchiver"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView45"
+        app:layout_constraintTop_toTopOf="@+id/textView45" />
+
+    <TextView
+        android:id="@+id/textViewLieu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Lieu:"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/survItemNom"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView44"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Nom:"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textView44"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
+    <ImageView
+        android:id="@+id/RDVItemArchiver"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Detail:"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewLieu"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLieu" />
+
+    <TextView
+        android:id="@+id/detailRDVItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="(vide)"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDetail"
+        app:layout_constraintEnd_toStartOf="@+id/tauxItemArchiver"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewDetail"
+        app:layout_constraintTop_toTopOf="@+id/textViewDetail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

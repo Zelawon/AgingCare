@@ -1,25 +1,35 @@
 package com.test.agingcarev01.Classe;
 
-import java.util.Date;
-
 public class RendezVousClasse {
     private int idRDV;
-    private Date dateRDV;
+    private String dateRDV;
+    private String timeRDV;
     private String lieuRDV;
     private String nomRDV;
     private String notesRDV;
-    private InfirmierClasse responsableRDV;
+    private String numTelRDV;
+    private int idResident;
 
     public RendezVousClasse() {
     }
 
-    public RendezVousClasse(int idRDV, Date dateRDV, String lieuRDV, String nomRDV, String notesRDV, InfirmierClasse responsableRDV) {
+    public RendezVousClasse(int idRDV, String dateRDV, String timeRDV, String lieuRDV, String nomRDV, String notesRDV, String numTelRDV,int idResident) {
         this.idRDV = idRDV;
         this.dateRDV = dateRDV;
+        this.timeRDV = timeRDV;
         this.lieuRDV = lieuRDV;
         this.nomRDV = nomRDV;
         this.notesRDV = notesRDV;
-        this.responsableRDV = responsableRDV;
+        this.numTelRDV = numTelRDV;
+        this.idResident = idResident;
+    }
+
+    public int getIdResident() {
+        return idResident;
+    }
+
+    public void setIdResident(int idResident) {
+        this.idResident = idResident;
     }
 
     public int getIdRDV() {
@@ -30,12 +40,20 @@ public class RendezVousClasse {
         this.idRDV = idRDV;
     }
 
-    public Date getDateRDV() {
+    public String getDateRDV() {
         return dateRDV;
     }
 
-    public void setDateRDV(Date dateRDV) {
+    public void setDateRDV(String dateRDV) {
         this.dateRDV = dateRDV;
+    }
+
+    public String getTimeRDV() {
+        return timeRDV;
+    }
+
+    public void setTimeRDV(String timeRDV) {
+        this.timeRDV = timeRDV;
     }
 
     public String getLieuRDV() {
@@ -62,12 +80,12 @@ public class RendezVousClasse {
         this.notesRDV = notesRDV;
     }
 
-    public InfirmierClasse getResponsableRDV() {
-        return responsableRDV;
+    public String getNumTelRDV() {
+        return numTelRDV;
     }
 
-    public void setResponsableRDV(InfirmierClasse responsableRDV) {
-        this.responsableRDV = responsableRDV;
+    public void setNumTelRDV(String numTelRDV) {
+        this.numTelRDV = numTelRDV;
     }
 }
 

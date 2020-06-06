@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FonctionsSurveillant.RendezVous.AjouterRendezVous">
+
+    <Button
+        android:id="@+id/ajouterRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="50dp"
+        android:text="Ajouter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numTelRDV" />
+
+    <Button
+        android:id="@+id/retourFrRDV"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="Retour"
+        app:layout_constraintStart_toEndOf="@+id/ajouterRDV"
+        app:layout_constraintTop_toTopOf="@+id/ajouterRDV" />
+
+    <EditText
+        android:id="@+id/detailRDV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView57"
+        app:layout_constraintTop_toBottomOf="@+id/textView59" />
+
+    <TextView
+        android:id="@+id/textView59"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Details"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/lieuRDV"
+        app:layout_constraintTop_toBottomOf="@+id/lieuRDV" />
+
+    <TextView
+        android:id="@+id/textView63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Numero Telephone"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/detailRDV"
+        app:layout_constraintTop_toBottomOf="@+id/detailRDV" />
+
+    <EditText
+        android:id="@+id/lieuRDV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView57"
+        app:layout_constraintTop_toBottomOf="@+id/textView58" />
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Lieu"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/dateRDV"
+        app:layout_constraintTop_toBottomOf="@+id/dateRDV" />
+
+    <TextView
+        android:id="@+id/dateRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="10dp"
+        android:text="AAAA/MM/JJ"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDatePoids4"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDatePoids4" />
+
+    <TextView
+        android:id="@+id/tempRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="10dp"
+        android:text="HH:MM"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDatePoids5"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDatePoids5" />
+
+    <TextView
+        android:id="@+id/textViewDatePoids4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="20dp"
+        android:text="Date*"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/nomRDV"
+        app:layout_constraintTop_toBottomOf="@+id/nomRDV" />
+
+    <TextView
+        android:id="@+id/textViewDatePoids5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="20dp"
+        android:text="Temp*"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/nomRDV"
+        app:layout_constraintTop_toBottomOf="@+id/nomRDV" />
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Ajouter Rendez-Vous"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Nom*"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView56" />
+
+    <EditText
+        android:id="@+id/nomRDV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView57"
+        app:layout_constraintTop_toBottomOf="@+id/textView57" />
+
+    <EditText
+        android:id="@+id/numTelRDV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView63"
+        app:layout_constraintTop_toBottomOf="@+id/textView63" />
+
+    <TextView
+        android:id="@+id/textView64"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="*Champs Obligatoires"
+        app:layout_constraintStart_toStartOf="@+id/numTelRDV"
+        app:layout_constraintTop_toBottomOf="@+id/numTelRDV" />
+</androidx.constraintlayout.widget.ConstraintLayout>

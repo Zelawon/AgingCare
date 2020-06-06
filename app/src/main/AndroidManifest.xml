@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.test.agingcarev01" >
+    package="com.test.agingcarev01">
 
     <application
         android:allowBackup="true"
@@ -8,9 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".FonctionsInfirmier.ConsulterListeResidentAffecter" >
-        </activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".FonctionsSurveillant.RendezVous.ConsulterListeRendezVous"></activity>
+        <activity android:name=".FonctionsSurveillant.RendezVous.AjouterRendezVous" />
+        <activity android:name=".FonctionsInfirmier.ConsulterListeResidentAffecter" />
         <activity android:name=".FonctionsSurveillant.TensionArterielle.AjouterTensionArterielle" />
         <activity android:name=".FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle" />
         <activity android:name=".FonctionsSurveillant.TauxGlycemie.ConsulterListeTauxGlycemique" />
@@ -39,7 +40,7 @@
         <activity android:name=".TestCompteActive" />
         <activity android:name=".FonctionsAdmin.CreerCompteDirecteur" />
         <activity android:name=".Login" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
