@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FonctionsInfirmier.RendezVous.ConsulterDetailRendezVous">
+
+    <TextView
+        android:id="@+id/textView73"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Detail Rendez-Vous"
+        android:textSize="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView69"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Nom Rendez-Vous:"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView70"
+        app:layout_constraintTop_toBottomOf="@+id/textView70" />
+
+    <TextView
+        android:id="@+id/textView70"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Date:"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView77"
+        app:layout_constraintTop_toBottomOf="@+id/textView77" />
+
+    <TextView
+        android:id="@+id/prenomDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="prenom"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView77"
+        app:layout_constraintStart_toEndOf="@+id/textView77"
+        app:layout_constraintTop_toTopOf="@+id/textView77" />
+
+    <TextView
+        android:id="@+id/textView75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:text="Nom Resident:"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView73" />
+
+    <TextView
+        android:id="@+id/nomResDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="nom"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView75"
+        app:layout_constraintStart_toEndOf="@+id/textView75"
+        app:layout_constraintTop_toTopOf="@+id/textView75" />
+
+    <TextView
+        android:id="@+id/nomDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="nom"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView69"
+        app:layout_constraintStart_toEndOf="@+id/textView69"
+        app:layout_constraintTop_toTopOf="@+id/textView69"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView77"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Prenom Resident:"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView75"
+        app:layout_constraintTop_toBottomOf="@+id/textView75" />
+
+    <TextView
+        android:id="@+id/textViewLieu2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Lieu:"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDetail2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetail2" />
+
+    <TextView
+        android:id="@+id/detailDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="(vide)"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDetail2"
+        app:layout_constraintStart_toEndOf="@+id/textViewDetail2"
+        app:layout_constraintTop_toTopOf="@+id/textViewDetail2"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <TextView
+        android:id="@+id/textView71"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Temp:"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/dateDetailRDV"
+        app:layout_constraintTop_toTopOf="@+id/dateDetailRDV" />
+
+    <TextView
+        android:id="@+id/dateDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Date"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView70"
+        app:layout_constraintStart_toEndOf="@+id/textView70"
+        app:layout_constraintTop_toTopOf="@+id/textView70"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/lieuDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="(vide)"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLieu2"
+        app:layout_constraintStart_toEndOf="@+id/textViewLieu2"
+        app:layout_constraintTop_toTopOf="@+id/textViewLieu2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tempDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Temp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView71"
+        app:layout_constraintStart_toEndOf="@+id/textView71"
+        app:layout_constraintTop_toTopOf="@+id/textView71"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewNumero2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Numero Telephone:"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewLieu2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLieu2" />
+
+    <TextView
+        android:id="@+id/numeroDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="(vide)"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewNumero2"
+        app:layout_constraintStart_toEndOf="@+id/textViewNumero2"
+        app:layout_constraintTop_toTopOf="@+id/textViewNumero2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewDetail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Detail:"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView69"
+        app:layout_constraintTop_toBottomOf="@+id/textView69" />
+
+    <Button
+        android:id="@+id/retourFrDetailRDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Retour"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

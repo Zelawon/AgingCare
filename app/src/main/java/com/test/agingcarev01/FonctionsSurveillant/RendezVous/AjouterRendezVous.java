@@ -151,10 +151,24 @@ public class AjouterRendezVous extends AppCompatActivity implements View.OnClick
     }
 
     private void AjouterRDV() {
-        String nom = nomRDV.getText().toString();
-        String detail = detailRDV.getText().toString();
         String lieu = lieuRDV.getText().toString();
+        if (lieu.isEmpty()) {
+            lieu = "(non précisé)";
+        }
+
         String num = numTelRDV.getText().toString();
+        if (num.isEmpty()) {
+            num = "(non précisé)";
+        }
+        String detail = detailRDV.getText().toString();
+        if (detail.isEmpty()) {
+            detail = "(non précisé)";
+        }
+        String nom = nomRDV.getText().toString();
+        if (nom.isEmpty()) {
+            nom = "(non précisé)";
+        }
+
         if (nom.isEmpty()) {
             Toast.makeText(AjouterRendezVous.this, "Champ Nom Vide", Toast.LENGTH_SHORT).show();
             nomRDV.requestFocus();

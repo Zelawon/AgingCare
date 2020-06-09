@@ -10,7 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.RendezVousClasse;
+import com.test.agingcarev01.Classe.ResidentClasse;
 import com.test.agingcarev01.R;
 
 import java.util.List;
@@ -19,20 +26,41 @@ public class RendezVousAdapter extends RecyclerView.Adapter<RendezVousAdapter.Re
     private Activity context;
     private List<RendezVousClasse> data;
 
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onIconClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
     public static class RendezVousListViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView dateRDVItem, tempRDVItem, nomRDItem, lieuRDVItem, detailRDVItem, numeroRDVItem;
-        public ImageView RDVItemArchiver;
+        public TextView dateRDVItemInf, tempRDVItemInf, nomRDItemInf, nomResRDV, prenomResRDV;
+        public ImageView viewInfRDV;
 
-        public RendezVousListViewHolder(@NonNull View itemView) {
+        public RendezVousListViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
-            dateRDVItem = itemView.findViewById(R.id.dateRDVItem);
-            tempRDVItem = itemView.findViewById(R.id.tempRDVItem);
-            nomRDItem = itemView.findViewById(R.id.nomRDItem);
-            lieuRDVItem = itemView.findViewById(R.id.lieuRDVItem);
-            detailRDVItem = itemView.findViewById(R.id.detailRDVItem);
-            numeroRDVItem = itemView.findViewById(R.id.numeroRDVItem);
-            RDVItemArchiver = itemView.findViewById(R.id.RDVItemArchiver);
+            dateRDVItemInf = itemView.findViewById(R.id.dateRDVItemInf);
+            tempRDVItemInf = itemView.findViewById(R.id.tempRDVItemInf);
+            nomRDItemInf = itemView.findViewById(R.id.nomRDItemInf);
+            nomResRDV = itemView.findViewById(R.id.nomResRDV);
+            prenomResRDV = itemView.findViewById(R.id.prenomResRDV);
+
+            viewInfRDV = itemView.findViewById(R.id.viewInfRDV);
+            viewInfRDV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onIconClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -44,19 +72,35 @@ public class RendezVousAdapter extends RecyclerView.Adapter<RendezVousAdapter.Re
     @NonNull
     @Override
     public RendezVousListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_rendez_vous_resident, parent, false);
-        return new RendezVousListViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_rendez_vous_infirmier, parent, false);
+        return new RendezVousListViewHolder(view, mListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RendezVousListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RendezVousListViewHolder holder, int position) {
         RendezVousClasse rendezVousClasse = data.get(position);
-        holder.dateRDVItem.setText(rendezVousClasse.getDateRDV());
-        holder.tempRDVItem.setText(String.valueOf(rendezVousClasse.getTimeRDV()));
-        holder.nomRDItem.setText(rendezVousClasse.getNomRDV());
-        holder.lieuRDVItem.setText(rendezVousClasse.getLieuRDV());
-        holder.detailRDVItem.setText(rendezVousClasse.getNotesRDV());
-        holder.numeroRDVItem.setText(rendezVousClasse.getNumTelRDV());
+
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Resident");
+        Query query = ref.orderByChild("id").equalTo(Integer.valueOf(rendezVousClasse.getIdResident()));
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (final DataSnapshot tierSnapshot : dataSnapshot.getChildren()) {
+                    ResidentClasse residentClasse = tierSnapshot.getValue(ResidentClasse.class);
+                    holder.nomResRDV.setText(residentClasse.getNom());
+                    holder.prenomResRDV.setText(residentClasse.getPrenom());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        holder.dateRDVItemInf.setText(rendezVousClasse.getDateRDV());
+        holder.tempRDVItemInf.setText(String.valueOf(rendezVousClasse.getTimeRDV()));
+        holder.nomRDItemInf.setText(rendezVousClasse.getNomRDV());
     }
 
     @Override

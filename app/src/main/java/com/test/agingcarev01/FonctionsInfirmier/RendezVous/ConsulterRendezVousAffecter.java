@@ -1,10 +1,10 @@
 package com.test.agingcarev01.FonctionsInfirmier.RendezVous;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -207,7 +207,7 @@ public class ConsulterRendezVousAffecter extends AppCompatActivity implements Vi
                             if (listeResidentAffecter.contains(String.valueOf(dataSnapshot.getValue()))) {
 //                                Log.e(TAG, "idResident affecter RDV: " + dataSnapshot.getValue());
                                 RendezVousClasse rendezVousClasse = tierSnapshot.getValue(RendezVousClasse.class);
-                                Log.e(TAG, "onDataChange: " + selectedDateStr);
+//                                Log.e(TAG, "onDataChange: " + selectedDateStr);
                                 String dateRdvRes = rendezVousClasse.getDateRDV();
 
                                 if (dateRdvRes.equals(selectedDateStr)) {
@@ -216,6 +216,12 @@ public class ConsulterRendezVousAffecter extends AppCompatActivity implements Vi
                             }
                             final RendezVousAdapter adapter = new RendezVousAdapter(ConsulterRendezVousAffecter.this, rendezVousClasseList);
                             recyclerView.setAdapter(adapter);
+                            adapter.setOnItemClickListener(new RendezVousAdapter.OnItemClickListener() {
+                                @Override
+                                public void onIconClick(int position) {
+                                    AfficherDetailRDV(rendezVousClasseList.get(position));
+                                }
+                            });
                         }
 
                         @Override
@@ -231,6 +237,19 @@ public class ConsulterRendezVousAffecter extends AppCompatActivity implements Vi
 
             }
         });
+    }
+
+    private void AfficherDetailRDV(RendezVousClasse rendezVousClasse) {
+        final Intent intent = new Intent(ConsulterRendezVousAffecter.this, ConsulterDetailRendezVous.class);
+        intent.putExtra("date", rendezVousClasse.getDateRDV());
+        intent.putExtra("temp", rendezVousClasse.getTimeRDV());
+        intent.putExtra("nom", rendezVousClasse.getNomRDV());
+        intent.putExtra("lieu", rendezVousClasse.getLieuRDV());
+        intent.putExtra("detail", rendezVousClasse.getNotesRDV());
+        intent.putExtra("numTel", rendezVousClasse.getNumTelRDV());
+        intent.putExtra("idRESIDENT", String.valueOf(rendezVousClasse.getIdResident()));
+        startActivity(intent);
+
     }
 
     @Override
