@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsInfirmier;
+package com.test.agingcarev01.FonctionsInfirmier.ResidentAffecter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.test.agingcarev01.FonctionsInfirmier;
+package com.test.agingcarev01.FonctionsInfirmier.ResidentAffecter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -95,7 +95,7 @@ public class ConsulterListeResidentAffecter extends AppCompatActivity implements
                     }
                 });
             }
-        }, 1500);
+        }, 2000);
 
     }
 
@@ -135,7 +135,7 @@ public class ConsulterListeResidentAffecter extends AppCompatActivity implements
                     }
                 });
             }
-        }, 2000);
+        }, 2500);
     }
 
     private void ConfirmerAffectationDialog(final int position) {

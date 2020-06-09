@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FonctionsSurveillant.RendezVous.ConsulterListeRendezVous"></activity>
+        <activity android:name=".FonctionsInfirmier.RendezVous.ConsulterRendezVousAffecter"></activity>
+        <activity android:name=".FonctionsSurveillant.RendezVous.ConsulterListeRendezVous" />
         <activity android:name=".FonctionsSurveillant.RendezVous.AjouterRendezVous" />
-        <activity android:name=".FonctionsInfirmier.ConsulterListeResidentAffecter" />
+        <activity android:name=".FonctionsInfirmier.ResidentAffecter.ConsulterListeResidentAffecter" />
         <activity android:name=".FonctionsSurveillant.TensionArterielle.AjouterTensionArterielle" />
         <activity android:name=".FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle" />
         <activity android:name=".FonctionsSurveillant.TauxGlycemie.ConsulterListeTauxGlycemique" />

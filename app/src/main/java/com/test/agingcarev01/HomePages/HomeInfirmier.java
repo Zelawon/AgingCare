@@ -8,14 +8,15 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsInfirmier.ConsulterListeResidentAffecter;
+import com.test.agingcarev01.FonctionsInfirmier.ResidentAffecter.ConsulterListeResidentAffecter;
+import com.test.agingcarev01.FonctionsInfirmier.RendezVous.ConsulterRendezVousAffecter;
 import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeInfirmier extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button consulterProfInfBT, deconnecterInfirmierBT, modifierMdpInfBT, consulterListeResident;
+    private Button consulterProfInfBT, deconnecterInfirmierBT, modifierMdpInfBT, consulterListeResident, consulterListeRDV;
     private FirebaseAuth mAuth;
 
     @Override
@@ -24,6 +25,9 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_home_infirmier);
 
         mAuth = FirebaseAuth.getInstance();
+
+        consulterListeRDV = findViewById(R.id.consulterListeRDV);
+        consulterListeRDV.setOnClickListener(this);
 
         consulterListeResident = findViewById(R.id.consulterListeResident);
         consulterListeResident.setOnClickListener(this);
@@ -65,6 +69,9 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
         }
         if (view.getId() == R.id.consulterListeResident) {
             startActivity(new Intent(HomeInfirmier.this, ConsulterListeResidentAffecter.class));
+        }
+        if (view.getId() == R.id.consulterListeRDV) {
+            startActivity(new Intent(HomeInfirmier.this, ConsulterRendezVousAffecter.class));
         }
     }
 
