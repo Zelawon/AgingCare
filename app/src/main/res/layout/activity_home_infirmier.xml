@@ -6,6 +6,116 @@
     android:layout_height="match_parent"
     tools:context=".HomePages.HomeInfirmier">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/deconnecterInfirmier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <ImageButton
+            android:id="@+id/consulterProfInf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_profil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/consulterListeResident"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/ic_resident"
+            app:layout_constraintBottom_toBottomOf="@+id/consulterProfInf"
+            app:layout_constraintStart_toEndOf="@+id/consulterProfInf"
+            app:layout_constraintTop_toTopOf="@+id/consulterProfInf" />
+
+        <ImageButton
+            android:id="@+id/consulterListeRDV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/ic_medical_appointment_v2"
+            app:layout_constraintBottom_toBottomOf="@+id/consulterListeTraitement"
+            app:layout_constraintStart_toEndOf="@+id/consulterListeTraitement"
+            app:layout_constraintTop_toTopOf="@+id/consulterListeTraitement" />
+
+        <ImageButton
+            android:id="@+id/consulterListeTraitement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_meds_v2"
+            app:layout_constraintEnd_toEndOf="@+id/consulterProfInf"
+            app:layout_constraintStart_toStartOf="@+id/consulterProfInf"
+            app:layout_constraintTop_toBottomOf="@+id/textView80" />
+
+        <TextView
+            android:id="@+id/textView76"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Liste Résidents"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/consulterListeResident"
+            app:layout_constraintStart_toStartOf="@+id/consulterListeResident"
+            app:layout_constraintTop_toBottomOf="@+id/consulterListeResident" />
+
+        <TextView
+            android:id="@+id/textView80"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Profil"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/consulterProfInf"
+            app:layout_constraintStart_toStartOf="@+id/consulterProfInf"
+            app:layout_constraintTop_toBottomOf="@+id/consulterProfInf" />
+
+        <TextView
+            android:id="@+id/textView78"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Liste Rendez-Vous"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/consulterListeRDV"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="@+id/consulterListeRDV"
+            app:layout_constraintTop_toBottomOf="@+id/consulterListeRDV" />
+
+        <TextView
+            android:id="@+id/textView79"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Liste Traitements Médicaux"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/consulterListeTraitement"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="@+id/consulterListeTraitement"
+            app:layout_constraintTop_toBottomOf="@+id/consulterListeTraitement" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
@@ -19,57 +129,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/consulterProfInf"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="60dp"
-        android:text="Consulter Profil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <Button
-        android:id="@+id/modifierMdpInf"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:text="Modifier Mot de Passe"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/consulterProfInf" />
-
-    <Button
-        android:id="@+id/consulterListeResident"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:text="Consulter Liste Resident"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modifierMdpInf" />
-
-    <Button
-        android:id="@+id/consulterListeRDV"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:text="Consulter Liste Rendez-Vous"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/consulterListeResident" />
 
     <Button
         android:id="@+id/deconnecterInfirmier"

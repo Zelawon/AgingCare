@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,13 +26,13 @@ import com.test.agingcarev01.FonctionsSurveillant.TensionArterielle.ConsulterLis
 import com.test.agingcarev01.R;
 
 public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
-    TextView nom, prenom, sexe, dateNaissance, typeSang;
-    DatabaseReference databaseReference;
-    Button retourFrProfilResBT, modifierResProfilBT, maladieResProfilBT,
-            infirmeirResProfilBT, poidsResProfilBT, statestiqueResProfilBT,
+    private TextView nom, prenom, sexe, dateNaissance, typeSang;
+    private DatabaseReference databaseReference;
+    private Button retourFrProfilResBT, modifierResProfilBT;
+    private ImageButton maladieResProfil,statestiqueResProfilBT,poidsResProfilBT,
             tauxGlycemiqueResProfil, tensionArterielleResProfil, rendezVousResProfil,
-            traitementResProfil;
-    String key;
+            traitementResProfil,smartWatchResProfil,infirmeirResProfilBT;
+    private String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +60,8 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         infirmeirResProfilBT = findViewById(R.id.infirmeirResProfil);
         infirmeirResProfilBT.setOnClickListener(this);
 
-        maladieResProfilBT = findViewById(R.id.maladieResProfil);
-        maladieResProfilBT.setOnClickListener(this);
+        maladieResProfil = findViewById(R.id.maladieResProfil);
+        maladieResProfil.setOnClickListener(this);
 
         modifierResProfilBT = findViewById(R.id.modifierResProfil);
         modifierResProfilBT.setOnClickListener(this);

@@ -90,6 +90,10 @@ public class AjouterPoidsResident extends AppCompatActivity implements View.OnCl
 
     private void AjouterPoids() {
         poidsChk = poidsRes.getText().toString();
+        String note = notePoidsRes.getText().toString();
+        if (note.isEmpty()) {
+            note = "(non précisé)";
+        }
         if (poidsChk.isEmpty()) {
             Toast.makeText(AjouterPoidsResident.this, "Champ Poids Vide", Toast.LENGTH_SHORT).show();
             poidsRes.requestFocus();
@@ -101,7 +105,7 @@ public class AjouterPoidsResident extends AppCompatActivity implements View.OnCl
                 Toast.makeText(AjouterPoidsResident.this, "Poids doit être supérieur à 0", Toast.LENGTH_SHORT).show();
                 poidsRes.requestFocus();
             } else if (poids > 0) {
-                PoidsClasse poidsClasse = new PoidsClasse(poids, date, notePoidsRes.getText().toString());
+                PoidsClasse poidsClasse = new PoidsClasse(poids, date, note);
                 DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poids").push();
                 myRef.setValue(poidsClasse);
                 finish();

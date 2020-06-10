@@ -4,19 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsInfirmier.ResidentAffecter.ConsulterListeResidentAffecter;
 import com.test.agingcarev01.FonctionsInfirmier.RendezVous.ConsulterRendezVousAffecter;
+import com.test.agingcarev01.FonctionsInfirmier.ResidentAffecter.ConsulterListeResidentAffecter;
 import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
-public class HomeInfirmier extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button consulterProfInfBT, deconnecterInfirmierBT, modifierMdpInfBT, consulterListeResident, consulterListeRDV;
+public class HomeInfirmier extends AppCompatActivity implements View.OnClickListener {
+    private ImageButton consulterProfInfBT, consulterListeResident, consulterListeRDV;
+    private Button deconnecterInfirmierBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -38,29 +39,12 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
         deconnecterInfirmierBT = findViewById(R.id.deconnecterInfirmier);
         deconnecterInfirmierBT.setOnClickListener(this);
 
-        modifierMdpInfBT = findViewById(R.id.modifierMdpInf);
-        modifierMdpInfBT.setOnClickListener(this);
-
-    }
-
-    private void openModifPass() {
-        ModifierMotDePasseDialog modifierMotDePasseDialog = new ModifierMotDePasseDialog();
-        modifierMotDePasseDialog.show(getSupportFragmentManager(), "Modifier Mot De Passe");
-    }
-
-    @Override
-    public void applyNvPass(String nvMotDePasse) {
-        FirebaseAuth.getInstance().getCurrentUser().updatePassword(nvMotDePasse);
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.consulterProfInf) {
             startActivity(new Intent(HomeInfirmier.this, ConsulterPropreProfil.class));
-        }
-
-        if (view.getId() == R.id.modifierMdpInf) {
-            openModifPass();
         }
         if (view.getId() == R.id.deconnecterInfirmier) {
             mAuth.signOut();

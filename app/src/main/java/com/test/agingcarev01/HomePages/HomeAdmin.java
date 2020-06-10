@@ -13,12 +13,11 @@ import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeInfirmier;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeSurveillant;
 import com.test.agingcarev01.FonctionsAdmin.CreeCompteAdmin;
 import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
-public class HomeAdmin extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button creeCompteAdminBT, logoutAdminBT, consulterProfAdminBT, modifierMdpAdminBT,
+public class HomeAdmin extends AppCompatActivity implements View.OnClickListener {
+    private Button creeCompteAdminBT, logoutAdminBT, consulterProfAdminBT,
             consulterListeSurveillantADBT, consulterListeInfirmierADBT, consulterListeDirecteurADBT;
     private FirebaseAuth mAuth;
 
@@ -49,18 +48,6 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
         logoutAdminBT = findViewById(R.id.deconnecterAdmin);
         logoutAdminBT.setOnClickListener(this);
 
-        modifierMdpAdminBT = findViewById(R.id.modifierMdpAdmin);
-        modifierMdpAdminBT.setOnClickListener(this);
-    }
-
-    private void openModifPass() {
-        ModifierMotDePasseDialog modifierMotDePasseDialog = new ModifierMotDePasseDialog();
-        modifierMotDePasseDialog.show(getSupportFragmentManager(), "Modifier Mot De Passe");
-    }
-
-    @Override
-    public void applyNvPass(String nvMotDePasse) {
-        FirebaseAuth.getInstance().getCurrentUser().updatePassword(nvMotDePasse);
     }
 
     @Override
@@ -81,9 +68,6 @@ public class HomeAdmin extends AppCompatActivity implements View.OnClickListener
         }
         if (view.getId() == R.id.consulterProfAdmin) {
             startActivity(new Intent(HomeAdmin.this, ConsulterPropreProfil.class));
-        }
-        if (view.getId() == R.id.modifierMdpAdmin) {
-            openModifPass();
         }
         if (view.getId() == R.id.deconnecterAdmin) {
             mAuth.signOut();

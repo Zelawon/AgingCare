@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.test.agingcarev01.Classe.MaladieClasse;
@@ -22,7 +23,8 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeMaladie extends AppCompatActivity implements View.OnClickListener, AjouterMaladieDialog.AjoutMaladieDialogListner {
 
-    private Button retourFrConsulMaladieBT, creeNvMaladieResidentBT;
+    private Button retourFrConsulMaladieBT;
+    private FloatingActionButton creeNvMaladieResidentBT;
     private DatabaseReference databaseReference;
     String keyResident, keyMaladieDel;
 

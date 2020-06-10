@@ -10,12 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.ConsulterListes.Activities.ConsulterListeResident;
 import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
-public class HomeSurveillant extends AppCompatActivity implements View.OnClickListener, ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
-    private Button consulterProfSurvBT, deconnecterSurveillantBT, modifierMdpSurvBT, consulterListeResidentBT;
+public class HomeSurveillant extends AppCompatActivity implements View.OnClickListener {
+    private Button consulterProfSurvBT, deconnecterSurveillantBT, consulterListeResidentBT;
     private FirebaseAuth mAuth;
 
     @Override
@@ -33,28 +32,12 @@ public class HomeSurveillant extends AppCompatActivity implements View.OnClickLi
 
         deconnecterSurveillantBT = findViewById(R.id.deconnecterSurveillant);
         deconnecterSurveillantBT.setOnClickListener(this);
-
-        modifierMdpSurvBT = findViewById(R.id.modifierMdpSurv);
-        modifierMdpSurvBT.setOnClickListener(this);
-    }
-
-    private void openModifPass() {
-        ModifierMotDePasseDialog modifierMotDePasseDialog = new ModifierMotDePasseDialog();
-        modifierMotDePasseDialog.show(getSupportFragmentManager(), "Modifier Mot De Passe");
-    }
-
-    @Override
-    public void applyNvPass(String nvMotDePasse) {
-        FirebaseAuth.getInstance().getCurrentUser().updatePassword(nvMotDePasse);
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.consulterProfSurv) {
             startActivity(new Intent(HomeSurveillant.this, ConsulterPropreProfil.class));
-        }
-        if (view.getId() == R.id.modifierMdpSurv) {
-            openModifPass();
         }
         if (view.getId() == R.id.consulterListeResident) {
             startActivity(new Intent(HomeSurveillant.this, ConsulterListeResident.class));

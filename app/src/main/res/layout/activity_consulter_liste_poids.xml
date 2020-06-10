@@ -6,10 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".FonctionsSurveillant.Poids.ConsulterListePoids">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ajouterNvPoids"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorBlack"
+        app:fabCustomSize="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView41"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView41"
+        app:srcCompat="@drawable/ic_add_circle_white" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewListePoids"
         android:layout_width="0dp"
-        android:layout_height="450dp"
+        android:layout_height="480dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
@@ -19,22 +32,12 @@
 
     <Button
         android:id="@+id/retourFrConsulPoids"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:text="Retour"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewListePoids" />
-
-    <Button
-        android:id="@+id/ajouterNvPoids"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:text="Ajouter"
+        android:text="Retour"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewListePoids" />
 
     <TextView

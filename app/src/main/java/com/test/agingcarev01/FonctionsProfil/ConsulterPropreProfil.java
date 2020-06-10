@@ -21,14 +21,17 @@ import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifE
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifNomDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifPrenomDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifSexeDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.R;
 
 public class ConsulterPropreProfil extends AppCompatActivity implements View.OnClickListener,
         ModifEmailDialog.ModifEmailDialogListner,
         ModifNomDialog.ModifNomDialogListner,
         ModifPrenomDialog.ModifPrenomDialogListner,
-        ModifSexeDialog.ModifSexeDialogListner {
-    private Button retourFrProfBT;
+        ModifSexeDialog.ModifSexeDialogListner,
+        ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
+
+    private Button retourFrProfBT, modifierMdpInfBT;
     private ImageView updateEmailBT, updateSexeBT, updateNomBT, updatePrenomBT;
     private TextView nom, prenom, role, email, sexe, nomTXT, prenomTXT, sexeTXT;
     private String userkey;
@@ -60,6 +63,9 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
         updatePrenomBT.setOnClickListener(this);
         updateSexeBT = findViewById(R.id.updateSexe);
         updateSexeBT.setOnClickListener(this);
+
+        modifierMdpInfBT = findViewById(R.id.modifierMdpInf);
+        modifierMdpInfBT.setOnClickListener(this);
 
         String currentUserEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
@@ -189,6 +195,16 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
         afficherProfil(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
 
+    private void openModifPass() {
+        ModifierMotDePasseDialog modifierMotDePasseDialog = new ModifierMotDePasseDialog();
+        modifierMotDePasseDialog.show(getSupportFragmentManager(), "Modifier Mot De Passe");
+    }
+
+    @Override
+    public void applyNvPass(String nvMotDePasse) {
+        FirebaseAuth.getInstance().getCurrentUser().updatePassword(nvMotDePasse);
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -206,6 +222,9 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
         }
         if (view.getId() == R.id.updateSexe) {
             openModifSexe();
+        }
+        if (view.getId() == R.id.modifierMdpInf) {
+            openModifPass();
         }
     }
 

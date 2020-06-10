@@ -6,6 +6,106 @@
     android:layout_height="match_parent"
     tools:context=".FonctionsProfil.ConsulterProfilResident">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/retourFrProfilRes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modifierResProfil">
+
+        <ImageButton
+            android:id="@+id/maladieResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_maladie"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/statestiqueResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_stats"
+            app:layout_constraintBottom_toBottomOf="@+id/rendezVousResProfil"
+            app:layout_constraintStart_toEndOf="@+id/rendezVousResProfil"
+            app:layout_constraintTop_toTopOf="@+id/rendezVousResProfil"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/tauxGlycemiqueResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_sugar_blood"
+            app:layout_constraintStart_toStartOf="@+id/traitementResProfil"
+            app:layout_constraintTop_toBottomOf="@+id/traitementResProfil" />
+
+        <ImageButton
+            android:id="@+id/tensionArterielleResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/ic_blood_pressure"
+            app:layout_constraintBottom_toBottomOf="@+id/tauxGlycemiqueResProfil"
+            app:layout_constraintStart_toEndOf="@+id/tauxGlycemiqueResProfil"
+            app:layout_constraintTop_toTopOf="@+id/tauxGlycemiqueResProfil"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/smartWatchResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_smartwatch"
+            app:layout_constraintBottom_toBottomOf="@+id/tensionArterielleResProfil"
+            app:layout_constraintStart_toEndOf="@+id/tensionArterielleResProfil"
+            app:layout_constraintTop_toTopOf="@+id/tensionArterielleResProfil" />
+
+        <ImageButton
+            android:id="@+id/infirmeirResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_infirmier"
+            app:layout_constraintBottom_toBottomOf="@+id/maladieResProfil"
+            app:layout_constraintStart_toEndOf="@+id/maladieResProfil"
+            app:layout_constraintTop_toTopOf="@+id/maladieResProfil" />
+
+        <ImageButton
+            android:id="@+id/poidsResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_weight"
+            app:layout_constraintBottom_toBottomOf="@+id/infirmeirResProfil"
+            app:layout_constraintStart_toEndOf="@+id/infirmeirResProfil"
+            app:layout_constraintTop_toTopOf="@+id/infirmeirResProfil"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/traitementResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_meds"
+            app:layout_constraintStart_toStartOf="@+id/maladieResProfil"
+            app:layout_constraintTop_toBottomOf="@+id/maladieResProfil" />
+
+        <ImageButton
+            android:id="@+id/rendezVousResProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_medical_appointment"
+            app:layout_constraintBottom_toBottomOf="@+id/traitementResProfil"
+            app:layout_constraintStart_toEndOf="@+id/traitementResProfil"
+            app:layout_constraintTop_toTopOf="@+id/traitementResProfil" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/dateNasiResProfil"
         android:layout_width="0dp"
@@ -112,12 +212,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="490dp"
         android:layout_marginEnd="100dp"
+        android:layout_marginBottom="40dp"
         android:text="Retour"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView25"
@@ -152,81 +252,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
-    <Button
-        android:id="@+id/statestiqueResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Statestique"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modifierResProfil" />
-
-    <Button
-        android:id="@+id/maladieResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:text="Maladie"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statestiqueResProfil" />
-
-    <Button
-        android:id="@+id/traitementResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:text="Traitement"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maladieResProfil" />
-
-    <Button
-        android:id="@+id/rendezVousResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Rendez-vous"
-        app:layout_constraintStart_toEndOf="@+id/traitementResProfil"
-        app:layout_constraintTop_toTopOf="@+id/traitementResProfil" />
-
-    <Button
-        android:id="@+id/infirmeirResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Infirmeir"
-        app:layout_constraintStart_toEndOf="@+id/maladieResProfil"
-        app:layout_constraintTop_toTopOf="@+id/maladieResProfil" />
-
-    <Button
-        android:id="@+id/poidsResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Poids"
-        app:layout_constraintStart_toEndOf="@+id/infirmeirResProfil"
-        app:layout_constraintTop_toTopOf="@+id/infirmeirResProfil" />
-
-    <Button
-        android:id="@+id/tauxGlycemiqueResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:text="taux Glycemique"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/traitementResProfil" />
-
-    <Button
-        android:id="@+id/tensionArterielleResProfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="tension Arterielle"
-        app:layout_constraintStart_toEndOf="@+id/tauxGlycemiqueResProfil"
-        app:layout_constraintTop_toTopOf="@+id/tauxGlycemiqueResProfil" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

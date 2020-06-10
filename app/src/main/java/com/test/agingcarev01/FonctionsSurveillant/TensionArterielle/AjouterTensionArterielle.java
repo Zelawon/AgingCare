@@ -123,7 +123,7 @@ public class AjouterTensionArterielle extends AppCompatActivity implements View.
                 pressDiastolique.requestFocus();
             } else if ((pressSysto > 0) && (pressDiasto > 0)) {
                 if (noteTensionArterielle.getText().toString().isEmpty()) {
-                    TensionArterielleClasse tensionArterielleClasse = new TensionArterielleClasse(pressSysto, pressDiasto, bras, date, "(aucune notes)");
+                    TensionArterielleClasse tensionArterielleClasse = new TensionArterielleClasse(pressSysto, pressDiasto, bras, date, "(non précisé)");
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tensionArterielle").push();
                     myRef.setValue(tensionArterielleClasse);
                 } else {

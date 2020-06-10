@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -27,7 +29,8 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeSurveillant extends AppCompatActivity implements View.OnClickListener {
 
-    private Button retourFrConsulSurvBT, creeNvCompteSurveillantBT;
+    private ImageButton retourFrConsulSurvBT;
+    private FloatingActionButton creeNvCompteSurveillantBT;
     private DatabaseReference databaseReference;
 
     private FirebaseRecyclerOptions<SurveillantClasse> options;

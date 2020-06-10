@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +30,8 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeRendezVous extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ConsulterListeRendezVou";
-    private Button retourFrConsulRDVBT, ajouterNvRDV;
+    private Button retourFrConsulRDVBT;
+    private FloatingActionButton ajouterNvRDV;
     private RecyclerView recyclerView;
 
     private FirebaseRecyclerOptions<RendezVousClasse> options;

@@ -68,10 +68,10 @@
 
     <ImageView
         android:id="@+id/resItemModifier"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="28dp"
+        android:layout_height="27dp"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_profile"
+        android:src="@drawable/ic_loupe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/resItemArchiver"
         app:layout_constraintTop_toTopOf="parent" />

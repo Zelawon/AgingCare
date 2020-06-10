@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -24,7 +25,8 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListePoids extends AppCompatActivity implements View.OnClickListener {
 
-    private Button retourFrConsulPoids, ajouterNvPoids;
+    private Button retourFrConsulPoids;
+    private FloatingActionButton ajouterNvPoids;
     private RecyclerView recyclerView;
 
     private FirebaseRecyclerOptions<PoidsClasse> options;

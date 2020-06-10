@@ -116,7 +116,7 @@ public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnCli
                 tauxGlyceRes.requestFocus();
             } else if (taux > 0) {
                 if (noteTauxGlyce.getText().toString().isEmpty()) {
-                    TauxGlycemiqueClasse tauxGlycemiqueClasse = new TauxGlycemiqueClasse(taux, date, "(aucune notes)", mesure);
+                    TauxGlycemiqueClasse tauxGlycemiqueClasse = new TauxGlycemiqueClasse(taux, date, "(non précisé)", mesure);
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemique").push();
                     myRef.setValue(tauxGlycemiqueClasse);
                 } else {

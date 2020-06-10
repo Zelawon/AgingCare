@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".FonctionsProfil.ConsulterPropreProfil">
 
+    <Button
+        android:id="@+id/modifierMdpInf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="490dp"
+        android:text="Modifier Mot de Passe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
@@ -117,13 +127,11 @@
         android:id="@+id/retourFrProf"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="490dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginTop="20dp"
         android:text="Retour"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintEnd_toEndOf="@+id/modifierMdpInf"
+        app:layout_constraintStart_toStartOf="@+id/modifierMdpInf"
+        app:layout_constraintTop_toBottomOf="@+id/modifierMdpInf" />
 
     <TextView
         android:id="@+id/sexeTextView"
