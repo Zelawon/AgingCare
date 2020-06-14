@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AgingCare(v01)</string>
+
     <string-array name="typeSanguinArray">
         <item>A+</item>
         <item>A-</item>
@@ -10,11 +11,13 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+
     <string-array name="typeGraphe">
         <item>Poids</item>
         <item>Taux Glycémique</item>
         <item>Tension Artérielle</item>
     </string-array>
+
     <string-array name="mesureTauxGlycemiqueArray">
         <item>Avant le petit déjeuner</item>
         <item>Après le petit déjeuner</item>
@@ -27,8 +30,37 @@
         <item>Jeûne</item>
         <item>Autre</item>
     </string-array>
+
     <string-array name="BrasMesure">
         <item>Droite</item>
         <item>Gauche</item>
     </string-array>
+
+    <string-array name="TypeTraitement">
+        <item>Comprimé</item>
+        <item>Ampoules</item>
+        <item>Capsule</item>
+        <item>Poudre</item>
+        <item>Sirop</item>
+        <item>Pommade</item>
+        <item>Seringue</item>
+        <item>Sérum </item>
+        <item>Suppositoire</item>
+        <item>Autre</item>
+    </string-array>
+
+    <string-array name="RepetitionTraitement">
+        <item>Tous les jours</item>
+        <item>Customiser jours</item>
+    </string-array>
+
+    <string-array name="NbrRepetitionJour">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
 </resources>

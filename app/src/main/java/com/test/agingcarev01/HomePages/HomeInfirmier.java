@@ -11,12 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.agingcarev01.FonctionsInfirmier.RendezVous.ConsulterRendezVousAffecter;
 import com.test.agingcarev01.FonctionsInfirmier.ResidentAffecter.ConsulterListeResidentAffecter;
+import com.test.agingcarev01.FonctionsInfirmier.Traitement.ConsulterTraitementAffecter;
 import com.test.agingcarev01.FonctionsProfil.ConsulterPropreProfil;
 import com.test.agingcarev01.MainActivity;
 import com.test.agingcarev01.R;
 
 public class HomeInfirmier extends AppCompatActivity implements View.OnClickListener {
-    private ImageButton consulterProfInfBT, consulterListeResident, consulterListeRDV;
+    private ImageButton consulterProfInfBT, consulterListeResident, consulterListeRDV,consulterListeTraitement;
     private Button deconnecterInfirmierBT;
     private FirebaseAuth mAuth;
 
@@ -29,6 +30,9 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
 
         consulterListeRDV = findViewById(R.id.consulterListeRDV);
         consulterListeRDV.setOnClickListener(this);
+
+        consulterListeTraitement=findViewById(R.id.consulterListeTraitement);
+        consulterListeTraitement.setOnClickListener(this);
 
         consulterListeResident = findViewById(R.id.consulterListeResident);
         consulterListeResident.setOnClickListener(this);
@@ -56,6 +60,9 @@ public class HomeInfirmier extends AppCompatActivity implements View.OnClickList
         }
         if (view.getId() == R.id.consulterListeRDV) {
             startActivity(new Intent(HomeInfirmier.this, ConsulterRendezVousAffecter.class));
+        }
+        if (view.getId()==R.id.consulterListeTraitement){
+            startActivity(new Intent(HomeInfirmier.this, ConsulterTraitementAffecter.class));
         }
     }
 

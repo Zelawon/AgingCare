@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsInfirmier.RendezVous.ConsulterRendezVousAffecter;
+import com.test.agingcarev01.FonctionsSurveillant.Traitement.AjouterTraitement;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             finish();
         }
         if (view.getId() == R.id.testCompActive) {
-            startActivity(new Intent(MainActivity.this, ConsulterRendezVousAffecter.class));
+            startActivity(new Intent(MainActivity.this, AjouterTraitement.class));
         }
     }
 }

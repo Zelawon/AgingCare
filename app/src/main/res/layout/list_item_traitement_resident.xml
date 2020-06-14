@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/TraitementItemArchiver"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView101"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Type :"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/textView112"
+        app:layout_constraintTop_toBottomOf="@+id/textView112" />
+
+    <TextView
+        android:id="@+id/typeTraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Type"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView101"
+        app:layout_constraintStart_toEndOf="@+id/textView101"
+        app:layout_constraintTop_toTopOf="@+id/textView101" />
+
+    <TextView
+        android:id="@+id/repetitionTraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="5dp"
+        android:text="Répétition"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDatePoids22"
+        app:layout_constraintStart_toEndOf="@+id/textViewDatePoids22"
+        app:layout_constraintTop_toTopOf="@+id/textViewDatePoids22" />
+
+    <TextView
+        android:id="@+id/textViewDatePoids22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="5dp"
+        android:text="Répétition:"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDatePoids6"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDatePoids6" />
+
+    <TextView
+        android:id="@+id/temp6TraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="6dp"
+        android:text="HH:MM"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/temp5TraitementItem"
+        app:layout_constraintStart_toEndOf="@+id/temp5TraitementItem"
+        app:layout_constraintTop_toTopOf="@+id/temp5TraitementItem"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/temp5TraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="6dp"
+        android:text="HH:MM"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/temp4TraitementItem"
+        app:layout_constraintStart_toEndOf="@+id/temp4TraitementItem"
+        app:layout_constraintTop_toTopOf="@+id/temp4TraitementItem"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/temp4TraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="6dp"
+        android:text="HH:MM"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@+id/temp3TraitementItem"
+        app:layout_constraintTop_toTopOf="@+id/temp3TraitementItem" />
+
+    <TextView
+        android:id="@+id/temp3TraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="6dp"
+        android:text="HH:MM"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/temp2TraitementItem"
+        app:layout_constraintStart_toEndOf="@+id/temp2TraitementItem"
+        app:layout_constraintTop_toTopOf="@+id/temp2TraitementItem"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/dateFinTraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="5dp"
+        android:text="yyyy/mm/dd"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDatePoids8"
+        app:layout_constraintStart_toEndOf="@+id/textViewDatePoids8"
+        app:layout_constraintTop_toTopOf="@+id/textViewDatePoids8"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewDatePoids8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="10dp"
+        android:text="Date fin:"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dateDebutTraitementItem"
+        app:layout_constraintStart_toEndOf="@+id/dateDebutTraitementItem"
+        app:layout_constraintTop_toTopOf="@+id/dateDebutTraitementItem" />
+
+    <TextView
+        android:id="@+id/textViewDatePoids6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="5dp"
+        android:text="Date debut:"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/textView101"
+        app:layout_constraintTop_toBottomOf="@+id/textView101" />
+
+    <TextView
+        android:id="@+id/textViewDatePoids10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginTop="5dp"
+        android:text="Temps:"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDatePoids6"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDatePoids22" />
+
+    <TextView
+        android:id="@+id/temp1TraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="5dp"
+        android:text="HH:MM"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDatePoids10"
+        app:layout_constraintStart_toEndOf="@+id/textViewDatePoids10"
+        app:layout_constraintTop_toTopOf="@+id/textViewDatePoids10" />
+
+    <TextView
+        android:id="@+id/temp2TraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="6dp"
+        android:text="HH:MM"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/temp1TraitementItem"
+        app:layout_constraintStart_toEndOf="@+id/temp1TraitementItem"
+        app:layout_constraintTop_toTopOf="@+id/temp1TraitementItem"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/dateDebutTraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poidsRes"
+        android:layout_marginStart="5dp"
+        android:text="yyyy/mm/dd"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDatePoids6"
+        app:layout_constraintStart_toEndOf="@+id/textViewDatePoids6"
+        app:layout_constraintTop_toTopOf="@+id/textViewDatePoids6" />
+
+    <TextView
+        android:id="@+id/textView112"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Nom:"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView114"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Dose :"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@+id/typeTraitementItem"
+        app:layout_constraintTop_toTopOf="@+id/textView101" />
+
+    <TextView
+        android:id="@+id/doseTraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Dose"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@+id/textView114"
+        app:layout_constraintTop_toTopOf="@+id/textView114" />
+
+    <TextView
+        android:id="@+id/uniteTraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="unite"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/doseTraitementItem"
+        app:layout_constraintStart_toEndOf="@+id/doseTraitementItem"
+        app:layout_constraintTop_toTopOf="@+id/doseTraitementItem" />
+
+    <TextView
+        android:id="@+id/nomTraitementItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Nom"
+        android:textColor="@color/colorBlack"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView112"
+        app:layout_constraintStart_toEndOf="@+id/textView112"
+        app:layout_constraintTop_toTopOf="@+id/textView112" />
+</androidx.constraintlayout.widget.ConstraintLayout>

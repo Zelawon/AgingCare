@@ -23,6 +23,7 @@ import com.test.agingcarev01.FonctionsSurveillant.Poids.ConsulterListePoids;
 import com.test.agingcarev01.FonctionsSurveillant.RendezVous.ConsulterListeRendezVous;
 import com.test.agingcarev01.FonctionsSurveillant.TauxGlycemie.ConsulterListeTauxGlycemique;
 import com.test.agingcarev01.FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle;
+import com.test.agingcarev01.FonctionsSurveillant.Traitement.ConsulterListeTraitement;
 import com.test.agingcarev01.R;
 
 public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
@@ -65,6 +66,9 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
 
         modifierResProfilBT = findViewById(R.id.modifierResProfil);
         modifierResProfilBT.setOnClickListener(this);
+
+        traitementResProfil=findViewById(R.id.traitementResProfil);
+        traitementResProfil.setOnClickListener(this);
 
         tauxGlycemiqueResProfil = findViewById(R.id.tauxGlycemiqueResProfil);
         tauxGlycemiqueResProfil.setOnClickListener(this);
@@ -136,6 +140,15 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         if (view.getId() == R.id.rendezVousResProfil) {
             startRDVActivity(key);
         }
+        if (view.getId()==R.id.traitementResProfil){
+            startTraitementActivity();
+        }
+    }
+
+    private void startTraitementActivity() {
+        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterListeTraitement.class);
+        intent.putExtra("key", this.key);
+        startActivity(intent);
     }
 
     private void startRDVActivity(String key) {
