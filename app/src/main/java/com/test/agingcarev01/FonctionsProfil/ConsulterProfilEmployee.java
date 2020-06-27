@@ -21,6 +21,8 @@ import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifPrenom
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifSexeDialog;
 import com.test.agingcarev01.R;
 
+import es.dmoral.toasty.Toasty;
+
 public class ConsulterProfilEmployee extends AppCompatActivity implements View.OnClickListener,
         ModifNomDialog.ModifNomDialogListner,
         ModifPrenomDialog.ModifPrenomDialogListner,
@@ -119,11 +121,11 @@ public class ConsulterProfilEmployee extends AppCompatActivity implements View.O
                             sexe.setText(currentSexe);
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "Erreur Role", Toast.LENGTH_SHORT).show();
+                            Toasty.error(getApplicationContext(), "Erreur Role", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
+                    Toasty.error(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
                 }
             }
 

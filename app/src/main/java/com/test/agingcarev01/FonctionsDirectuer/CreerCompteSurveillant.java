@@ -2,6 +2,7 @@ package com.test.agingcarev01.FonctionsDirectuer;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.test.agingcarev01.Classe.SurveillantClasse;
 import com.test.agingcarev01.R;
+
+import es.dmoral.toasty.Toasty;
 
 public class CreerCompteSurveillant extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth1, mAuth2;
@@ -74,25 +77,25 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
             final String prenom = prenomSurv.getText().toString().toLowerCase();
 
             if (nom.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
                 nomSurv.requestFocus();
             } else if (prenom.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
                 prenomSurv.requestFocus();
             } else if (e_mail.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Champ Email vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Email vide", Toast.LENGTH_SHORT).show();
                 email.requestFocus();
             } else if (pass.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Champ Mot de Passe vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
             } else if (pass.length() < 6) {
-                Toast.makeText(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
             } else if ((confPass.isEmpty())) {
-                Toast.makeText(getApplicationContext(), "Champ Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
             } else if (!(pass.equals(confPass))) {
-                Toast.makeText(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
             } else {
                 mAuth2.createUserWithEmailAndPassword(e_mail, pass)
@@ -103,7 +106,12 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
                                     //Compte Creer cbn
                                     //Sign in success
                                     //Logout nv compte
-                                    Toast.makeText(CreerCompteSurveillant.this, "Compte Creer.", Toast.LENGTH_SHORT).show();
+
+                                    //Hide virtual keyboard on button press
+                                    InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                                    inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                                    Toasty.info(CreerCompteSurveillant.this, "Compte Creer.", Toast.LENGTH_SHORT).show();
                                     mAuth2.signOut();
 
                                     //ajouter a la database
@@ -115,14 +123,14 @@ public class CreerCompteSurveillant extends AppCompatActivity implements View.On
                                     myRef.setValue(nvSuruv).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            Toast.makeText(CreerCompteSurveillant.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
+                                            Toasty.info(CreerCompteSurveillant.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
                                     });
 
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(CreerCompteSurveillant.this, "Erreur Creation, Veuillez Reessayer.", Toast.LENGTH_LONG).show();
+                                    Toasty.error(CreerCompteSurveillant.this, "Erreur Creation, Veuillez Reessayer.", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });

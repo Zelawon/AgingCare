@@ -3,6 +3,7 @@ package com.test.agingcarev01.FonctionsDirectuer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -25,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.InfirmierClasse;
 import com.test.agingcarev01.R;
+
+import es.dmoral.toasty.Toasty;
 
 public class CreerCompteInfirmier extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth1, mAuth2;
@@ -111,27 +114,27 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
             final String prenom = prenomInf.getText().toString().toLowerCase();
 
             if (nom.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
                 nomInf.requestFocus();
             } else if (prenom.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
                 prenomInf.requestFocus();
             } else if ((!(femmRadio.isChecked())) && (!(hommRadio.isChecked()))) {
-                Toast.makeText(getApplicationContext(), "Champ sexe vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ sexe vide", Toast.LENGTH_SHORT).show();
             } else if (e_mail.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Champ Email vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Email vide", Toast.LENGTH_SHORT).show();
                 email.requestFocus();
             } else if (pass.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Champ Mot de Passe vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
             } else if (pass.length() < 6) {
-                Toast.makeText(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Mot de Passe (Au Moins 6 Caracteres)", Toast.LENGTH_SHORT).show();
                 password.requestFocus();
             } else if ((confPass.isEmpty())) {
-                Toast.makeText(getApplicationContext(), "Champ Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Champ Confirmer Mot de Passe vide", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
             } else if (!(pass.equals(confPass))) {
-                Toast.makeText(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Erreur Confirmer Mot de Passe", Toast.LENGTH_SHORT).show();
                 confirmPass.requestFocus();
             } else {
                 mAuth2.createUserWithEmailAndPassword(e_mail, pass)
@@ -142,7 +145,12 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                                     //Compte Creer cbn
                                     //Sign in success
                                     //Logout nv compte
-                                    Toast.makeText(CreerCompteInfirmier.this, "Compte Creer.", Toast.LENGTH_SHORT).show();
+
+                                    //Hide virtual keyboard on button press
+                                    InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                                    inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                                    Toasty.info(CreerCompteInfirmier.this, "Compte Creer.", Toast.LENGTH_SHORT).show();
                                     mAuth2.signOut();
 
                                     //ajouter a la database
@@ -154,7 +162,7 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                                         myRef.setValue(nvInf).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Toast.makeText(CreerCompteInfirmier.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
+                                                Toasty.info(CreerCompteInfirmier.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
                                                 updateIdEmployee();
                                                 finish();
                                             }
@@ -167,17 +175,17 @@ public class CreerCompteInfirmier extends AppCompatActivity implements View.OnCl
                                         myRef.setValue(nvInf).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Toast.makeText(CreerCompteInfirmier.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
+                                                Toasty.info(CreerCompteInfirmier.this, "Compte ajouter a la base.", Toast.LENGTH_SHORT).show();
                                                 updateIdEmployee();
                                                 finish();
                                             }
                                         });
                                     } else {
-                                        Toast.makeText(CreerCompteInfirmier.this, "ERREUR CHAMP SEXE", Toast.LENGTH_SHORT).show();
+                                        Toasty.error(CreerCompteInfirmier.this, "ERREUR CHAMP SEXE", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(CreerCompteInfirmier.this, "Erreur Creation, Veuillez Reessayer.", Toast.LENGTH_LONG).show();
+                                    Toasty.error(CreerCompteInfirmier.this, "Erreur Creation, Veuillez Reessayer.", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });

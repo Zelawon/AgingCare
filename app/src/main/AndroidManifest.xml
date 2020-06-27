@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.test.agingcarev01">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FonctionsInfirmier.Traitement.ConsulterDetailTraitement"></activity>
+        <activity android:name=".FonctionsInfirmier.Bracelet.ReceiverRythmeCardiaque"></activity>
+        <activity android:name=".FonctionsInfirmier.Bracelet.ChoixCaptuer" />
+        <activity android:name=".FonctionsInfirmier.Bracelet.ReceiverTemperature" />
+        <activity android:name=".FonctionsInfirmier.Bracelet.DeviceList" />
+        <activity android:name=".FonctionsInfirmier.Traitement.ConsulterDetailTraitement" />
         <activity android:name=".FonctionsInfirmier.Traitement.ConsulterTraitementAffecter" />
         <activity android:name=".FonctionsSurveillant.Traitement.ConsulterListeTraitement" />
         <activity android:name=".FonctionsSurveillant.Traitement.AjouterTraitement" />
@@ -30,6 +37,7 @@
         <activity android:name=".FonctionsSurveillant.Maladie.ConsulterListeMaladie" />
         <activity android:name=".FonctionsSurveillant.ModifierInfoResident" />
         <activity android:name=".FonctionsProfil.ConsulterProfilResident" />
+        <activity android:name=".FonctionsProfil.ConsulterProfilResidentPourInfirmier" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeDirecteur" />
         <activity android:name=".FonctionsSurveillant.CreerProfilResident" />
         <activity android:name=".ConsulterListes.Activities.ConsulterListeResident" />

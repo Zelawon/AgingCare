@@ -3,6 +3,7 @@ package com.test.agingcarev01.FonctionsSurveillant.TensionArterielle;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import com.test.agingcarev01.Classe.TensionArterielleClasse;
 import com.test.agingcarev01.R;
 
 import java.util.Calendar;
+
+import es.dmoral.toasty.Toasty;
 
 public class AjouterTensionArterielle extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
@@ -105,28 +108,36 @@ public class AjouterTensionArterielle extends AppCompatActivity implements View.
         systoliqueChk = pressSystolique.getText().toString();
         diastoliqueChk = pressDiastolique.getText().toString();
         if (systoliqueChk.isEmpty()) {
-            Toast.makeText(AjouterTensionArterielle.this, "Champ Pression Systolique Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterTensionArterielle.this, "Champ Pression Systolique Vide", Toast.LENGTH_SHORT).show();
             pressSystolique.requestFocus();
         } else if (date.isEmpty()) {
-            Toast.makeText(AjouterTensionArterielle.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterTensionArterielle.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
         } else if (diastoliqueChk.isEmpty()) {
-            Toast.makeText(AjouterTensionArterielle.this, "Champ Pression Diastolique Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterTensionArterielle.this, "Champ Pression Diastolique Vide", Toast.LENGTH_SHORT).show();
             pressDiastolique.requestFocus();
         } else {
             Float pressSysto = Float.valueOf(pressSystolique.getText().toString());
             Float pressDiasto = Float.valueOf(pressDiastolique.getText().toString());
             if (pressSysto <= 0) {
-                Toast.makeText(AjouterTensionArterielle.this, "Taux  Pression Systolique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTensionArterielle.this, "Taux  Pression Systolique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
                 pressSystolique.requestFocus();
             } else if (pressDiasto <= 0) {
-                Toast.makeText(AjouterTensionArterielle.this, "Taux  Pression Diastolique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTensionArterielle.this, "Taux  Pression Diastolique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
                 pressDiastolique.requestFocus();
             } else if ((pressSysto > 0) && (pressDiasto > 0)) {
                 if (noteTensionArterielle.getText().toString().isEmpty()) {
+                    //Hide virtual keyboard on button press
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                     TensionArterielleClasse tensionArterielleClasse = new TensionArterielleClasse(pressSysto, pressDiasto, bras, date, "(non précisé)");
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tensionArterielle").push();
                     myRef.setValue(tensionArterielleClasse);
                 } else {
+                    //Hide virtual keyboard on button press
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                     TensionArterielleClasse tensionArterielleClasse = new TensionArterielleClasse(pressSysto, pressDiasto, bras, date, noteTensionArterielle.getText().toString());
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tensionArterielle").push();
                     myRef.setValue(tensionArterielleClasse);

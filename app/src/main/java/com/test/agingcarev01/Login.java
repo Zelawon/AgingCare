@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ import com.test.agingcarev01.HomePages.HomeAdmin;
 import com.test.agingcarev01.HomePages.HomeDirectuer;
 import com.test.agingcarev01.HomePages.HomeInfirmier;
 import com.test.agingcarev01.HomePages.HomeSurveillant;
+
+import es.dmoral.toasty.Toasty;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button logInBT, retourBT;
@@ -56,6 +59,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 if (task.isSuccessful()) {
                     updateUI();
                 } else {
+
                     Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -77,28 +81,28 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         String currentRole = roleSnapshot.child("role").getValue(String.class);
                         String currentstatutEtRole = roleSnapshot.child("statutEtRole").getValue(String.class);
                         if (currentRole.equals("Admin")) {
-                            Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
+                            Toasty.success(getApplicationContext(), "Connection Réussite.", Toast.LENGTH_SHORT, true).show();
                             startActivity(new Intent(Login.this, HomeAdmin.class));
                             finishAffinity();
                         } else if (currentstatutEtRole.equals("Directeur_0")) {
-                            Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
+                            Toasty.success(getApplicationContext(), "Connection Réussite.", Toast.LENGTH_SHORT, true).show();
                             startActivity(new Intent(Login.this, HomeDirectuer.class));
                             finishAffinity();
                         } else if (currentstatutEtRole.equals("Surveillant_0")) {
-                            Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
+                            Toasty.success(getApplicationContext(), "Connection Réussite.", Toast.LENGTH_SHORT, true).show();
                             startActivity(new Intent(Login.this, HomeSurveillant.class));
                             finishAffinity();
                         } else if (currentstatutEtRole.equals("Infirmier_0")) {
-                            Toast.makeText(Login.this, "Connection Réussite.", Toast.LENGTH_SHORT).show();
+                            Toasty.success(getApplicationContext(), "Connection Réussite.", Toast.LENGTH_SHORT, true).show();
                             startActivity(new Intent(Login.this, HomeInfirmier.class));
                             finishAffinity();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Connection Impossible, Compte Archivee", Toast.LENGTH_LONG).show();
+                            Toasty.error(getApplicationContext(), "Connection Impossible, Compte Archivee", Toast.LENGTH_LONG).show();
                             finish();
                         }
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Erreur Login", Toast.LENGTH_LONG).show();
+                    Toasty.error(getApplicationContext(), "Erreur Login", Toast.LENGTH_LONG).show();
                     Log.e("TAG Erreur : ", "Login No Email");
                     finish();
                 }
@@ -117,12 +121,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         String emails = email.getText().toString();
         if (view.getId() == R.id.SignIn) {
             if (emails.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Email vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Email vide", Toast.LENGTH_SHORT, true).show();
                 email.requestFocus();
             } else if (password.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Mot de Passe vide", Toast.LENGTH_SHORT).show();
+                Toasty.warning(getApplicationContext(), "Mot de Passe vide", Toast.LENGTH_SHORT, true).show();
                 mdp.requestFocus();
             } else {
+                //Hide virtual keyboard on button press
+                InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                 singIn(emails, password);
             }
         }

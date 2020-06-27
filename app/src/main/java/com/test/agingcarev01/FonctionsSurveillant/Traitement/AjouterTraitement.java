@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +32,8 @@ import com.touchboarder.weekdaysbuttons.WeekdaysDrawableProvider;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import es.dmoral.toasty.Toasty;
+
 public class AjouterTraitement extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, WeekdaysDataSource.Callback, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "AjouterTraitement";
@@ -46,7 +49,7 @@ public class AjouterTraitement extends AppCompatActivity implements DatePickerDi
 
     private WeekdaysDataSource weekdaysDataSource2;
     private int nbrTemp, d1, d2, idTrait, idRes;
-    private String days = "", typeTraitement, repetitionTraitement, temp1 = "", temp2 = "", unite="",
+    private String days = "", typeTraitement, repetitionTraitement, temp1 = "", temp2 = "", unite = "",
             temp3 = "", temp4 = "", temp5 = "", temp6 = "", repetitionMode, dateDebut, dateFin, keyResident;
 
     @Override
@@ -86,7 +89,7 @@ public class AjouterTraitement extends AppCompatActivity implements DatePickerDi
         doseTraitement = findViewById(R.id.doseTraitement);
         weekdays_sample_2 = findViewById(R.id.weekdays_sample_2);
         textViewRepetitionTrait = findViewById(R.id.textViewRepetitionTrait);
-        uniteTraitement=findViewById(R.id.uniteTraitement);
+        uniteTraitement = findViewById(R.id.uniteTraitement);
 
         textTempTaitement1 = findViewById(R.id.textTempTaitement1);
         textTempTaitement2 = findViewById(R.id.textTempTaitement2);
@@ -406,7 +409,7 @@ public class AjouterTraitement extends AppCompatActivity implements DatePickerDi
         String doseChk = doseTraitement.getText().toString();
 
         if (nom.isEmpty()) {
-            Toast.makeText(AjouterTraitement.this, "Champ Nom Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterTraitement.this, "Champ Nom Vide", Toast.LENGTH_SHORT).show();
             nomTraitement.requestFocus();
         } else if (doseChk.isEmpty()) {
             Toast.makeText(AjouterTraitement.this, "Champ Dose Vide", Toast.LENGTH_SHORT).show();
@@ -414,58 +417,62 @@ public class AjouterTraitement extends AppCompatActivity implements DatePickerDi
         } else {
             Float dose = Float.valueOf(doseTraitement.getText().toString());
             if (dose <= 0) {
-                Toast.makeText(AjouterTraitement.this, "Dose doit être supérieur à 0", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Dose doit être supérieur à 0", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 1 && temp1.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 2 && temp1.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 3 && temp1.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 4 && temp1.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 5 && temp1.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 6 && temp1.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 2 && temp2.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 3 && temp2.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 4 && temp2.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 5 && temp2.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 6 && temp2.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 3 && temp3.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 4 && temp3.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 5 && temp3.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 6 && temp3.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 4 && temp4.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 5 && temp4.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 6 && temp4.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 5 && temp5.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 6 && temp5.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (nbrTemp == 6 && temp6.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Temp", Toast.LENGTH_SHORT).show();
             } else if (dateDebut.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Date Debut", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Date Debut", Toast.LENGTH_SHORT).show();
             } else if (dateFin.isEmpty()) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Date Fin", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Date Fin", Toast.LENGTH_SHORT).show();
             } else if (repetitionMode.equals("custom") && (days.isEmpty() || days.equals("No days selected"))) {
-                Toast.makeText(AjouterTraitement.this, "Erreur Jour Selection pour Repetition", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTraitement.this, "Erreur Jour Selection pour Repetition", Toast.LENGTH_SHORT).show();
             } else {
+                //Hide virtual keyboard on button press
+                InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                 updateIdTraitement();
-                TraitementClasse traitementClasse = new TraitementClasse(idTrait, typeTraitement, nom, dose,unite,
+                TraitementClasse traitementClasse = new TraitementClasse(idTrait, typeTraitement, nom, dose, unite,
                         repetitionMode, days, dateDebut, dateFin, nbrTemp,
                         temp1, temp2, temp3, temp4, temp5, temp6, idRes);
                 DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("traitement").push();

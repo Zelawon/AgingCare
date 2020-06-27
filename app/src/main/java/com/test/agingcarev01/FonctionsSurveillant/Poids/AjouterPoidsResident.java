@@ -3,6 +3,7 @@ package com.test.agingcarev01.FonctionsSurveillant.Poids;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -16,6 +17,8 @@ import com.test.agingcarev01.Classe.PoidsClasse;
 import com.test.agingcarev01.R;
 
 import java.util.Calendar;
+
+import es.dmoral.toasty.Toasty;
 
 public class AjouterPoidsResident extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
@@ -95,16 +98,20 @@ public class AjouterPoidsResident extends AppCompatActivity implements View.OnCl
             note = "(non précisé)";
         }
         if (poidsChk.isEmpty()) {
-            Toast.makeText(AjouterPoidsResident.this, "Champ Poids Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterPoidsResident.this, "Champ Poids Vide", Toast.LENGTH_SHORT).show();
             poidsRes.requestFocus();
         } else if (date.isEmpty()) {
-            Toast.makeText(AjouterPoidsResident.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterPoidsResident.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
         } else {
             Float poids = Float.valueOf(poidsRes.getText().toString());
             if (poids <= 0) {
-                Toast.makeText(AjouterPoidsResident.this, "Poids doit être supérieur à 0", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterPoidsResident.this, "Poids doit être supérieur à 0", Toast.LENGTH_SHORT).show();
                 poidsRes.requestFocus();
             } else if (poids > 0) {
+                //Hide virtual keyboard on button press
+                InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                 PoidsClasse poidsClasse = new PoidsClasse(poids, date, note);
                 DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("poids").push();
                 myRef.setValue(poidsClasse);

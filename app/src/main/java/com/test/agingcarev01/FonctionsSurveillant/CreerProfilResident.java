@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,10 +23,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.R;
 import com.test.agingcarev01.Classe.ResidentClasse;
+import com.test.agingcarev01.R;
 
 import java.util.Calendar;
+
+import es.dmoral.toasty.Toasty;
 
 public class CreerProfilResident extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
@@ -130,21 +133,25 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
         String sexeSelect = "";
 
         if (nom.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(getApplicationContext(), "Champ Nom vide", Toast.LENGTH_SHORT).show();
             nomRes.requestFocus();
         } else if (prenom.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(getApplicationContext(), "Champ Prenom vide", Toast.LENGTH_SHORT).show();
             prenomRes.requestFocus();
         } else if ((!(femmRadio.isChecked())) && (!(hommRadio.isChecked()))) {
-            Toast.makeText(getApplicationContext(), "Champ sexe vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(getApplicationContext(), "Champ sexe vide", Toast.LENGTH_SHORT).show();
         } else if (date.equals("vide")) {
-            Toast.makeText(getApplicationContext(), "Champ date de naissance vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(getApplicationContext(), "Champ date de naissance vide", Toast.LENGTH_SHORT).show();
         } else {
             if (femmRadio.isChecked()) {
                 sexeSelect = "femme";
             } else if (hommRadio.isChecked()) {
                 sexeSelect = "homme";
             }
+            //Hide virtual keyboard on button press
+            InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+            inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
             ResidentClasse nvInf = new ResidentClasse(idRes, nom, prenom, sexeSelect, typeSang, date);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -153,7 +160,7 @@ public class CreerProfilResident extends AppCompatActivity implements AdapterVie
             myRef.setValue(nvInf).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-                    Toast.makeText(CreerProfilResident.this, "Profil ajouter a la base.", Toast.LENGTH_SHORT).show();
+                    Toasty.info(CreerProfilResident.this, "Profil ajouter a la base.", Toast.LENGTH_SHORT).show();
                     updateIdResident();
                     finish();
                 }

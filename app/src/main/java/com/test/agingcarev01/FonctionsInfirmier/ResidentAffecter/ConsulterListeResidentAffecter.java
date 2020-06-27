@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.test.agingcarev01.Classe.ResidentClasse;
-import com.test.agingcarev01.FonctionsProfil.ConsulterProfilResident;
+import com.test.agingcarev01.FonctionsProfil.ConsulterProfilResidentPourInfirmier;
 import com.test.agingcarev01.R;
 
 import java.util.ArrayList;
@@ -142,7 +142,7 @@ public class ConsulterListeResidentAffecter extends AppCompatActivity implements
         //Log.e(TAG, "position dans le recylcerView: "+position );
         //Log.e(TAG, "key du item: "+listeResidentAffecter.get(position));
         String key = listeResidentAffecter.get(position);
-        Intent intent = new Intent(ConsulterListeResidentAffecter.this, ConsulterProfilResident.class);
+        Intent intent = new Intent(ConsulterListeResidentAffecter.this, ConsulterProfilResidentPourInfirmier.class);
         intent.putExtra("id", key);
         startActivity(intent);
     }

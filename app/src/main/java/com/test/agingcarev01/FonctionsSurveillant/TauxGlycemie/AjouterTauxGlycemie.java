@@ -3,6 +3,7 @@ package com.test.agingcarev01.FonctionsSurveillant.TauxGlycemie;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import com.test.agingcarev01.Classe.TauxGlycemiqueClasse;
 import com.test.agingcarev01.R;
 
 import java.util.Calendar;
+
+import es.dmoral.toasty.Toasty;
 
 public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
@@ -105,14 +108,14 @@ public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnCli
     private void AjouterTauxGlycemique() {
         tauxChk = tauxGlyceRes.getText().toString();
         if (tauxChk.isEmpty()) {
-            Toast.makeText(AjouterTauxGlycemie.this, "Champ Taux Glycemique Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterTauxGlycemie.this, "Champ Taux Glycemique Vide", Toast.LENGTH_SHORT).show();
             tauxGlyceRes.requestFocus();
         } else if (date.isEmpty()) {
-            Toast.makeText(AjouterTauxGlycemie.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterTauxGlycemie.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
         } else {
             Float taux = Float.valueOf(tauxGlyceRes.getText().toString());
             if (taux <= 0) {
-                Toast.makeText(AjouterTauxGlycemie.this, "Taux Glycemique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
+                Toasty.warning(AjouterTauxGlycemie.this, "Taux Glycemique doit être supérieur à 0", Toast.LENGTH_SHORT).show();
                 tauxGlyceRes.requestFocus();
             } else if (taux > 0) {
                 if (noteTauxGlyce.getText().toString().isEmpty()) {
@@ -120,6 +123,10 @@ public class AjouterTauxGlycemie extends AppCompatActivity implements View.OnCli
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemique").push();
                     myRef.setValue(tauxGlycemiqueClasse);
                 } else {
+                    //Hide virtual keyboard on button press
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                     TauxGlycemiqueClasse tauxGlycemiqueClasse = new TauxGlycemiqueClasse(taux, date, noteTauxGlyce.getText().toString(), mesure);
                     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("tauxGlycemique").push();
                     myRef.setValue(tauxGlycemiqueClasse);

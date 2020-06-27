@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:6.2.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.github.GrenderG:Toasty:1.4.2'
     implementation 'com.google.android.material:material:1.2.0-alpha06'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

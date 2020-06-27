@@ -15,30 +15,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.FonctionsSurveillant.AffecterInfirmier.AffecteeInfirmiereResident;
-import com.test.agingcarev01.FonctionsSurveillant.ConsulterStatistiqueResident;
-import com.test.agingcarev01.FonctionsSurveillant.Maladie.ConsulterListeMaladie;
 import com.test.agingcarev01.FonctionsSurveillant.ModifierInfoResident;
 import com.test.agingcarev01.FonctionsSurveillant.Poids.ConsulterListePoids;
-import com.test.agingcarev01.FonctionsSurveillant.RendezVous.ConsulterListeRendezVous;
 import com.test.agingcarev01.FonctionsSurveillant.TauxGlycemie.ConsulterListeTauxGlycemique;
 import com.test.agingcarev01.FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle;
-import com.test.agingcarev01.FonctionsSurveillant.Traitement.ConsulterListeTraitement;
 import com.test.agingcarev01.R;
 
-public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
+public class ConsulterProfilResidentPourInfirmier extends AppCompatActivity implements View.OnClickListener {
     private TextView nom, prenom, sexe, dateNaissance, typeSang;
     private DatabaseReference databaseReference;
     private Button retourFrProfilResBT, modifierResProfilBT;
-    private ImageButton maladieResProfil, statestiqueResProfilBT, poidsResProfilBT,
-            tauxGlycemiqueResProfil, tensionArterielleResProfil, rendezVousResProfil,
-            traitementResProfil, infirmeirResProfilBT;
+    private ImageButton poidsResProfilBT, tauxGlycemiqueResProfil, tensionArterielleResProfil;
     private String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulter_profil_resident);
+        setContentView(R.layout.activity_consulter_profil_resident_infirmier);
 
         nom = findViewById(R.id.nomResProfil);
         prenom = findViewById(R.id.prenomResProfil);
@@ -46,29 +39,14 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         dateNaissance = findViewById(R.id.dateNasiResProfil);
         typeSang = findViewById(R.id.typeSangResProfil);
 
-        rendezVousResProfil = findViewById(R.id.rendezVousResProfil);
-        rendezVousResProfil.setOnClickListener(this);
-
         retourFrProfilResBT = findViewById(R.id.retourFrProfilRes);
         retourFrProfilResBT.setOnClickListener(this);
-
-        statestiqueResProfilBT = findViewById(R.id.statestiqueResProfil);
-        statestiqueResProfilBT.setOnClickListener(this);
 
         poidsResProfilBT = findViewById(R.id.poidsResProfil);
         poidsResProfilBT.setOnClickListener(this);
 
-        infirmeirResProfilBT = findViewById(R.id.infirmeirResProfil);
-        infirmeirResProfilBT.setOnClickListener(this);
-
-        maladieResProfil = findViewById(R.id.maladieResProfil);
-        maladieResProfil.setOnClickListener(this);
-
         modifierResProfilBT = findViewById(R.id.modifierResProfil);
         modifierResProfilBT.setOnClickListener(this);
-
-        traitementResProfil = findViewById(R.id.traitementResProfil);
-        traitementResProfil.setOnClickListener(this);
 
         tauxGlycemiqueResProfil = findViewById(R.id.tauxGlycemiqueResProfil);
         tauxGlycemiqueResProfil.setOnClickListener(this);
@@ -106,7 +84,7 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
     }
 
     private void startModifProfilActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, ModifierInfoResident.class);
+        Intent intent = new Intent(ConsulterProfilResidentPourInfirmier.this, ModifierInfoResident.class);
         intent.putExtra("key", this.key);
         startActivity(intent);
     }
@@ -125,70 +103,25 @@ public class ConsulterProfilResident extends AppCompatActivity implements View.O
         if (view.getId() == R.id.modifierResProfil) {
             startModifProfilActivity(key);
         }
-        if (view.getId() == R.id.statestiqueResProfil) {
-            startStatistiqueActivity(key);
-        }
-        if (view.getId() == R.id.maladieResProfil) {
-            startMaladieActivity(key);
-        }
-        if (view.getId() == R.id.infirmeirResProfil) {
-            startInfirmierActivity(key);
-        }
         if (view.getId() == R.id.poidsResProfil) {
             startPoidsActivity(key);
         }
-        if (view.getId() == R.id.rendezVousResProfil) {
-            startRDVActivity(key);
-        }
-        if (view.getId() == R.id.traitementResProfil) {
-            startTraitementActivity(key);
-        }
-    }
-
-    private void startTraitementActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterListeTraitement.class);
-        intent.putExtra("key", this.key);
-        startActivity(intent);
-    }
-
-    private void startRDVActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterListeRendezVous.class);
-        intent.putExtra("key", this.key);
-        startActivity(intent);
     }
 
     private void startTensionArterielleProfilActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterListeTensionArterielle.class);
+        Intent intent = new Intent(ConsulterProfilResidentPourInfirmier.this, ConsulterListeTensionArterielle.class);
         intent.putExtra("key", this.key);
         startActivity(intent);
     }
 
     private void startTauxGlycemiqueActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterListeTauxGlycemique.class);
-        intent.putExtra("key", this.key);
-        startActivity(intent);
-    }
-
-    private void startStatistiqueActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterStatistiqueResident.class);
-        intent.putExtra("key", this.key);
-        startActivity(intent);
-    }
-
-    private void startInfirmierActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, AffecteeInfirmiereResident.class);
-        intent.putExtra("key", this.key);
-        startActivity(intent);
-    }
-
-    private void startMaladieActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterListeMaladie.class);
+        Intent intent = new Intent(ConsulterProfilResidentPourInfirmier.this, ConsulterListeTauxGlycemique.class);
         intent.putExtra("key", this.key);
         startActivity(intent);
     }
 
     private void startPoidsActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResident.this, ConsulterListePoids.class);
+        Intent intent = new Intent(ConsulterProfilResidentPourInfirmier.this, ConsulterListePoids.class);
         intent.putExtra("key", this.key);
         startActivity(intent);
     }

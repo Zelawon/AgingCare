@@ -30,6 +30,8 @@ import com.test.agingcarev01.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class AffecteeInfirmiereResident extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "AffecteeInfirmiereResid";
     private Button affecterNouveauInfirmierShowBT, retourFrAffecterInfBT, annulerAffectationBT;
@@ -295,7 +297,7 @@ public class AffecteeInfirmiereResident extends AppCompatActivity implements Vie
                 AffecterResidentInfirmier(emailInf);
 
                 HideRecycleView();
-                Toast.makeText(AffecteeInfirmiereResident.this, "Affectation Réussite.", Toast.LENGTH_SHORT).show();
+                Toasty.success(AffecteeInfirmiereResident.this, "Affectation Réussite.", Toast.LENGTH_SHORT).show();
             }
         }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
             @Override

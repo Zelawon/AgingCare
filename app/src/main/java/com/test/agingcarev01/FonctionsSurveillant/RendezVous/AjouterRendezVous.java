@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -24,6 +25,8 @@ import com.test.agingcarev01.Classe.RendezVousClasse;
 import com.test.agingcarev01.R;
 
 import java.util.Calendar;
+
+import es.dmoral.toasty.Toasty;
 
 public class AjouterRendezVous extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener,
         TimePickerDialog.OnTimeSetListener {
@@ -170,13 +173,17 @@ public class AjouterRendezVous extends AppCompatActivity implements View.OnClick
         }
 
         if (nom.isEmpty()) {
-            Toast.makeText(AjouterRendezVous.this, "Champ Nom Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterRendezVous.this, "Champ Nom Vide", Toast.LENGTH_SHORT).show();
             nomRDV.requestFocus();
         } else if (date.isEmpty()) {
-            Toast.makeText(AjouterRendezVous.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterRendezVous.this, "Champ Date Vide", Toast.LENGTH_SHORT).show();
         } else if (temp.isEmpty()) {
-            Toast.makeText(AjouterRendezVous.this, "Champ Temp Vide", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AjouterRendezVous.this, "Champ Temp Vide", Toast.LENGTH_SHORT).show();
         } else {
+            //Hide virtual keyboard on button press
+            InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+            inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
             updateIdRDV();
             RendezVousClasse rendezVousClasse = new RendezVousClasse(idRDV, date, temp, lieu, nom, detail, num, idRes);
             DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Resident").child(keyResident).child("rendezVous").push();

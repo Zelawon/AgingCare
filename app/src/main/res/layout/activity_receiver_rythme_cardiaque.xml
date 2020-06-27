@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    tools:context=".FonctionsInfirmier.Bracelet.ReceiverRythmeCardiaque">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Récepteur"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/TW_data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        android:gravity="center"
+        android:text="-"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#a81212"
+        android:textSize="50dp" />
+
+    <Button
+        android:id="@+id/BTN_disc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Déconnecter Bracelet" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TW_data"
+        android:layout_centerHorizontal="true"
+        android:text="Rythme Cardiaque Reçue"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

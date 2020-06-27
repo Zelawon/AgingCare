@@ -17,12 +17,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifEmailDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifNomDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifPrenomDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifProfilCommunDialog.ModifSexeDialog;
+import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifEmailDialog;
 import com.test.agingcarev01.FonctionsProfil.ModifierProfilEmployeeDialog.ModifierMotDePasseDialog;
 import com.test.agingcarev01.R;
+
+import es.dmoral.toasty.Toasty;
 
 public class ConsulterPropreProfil extends AppCompatActivity implements View.OnClickListener,
         ModifEmailDialog.ModifEmailDialogListner,
@@ -132,12 +134,12 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
                             sexe.setText(currentSexe);
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "Erreur Role", Toast.LENGTH_SHORT).show();
+                            Toasty.error(getApplicationContext(), "Erreur Role", Toast.LENGTH_SHORT).show();
                             Log.e("TAG Erreur : ", "Erreur Role");
                         }
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
+                    Toasty.error(getApplicationContext(), "Erreur Consulter Profil", Toast.LENGTH_SHORT).show();
                     Log.e("TAG Erreur : ", "Erreur Consulter Profil");
                 }
             }
