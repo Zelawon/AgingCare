@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -30,7 +31,7 @@ import com.test.agingcarev01.R;
 
 public class ConsulterListeRendezVous extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ConsulterListeRendezVou";
-    private Button retourFrConsulRDVBT;
+    private ImageView retourFrConsulRDVBT;
     private FloatingActionButton ajouterNvRDV;
     private RecyclerView recyclerView;
 

@@ -7,6 +7,8 @@
     android:paddingTop="10dp"
     android:paddingRight="10dp"
     android:paddingBottom="10dp"
+    android:background="@color/colorWhite"
+
     tools:context=".FonctionsInfirmier.Bracelet.ReceiverRythmeCardiaque">
 
     <TextView
@@ -16,7 +18,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Récepteur"
-        android:textSize="25dp" />
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/TW_data"
@@ -28,7 +33,7 @@
         android:gravity="center"
         android:text="-"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#a81212"
+        android:textColor="@color/colorRed"
         android:textSize="50dp" />
 
     <Button
@@ -37,7 +42,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Déconnecter Bracelet" />
+        android:text="Déconnecter Bracelet"
+
+        android:background="@drawable/button_background"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -45,7 +58,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TW_data"
         android:layout_centerHorizontal="true"
-        android:text="Rythme Cardiaque Reçue"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="Rythme Cardiaque Reçue (BPM)"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/colorBlack"
+        />
 
 </RelativeLayout>

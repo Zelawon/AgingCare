@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AgingCare(v01)</string>
+    <string name="app_name">Aging Care</string>
 
     <string-array name="typeSanguinArray">
         <item>A+</item>

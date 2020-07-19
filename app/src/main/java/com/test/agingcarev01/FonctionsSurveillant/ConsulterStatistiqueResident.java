@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,11 +43,9 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
         AjouterPressionDiastoliqueCibleDialog.AjouterPressionDiastoliqueCibleDialogListner,
         AjouterPressionSystoliqueCibleDialog.AjouterPressionSystoliqueCibleDialogListner {
 
-    private TextView cibleStatResNbr, cibleStatResNom, cibleStatResNom2, cibleStatResNbr2, cibleText, cibleText2;
-    private ImageView ajouterFrStatRes, modifCibleRes, modifCibleRes2;
     private static final String TAG = "ConsulterStatistiqueResident";
-    private Button retourFrStatRes;
-
+    private TextView cibleStatResNbr, cibleStatResNom, cibleStatResNom2, cibleStatResNbr2, cibleText, cibleText2;
+    private ImageView modifCibleRes, modifCibleRes2, retourFrStatRes;
     private LineChart lineChart1, lineChart2, lineChart3;
     private String keyResident;
     private DatabaseReference databaseReference;
@@ -68,8 +65,6 @@ public class ConsulterStatistiqueResident extends AppCompatActivity implements V
         lineChart2 = findViewById(R.id.lineChartStatistique);
         lineChart3 = findViewById(R.id.lineChartStatistique);
 
-        ajouterFrStatRes = findViewById(R.id.ajouterFrStatRes);
-        ajouterFrStatRes.setOnClickListener(this);
         modifCibleRes = findViewById(R.id.modifCibleRes);
         modifCibleRes2 = findViewById(R.id.modifCibleRes2);
         retourFrStatRes = findViewById(R.id.retourFrStatRes);

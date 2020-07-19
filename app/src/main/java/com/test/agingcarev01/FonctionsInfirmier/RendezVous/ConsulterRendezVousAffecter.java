@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +36,7 @@ public class ConsulterRendezVousAffecter extends AppCompatActivity implements Vi
 
     private static final String TAG = "ConsulterRendezVousAffe";
 
-    private Button retourFrConsultRDVAffecterInfirmier;
+    private ImageView retourFrConsultRDVAffecterInfirmier;
     private HorizontalCalendar horizontalCalendar;
     private RecyclerView recyclerView;
 

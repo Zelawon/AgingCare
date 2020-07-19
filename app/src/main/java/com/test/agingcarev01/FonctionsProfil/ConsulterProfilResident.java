@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,7 +30,8 @@ import com.test.agingcarev01.R;
 public class ConsulterProfilResident extends AppCompatActivity implements View.OnClickListener {
     private TextView nom, prenom, sexe, dateNaissance, typeSang;
     private DatabaseReference databaseReference;
-    private Button retourFrProfilResBT, modifierResProfilBT;
+    private Button  modifierResProfilBT;
+    private ImageView retourFrProfilResBT;
     private ImageButton maladieResProfil, statestiqueResProfilBT, poidsResProfilBT,
             tauxGlycemiqueResProfil, tensionArterielleResProfil, rendezVousResProfil,
             traitementResProfil, infirmeirResProfilBT;

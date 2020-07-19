@@ -8,7 +8,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.agingcarev01.FonctionsSurveillant.Traitement.AjouterTraitement;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginBT.setOnClickListener(this);
         quitterBT = findViewById(R.id.quit);
         quitterBT.setOnClickListener(this);
-        logoutBT = findViewById(R.id.testCompActive);
-        logoutBT.setOnClickListener(this);
+        //logoutBT = findViewById(R.id.testCompActive);
+        //logoutBT.setOnClickListener(this);
     }
 
     @Override
@@ -44,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view.getId() == R.id.quit) {
             finish();
         }
-        if (view.getId() == R.id.testCompActive) {
-            startActivity(new Intent(MainActivity.this, AjouterTraitement.class));
-        }
+      //  if (view.getId() == R.id.testCompActive) {
+        //    startActivity(new Intent(MainActivity.this, TestCompteActive.class));
+       // }
     }
 }

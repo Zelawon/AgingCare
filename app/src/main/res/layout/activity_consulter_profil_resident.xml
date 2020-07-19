@@ -3,30 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorWhite"
     android:layout_height="match_parent"
     tools:context=".FonctionsProfil.ConsulterProfilResident">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/retourFrProfilRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/retourFrProfilRes"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modifierResProfil">
 
         <ImageButton
             android:id="@+id/maladieResProfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@drawable/ic_maladie"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/statestiqueResProfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:background="@drawable/ic_stats"
             app:layout_constraintBottom_toBottomOf="@+id/rendezVousResProfil"
@@ -36,8 +61,8 @@
 
         <ImageButton
             android:id="@+id/tauxGlycemiqueResProfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/ic_sugar_blood"
             app:layout_constraintEnd_toStartOf="@+id/rendezVousResProfil"
@@ -46,8 +71,8 @@
 
         <ImageButton
             android:id="@+id/tensionArterielleResProfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@drawable/ic_blood_pressure"
             app:layout_constraintBottom_toBottomOf="@+id/tauxGlycemiqueResProfil"
             app:layout_constraintEnd_toStartOf="@+id/statestiqueResProfil"
@@ -57,8 +82,8 @@
 
         <ImageButton
             android:id="@+id/infirmeirResProfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:background="@drawable/ic_infirmier"
             app:layout_constraintBottom_toBottomOf="@+id/maladieResProfil"
@@ -67,8 +92,8 @@
 
         <ImageButton
             android:id="@+id/poidsResProfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:background="@drawable/ic_weight"
             app:layout_constraintBottom_toBottomOf="@+id/infirmeirResProfil"
@@ -78,8 +103,8 @@
 
         <ImageButton
             android:id="@+id/traitementResProfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/ic_meds"
             app:layout_constraintStart_toStartOf="@+id/maladieResProfil"
@@ -87,8 +112,8 @@
 
         <ImageButton
             android:id="@+id/rendezVousResProfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:background="@drawable/ic_medical_appointment"
             app:layout_constraintBottom_toBottomOf="@+id/traitementResProfil"
@@ -115,7 +140,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:text="Date de Naissance :"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
@@ -137,7 +164,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:text="Type Sanguin :"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
@@ -146,13 +175,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:text="Profil Resident (temporary)"
-        android:textSize="24sp"
+        android:text="Profil Resident"
+        android:textColor="@color/colorBlack"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <TextView
         android:id="@+id/textView23"
@@ -161,7 +192,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:text="Nom :"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -172,7 +205,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:text="Prenom :"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -198,18 +233,6 @@
         app:layout_constraintStart_toEndOf="@+id/textView24"
         app:layout_constraintTop_toTopOf="@+id/textView24" />
 
-    <Button
-        android:id="@+id/retourFrProfilRes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="40dp"
-        android:text="Retour"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
@@ -217,7 +240,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:text="Sexe :"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
@@ -236,10 +261,20 @@
         android:id="@+id/modifierResProfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="40dp"
+
+        android:background="@drawable/button_background"
+        android:drawableLeft="@drawable/ic_edit"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
         android:text="Modifier Information General"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />

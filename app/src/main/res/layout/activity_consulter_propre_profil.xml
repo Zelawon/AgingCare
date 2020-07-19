@@ -3,64 +3,103 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorWhite"
     android:layout_height="match_parent"
     tools:context=".FonctionsProfil.ConsulterPropreProfil">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/retourFrProf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/modifierMdpInf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="490dp"
+        android:layout_marginBottom="20dp"
         android:text="Modifier Mot de Passe"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        android:background="@drawable/button_background"
+        android:drawableLeft="@drawable/ic_password"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Mon Profil (temporary)"
-        android:textSize="24sp"
+        android:text="Mon Profil"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <TextView
         android:id="@+id/nomTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="55dp"
         android:text="Nom :"
-        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
     <TextView
         android:id="@+id/prenomTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="55dp"
         android:text="Prenom :"
-        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNom" />
+        app:layout_constraintTop_toBottomOf="@+id/nomTextView" />
 
     <TextView
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="55dp"
         android:text="E-mail :"
-        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRole" />
+        app:layout_constraintTop_toBottomOf="@+id/roleTextView" />
 
     <TextView
         android:id="@+id/txtNom"
@@ -108,7 +147,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:text="Role :"
-        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -123,26 +164,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/roleTextView" />
 
-    <Button
-        android:id="@+id/retourFrProf"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Retour"
-        app:layout_constraintEnd_toEndOf="@+id/modifierMdpInf"
-        app:layout_constraintStart_toStartOf="@+id/modifierMdpInf"
-        app:layout_constraintTop_toBottomOf="@+id/modifierMdpInf" />
-
     <TextView
         android:id="@+id/sexeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="55dp"
         android:text="Sexe :"
-        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrenom" />
+        app:layout_constraintTop_toBottomOf="@+id/prenomTextView" />
 
     <TextView
         android:id="@+id/txtSex"

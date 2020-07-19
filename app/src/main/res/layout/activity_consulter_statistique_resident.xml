@@ -3,15 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+
     android:layout_height="match_parent"
+
     tools:context=".FonctionsSurveillant.ConsulterStatistiqueResident">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/retourFrStatRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/cibleStatResNom2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="nomCible"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/cibleText"
         app:layout_constraintStart_toEndOf="@+id/cibleText"
         app:layout_constraintTop_toTopOf="@+id/cibleText" />
@@ -22,12 +47,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Cible "
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lineChartStatistique"
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChartStatistique"
+        android:background="@drawable/button_outline"
         android:layout_width="0dp"
         android:layout_height="320dp"
         android:layout_marginStart="10dp"
@@ -41,13 +69,14 @@
         android:id="@+id/textView37"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Statistique"
+        android:layout_marginTop="10dp"
+        android:text="Statistiques"
         android:textColor="@color/colorBlack"
         android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <Spinner
         android:id="@+id/spinnerSelectGrephe"
@@ -64,29 +93,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:text="Selectionner Graphe :"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView37" />
-
-    <ImageView
-        android:id="@+id/ajouterFrStatRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_add_circle" />
-
-    <Button
-        android:id="@+id/retourFrStatRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Retour"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView40"
@@ -94,7 +105,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Cible "
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lineChartStatistique"
         app:layout_constraintTop_toBottomOf="@+id/lineChartStatistique" />
 
@@ -103,7 +116,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="nomCible"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView40"
         app:layout_constraintStart_toEndOf="@+id/textView40"
         app:layout_constraintTop_toTopOf="@+id/textView40" />
@@ -134,7 +149,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" : "
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/cibleStatResNom"
         app:layout_constraintStart_toEndOf="@+id/cibleStatResNom"
         app:layout_constraintTop_toTopOf="@+id/cibleStatResNom" />
@@ -144,7 +161,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" : "
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/cibleStatResNom2"
         app:layout_constraintStart_toEndOf="@+id/cibleStatResNom2"
         app:layout_constraintTop_toTopOf="@+id/cibleStatResNom2" />
@@ -154,7 +173,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="cibleNbr"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView43"
         app:layout_constraintTop_toTopOf="@+id/textView43" />
 
@@ -163,7 +184,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="cibleNbr"
+        android:textColor="@color/colorBlack"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/cibleText2"
         app:layout_constraintStart_toEndOf="@+id/cibleText2"
         app:layout_constraintTop_toTopOf="@+id/cibleStatResNom2" />

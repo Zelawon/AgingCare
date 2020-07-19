@@ -33,7 +33,8 @@ public class ConsulterPropreProfil extends AppCompatActivity implements View.OnC
         ModifSexeDialog.ModifSexeDialogListner,
         ModifierMotDePasseDialog.ModifMotDePasseDialogListner {
 
-    private Button retourFrProfBT, modifierMdpInfBT;
+    private Button  modifierMdpInfBT;
+    private ImageView retourFrProfBT;
     private ImageView updateEmailBT, updateSexeBT, updateNomBT, updatePrenomBT;
     private TextView nom, prenom, role, email, sexe, nomTXT, prenomTXT, sexeTXT;
     private String userkey;

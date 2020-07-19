@@ -15,7 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.test.agingcarev01.FonctionsSurveillant.ModifierInfoResident;
 import com.test.agingcarev01.FonctionsSurveillant.Poids.ConsulterListePoids;
 import com.test.agingcarev01.FonctionsSurveillant.TauxGlycemie.ConsulterListeTauxGlycemique;
 import com.test.agingcarev01.FonctionsSurveillant.TensionArterielle.ConsulterListeTensionArterielle;
@@ -24,7 +23,7 @@ import com.test.agingcarev01.R;
 public class ConsulterProfilResidentPourInfirmier extends AppCompatActivity implements View.OnClickListener {
     private TextView nom, prenom, sexe, dateNaissance, typeSang;
     private DatabaseReference databaseReference;
-    private Button retourFrProfilResBT, modifierResProfilBT;
+    private Button retourFrProfilResBT;
     private ImageButton poidsResProfilBT, tauxGlycemiqueResProfil, tensionArterielleResProfil;
     private String key;
 
@@ -44,9 +43,6 @@ public class ConsulterProfilResidentPourInfirmier extends AppCompatActivity impl
 
         poidsResProfilBT = findViewById(R.id.poidsResProfil);
         poidsResProfilBT.setOnClickListener(this);
-
-        modifierResProfilBT = findViewById(R.id.modifierResProfil);
-        modifierResProfilBT.setOnClickListener(this);
 
         tauxGlycemiqueResProfil = findViewById(R.id.tauxGlycemiqueResProfil);
         tauxGlycemiqueResProfil.setOnClickListener(this);
@@ -83,12 +79,6 @@ public class ConsulterProfilResidentPourInfirmier extends AppCompatActivity impl
         });
     }
 
-    private void startModifProfilActivity(String key) {
-        Intent intent = new Intent(ConsulterProfilResidentPourInfirmier.this, ModifierInfoResident.class);
-        intent.putExtra("key", this.key);
-        startActivity(intent);
-    }
-
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.retourFrProfilRes) {
@@ -99,9 +89,6 @@ public class ConsulterProfilResidentPourInfirmier extends AppCompatActivity impl
         }
         if (view.getId() == R.id.tauxGlycemiqueResProfil) {
             startTauxGlycemiqueActivity(key);
-        }
-        if (view.getId() == R.id.modifierResProfil) {
-            startModifProfilActivity(key);
         }
         if (view.getId() == R.id.poidsResProfil) {
             startPoidsActivity(key);

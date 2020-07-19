@@ -8,6 +8,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +41,7 @@ public class ConsulterTraitementAffecter extends AppCompatActivity implements Vi
 
     private static final String TAG = "ConsulterTraitementAffe";
 
-    private Button retourFrConsultTriatementAffecterInfirmier;
+    private ImageView retourFrConsultTriatementAffecterInfirmier;
     private HorizontalCalendar horizontalCalendar;
     private RecyclerView recyclerView;
 

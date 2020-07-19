@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,8 @@ import es.dmoral.toasty.Toasty;
 
 public class AffecteeInfirmiereResident extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "AffecteeInfirmiereResid";
-    private Button affecterNouveauInfirmierShowBT, retourFrAffecterInfBT, annulerAffectationBT;
+    private Button affecterNouveauInfirmierShowBT, annulerAffectationBT;
+    private ImageView retourFrAffecterInfBT;
     private RecyclerView recyclerViewInfAffecter, recyclerViewNouveauInfAffecter;
     private TextView nvInfAffecteeTextView;
     private String keyResident, keyInfirmierSupprimer;
