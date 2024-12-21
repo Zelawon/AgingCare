@@ -32,7 +32,7 @@ AgingCare is an IoT-based smart health monitoring system designed to improve eld
 1. Assemble the Arduino Nano, heart rate sensor, and Bluetooth HC-05 module.  
 2. Connect the components as shown in the circuit diagram provided.  
 3. Upload the Arduino code via the Arduino IDE.
-![AgingCarePCB](https://github.com/Zelawon/AgingCare/blob/master/Images/AgingCarePCB_nano.jpg =400x)
+<img src="https://github.com/Zelawon/AgingCare/blob/master/Images/AgingCarePCB_nano.jpg" width="400"/>
 
 ### Mobile App Setup
 1. Import the Android project into Android Studio.  
